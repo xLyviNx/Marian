@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
         
 
         /* Je¿eli wyst¹pi event, wysy³amy go do zmiennej ev1 */
-        al_wait_for_event(kolejka, &ev1);
+        al_wait_for_event_timed(kolejka, &ev1, 0.01);
 
         /* Je¿eli wyst¹pi³ event, bêdzie posiadaæ okreœlony typ; Sprawdzamy czy typ jest równy wartoœci,
                  * która mówi nam ¿e zosta³ wciœniêty przycisk exit */
