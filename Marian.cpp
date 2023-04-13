@@ -2,6 +2,9 @@
 #include <allegro5/allegro.h>
 #define height 720
 #define width 1280
+
+
+
 int main(int argc, char* argv[])
 {
     ALLEGRO_DISPLAY* display = NULL;
