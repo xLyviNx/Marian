@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
         
 
         /* Je¿eli wyst¹pi event, wysy³amy go do zmiennej ev1 */
-        al_wait_for_event_timed(kolejka, &ev1, 0.01);
+        al_wait_for_event_timed(kolejka, &ev1, 0);
 
         /* Je¿eli wyst¹pi³ event, bêdzie posiadaæ okreœlony typ; Sprawdzamy czy typ jest równy wartoœci,
                  * która mówi nam ¿e zosta³ wciœniêty przycisk exit */
@@ -77,7 +77,7 @@ int main(int argc, char* argv[])
         al_draw_bitmap(background, width / 2, height / 2, 0);
         al_draw_rectangle(2, 2, 62, 35, al_map_rgb(10, 10, 10), 50);
         al_flip_display();
-        printf("dupa");
+      
     }
 
     al_destroy_bitmap(background);
