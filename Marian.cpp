@@ -37,24 +37,41 @@ class Player : public Behaviour
 private:
     void renderMe()
     {
-        al_draw_filled_rectangle(this->x - this->pixelSize / 2, this->y - this->pixelSize / 2, this->x + this->pixelSize / 2, this->y + this->pixelSize / 2, al_map_rgb(160, 160, 160));
+        if (this->marian) {
+            al_draw_scaled_bitmap(this->marian, spritewidth / 2, spriteheight / 2, spritewidth, spriteheight, x, y, scaled_spritewidth, scaled_spriteheight, 0);
+        }
     }
 public:
     float x;
     float y;
-    int pixelSize;
+    int spritewidth;
+    int spriteheight;
+    float spriteScale;
+    int scaled_spritewidth;
+    int scaled_spriteheight;
+    ALLEGRO_BITMAP* marian = NULL;
     void Update()
     {
         renderMe();
     }
     void Start()
     {
+        this->marian = al_load_bitmap(MARIAN_FILE);
+        if (!this->marian)
+        {
+            cout << ("failed to load Marian bitmap!\n");
+        }
+        scaled_spriteheight *= spriteScale;
+        scaled_spritewidth *= spriteScale;
         cout << "Stworzono mnie\n";
     }
     Player(vector<Behaviour*>* bhvs, bool nodestroying) :Behaviour(bhvs, nodestroying)
     { 
-        this->pixelSize = 64;
+
+        this->spritewidth = 356;
+        this->spriteheight = 472; 
         this->x = 20; 
+        this-> spriteScale = 0.28;
         this->y = height / 2;
         this->Start();
     };
@@ -72,7 +89,6 @@ int main(int argc, char* argv[])
     if (!al_init_primitives_addon()) { return -1; }
     ALLEGRO_BITMAP* background = NULL;
     ALLEGRO_BITMAP* floor = NULL;
-    ALLEGRO_BITMAP* marian = NULL;
     ALLEGRO_DISPLAY* display = NULL;
 
     /* Tworzymy zmienn¹ w której przechowamy adres kolejki */
@@ -121,12 +137,7 @@ int main(int argc, char* argv[])
         return -2;
     }
 
-    marian = al_load_bitmap(MARIAN_FILE);
-    if (!marian)
-    {
-        cout << ("failed to load Marian bitmap!\n");
-        return -3;
-    }
+
 
 
     bool open = true;
@@ -138,9 +149,6 @@ int main(int argc, char* argv[])
         {
             plr = new Player(&Behaviours, false);
         }
-
-        loopBehaviours();
-
         /* Je¿eli wyst¹pi event, wysy³amy go do zmiennej ev1 */
         al_wait_for_event_timed(kolejka, &ev1, 0);
 
@@ -171,14 +179,9 @@ int main(int argc, char* argv[])
         //al_draw_bitmap(marian, 0, 0, 0);
 
     
-
+        loopBehaviours();
 
         al_flip_display();
-//<<<<<<< HEAD
-      
-//=======
-    
-//>>>>>>> 11c57b9b210caacb62b26cf434db386eeb7cb455
     }
 
     al_destroy_bitmap(background);
