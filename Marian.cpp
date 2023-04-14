@@ -8,6 +8,7 @@
 #include <vector>
 #define BACKGROUND_FILE "Picture/Background.bmp"
 #define FLOOR_FILE "Picture/floor.bmp"
+#define MARIAN_FILE "Picture/Marian.bmp"
 
 using namespace std;
 class Behaviour
@@ -71,6 +72,7 @@ int main(int argc, char* argv[])
     if (!al_init_primitives_addon()) { return -1; }
     ALLEGRO_BITMAP* background = NULL;
     ALLEGRO_BITMAP* floor = NULL;
+    ALLEGRO_BITMAP* marian = NULL;
     ALLEGRO_DISPLAY* display = NULL;
 
     /* Tworzymy zmienn¹ w której przechowamy adres kolejki */
@@ -119,6 +121,14 @@ int main(int argc, char* argv[])
         return -2;
     }
 
+    marian = al_load_bitmap(MARIAN_FILE);
+    if (!marian)
+    {
+        cout << ("failed to load Marian bitmap!\n");
+        return -3;
+    }
+
+
     bool open = true;
     Player* plr = NULL;
     while (open)
@@ -158,15 +168,17 @@ int main(int argc, char* argv[])
 
         al_draw_bitmap(background, 0, 0, 0);
         al_draw_bitmap(floor, 0, 0, 0);
+        //al_draw_bitmap(marian, 0, 0, 0);
+
     
 
 
         al_flip_display();
-<<<<<<< HEAD
+//<<<<<<< HEAD
       
-=======
+//=======
     
->>>>>>> 11c57b9b210caacb62b26cf434db386eeb7cb455
+//>>>>>>> 11c57b9b210caacb62b26cf434db386eeb7cb455
     }
 
     al_destroy_bitmap(background);
