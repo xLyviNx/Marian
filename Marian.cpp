@@ -11,6 +11,25 @@
 #define MARIAN_FILE "Picture/Marian.bmp"
 
 using namespace std;
+double deltaTime = 0;
+
+float clamp(float val, float min, float max)
+{
+    if (val > max && max>min)
+    {
+        return max;
+    }
+    else if (val < min && min < max)
+    {
+        return min;
+    }
+    else
+    {
+        return val;
+    }
+}
+
+
 class Behaviour
 {   
 protected:
@@ -32,27 +51,127 @@ public:
 };
 vector<Behaviour*> Behaviours;
 
+class Bullet
+{
+    public:
+        float x;
+        float y;
+        float Speed;
+        int spritewidth;
+        int spriteheight;
+        float spriteScale;
+        int scaled_spritewidth;
+        int scaled_spriteheight;
+        int direction;
+
+        void Update()
+        {
+
+        }
+        void Start()
+        {
+
+        }
+
+        Bullet(vector<Behaviour*>* bhvs, bool nodestroying) : Behaviour(bhvs, nodestroying)
+        {
+
+            this->spritewidth = 356;
+            this->spriteheight = 472;
+            this->x = 120;
+            this->spriteScale = 0.28;
+            this->y = height / 2;
+            this->Start();
+        };
+};
+
 class Player : public Behaviour
 {
 private:
+    float moveForceX = 0;
+    float velocityY=0;
+
     void renderMe()
     {
         if (this->marian) {
-            al_draw_scaled_bitmap(this->marian, spritewidth / 2, spriteheight / 2, spritewidth, spriteheight, x, y, scaled_spritewidth, scaled_spriteheight, 0);
+            if (lastMoveForceX == 0) { lastMoveForceX = 1; }
+            al_draw_scaled_bitmap(this->marian, 0, 0, spritewidth, spriteheight, x-(lastMoveForceX * scaled_spritewidth/2), y-scaled_spriteheight/2, lastMoveForceX * scaled_spritewidth, scaled_spriteheight, 0);
+            al_draw_filled_circle(this->x, this->y, 10, al_map_rgb(255, 100, 100));
+            //al_draw_bitmap(this->marian, width / 2, height / 2, 0);
+        }
+    }
+    set<int>* pressedKeys = NULL;
+    void Jump()
+    {
+        if (isGrounded)
+        {
+            cout << "Jump\n";
+            this->velocityY -= jumpForce*15;
         }
     }
 public:
     float x;
     float y;
+    float Speed;
     int spritewidth;
     int spriteheight;
     float spriteScale;
     int scaled_spritewidth;
     int scaled_spriteheight;
+    bool isGrounded = false;
+    float jumpForce = 60;
+    float lastMoveForceX = 0;
+
     ALLEGRO_BITMAP* marian = NULL;
+
     void Update()
     {
         renderMe();
+        moveForceX = 0;
+        float gravForce = 0;
+        isGrounded = false;
+        if (y + scaled_spriteheight/2 < 580)
+        {
+            gravForce = 9.81;
+        }
+        else
+        {
+            if (!isGrounded)
+            {
+                velocityY = 0;
+            }
+            isGrounded = true;
+        }
+
+        bool extendJump = false;
+        for (set<int>::iterator it = (*pressedKeys).begin(); it != (*pressedKeys).end(); it++)
+        {
+            if ((*it) == ALLEGRO_KEY_D)
+            {
+                moveForceX += 1;
+            }        
+            if ((*it) == ALLEGRO_KEY_A)
+            {
+                moveForceX -= 1;
+            }
+            if ((*it) == ALLEGRO_KEY_W || (*it) == ALLEGRO_KEY_SPACE)
+            {
+                Jump();
+                extendJump = true;
+            }
+        }
+        if (moveForceX != 0) { lastMoveForceX = moveForceX; }
+        //cout << "Force: " << moveForceX << endl;
+
+
+        x += (moveForceX * Speed * 50) * deltaTime;
+        if (!isGrounded) 
+        {
+            float change = extendJump ? 0.6 : 1;
+            velocityY += (gravForce * 250 * change) * deltaTime;
+        }
+        cout << "Velocity: " << velocityY << endl;
+        y = clamp(y + (velocityY * deltaTime), 0, 580-scaled_spriteheight/2);
     }
     void Start()
     {
@@ -61,18 +180,20 @@ public:
         {
             cout << ("failed to load Marian bitmap!\n");
         }
-        scaled_spriteheight *= spriteScale;
-        scaled_spritewidth *= spriteScale;
-        cout << "Stworzono mnie\n";
+        scaled_spritewidth = ceil(spritewidth * spriteScale);
+        scaled_spriteheight = ceil(spriteheight * spriteScale);
+        this->Speed = 6;
+        cout << "Stworzono mnie: rozmiary? " << scaled_spriteheight << " " << scaled_spritewidth << endl;
     }
-    Player(vector<Behaviour*>* bhvs, bool nodestroying) :Behaviour(bhvs, nodestroying)
+    Player(vector<Behaviour*>* bhvs, bool nodestroying, set<int>* keys) :Behaviour(bhvs, nodestroying)
     { 
 
         this->spritewidth = 356;
         this->spriteheight = 472; 
-        this->x = 20; 
+        this->x = 120; 
         this-> spriteScale = 0.28;
         this->y = height / 2;
+        this->pressedKeys = keys;
         this->Start();
     };
 };
@@ -108,19 +229,24 @@ int main(int argc, char* argv[])
     if (kolejka == NULL)
     {
         fprintf(stderr, "Failed to create event queue!\n");
-        return -1;
+        return -2;
     }
 
     display = al_create_display(width, height);
     if (display == NULL)
     {
         fprintf(stderr, "Failed to create display!\n");
-        return -1;
+        return -3;
     }
 
 
     /* Skoro mamy kolejkê i display, rejestrujemy display jako Ÿród³o eventów */
     al_register_event_source(kolejka, al_get_display_event_source(display));
+    if (!al_install_keyboard())
+    {
+        return -4;
+    }
+    al_register_event_source(kolejka, al_get_keyboard_event_source());
     al_clear_to_color(al_map_rgb(38, 95, 55));
     al_flip_display();
     set<int> buttons;
@@ -128,32 +254,33 @@ int main(int argc, char* argv[])
     if (!background)
     {
         cout<<("failed to load background bitmap!\n");
-        return -1;
+        return -5;
     }
     floor = al_load_bitmap(FLOOR_FILE);
     if (!floor)
     {
         cout << ("failed to load floor bitmap!\n");
-        return -2;
+        return -6;
     }
-
-
-
+    double time = al_get_time();
+    double oldTime = time;
 
     bool open = true;
     Player* plr = NULL;
+
     while (open)
     {
-        
+        al_wait_for_vsync();
         if (plr == NULL)
         {
-            plr = new Player(&Behaviours, false);
+            plr = new Player(&Behaviours, false, &buttons);
         }
         /* Je¿eli wyst¹pi event, wysy³amy go do zmiennej ev1 */
         al_wait_for_event_timed(kolejka, &ev1, 0);
 
-        /* Je¿eli wyst¹pi³ event, bêdzie posiadaæ okreœlony typ; Sprawdzamy czy typ jest równy wartoœci,
-                 * która mówi nam ¿e zosta³ wciœniêty przycisk exit */
+        time = al_get_time();
+        deltaTime = time - oldTime;
+        oldTime = time;
 
         switch (ev1.type)
         {
