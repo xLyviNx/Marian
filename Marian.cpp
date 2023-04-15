@@ -4,6 +4,8 @@
 #define width 1280
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
+#include <allegro5/allegro_ttf.h>
+
 #include <set>
 #include <vector>
 #define BACKGROUND_FILE "Picture/Background.bmp"
@@ -11,7 +13,14 @@
 #define FLOOR_FILE "Picture/floor.bmp"
 #define MARIAN_FILE "Picture/Marian.bmp"
 #define BULLET_TEXTURE "Picture/bullet.bmp"
+#define BULLET_TEXTURE2 "Picture/Buletv2.bmp"
 #define PLATFORM_FILE "Picture/platform1x1.bmp"
+#define ENEMY_TEXTURE "Picture/Enemy.bmp"
+#define PLATFORM2_FILE "Picture/platform1x1_2.bmp"
+#define PLATFORM3_FILE "Picture/platform1x1_3.bmp"
+#define FINISH_FILE "Picture/Finish.bmp"
+
+#define maxY 100
 
 using namespace std;
 class Behaviour
@@ -19,6 +28,7 @@ class Behaviour
 protected:
     vector<Behaviour*>* vec = NULL;
 public:
+    bool removing = false;
     virtual void Update() {};
     virtual void Start() {};
     //bool dontDestroy;
@@ -32,7 +42,7 @@ public:
             (*(this->vec)).push_back(this);
         }
     }
-    ~Behaviour()
+    virtual ~Behaviour()
     {
         cout << "DESTRUCTION OF Behaviour.\n";
         if (this->vec != NULL)
@@ -82,13 +92,14 @@ public:
     float spriteScale = 1;
     int scaled_spritewidth;
     int scaled_spriteheight;
-    Platform(vector<Behaviour*>* bhvs, float nX, float nY, int blocksAroundMiddle, ALLEGRO_BITMAP* mySprite) :Behaviour(bhvs)
+    bool Vertical = false;
+    Platform(vector<Behaviour*>* bhvs, float nX, float nY, int blocksAroundMiddle, bool vertical, ALLEGRO_BITMAP* mySprite) :Behaviour(bhvs)
     {
         this->x = nX;
         this->y = nY;
         this->sprite = mySprite;
         this->blocks = blocksAroundMiddle;
-
+        this->Vertical = vertical;
         this->scaled_spritewidth = this->spritewidth * this->spriteScale;
         this->scaled_spriteheight = this->spriteheight * this->spriteScale;
     };
@@ -96,31 +107,72 @@ public:
     {
         if (sprite)
         {
-            if (this->x - cam_x_offset > 0 && this->x - cam_x_offset < width) {
-                al_draw_scaled_bitmap(this->sprite, 0, 0, this->spritewidth, this->spriteheight, this->x - cam_x_offset + this->scaled_spritewidth / 2, this->y + this->scaled_spriteheight / 2, this->scaled_spritewidth, this->scaled_spriteheight, 0);
-                for (int i = 1; i <= this->blocks; i++)
+            float x0 = this->x;
+            float y0 = this->y;
+            if (x0 >= cam_x_offset - this->scaled_spritewidth / 2 && x0 <= width + cam_x_offset) {
+                al_draw_scaled_bitmap(this->sprite, 0, 0, this->spritewidth, this->spriteheight, this->x - cam_x_offset - this->scaled_spritewidth / 2, y0 - this->scaled_spriteheight / 2, this->scaled_spritewidth, this->scaled_spriteheight, 0);
+            }
+            for (int i = 1; i <= this->blocks; i++)
+            {
+
+                float x1 = this->x - this->scaled_spritewidth/2;
+                float x2 = this->x - this->scaled_spritewidth/2;
+                float y1 = this->y;
+                float y2 = this->y;
+                if (Vertical)
                 {
-                    al_draw_scaled_bitmap(this->sprite, 0, 0, this->spritewidth, this->spriteheight, this->x - cam_x_offset + this->scaled_spritewidth / 2 + (i * this->scaled_spritewidth), this->y + this->scaled_spriteheight / 2, this->scaled_spritewidth, this->scaled_spriteheight, 0);
-                    al_draw_scaled_bitmap(this->sprite, 0, 0, this->spritewidth, this->spriteheight, this->x - cam_x_offset + this->scaled_spritewidth / 2 - (i * this->scaled_spritewidth), this->y + this->scaled_spriteheight / 2, this->scaled_spritewidth, this->scaled_spriteheight, 0);
+                    y1 = this->y + (i * this->scaled_spriteheight);
+                    y2 = this->y - (i * this->scaled_spriteheight);
+                }
+                else
+                {
+                    x1 = this->x - this->scaled_spritewidth / 2 + (i * this->scaled_spritewidth);
+                    x2 = this->x - this->scaled_spritewidth / 2 - (i * this->scaled_spritewidth);
+                }
+                if (x1>=cam_x_offset-this->scaled_spritewidth/2 && x1<=width+cam_x_offset) {
+                    al_draw_scaled_bitmap(this->sprite, 0, 0, this->spritewidth, this->spriteheight, x1 - cam_x_offset, y1 - this->scaled_spriteheight / 2, this->scaled_spritewidth, this->scaled_spriteheight, 0);
+                }
+                if (x2 >= cam_x_offset - this->scaled_spritewidth / 2 && x2 <= width + cam_x_offset) {
+                    al_draw_scaled_bitmap(this->sprite, 0, 0, this->spritewidth, this->spriteheight, x2 - cam_x_offset, y2 - this->scaled_spriteheight / 2, this->scaled_spritewidth, this->scaled_spriteheight, 0);
                 }
             }
+
         }
     }
-    bool isMyBlock(float cx, float cy)
+    bool isMyBlock(float *cX, float *cY, float cW, float cH)
     {
-        float leftside = this->x - this->scaled_spritewidth / 2 - (this->blocks * this->scaled_spritewidth);
-        float rightside = this->x + this->scaled_spritewidth / 2 + (this->blocks * this->scaled_spritewidth);
-        float top = this->y - this->scaled_spriteheight / 2;
-        float bottom = this->y + this->scaled_spriteheight / 2;
-        if (cx >= leftside && cx <= rightside)
+        float left = this->x - (this->blocks * this->scaled_spritewidth) - (this->scaled_spritewidth / 2);
+        float right = this->x + (this->blocks * this->scaled_spritewidth) + (this->scaled_spritewidth / 2);
+        float top = this->y - ((float)this->scaled_spriteheight / 2);
+        float bottom = this->y + ((float)this->scaled_spriteheight / 2);
+        if (Vertical)
         {
-            if (cy <= top && cy >= bottom)
+            left = this->x - (this->scaled_spritewidth / 2);
+            right = this->x + (this->scaled_spritewidth / 2);
+            top = this->y - (this->blocks * this->scaled_spriteheight) - ((float)this->scaled_spriteheight / 2);
+            bottom = this->y + (this->blocks * this->scaled_spriteheight) + ((float)this->scaled_spriteheight / 2);
+        }
+        //al_draw_filled_rectangle(left-cam_x_offset, top, right-cam_x_offset, bottom, al_map_rgb(255, 0, 0));
+        //al_draw_filled_rectangle(x - scaled_spritewidth / 2, y - scaled_spriteheight / 2, x + scaled_spritewidth / 2, y + scaled_spriteheight / 2, al_map_rgb(0, 255, 0));
+
+        bool isInsideHorizontal = *cX - cW / 2 <= right && *cX + cW / 2 >= left;
+        bool isInsideVertical = *cY - cH / 2 <= bottom && *cY + cH / 2 >= top;
+        bool col = (isInsideHorizontal ) && ( isInsideVertical);
+        if (col)
+        {
+            if (*cY - cH / 2 < top)
             {
-                return true;
+                *cY = top - cH / 2;
+            }
+            else if (*cY + cH / 2 > bottom)
+            {
+                *cY = bottom +1  + cH / 2;
             }
         }
-        return false;
+        //cout << "Col: " << col << endl;
+        return col;
     }
+
 };
 
 
@@ -139,21 +191,22 @@ private:
         int scaled_spriteheight;
         int direction;
         float lifetime = 2;
+        bool hurtPlayer = false;
         ALLEGRO_BITMAP* sprite = NULL;
-
-        Bullet(float nX, float nY, int dir, float speed, set<Bullet*>* mset)
+        Bullet(float nX, float nY, int dir, float speed, ALLEGRO_BITMAP* spriteFile, set<Bullet*>* mset, bool hPlayer, int sizeX, int sizeY, float scale)
         {
             mySet = mset;
-            this->spritewidth = 48;
-            this->spriteheight = 17;
-            this->spriteScale = 0.4;
+            this->hurtPlayer = hPlayer;
+            this->spritewidth = sizeX;
+            this->spriteheight = sizeY;
+            this->spriteScale = scale;
             this->direction = dir;
             this->Speed = speed;
             this->x = nX;
             this->y = nY;
+            this->sprite = spriteFile;
             scaled_spritewidth = ceil(spritewidth * spriteScale);
             scaled_spriteheight = ceil(spriteheight * spriteScale);
-            sprite = al_load_bitmap(BULLET_TEXTURE);
             if (mySet != NULL && sprite)
             {
                 mySet->insert(this);
@@ -161,9 +214,11 @@ private:
             else {
                 delete(this);
             }
+
         }
         ~Bullet()
         {
+
             if (mySet != NULL)
             {
                 set<Bullet*>::iterator it = mySet->find(this);
@@ -172,14 +227,15 @@ private:
                     mySet->erase(it);
                 }
             }
-            al_destroy_bitmap(sprite);
         }
         void renderMe()
         {
+            //cout << "My bullet sprite is " << sprite << endl;
             if (this->sprite) {
+                //cout << "Rendering" << endl;
                 if (this->direction == 0) { delete(this); return; }
                 al_draw_scaled_bitmap(this->sprite, 0, 0, this->spritewidth, this->spriteheight, this->x - cam_x_offset - (this->direction * this->scaled_spritewidth / 2), this->y - this->scaled_spriteheight / 2, this->direction * this->scaled_spritewidth, this->scaled_spriteheight, 0);
-                al_draw_filled_circle(this->x-cam_x_offset, this->y, 2, al_map_rgb(255, 100, 100));
+                //al_draw_filled_circle(this->x-cam_x_offset, this->y, 2, al_map_rgb(255, 100, 100));
                 //al_draw_bitmap(this->marian, width / 2, height / 2, 0);
             }
         }
@@ -254,6 +310,7 @@ public:
         
     }
 };
+
 class Player : public Behaviour
 {
 private:
@@ -261,6 +318,9 @@ private:
     float velocityY=0;
     float shootCd = 0;
     float shot = 0;
+    float jumpCd = 0;
+    ALLEGRO_BITMAP* bulletsprite = NULL;
+    ALLEGRO_FONT* debugFont = al_load_ttf_font("Fonts/data-unifon.ttf", 30, 0);
     void renderMe()
     {
         if (this->marian) {
@@ -274,10 +334,11 @@ private:
     set<Platform*>* platforms = NULL;
     void Jump()
     {
-        if (isGrounded)
+        if (isGrounded && jumpCd<=0)
         {
             cout << "Jump\n";
             this->velocityY -= jumpForce*15;
+            jumpCd += 0.2;
         }
     }
     void Shoot()
@@ -285,7 +346,7 @@ private:
         if (this->shootCd <= 0)
         {
             if (this->lastMoveForceX == 0) { this->lastMoveForceX = 1; }
-            Bullet* bul = new Bullet(this->x + ((this->scaled_spritewidth * 0.47) * this->lastMoveForceX), this->y + 10, lastMoveForceX, 15, &Bullets);
+            Bullet* bul = new Bullet(this->x + ((this->scaled_spritewidth * 0.47) * this->lastMoveForceX), this->y + 10, lastMoveForceX, 15, bulletsprite, Bullets,false, 48, 17, 0.4);
             BulletParticle* bulP = new BulletParticle(this->x + ((this->scaled_spritewidth * 0.47) * this->lastMoveForceX), this->y + 10, &BulletParticles);
             if (bul != NULL)
             {
@@ -297,12 +358,19 @@ private:
     void loopBullets()
     {
         set<Bullet*> BtoDelete;
-        for (set<Bullet*>::iterator it = Bullets.begin(); it != Bullets.end(); it++)
+        for (set<Bullet*>::iterator it = (*Bullets).begin(); it != (*Bullets).end(); it++)
         {
             (*it)->UpdateBullet();
             if ((*it)->lifetime <= 0)
             {
                 BtoDelete.insert((*it));
+            }
+            for (set<Platform*>::iterator it2 = (*platforms).begin(); it2 != (*platforms).end(); it2++)
+            {
+                if ((*it2)->isMyBlock(&(*it)->x, &(*it)->y, (*it)->scaled_spritewidth, (*it)->scaled_spriteheight))
+                {
+                    BtoDelete.insert((*it));
+                }
             }
         }
         set<BulletParticle*> BPtoDelete;
@@ -317,7 +385,7 @@ private:
             }
         }
         for (set<Bullet*>::iterator it = BtoDelete.begin(); it != BtoDelete.end(); it++) {
-            Bullets.erase((*it));
+            (*Bullets).erase((*it));
         }
         BtoDelete.clear();
         for (set<BulletParticle*>::iterator it = BPtoDelete.begin(); it != BPtoDelete.end();it++) {
@@ -329,7 +397,18 @@ private:
     {
         for (set<Platform*>::iterator it = (*platforms).begin(); it != (*platforms).end(); it++)
         {
-            if ((*it)->isMyBlock(cx, cy))
+            if ((*it)->isMyBlock(&cx, &cy, this->scaled_spritewidth, this->scaled_spriteheight))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    bool checkGrounded(float *cx, float *cy)
+    {
+        for (set<Platform*>::iterator it = (*platforms).begin(); it != (*platforms).end(); it++)
+        {
+            if ((*it)->isMyBlock(cx, cy, this->scaled_spritewidth, this->scaled_spriteheight))
             {
                 return true;
             }
@@ -348,26 +427,31 @@ public:
     bool isGrounded = false;
     float jumpForce = 60;
     float lastMoveForceX = 0;
+    int Health = 100;
     ALLEGRO_BITMAP* marian = NULL;
-    set<Bullet*> Bullets;
+    set<Bullet*>* Bullets;
     set<BulletParticle*> BulletParticles;
     void Update()
     {
+        if (Health <= 0)
+        {
+            removing = true;
+            return;
+        }
+        al_draw_textf(debugFont, al_map_rgb(80, 0, 0), 20, height - 50, 0, "hp: %d", Health);
+        bool lastGrounded = isGrounded;
+        bool lowground = !(this->y + this->scaled_spriteheight / 2 < 580);
+        isGrounded = checkGrounded(&(this->x), &(this->y)) || lowground;
         renderMe();
         moveForceX = 0;
         float gravForce = 0;
-        isGrounded = false;
+        //isGrounded = false;
+        if (jumpCd > 0) {
+            jumpCd -= deltaTime;
+        }
         if (y + scaled_spriteheight/2 < 580)
         {
             gravForce = 9.81;
-        }
-        else
-        {
-            if (!isGrounded)
-            {
-                velocityY = 0;
-            }
-            isGrounded = true;
         }
         bool fastJump = false;
         bool extendJump = false;
@@ -377,21 +461,21 @@ public:
             {
                 moveForceX += 1;
             }        
-            if ((*it) == ALLEGRO_KEY_A)
+            else if ((*it) == ALLEGRO_KEY_A)
             {
                 moveForceX -= 1;
             }
 
-            if ((*it) == ALLEGRO_KEY_W || (*it) == ALLEGRO_KEY_SPACE)
+            else if ((*it) == ALLEGRO_KEY_W || (*it) == ALLEGRO_KEY_SPACE)
             {
                 this->Jump();
                 extendJump = true;
             }
-            if ((*it) == ALLEGRO_KEY_S)
+            else if ((*it) == ALLEGRO_KEY_S)
             {
                 fastJump = true;
             }
-            if ((*it) == ALLEGRO_KEY_LCTRL)
+            else if ((*it) == ALLEGRO_KEY_LCTRL)
             {
                 this->Shoot();
             }
@@ -399,24 +483,51 @@ public:
         if (moveForceX != 0) { lastMoveForceX = moveForceX; }
         //cout << "Force: " << moveForceX << endl;
 
-        float newX = this->x + (this->moveForceX * this->Speed * 50) * deltaTime;
-        this->x = clamp(newX, this->scaled_spritewidth/2, MAP1_width-this->scaled_spritewidth/2);
-        this->x = clamp(this->x - (this->lastMoveForceX * 10 * this->shot) * deltaTime, this->scaled_spritewidth / 2, MAP1_width - this->scaled_spritewidth / 2);
+      
         if (this->shot > 0) {
             this->shot = clamp(shot-deltaTime * 40, 0, 40);
         }
-        if (!isGrounded) 
-        {
-            float change = fastJump ? 3 : extendJump ? 0.6 : 1;
-            velocityY += (gravForce * 250 * change) * deltaTime;
-        }
-        //cout << "Velocity: " << velocityY << endl;
-        y = clamp(y + (velocityY * deltaTime), 0, 580-scaled_spriteheight/2);
+
         this->loopBullets();
         if (this->shootCd > 0) {
             this->shootCd -= deltaTime;
         }
+        float newX = this->x;
+        if (moveForceX) {
+            newX = this->x + (this->moveForceX * this->Speed * 50) * deltaTime;
+            if (!platformBlock(newX, this->y-1))
+            {
+                this->x = clamp(newX, this->scaled_spritewidth / 2, MAP1_width - this->scaled_spritewidth / 2);
+            }
+        }
+        //al_draw_circle(newX, this->y, 2, al_map_rgb(100, 30, 30), 5);
+        if (this->shot) {
+            newX = this->x - (this->lastMoveForceX * 10 * this->shot) * deltaTime;
+            if (!platformBlock(newX, this->y-1))
+            {
+                this->x = clamp(newX, this->scaled_spritewidth / 2, MAP1_width - this->scaled_spritewidth / 2);
+            }
 
+        }
+
+
+        //cout << isGrounded << endl;
+        if (!isGrounded)
+        {
+            float change = fastJump ? 3 : extendJump ? 0.6 : 1;
+            velocityY += (gravForce * 250 * change) * deltaTime;
+
+        }
+        if (isGrounded && !lastGrounded)
+        {
+            velocityY = 0;
+        }
+        //cout << "Velocity: " << velocityY << endl;
+        float newY = clamp(y + (velocityY * deltaTime), -maxY, 580 - scaled_spriteheight / 2);
+        if (!isGrounded || velocityY < 0) {
+            this->y = newY;
+        }
+        
         if (this->x > cam_x_offset + width)
         {
             cam_x_offset += width;
@@ -425,7 +536,10 @@ public:
         {
             cam_x_offset -= width;
         }
-        cout << "Cam X Offset: " << cam_x_offset << endl;
+        if (debugFont)
+        {
+            //al_draw_textf(debugFont, al_map_rgb(0, 50, 0), 15, 15, 0, " velocity: %lf, grounded: %d (%d), XY: %lf, %lf", velocityY, isGrounded, lowground, this->x, this->y);
+        }
     }
     void Start()
     {
@@ -439,7 +553,7 @@ public:
         this->Speed = 6;
         cout << "Stworzono mnie: rozmiary? " << scaled_spriteheight << " " << scaled_spritewidth << endl;
     }
-    Player(vector<Behaviour*>* bhvs, set<int>* keys, set<Platform*>* pts) :Behaviour(bhvs)
+    Player(vector<Behaviour*>* bhvs, set<int>* keys, set<Platform*>* pts, ALLEGRO_BITMAP* bulletSpr, set<Bullet*>* blts) :Behaviour(bhvs)
     { 
         platforms = pts;
         this->spritewidth = 356;
@@ -448,16 +562,271 @@ public:
         this-> spriteScale = 0.28;
         this->y = height / 2;
         this->pressedKeys = keys;
+        this->bulletsprite = bulletSpr;
+        this->Bullets = blts;
         this->Start();
     };
+    ~Player() {
+        if (marian != NULL) {
+            al_destroy_bitmap(marian);
+            cout << "Destroying MARIAN Bitmap" << endl;
+            marian = NULL;
+        }
+        Behaviour::~Behaviour();
+        
+    }
+};
+class FinishScreen : public Behaviour
+{
+private:
+    short int* level = 0;
+    ALLEGRO_FONT* font = NULL;
+public:
+    bool enabled;
+    void Update()
+    {
+        //cout << "F1\n";
+        if ((*level) > 0 && font && enabled)
+        {
+            //cout << "F2\n";
+            al_draw_filled_rectangle(0, 0, width, height, al_map_rgba(0, 0, 0, 230));
+            al_draw_rectangle(0, 0, width, height, al_map_rgba(0, 255, 0, 240), 10);
+            al_draw_textf(font, al_map_rgb(255, 255, 255), width / 2, height / 2, ALLEGRO_ALIGN_CENTRE, "Level %d ukonczony!", *level);
+        }
+        else
+        {
+            //cout << "LV: " << *level << ", FONT: " << (font != NULL) << ", ENABLED: " << enabled << endl;
+        }
+    }
+    void Start()
+    {
+
+    }
+    FinishScreen(vector<Behaviour*>* bhvs, short int* lv, ALLEGRO_FONT* myfont) :Behaviour(bhvs)
+    {
+        this->level = lv;
+        this->font = myfont;
+        this->enabled = false;
+    }
+};
+class Enemy : public Behaviour
+{
+private:
+    ALLEGRO_BITMAP* sprite = NULL;
+    int spritewidth = 356;
+    int spriteheight = 472;
+    float spriteScale = 0.21;
+    int scaled_spritewidth;
+    int scaled_spriteheight;
+    bool walking = false;
+    float shootCd = 0;
+    ALLEGRO_BITMAP* bulletsprite = NULL;
+    set<Bullet*> Bullets;
+    set<Platform*>* platforms;
+    Player** mPlayer = NULL;
+    int Health = 50;
+    void loopBullets()
+    {
+        if (mPlayer != NULL && (*mPlayer) != NULL)
+        {
+            for (set<Bullet*>::iterator pit = (*mPlayer)->Bullets->begin(); pit != (*mPlayer)->Bullets->end(); pit++)
+            {
+                if (this->x + this->scaled_spritewidth / 2 > (*pit)->x && this->x - this->scaled_spritewidth / 2 < (*pit)->x)
+                {
+                    if (this->y + this->scaled_spriteheight / 2 > (*pit)->y && this->y - this->scaled_spriteheight / 2 < (*pit)->y)
+                    {
+                        this->Health -= 25;
+                        (*pit)->lifetime = 0;
+                    }
+                }
+
+            }
+            set<Bullet*> BtoDelete;
+            for (set<Bullet*>::iterator it = Bullets.begin(); it != Bullets.end(); it++)
+            {
+                (*it)->UpdateBullet();
+
+                Player* plr = *mPlayer;
+                if (plr->x + plr->scaled_spritewidth / 2 > (*it)->x && plr->x - plr->scaled_spritewidth / 2 < (*it)->x)
+                {
+                    if (plr->y + plr->scaled_spriteheight / 2 > (*it)->y && plr->y - plr->scaled_spriteheight / 2 < (*it)->y)
+                    {
+                        (*mPlayer)->Health -= 25;
+                        BtoDelete.insert((*it));
+                    }
+                }
+
+                if ((*it)->lifetime <= 0)
+                {
+                    BtoDelete.insert((*it));
+                }
+                for (set<Platform*>::iterator it2 = (*platforms).begin(); it2 != (*platforms).end(); it2++)
+                {
+                    if ((*it2)->isMyBlock(&(*it)->x, &(*it)->y, (*it)->scaled_spritewidth, (*it)->scaled_spriteheight))
+                    {
+                        BtoDelete.insert((*it));
+                    }
+                }
+            }
+            for (set<Bullet*>::iterator it = BtoDelete.begin(); it != BtoDelete.end(); it++) {
+                Bullets.erase((*it));
+            }
+        }
+    }
+    void shoot()
+    {
+        if (this->shootCd <= 0)
+        {
+            if (this->dir == 0) { this->dir = 1; }
+            Bullet* bul = new Bullet(this->x + ((this->scaled_spritewidth * 0.47) * this->dir), this->y + 10, dir, 15, bulletsprite, &Bullets, true, 62, 39, 0.5);
+            //BulletParticle* bulP = new BulletParticle(this->x + ((this->scaled_spritewidth * 0.47) * this->dir), this->y + 10, &BulletParticles);
+            if (bul != NULL)
+            {
+                this->shootCd = 0.75;
+                //cout << "Shoot! " << bul <<endl;
+            }
+        }
+    }
+public:
+    float Speed;
+    float range = 100;
+    float x = 0;
+    float x_offset = 0;
+    float y = 0;
+    int dir = 1;
+    void Update()
+    {
+        if (Health <= 0)
+        {
+            removing = true;
+            return;
+        }
+        if (x + x_offset - cam_x_offset > 0 && x + x_offset - cam_x_offset < width)
+        {
+            if (sprite)
+            {
+                al_draw_scaled_bitmap(this->sprite, 0, 0, this->spritewidth, this->spriteheight, this->x + x_offset - cam_x_offset - (dir * (this->scaled_spritewidth / 2)), y - this->scaled_spriteheight / 2, dir * this->scaled_spritewidth, this->scaled_spriteheight, 0);
+                //al_draw_circle(x, y, 5, al_map_rgb(255, 255, 255), 2);
+
+            }
+            if (walking)
+            {
+                if (abs(x_offset) < range)
+                {
+                    float change = (dir * Speed * 4) * deltaTime;
+
+                    x_offset = clamp(x_offset + change, -range, range);
+                    //cout << "offset: " << x_offset << "change: " << change << endl;
+
+                }
+                else if (abs(x_offset) >= range) {
+                    //cout << "-======\n";
+
+                    x_offset = (x_offset / (abs(x_offset))) * (abs(x_offset - (x_offset - range)) - 1);
+                    dir *= -1;
+                }
+            }
+            if (shootCd > 0) {
+                shootCd -= deltaTime;
+            }
+            else {
+                shoot();
+            }
+            loopBullets();
+            //cout << "Shooting: " << shootCd<<endl;
+        }
+    }
+    Enemy(vector<Behaviour*>* bhvs, float nX, float nY, bool walk, float speed, int direction, ALLEGRO_BITMAP* mySprite, set<Platform*>* pts, ALLEGRO_BITMAP* bulletsp, Player** plr) :Behaviour(bhvs)
+    {
+        this->x = nX;
+        this->y = nY;
+        this->sprite = mySprite;
+        this->scaled_spritewidth = this->spritewidth * this->spriteScale;
+        this->scaled_spriteheight = this->spriteheight * this->spriteScale;
+        this->walking = walk;
+        this->Speed = speed;
+        this->dir = direction;
+        this->platforms = pts;
+        this->bulletsprite = bulletsp;
+        this->mPlayer = plr;
+        //cout << "BULLET ADDRESS: " << bulletsprite << endl;
+        shootCd = 1;
+    };
+};
+class FinishLine : public Behaviour
+{
+private:
+    int spritewidth = 401;
+    int spriteheight = 251;
+    float spriteScale = 1;
+    int scaled_spritewidth;
+    int scaled_spriteheight;
+    short int level;
+    Player* mPlayer = NULL;
+    ALLEGRO_FONT* finishFont = NULL;
+    ALLEGRO_BITMAP* sprite = NULL;
+    FinishScreen** fScreen = NULL;
+public:
+    
+    float x;
+    float y;
+    void Update()
+    {
+        if (this->sprite)
+        {
+            al_draw_scaled_bitmap(this->sprite, 0, 0, spritewidth, spriteheight, x - cam_x_offset - scaled_spritewidth / 2, y - scaled_spriteheight / 2, scaled_spritewidth, scaled_spriteheight, 0);
+        }
+        if (this->mPlayer)
+        {
+            if (this->mPlayer->x > this->x - scaled_spritewidth / 2 && this->mPlayer->x < this->x + this->scaled_spritewidth / 2)
+            {
+                if (this->mPlayer->y < this->y + this->scaled_spriteheight / 2 && this->mPlayer->y > this->y - this->scaled_spriteheight / 2)
+                {
+                    mPlayer->removing = true;
+                    if (fScreen && (*fScreen))
+                    {
+                        (*fScreen)->enabled = true;
+                    }
+                }
+            }
+        }
+    }
+    FinishLine(vector<Behaviour*>* bhvs, float nX, float nY, short int lvl, Player* plr, ALLEGRO_BITMAP* mySprite, FinishScreen** fS, ALLEGRO_FONT* finishfont) :Behaviour(bhvs)
+    {
+        this->x = nX;
+        this->y = nY;
+        this->scaled_spritewidth = this->spritewidth * this->spriteScale;
+        this->scaled_spriteheight = this->spriteheight * this->spriteScale;
+        this->mPlayer = plr;
+        this->sprite = mySprite;
+        this->finishFont = finishfont;
+        this->level = lvl;
+        this->fScreen = fS;
+    }
 };
 
-void loopBehaviours()
+void loopBehaviours(Player** plr)
 {
+    vector<Behaviour*> toDelete;
     for (vector<Behaviour*>::iterator it = Behaviours.begin(); it != Behaviours.end(); it++)
     {
         (*it)->Update();
+        if ((*it)->removing)
+        {
+            toDelete.push_back((*it));
+        }
     }
+    for (vector<Behaviour*>::iterator it = toDelete.begin(); it != toDelete.end(); it++)
+    {
+        if ((*it) == (*plr))
+        {
+            cout << "PLAYER!!\n";
+            *plr = NULL;
+        }
+        delete(*it);
+        (*it) = NULL;
+    }
+    toDelete.clear();
 }
 int main(int argc, char* argv[])
 {
@@ -465,6 +834,12 @@ int main(int argc, char* argv[])
     ALLEGRO_BITMAP* background = NULL;
     ALLEGRO_BITMAP* floor = NULL;
     ALLEGRO_BITMAP* platformSprite = NULL;
+    ALLEGRO_BITMAP* platformSprite2 = NULL;
+    ALLEGRO_BITMAP* platformSprite3 = NULL;
+    ALLEGRO_BITMAP* finishSprite = NULL;
+    ALLEGRO_BITMAP* playerBulletSprite = NULL;
+    ALLEGRO_BITMAP* enemyBulletSprite = NULL;
+    ALLEGRO_BITMAP* enemysprite = NULL;
     ALLEGRO_DISPLAY* display = NULL;
 
     /* Tworzymy zmienn¹ w której przechowamy adres kolejki */
@@ -518,12 +893,39 @@ int main(int argc, char* argv[])
         return -6;
     }
     platformSprite = al_load_bitmap(PLATFORM_FILE);
-    if (!platformSprite)
+    platformSprite2 = al_load_bitmap(PLATFORM2_FILE);
+    platformSprite3 = al_load_bitmap(PLATFORM3_FILE);
+    if (!platformSprite || !platformSprite2 || !platformSprite3)
     {
         cout << ("failed to load PLATFORM bitmap!\n");
         return -7;
     }
-
+    finishSprite = al_load_bitmap(FINISH_FILE);
+    if (!finishSprite)
+    {
+        cout << ("failed to load FINISHLINE bitmap!\n");
+        return -8;
+    }
+    playerBulletSprite = al_load_bitmap(BULLET_TEXTURE);
+    enemyBulletSprite = al_load_bitmap(BULLET_TEXTURE2);
+    if (!playerBulletSprite || !enemyBulletSprite)
+    {
+        cout << ("failed to load BULLET bitmaps!\n");
+        return -8;
+    }
+    if (!al_init_font_addon())
+    {
+        return -9;
+    }
+    if (!al_init_ttf_addon()) { return -10; }
+    ALLEGRO_FONT* uiFont = al_load_ttf_font("Fonts/PlatNomor-WyVnn.ttf", 74, 0);
+    if (!uiFont) { return -11; }
+    enemysprite = al_load_bitmap(ENEMY_TEXTURE);
+    if (!enemysprite)
+    {
+        cout << ("failed to load ENEMY bitmap!\n");
+        return -12;
+    }
     double time = al_get_time();
     double oldTime = time;
 
@@ -531,16 +933,50 @@ int main(int argc, char* argv[])
     Player* plr = NULL;
     short int Level = 1;
     set<Platform*> platforms;
+    set<Enemy*> enemies;
+    FinishLine* finish = NULL;
+    FinishScreen* finishScreen = NULL;
     if (Level == 1)
     {
-        platforms.insert(new Platform(&Behaviours, 525, 340, 2, platformSprite));
+        platforms.insert(new Platform(&Behaviours, 525, 390, 2, false, platformSprite));
+        platforms.insert(new Platform(&Behaviours, 1150, 280, 4, false, platformSprite));
+        platforms.insert(new Platform(&Behaviours, 2126, 520, 1, true, platformSprite2));
+        platforms.insert(new Platform(&Behaviours, 2126, 390, 0, false, platformSprite3));
+        platforms.insert(new Platform(&Behaviours, 1931, 390, 2, false, platformSprite));
+        platforms.insert(new Platform(&Behaviours, 2740, 390, 2, false, platformSprite));
+        //platforms.insert(new Platform(&Behaviours, 3200, 390, 2, false, platformSprite));
+
+        platforms.insert(new Platform(&Behaviours, 3200, 580-32.5, 0, false, platformSprite));
+        platforms.insert(new Platform(&Behaviours, 3265, 580-32.5-65, 0, false, platformSprite));
+        platforms.insert(new Platform(&Behaviours, 3330, 580-32.5-65-65, 0, false, platformSprite));
+        platforms.insert(new Platform(&Behaviours, 3330+65, 580 - 32.5 - 65 - 65 - 65, 0, false, platformSprite));
+        platforms.insert(new Platform(&Behaviours, 3655, 287, 3, false, platformSprite));
+        //platforms.insert(new Platform(&Behaviours, 3755, 580 - 65 - 65 - 65 - 65-65, 0, false, platformSprite));
+        //platforms.insert(new Platform(&Behaviours, 2093.5, 485, 2, true, platformSprite2));
+
+        enemies.insert(new Enemy(&Behaviours, 1150, 200, false, 0, -1, enemysprite, &platforms, enemyBulletSprite, &plr));
+        enemies.insert(new Enemy(&Behaviours, 1520, 530, true, 25, -1, enemysprite, &platforms, enemyBulletSprite, &plr));
+        enemies.insert(new Enemy(&Behaviours, 2740, 310, true, 25, -1, enemysprite, &platforms, enemyBulletSprite, &plr));
+        enemies.insert(new Enemy(&Behaviours, 3200, 580 - 32.5 - 80, false, 0, -1, enemysprite, &platforms, enemyBulletSprite, &plr));
+        enemies.insert(new Enemy(&Behaviours, 3200+65+65, 580 - 32.5 - 80-65-65, false, 0, -1, enemysprite, &platforms, enemyBulletSprite, &plr));
     }
+    set<Bullet*> playerBullets;
     while (open)
     {
         al_wait_for_vsync();
-        if (plr == NULL)
+        if (plr == NULL && finish == NULL)
         {
-            plr = new Player(&Behaviours, &buttons, &platforms);
+            plr = new Player(&Behaviours, &buttons, &platforms, playerBulletSprite, &playerBullets);
+            float fX = 0;
+            float fY = 0;
+            if (Level == 1)
+            {
+                fX = 3655;
+                fY = 157.5;
+            }
+            finish = new FinishLine(&Behaviours, fX, fY, Level, plr, finishSprite, &finishScreen, uiFont);
+            finishScreen = new FinishScreen(&Behaviours, &Level, uiFont);
+
         }
         /* Je¿eli wyst¹pi event, wysy³amy go do zmiennej ev1 */
         al_wait_for_event_timed(kolejka, &ev1, 0);
@@ -565,7 +1001,7 @@ int main(int argc, char* argv[])
             {
                 buttons.erase(ev1.keyboard.keycode);
                 break;
-            }
+            }   
         }
 
         al_draw_bitmap(background, 0, 0, 0);
@@ -573,16 +1009,30 @@ int main(int argc, char* argv[])
         //al_draw_bitmap(marian, 0, 0, 0);
 
     
-        loopBehaviours();
+        loopBehaviours(&plr);
 
         al_flip_display();
     }
-
+    while (Behaviours.size() > 0)
+    {
+        for (vector<Behaviour*>::iterator it = Behaviours.begin(); it != Behaviours.end(); it++)
+        {
+            delete((*it));
+            break;
+        }
+    }
     al_destroy_bitmap(background);
+    al_destroy_bitmap(floor);
+    al_destroy_bitmap(platformSprite);
+    al_destroy_bitmap(platformSprite2);
+    al_destroy_bitmap(platformSprite3);
+    al_destroy_bitmap(finishSprite);
+    al_destroy_bitmap(playerBulletSprite);
+    al_destroy_bitmap(enemysprite);
+    al_destroy_bitmap(enemyBulletSprite);
     al_destroy_display(display);
     al_shutdown_primitives_addon();
     /* Zwalniamy pamiêæ po kolejce */
     al_destroy_event_queue(kolejka);
-    delete plr;
     return 0;
 }
