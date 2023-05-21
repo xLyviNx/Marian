@@ -31,11 +31,12 @@ class Pause : public Behaviour
 	ALLEGRO_FONT* TitleFont;
 	ALLEGRO_FONT* uiFont;
 	float enablecd;
+	bool* playerDied;
 	double* dT;
 public:
 	bool enabled;
 	void Update();
 	bool hasFonts();
-	Pause(vector<Behaviour*>*, set<int>*, Pause**, double*);
+	Pause(vector<Behaviour*>*, set<int>*, Pause**, double*, bool*);
 	~Pause();
 };

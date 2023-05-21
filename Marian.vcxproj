@@ -162,6 +162,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Base.cpp" />
+    <ClCompile Include="coins.cpp" />
     <ClCompile Include="Marian.cpp" />
     <ClCompile Include="MenuClass.cpp" />
     <ClCompile Include="saveSystem.cpp" />
@@ -176,10 +177,14 @@
     <Font Include="Fonts\PlatNomor-WyVnn.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="coins.h" />
     <ClInclude Include="MenuClass.h" />
     <ClInclude Include="Base.h" />
     <ClInclude Include="floorO.h" />
     <ClInclude Include="saveSystem.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\save.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

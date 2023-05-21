@@ -16,12 +16,16 @@
 #define BULLET_TEXTURE2 "Picture/Buletv2.bmp"
 #define PLATFORM_FILE "Picture/platform1x1.bmp"
 #define ENEMY_TEXTURE "Picture/Enemy.bmp"
+#define ENEMY2_TEXTURE "Picture/enemy2.bmp"
+#define BOSS_TEXTURE "Picture/boss.bmp"
 #define PLATFORM2_FILE "Picture/platform1x1_2.bmp"
 #define PLATFORM3_FILE "Picture/platform1x1_3.bmp"
 #define FINISH_FILE "Picture/Finish.bmp"
+#define COIN_FILE "Picture/MarioCoin.bmp"
 #define maxY 100
 #include "saveSystem.h"
 #include "floorO.h"
+#include "coins.h"
 using namespace std;
 
 vector<Behaviour*> Behaviours;
@@ -288,7 +292,7 @@ private:
     float shot = 0;
     float jumpCd = 0;
     ALLEGRO_BITMAP* bulletsprite = NULL;
-    ALLEGRO_FONT* debugFont = al_load_ttf_font("Fonts/data-unifon.ttf", 30, 0);
+    ALLEGRO_FONT* debugFont = al_load_ttf_font("Fonts/oldtimer.regular.ttf", 30, 0);
     void renderMe()
     {
         if (this->marian) {
@@ -383,6 +387,7 @@ private:
         }
         return false;
     }
+    bool* died;
 public:
     float x;
     float y;
@@ -399,16 +404,20 @@ public:
     ALLEGRO_BITMAP* marian = NULL;
     set<Bullet*>* Bullets;
     set<BulletParticle*> BulletParticles;
+    set<coin*>* coinsR;
     float velocityY = 0;
+    int coinsTaken = 0;
     void Update()
     {
         if (Health <= 0)
         {
-            GlobalAction = 3;
+            *died = true;
+            //GlobalAction = 3;
             removing = true;
             return;
         }
-        al_draw_textf(debugFont, al_map_rgb(80, 0, 0), 20, HEIGHT - 50, 0, "hp: %d, vel: %lf", Health, velocityY);
+        al_draw_textf(debugFont, al_map_rgb(80, 0, 0), 20, HEIGHT - 50, 0, "hp: %d", Health);
+        al_draw_textf(debugFont, al_map_rgb(60, 200, 60), WIDTH-20, HEIGHT - 50, ALLEGRO_ALIGN_RIGHT, "Marian-Coins: %d", coinsTaken);
         bool lastGrounded = isGrounded;
         bool lowground = !(this->y + this->scaled_spriteheight / 2 < 580);
         isGrounded = checkGrounded(&(this->x), &(this->y)) || lowground;
@@ -425,6 +434,20 @@ public:
         }
         bool fastJump = false;
         bool extendJump = false;
+        for (set<coin*>::iterator it = (*coinsR).begin(); it != (*coinsR).end(); it++)
+        {
+            (*it) -> renderMe(cam_x_offset);
+            bool collided = (*it)->Collides((float)x, (float)y);
+            cout << "Collided: " << collided << endl;
+            if (collided)
+            {
+                coin* c = (*it);
+                coinsR->erase(c);
+                delete(c);
+                coinsTaken++;
+                break;
+            }
+        }
         for (set<int>::iterator it = (*pressedKeys).begin(); it != (*pressedKeys).end(); it++)
         {
             if ((*it) == ALLEGRO_KEY_D)
@@ -523,7 +546,7 @@ public:
         this->Speed = 6;
         cout << "Stworzono mnie: rozmiary? " << scaled_spriteheight << " " << scaled_spritewidth << endl;
     }
-    Player(vector<Behaviour*>* bhvs, set<int>* keys, set<Platform*>* pts, ALLEGRO_BITMAP* bulletSpr, set<Bullet*>* blts) :Behaviour(bhvs)
+    Player(vector<Behaviour*>* bhvs, set<int>* keys, set<Platform*>* pts, ALLEGRO_BITMAP* bulletSpr, set<Bullet*>* blts, bool* dead, set<coin*>* coinsad) :Behaviour(bhvs)
     { 
         platforms = pts;
         this->spritewidth = 356;
@@ -534,6 +557,8 @@ public:
         this->pressedKeys = keys;
         this->bulletsprite = bulletSpr;
         this->Bullets = blts;
+        this->died = dead;
+        this->coinsR = coinsad;
         this->Start();
     };
     ~Player() {
@@ -566,7 +591,7 @@ public:
                 if (SaveSystem::Instance && (*SaveSystem::Instance))
                 {
                     char str[32] = "";
-                    int nextlevel = (*level + 1);
+                    int nextlevel = clamp((*level + 1), 1, 4);
                     _itoa_s(nextlevel, str, LINE_LENGTH, 10);
                     (*SaveSystem::Instance)->printAtLine(1, str);
                     GlobalAction = 3;
@@ -598,6 +623,60 @@ public:
         this->enabled = false;
     }
 };
+class FinishLine : public Behaviour
+{
+private:
+    int spritewidth = 401;
+    int spriteheight = 251;
+    float spriteScale = 1;
+    int scaled_spritewidth;
+    int scaled_spriteheight;
+    short int level;
+    Player* mPlayer = NULL;
+    ALLEGRO_FONT* finishFont = NULL;
+    ALLEGRO_BITMAP* sprite = NULL;
+    FinishScreen** fScreen = NULL;
+public:
+    bool hidden = false;
+    float x;
+    float y;
+    void Update()
+    {
+        if (!hidden) {
+            if (this->sprite)
+            {
+                al_draw_scaled_bitmap(this->sprite, 0, 0, spritewidth, spriteheight, x - cam_x_offset - scaled_spritewidth / 2, y - scaled_spriteheight / 2, scaled_spritewidth, scaled_spriteheight, 0);
+            }
+            if (this->mPlayer)
+            {
+                if (this->mPlayer->x > this->x - scaled_spritewidth / 2 && this->mPlayer->x < this->x + this->scaled_spritewidth / 2)
+                {
+                    if (this->mPlayer->y < this->y + this->scaled_spriteheight / 2 && this->mPlayer->y > this->y - this->scaled_spriteheight / 2)
+                    {
+                        mPlayer->removing = true;
+                        if (fScreen && (*fScreen))
+                        {
+                            (*fScreen)->enabled = true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    FinishLine(vector<Behaviour*>* bhvs, float nX, float nY, short int lvl, Player* plr, ALLEGRO_BITMAP* mySprite, FinishScreen** fS, ALLEGRO_FONT* finishfont, bool hide) :Behaviour(bhvs)
+    {
+        this->x = nX;
+        this->y = nY;
+        this->scaled_spritewidth = this->spritewidth * this->spriteScale;
+        this->scaled_spriteheight = this->spriteheight * this->spriteScale;
+        this->mPlayer = plr;
+        this->sprite = mySprite;
+        this->finishFont = finishfont;
+        this->level = lvl;
+        this->fScreen = fS;
+        this->hidden = hide;
+    }
+};
 class Enemy : public Behaviour
 {
 private:
@@ -614,6 +693,11 @@ private:
     set<Platform*>* platforms;
     Player** mPlayer = NULL;
     int Health = 50;
+    bool isBOSS = false;
+    bool* didPlayerDie;
+    float walkcd = 0;
+    bool playerWasFar = false;
+    bool stupid = false;
     void loopBullets()
     {
         if (mPlayer != NULL && (*mPlayer) != NULL)
@@ -624,6 +708,7 @@ private:
                 {
                     if (this->y + this->scaled_spriteheight / 2 > (*pit)->y && this->y - this->scaled_spriteheight / 2 < (*pit)->y)
                     {
+                        
                         if (bulletsprite) {
                             this->Health -= 25;
                         }
@@ -642,7 +727,13 @@ private:
                 {
                     if (plr->y + plr->scaled_spriteheight / 2 > (*it)->y && plr->y - plr->scaled_spriteheight / 2 < (*it)->y)
                     {
-                        (*mPlayer)->Health -= 25;
+                        if (isBOSS) {
+                            (*mPlayer)->Health -= 10;
+
+                        }
+                        else {
+                            (*mPlayer)->Health -= 25;
+                        }
                         BtoDelete.insert((*it));
                     }
                 }
@@ -674,7 +765,15 @@ private:
                 //BulletParticle* bulP = new BulletParticle(this->x + ((this->scaled_spritewidth * 0.47) * this->dir), this->y + 10, &BulletParticles);
                 if (bul != NULL)
                 {
-                    this->shootCd = 0.75;
+                    if (isBOSS)
+                    {
+                        this->shootCd = 0.3;
+                    }
+                    else
+                    {
+                        this->shootCd = 0.75;
+
+                    }
                     //cout << "Shoot! " << bul <<endl;
                 }
             }
@@ -687,38 +786,76 @@ public:
     float x_offset = 0;
     float y = 0;
     int dir = 1;
+    FinishLine** finishl;
     void Update()
     {
         if (Health <= 0)
         {
+            if (isBOSS && finishl && *finishl)
+            {
+                (*finishl)->hidden = false;
+            }
             removing = true;
             return;
         }
-
-        if (x + x_offset - cam_x_offset > -scaled_spritewidth/2 && x + x_offset - cam_x_offset <= WIDTH + scaled_spritewidth/2)
+        if (walkcd > 0) { walkcd -= deltaTime; }
+        if (walking && stupid)
         {
+            if (abs(x_offset) < range)
+            {
+                float change = (dir * Speed * 4) * deltaTime;
+
+                x_offset = clamp(x_offset + change, -range, range);
+                //cout << "offset: " << x_offset << "change: " << change << endl;
+
+            }
+            else if (abs(x_offset) >= range) {
+                //cout << "-======\n";
+
+                x_offset = (x_offset / (abs(x_offset))) * (abs(x_offset - (x_offset - range)) - 1);
+                dir *= -1;
+            }
+        }
+        else if (walking && *mPlayer && !stupid)
+        {
+            if (abs(x - (*mPlayer)->x) >= 70 && walkcd<=0)
+            {
+                playerWasFar = true;
+                if (x > (*mPlayer)->x) {
+                    dir = -1;
+                }
+                else {
+                    dir = 1;
+
+                }
+                float change = (dir * Speed * 4) * deltaTime;
+                x += change;
+            }
+            else
+            {
+
+                if (walkcd <= 0 && playerWasFar) {
+                    walkcd = 4;
+                }
+            }
+        }
+        if (x + x_offset - cam_x_offset >= -scaled_spritewidth/2 && x + x_offset - cam_x_offset <= WIDTH + scaled_spritewidth/2)
+        {
+            if (isBOSS)
+            {
+                float x1 = x + x_offset - cam_x_offset - scaled_spritewidth;
+                float x2 = x - cam_x_offset + x_offset + scaled_spritewidth;
+                float percentage = (float)Health / 5000;
+                float dx = x2 - x1;
+                dx *= percentage;
+                al_draw_filled_rectangle(x1, y - scaled_spriteheight + scaled_spriteheight / 5, x1 + dx, y - scaled_spriteheight + scaled_spriteheight / 3, al_map_rgba_f(1, 0, 0, 0.9));
+                al_draw_rounded_rectangle(x1, y - scaled_spriteheight + scaled_spriteheight / 5, x2, y - scaled_spriteheight + scaled_spriteheight / 3, 2, 2, al_map_rgba_f(0, 0, 0, 1), 4);
+            }
             if (sprite)
             {
                 al_draw_scaled_bitmap(this->sprite, 0, 0, this->spritewidth, this->spriteheight, this->x + x_offset - cam_x_offset - (dir * (this->scaled_spritewidth / 2)), y - this->scaled_spriteheight / 2, dir * this->scaled_spritewidth, this->scaled_spriteheight, 0);
                 //al_draw_circle(x, y, 5, al_map_rgb(255, 255, 255), 2);
 
-            }
-            if (walking)
-            {
-                if (abs(x_offset) < range)
-                {
-                    float change = (dir * Speed * 4) * deltaTime;
-
-                    x_offset = clamp(x_offset + change, -range, range);
-                    //cout << "offset: " << x_offset << "change: " << change << endl;
-
-                }
-                else if (abs(x_offset) >= range) {
-                    //cout << "-======\n";
-
-                    x_offset = (x_offset / (abs(x_offset))) * (abs(x_offset - (x_offset - range)) - 1);
-                    dir *= -1;
-                }
             }
             if (shootCd > 0) {
                 shootCd -= deltaTime;
@@ -747,8 +884,9 @@ public:
                 {
                     if (bulletsprite)
                     {
+                        *didPlayerDie = true;
                         (*mPlayer)->removing = true;
-                        GlobalAction = 3;
+                        //GlobalAction = 3;
                     }
                     else 
                     {
@@ -758,19 +896,27 @@ public:
                         }
                         else
                         {
+                            *didPlayerDie = true;
                             (*mPlayer)->removing = true;
-                            GlobalAction = 3;
+                            //GlobalAction = 3;
                         }
                     }
                 }
             }
         }
     }
-    Enemy(vector<Behaviour*>* bhvs, float nX, float nY, bool walk, float speed, int direction, ALLEGRO_BITMAP* mySprite, set<Platform*>* pts, ALLEGRO_BITMAP* bulletsp, Player** plr) :Behaviour(bhvs)
+    Enemy(vector<Behaviour*>* bhvs, float nX, float nY, bool walk, float speed, int direction, ALLEGRO_BITMAP* mySprite, set<Platform*>* pts, ALLEGRO_BITMAP* bulletsp, Player** plr, bool isBoss, bool* killedPlayer, bool Stupid, FinishLine** fL) :Behaviour(bhvs)
     {
         this->x = nX;
         this->y = nY;
         this->sprite = mySprite;
+        this->isBOSS = isBoss;
+        this->finishl = fL;
+        if (isBOSS)
+        {
+            this->spriteScale = this->spriteScale * 2;
+            Health = 5000;
+        }
         this->scaled_spritewidth = this->spritewidth * this->spriteScale;
         this->scaled_spriteheight = this->spriteheight * this->spriteScale;
         this->walking = walk;
@@ -779,61 +925,13 @@ public:
         this->platforms = pts;
         this->bulletsprite = bulletsp;
         this->mPlayer = plr;
+        this->didPlayerDie = killedPlayer;
+        this->stupid = Stupid;
         //cout << "BULLET ADDRESS: " << bulletsprite << endl;
         shootCd = 1;
     };
 };
-class FinishLine : public Behaviour
-{
-private:
-    int spritewidth = 401;
-    int spriteheight = 251;
-    float spriteScale = 1;
-    int scaled_spritewidth;
-    int scaled_spriteheight;
-    short int level;
-    Player* mPlayer = NULL;
-    ALLEGRO_FONT* finishFont = NULL;
-    ALLEGRO_BITMAP* sprite = NULL;
-    FinishScreen** fScreen = NULL;
-public:
-    
-    float x;
-    float y;
-    void Update()
-    {
-        if (this->sprite)
-        {
-            al_draw_scaled_bitmap(this->sprite, 0, 0, spritewidth, spriteheight, x - cam_x_offset - scaled_spritewidth / 2, y - scaled_spriteheight / 2, scaled_spritewidth, scaled_spriteheight, 0);
-        }
-        if (this->mPlayer)
-        {
-            if (this->mPlayer->x > this->x - scaled_spritewidth / 2 && this->mPlayer->x < this->x + this->scaled_spritewidth / 2)
-            {
-                if (this->mPlayer->y < this->y + this->scaled_spriteheight / 2 && this->mPlayer->y > this->y - this->scaled_spriteheight / 2)
-                {
-                    mPlayer->removing = true;
-                    if (fScreen && (*fScreen))
-                    {
-                        (*fScreen)->enabled = true;
-                    }
-                }
-            }
-        }
-    }
-    FinishLine(vector<Behaviour*>* bhvs, float nX, float nY, short int lvl, Player* plr, ALLEGRO_BITMAP* mySprite, FinishScreen** fS, ALLEGRO_FONT* finishfont) :Behaviour(bhvs)
-    {
-        this->x = nX;
-        this->y = nY;
-        this->scaled_spritewidth = this->spritewidth * this->spriteScale;
-        this->scaled_spriteheight = this->spriteheight * this->spriteScale;
-        this->mPlayer = plr;
-        this->sprite = mySprite;
-        this->finishFont = finishfont;
-        this->level = lvl;
-        this->fScreen = fS;
-    }
-};
+
 
 void loopBehaviours(Player** plr, Pause* gPause)
 {
@@ -861,8 +959,19 @@ void loopBehaviours(Player** plr, Pause* gPause)
     }
     toDelete.clear();
 }
-void ChangeScene(short int* currLevel, int scene, Menu** MenuObj, set<Platform*>* platforms, set<Enemy*>* enemies, vector<ALLEGRO_BITMAP*>* platformSprites, Player** plrAddress, vector<ALLEGRO_BITMAP*>* enemySprites, ALLEGRO_BITMAP* enemyBulletSprite, set<int>* buttons, ALLEGRO_BITMAP* floorT, float* cxo)
+set<coin*> coins;
+void ClearCoins()
 {
+    for (set<coin*>::iterator it = coins.begin(); it != coins.end(); it++)
+    {
+        coin* c = (*it);
+        delete c;
+    }
+    coins.clear();
+}
+void ChangeScene(short int* currLevel, int scene, Menu** MenuObj, set<Platform*>* platforms, set<Enemy*>* enemies, vector<ALLEGRO_BITMAP*>* platformSprites, Player** plrAddress, vector<ALLEGRO_BITMAP*>* enemySprites, ALLEGRO_BITMAP* enemyBulletSprite, set<int>* buttons, ALLEGRO_BITMAP* floorT, float* cxo, bool* deadplayer, FinishLine** fL, ALLEGRO_BITMAP* coinBitmap)
+{
+    *deadplayer = false;
     while (Behaviours.size() > 0)
     {
         for (vector<Behaviour*>::iterator it = Behaviours.begin(); it != Behaviours.end(); it++)
@@ -871,6 +980,7 @@ void ChangeScene(short int* currLevel, int scene, Menu** MenuObj, set<Platform*>
             break;
         }
     }
+    ClearCoins();
     *currLevel = scene;
     if (*currLevel > 0 && *currLevel<=4)
     {
@@ -886,10 +996,12 @@ void ChangeScene(short int* currLevel, int scene, Menu** MenuObj, set<Platform*>
 
             FloorObject* floor = new FloorObject(&Behaviours, floorT, cxo);
 
-            enemies->insert(new Enemy(&Behaviours, 2000, 530, false, 0, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress));
-            enemies->insert(new Enemy(&Behaviours, 2300, 530, true, 25, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress));
-            enemies->insert(new Enemy(&Behaviours, 2800, 530, true, 25, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress));
-            enemies->insert(new Enemy(&Behaviours, 3000, 530, true, 25, 1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress));
+            enemies->insert(new Enemy(&Behaviours, 2000, 530, false, 0, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress,false, deadplayer, true, fL));
+            enemies->insert(new Enemy(&Behaviours, 2300, 530, true, 25, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
+            enemies->insert(new Enemy(&Behaviours, 2800, 530, true, 25, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
+            enemies->insert(new Enemy(&Behaviours, 3000, 530, true, 25, 1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
+
+            coins.insert(new coin(1000, 170, coinBitmap));
 
             break;
         }
@@ -913,11 +1025,11 @@ void ChangeScene(short int* currLevel, int scene, Menu** MenuObj, set<Platform*>
             
             FloorObject* floor = new FloorObject(&Behaviours, floorT, cxo);
 
-            enemies->insert(new Enemy(&Behaviours, 1150, 200, false, 0, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress));
-            enemies->insert(new Enemy(&Behaviours, 1520, 530, true, 25, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress));
-            enemies->insert(new Enemy(&Behaviours, 2740, 310, true, 25, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress));
-            enemies->insert(new Enemy(&Behaviours, 3200, 580 - 32.5 - 80, false, 0, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress));
-            enemies->insert(new Enemy(&Behaviours, 3200 + 65 + 65, 580 - 32.5 - 80 - 65 - 65, false, 0, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress));
+            enemies->insert(new Enemy(&Behaviours, 1150, 200, false, 0, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
+            enemies->insert(new Enemy(&Behaviours, 1520, 530, true, 25, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
+            enemies->insert(new Enemy(&Behaviours, 2740, 310, true, 25, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
+            enemies->insert(new Enemy(&Behaviours, 3200, 580 - 32.5 - 80, false, 0, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
+            enemies->insert(new Enemy(&Behaviours, 3200 + 65 + 65, 580 - 32.5 - 80 - 65 - 65, false, 0, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
             
             break;
         }
@@ -941,16 +1053,33 @@ void ChangeScene(short int* currLevel, int scene, Menu** MenuObj, set<Platform*>
 
             FloorObject* floor = new FloorObject(&Behaviours, floorT, cxo);
 
-            /*enemies->insert(new Enemy(&Behaviours, 1150, 530, true, 25, 1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress));
-            enemies->insert(new Enemy(&Behaviours, 700, 530, false, 0, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress));
-            enemies->insert(new Enemy(&Behaviours, 500, 200, false, 0, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress));
-            enemies->insert(new Enemy(&Behaviours, 1350, 310, false, 0, 1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress));
-            enemies->insert(new Enemy(&Behaviours, 1930, 310, false, 0, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress));
-            enemies->insert(new Enemy(&Behaviours, 1860, 530, false, 0, -1, (*enemySprites)[0], platforms, NULL, plrAddress));
-            enemies->insert(new Enemy(&Behaviours, 1660, 530, true, 5, -1, (*enemySprites)[0], platforms, NULL, plrAddress));
-            enemies->insert(new Enemy(&Behaviours, 1460, 530, false, 0, 1, (*enemySprites)[0], platforms, NULL, plrAddress));
-            enemies->insert(new Enemy(&Behaviours, 1300, 530, false, 0, 1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress));
-            */
+            enemies->insert(new Enemy(&Behaviours, 1150, 530, true, 25, 1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
+            enemies->insert(new Enemy(&Behaviours, 700, 530, false, 0, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
+            enemies->insert(new Enemy(&Behaviours, 500, 200, false, 0, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
+            enemies->insert(new Enemy(&Behaviours, 1350, 310, false, 0, 1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
+            enemies->insert(new Enemy(&Behaviours, 1930, 310, false, 0, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
+            enemies->insert(new Enemy(&Behaviours, 1860, 530, false, 0, -1, (*enemySprites)[1], platforms, NULL, plrAddress, false, deadplayer, true, fL));
+            enemies->insert(new Enemy(&Behaviours, 1660, 530, true, 5, -1, (*enemySprites)[1], platforms, NULL, plrAddress, false, deadplayer, true, fL));
+            enemies->insert(new Enemy(&Behaviours, 1460, 530, false, 0, 1, (*enemySprites)[1], platforms, NULL, plrAddress, false, deadplayer, true, fL));
+            enemies->insert(new Enemy(&Behaviours, 1300, 530, false, 0, 1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
+            break;
+        }
+        case 4:
+        {
+           
+            platforms->insert(new Platform(&Behaviours, 1700, 360, 0, false, (*platformSprites)[0]));
+            platforms->insert(new Platform(&Behaviours, 3000, 360, 0, false, (*platformSprites)[0]));
+
+            FloorObject* floor = new FloorObject(&Behaviours, floorT, cxo);
+
+            enemies->insert(new Enemy(&Behaviours, 3400, 490, true, 70, -1, (*enemySprites)[2], platforms, enemyBulletSprite, plrAddress, true, deadplayer, false, fL));
+            enemies->insert(new Enemy(&Behaviours, 600, 530, true, 25, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, false, fL));
+            enemies->insert(new Enemy(&Behaviours, 2300, 530, true, 25, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, false, fL));
+            enemies->insert(new Enemy(&Behaviours, 1500, 530, true, 25, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, false, fL));
+            enemies->insert(new Enemy(&Behaviours, 1500, 530, true, 25, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
+            enemies->insert(new Enemy(&Behaviours, 3000, 530, true, 25, -1, (*enemySprites)[1], platforms, NULL, plrAddress, false, deadplayer, true, fL));
+            enemies->insert(new Enemy(&Behaviours, 3200, 530, true, 25, -1, (*enemySprites)[1], platforms, NULL, plrAddress, false, deadplayer, false, fL));
+
             break;
         }
         }
@@ -972,7 +1101,9 @@ int main(int argc, char* argv[])
     ALLEGRO_BITMAP* playerBulletSprite = NULL;
     ALLEGRO_BITMAP* enemyBulletSprite = NULL;
     ALLEGRO_BITMAP* enemysprite = NULL;
+    ALLEGRO_BITMAP* enemysprite2 = NULL;
     ALLEGRO_DISPLAY* display = NULL;
+    ALLEGRO_BITMAP* coinBitmap = NULL;
 
     /* Tworzymy zmienn¹ w której przechowamy adres kolejki */
     ALLEGRO_EVENT_QUEUE* kolejka = NULL;
@@ -1040,6 +1171,7 @@ int main(int argc, char* argv[])
     }
     playerBulletSprite = al_load_bitmap(BULLET_TEXTURE);
     enemyBulletSprite = al_load_bitmap(BULLET_TEXTURE2);
+    coinBitmap = al_load_bitmap(COIN_FILE);
     if (!playerBulletSprite || !enemyBulletSprite)
     {
         cout << ("failed to load BULLET bitmaps!\n");
@@ -1053,9 +1185,11 @@ int main(int argc, char* argv[])
     ALLEGRO_FONT* uiFont = al_load_ttf_font("Fonts/PlatNomor-WyVnn.ttf", 74, 0);
     if (!uiFont) { return -11; }
     enemysprite = al_load_bitmap(ENEMY_TEXTURE);
-    if (!enemysprite)
+    enemysprite2 = al_load_bitmap(ENEMY2_TEXTURE);
+    ALLEGRO_BITMAP* bosssprite = al_load_bitmap(BOSS_TEXTURE);
+    if (!enemysprite || !enemysprite2 || !bosssprite)
     {
-        cout << ("failed to load ENEMY bitmap!\n");
+        cout << ("failed to load ENEMY bitmaps!\n");
         return -12;
     }
     double time = al_get_time();
@@ -1074,10 +1208,11 @@ int main(int argc, char* argv[])
     SaveSystem::Create();
     float toMenuCount = -1;
     Pause* gamePause = NULL;
+    bool playerDied = false;
     while (open)
     {
 
-        if (Level == -1) { ChangeScene(&Level, 0, &MenuObject, NULL, NULL, NULL, NULL, NULL, NULL, &buttons, NULL, NULL);}
+        if (Level == -1) { ChangeScene(&Level, 0, &MenuObject, NULL, NULL, NULL, NULL, NULL, NULL, &buttons, NULL, NULL, &playerDied, &finish, coinBitmap);}
         switch (GlobalAction)
         {
             case -1:
@@ -1097,7 +1232,7 @@ int main(int argc, char* argv[])
                     vector<ALLEGRO_BITMAP*> ptS = { platformSprite, platformSprite2, platformSprite3 };
                     vector<ALLEGRO_BITMAP*> eS = { enemysprite };
                     
-                    ChangeScene(&Level, 1, &MenuObject, &platforms, &enemies, &ptS, &plr, &eS, enemyBulletSprite, &buttons, floorT, &cam_x_offset);
+                    ChangeScene(&Level, 1, &MenuObject, &platforms, &enemies, &ptS, &plr, &eS, enemyBulletSprite, &buttons, floorT, &cam_x_offset, &playerDied, &finish, coinBitmap);
                 }
             }
             case 2:
@@ -1124,7 +1259,12 @@ int main(int argc, char* argv[])
                             }
                             case 3:
                             {
-
+                                ptS.push_back(platformSprite);
+                                ptS.push_back(platformSprite2);
+                                ptS.push_back(platformSprite3);
+                                eS.push_back(enemysprite);
+                                eS.push_back(enemysprite2);
+                                break;
                             }
                             case 4:
                             {
@@ -1132,12 +1272,13 @@ int main(int argc, char* argv[])
                                 ptS.push_back(platformSprite2);
                                 ptS.push_back(platformSprite3);
                                 eS.push_back(enemysprite);
-                                eS.push_back(enemysprite);
+                                eS.push_back(enemysprite2);
+                                eS.push_back(bosssprite);
                                 break;
                             }
                         }
                         Level = MenuObject->LoadedLevel;
-                        ChangeScene(&Level, Level, &MenuObject, &platforms, &enemies, &ptS, &plr, &eS, enemyBulletSprite, &buttons, floorT, &cam_x_offset);
+                        ChangeScene(&Level, Level, &MenuObject, &platforms, &enemies, &ptS, &plr, &eS, enemyBulletSprite, &buttons, floorT, &cam_x_offset, &playerDied, &finish, coinBitmap);
                     }
                 }
                 break;
@@ -1197,7 +1338,7 @@ int main(int argc, char* argv[])
         {
             if (!gamePause)
             {
-                gamePause = new Pause(&Behaviours, &buttons, &gamePause, &deltaTime);
+                gamePause = new Pause(&Behaviours, &buttons, &gamePause, &deltaTime, &playerDied);
             }
             if (toMenuCount > 0)
             {
@@ -1205,7 +1346,7 @@ int main(int argc, char* argv[])
                 if (toMenuCount <= 0 && toMenuCount != -1)
                 {
                     toMenuCount = -1;
-                    ChangeScene(&Level, 0, &MenuObject, NULL, NULL, NULL, NULL, NULL, NULL, &buttons, NULL, NULL);
+                    ChangeScene(&Level, 0, &MenuObject, NULL, NULL, NULL, NULL, NULL, NULL, &buttons, NULL, NULL, &playerDied, &finish, coinBitmap);
                     finish = NULL;
                     plr = NULL;
                     continue;
@@ -1215,9 +1356,10 @@ int main(int argc, char* argv[])
 
             if (plr == NULL && finish == NULL)
             {
-                plr = new Player(&Behaviours, &buttons, &platforms, playerBulletSprite, &playerBullets);
+                plr = new Player(&Behaviours, &buttons, &platforms, playerBulletSprite, &playerBullets, &playerDied, &coins);
                 float fX = 0;
                 float fY = 0;
+                bool hide = false;
                 switch (Level)
                 {
                 case 1:
@@ -1238,9 +1380,16 @@ int main(int argc, char* argv[])
                     fY = -45;
                     break;
                 }
+                case 4:
+                {
+                    fX = 3655;
+                    fY = 480;
+                    hide = true;
+                    break;
+                }
                 }
 
-                finish = new FinishLine(&Behaviours, fX, fY, Level, plr, finishSprite, &finishScreen, uiFont);
+                finish = new FinishLine(&Behaviours, fX, fY, Level, plr, finishSprite, &finishScreen, uiFont, hide);
                 finishScreen = new FinishScreen(&Behaviours, &Level, uiFont);
 
             }
@@ -1261,8 +1410,8 @@ int main(int argc, char* argv[])
         loopBehaviours(&plr, gamePause);
         al_flip_display();
     }
-    if (SaveSystem::Instance != NULL && (*SaveSystem::Instance)) { (*SaveSystem::Instance)->Destroy(); }
-
+    if (SaveSystem::Instance != NULL && (*SaveSystem::Instance)) { (*SaveSystem::Instance)->Destroy(); delete(SaveSystem::Instance); SaveSystem::Instance = NULL; }
+    ClearCoins();
     while (Behaviours.size() > 0)
     {
         for (vector<Behaviour*>::iterator it = Behaviours.begin(); it != Behaviours.end(); it++)

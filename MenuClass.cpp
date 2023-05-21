@@ -125,7 +125,7 @@ Menu::~Menu()
 }
 
 
-Pause::Pause(vector<Behaviour*>* bhvs, set<int>* buttons, Pause** pointer, double* dt) : Behaviour(bhvs)
+Pause::Pause(vector<Behaviour*>* bhvs, set<int>* buttons, Pause** pointer, double* dt, bool* dead) : Behaviour(bhvs)
 {
 	this->pointer = pointer;
 	this->TitleFont = al_load_ttf_font("Fonts/oldtimer.regular.ttf", 74, 0);
@@ -134,6 +134,7 @@ Pause::Pause(vector<Behaviour*>* bhvs, set<int>* buttons, Pause** pointer, doubl
 	this->enablecd = 0;
 	this->enabled = false;
 	this->dT = dt;
+	this->playerDied = dead;
 }
 
 void Pause::Update()
@@ -144,9 +145,10 @@ void Pause::Update()
 		{
 			enablecd -= *dT;
 		}
+
 		for (set<int>::iterator it = (*buttons).begin(); it != (*buttons).end(); it++)
 		{
-			if ((*it) == ALLEGRO_KEY_ESCAPE && enablecd<=0)
+			if ((*it) == ALLEGRO_KEY_ESCAPE && enablecd <= 0 && !*playerDied)
 			{
 				enablecd = 0.3;
 				enabled = !enabled;
@@ -159,13 +161,23 @@ void Pause::Update()
 				}
 			}
 		}
-		if (enabled)
+		if (*playerDied)
+		{
+			enabled = true;
+		}
+		if (enabled && playerDied)
 		{
 			ALLEGRO_COLOR white = al_map_rgb_f(1, 1, 1);
-
-			al_draw_text(TitleFont, white, WIDTH / 2, HEIGHT/2-200, ALLEGRO_ALIGN_CENTER, "PAUZA");
-			al_draw_text(uiFont, white, WIDTH / 2, HEIGHT / 2 - 80, ALLEGRO_ALIGN_CENTER, "ESC by wrocic do GRY");
-			al_draw_text(uiFont, white, WIDTH / 2, HEIGHT / 2 - 40, ALLEGRO_ALIGN_CENTER, "ENTER by wrocic do MENU");
+			if (!(*playerDied)) {
+				al_draw_text(TitleFont, white, WIDTH / 2, HEIGHT / 2 - 200, ALLEGRO_ALIGN_CENTER, "PAUZA");
+				al_draw_text(uiFont, white, WIDTH / 2, HEIGHT / 2 - 80, ALLEGRO_ALIGN_CENTER, "ESC by wrocic do GRY");
+				al_draw_text(uiFont, white, WIDTH / 2, HEIGHT / 2 - 40, ALLEGRO_ALIGN_CENTER, "ENTER by wrocic do MENU");
+			}
+			else 
+			{
+				al_draw_text(TitleFont, white, WIDTH / 2, HEIGHT / 2 - 200, ALLEGRO_ALIGN_CENTER, "GAME OVER");
+				al_draw_text(uiFont, white, WIDTH / 2, HEIGHT / 2 - 80, ALLEGRO_ALIGN_CENTER, "ENTER by wrocic do MENU");
+			}
 		}
 	}
 }

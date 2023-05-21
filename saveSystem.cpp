@@ -183,7 +183,6 @@ void SaveSystem::printAtLine(int lineNumber, const char* content)
 		char buf[LINE_LENGTH] = "";
 		//strcpy_s(stringToPut, LINE_LENGTH, content);
 		FILE* tempfile = NULL;
-		std::cout << "chuj\n";
 		fopen_s(&tempfile, TEMPFILE_LOCATION, "w");
 		if (tempfile)
 		{
