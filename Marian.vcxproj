@@ -161,10 +161,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Base.cpp" />
     <ClCompile Include="Marian.cpp" />
+    <ClCompile Include="MenuClass.cpp" />
+    <ClCompile Include="saveSystem.cpp" />
+    <ClCompile Include="floorO.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Fonts\data-unifon.ttf" />
+    <Font Include="Fonts\oldtimer.regular.ttf" />
+    <Font Include="Fonts\PlatNomor-WyVnn.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MenuClass.h" />
+    <ClInclude Include="Base.h" />
+    <ClInclude Include="floorO.h" />
+    <ClInclude Include="saveSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
