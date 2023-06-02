@@ -12,6 +12,9 @@ public:
 	SaveSystem();
 	char* readLine(int);
 	int LoadLevel();
+	int LoadCoins();
+	int LoadShootSpeed();
+	float LoadSpeed();
 	void printAtLine(int, const char*);
 	//void resetData();
 	void restart();

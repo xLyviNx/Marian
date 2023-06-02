@@ -9,10 +9,13 @@ Menu::Menu(vector<Behaviour*>* bhvs, set<int>* buttons, Menu** pointer) : Behavi
 	this->menuPointer = pointer;
 	this->TitleFont = al_load_ttf_font("Fonts/oldtimer.regular.ttf", 74, 0);
 	this->ButtonsFont = al_load_ttf_font("Fonts/Qaz-Regular.TTF", 35, 0);
+	this->otherFont = al_load_ttf_font("Fonts/Qaz-Regular.TTF", 18, 0);
 	this->LoadedLevel = 1;
 	this->Choice = 2;
 	this->buttons = buttons;
 	this->loadingdone = false;
+	LoadedSpeed = 6.0;
+	LoadedSSpeed = 0;
 }
 
 void Menu::Update()
@@ -23,19 +26,30 @@ void Menu::Update()
 		if (SaveSystem::Instance && !loadingdone)
 		{
 			LoadedLevel = -1;
+			LoadedCoins = -1;
+			LoadedSpeed = -1;
+			LoadedSSpeed = -1;
 			int newLoadedLevel = (*SaveSystem::Instance)->LoadLevel();
-			if (LoadedLevel != newLoadedLevel)
+			int newLoadedCoins = (*SaveSystem::Instance)->LoadCoins();
+			int n1 = (*SaveSystem::Instance)->LoadSpeed();
+			float n2 = (*SaveSystem::Instance)->LoadShootSpeed();
+			if (LoadedLevel != newLoadedLevel && LoadedCoins != newLoadedCoins)
 			{
 				LoadedLevel = newLoadedLevel;
+				LoadedCoins = newLoadedCoins;
+				LoadedSSpeed = n1;
+				LoadedSpeed = n2;
 				loadingdone = true;
 			}
-			else {
+			else 
+			{
 				LoadedLevel = 1;
+				LoadedCoins = 0;
 			}
 		}
 		Choice = 0;
 		int textWidth1 = al_get_text_width(ButtonsFont, "Nowa Gra");
-		int textWidth2 = al_get_text_width(ButtonsFont, "Kontynuuj (X)");
+		int textWidth2 = al_get_text_width(ButtonsFont, "Kontynuuj (Level X)");
 		int textWidth3 = al_get_text_width(ButtonsFont, "Wyjdz");
 		float boundL = WIDTH / 2 - textWidth1 / 2;
 		float boundR = WIDTH / 2 + textWidth1 / 2;
@@ -103,8 +117,11 @@ void Menu::Update()
 		ALLEGRO_COLOR offCol = al_map_rgb_f(0.5, 0.5, 0.7);
 		ALLEGRO_COLOR onCol = al_map_rgb_f(1, 1, 1);
 		al_draw_text(ButtonsFont, Choice == 1 ? onCol : offCol, WIDTH / 2, HEIGHT / 2 - 150, ALLEGRO_ALIGN_CENTER, "Nowa Gra");
-		al_draw_textf(ButtonsFont, Choice == 2 ? onCol : offCol, WIDTH / 2, HEIGHT / 2 - 110, ALLEGRO_ALIGN_CENTER, "Kontynuuj (%d)", LoadedLevel);
+		al_draw_textf(ButtonsFont, Choice == 2 ? onCol : offCol, WIDTH / 2, HEIGHT / 2 - 110, ALLEGRO_ALIGN_CENTER, "Kontynuuj (Level %d)", LoadedLevel);
 		al_draw_text(ButtonsFont, Choice == 3 ? onCol : offCol, WIDTH / 2, HEIGHT / 2 - 70, ALLEGRO_ALIGN_CENTER, "Wyjdz");
+		al_draw_textf(otherFont, onCol, WIDTH/2, HEIGHT/2 +100, ALLEGRO_ALIGN_CENTER, "Marian-Coins: %d", LoadedCoins);
+		al_draw_text(otherFont, onCol, WIDTH/2, HEIGHT-60, ALLEGRO_ALIGN_CENTER, "Projekt PO1 - I1D14B (2023 SEM 2)");
+		al_draw_text(otherFont, onCol, WIDTH/2, HEIGHT-40, ALLEGRO_ALIGN_CENTER, "Sygut Grzegorz, Strzepek Piotr, Synowiec Adrian");
 		//al_draw_circle(mousestate.x, mousestate.y, 30, onCol, 5);
 
 		
@@ -120,6 +137,9 @@ bool Menu::hasFonts()
 }
 Menu::~Menu()
 {
+	al_destroy_font(this->ButtonsFont);
+	al_destroy_font(this->TitleFont);
+	al_destroy_font(this->otherFont);
 	*menuPointer = NULL;
 	Behaviour::~Behaviour();
 }

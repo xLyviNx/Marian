@@ -11,12 +11,16 @@ class Menu : public Behaviour
 {
 	set<int>* buttons;
 	ALLEGRO_FONT* TitleFont;
+	ALLEGRO_FONT* otherFont;
 	ALLEGRO_FONT* ButtonsFont;
 	ALLEGRO_MOUSE_STATE mousestate;
 	bool loadingdone;
 	Menu** menuPointer;
 public:
 	int LoadedLevel;
+	int LoadedCoins;
+	int LoadedSpeed;
+	float LoadedSSpeed;
 	int Choice;
 	void Update();
 	bool hasFonts();

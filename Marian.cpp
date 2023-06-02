@@ -57,6 +57,7 @@ class Platform : public Behaviour
 private:
     int blocks = 0;
     ALLEGRO_BITMAP* sprite = NULL;
+    set<Platform*>* SetPointer = NULL;
 public:
     float x = 0;
     float y = 0;
@@ -66,7 +67,14 @@ public:
     int scaled_spritewidth;
     int scaled_spriteheight;
     bool Vertical = false;
-    Platform(vector<Behaviour*>* bhvs, float nX, float nY, int blocksAroundMiddle, bool vertical, ALLEGRO_BITMAP* mySprite) :Behaviour(bhvs)
+    ~Platform()
+    {
+        if (SetPointer)
+        {
+            SetPointer->erase(this);
+        }
+    }
+    Platform(vector<Behaviour*>* bhvs, float nX, float nY, int blocksAroundMiddle, bool vertical, ALLEGRO_BITMAP* mySprite, set<Platform*>* pointer) :Behaviour(bhvs)
     {
         this->x = nX;
         this->y = nY;
@@ -75,6 +83,7 @@ public:
         this->Vertical = vertical;
         this->scaled_spritewidth = this->spritewidth * this->spriteScale;
         this->scaled_spriteheight = this->spriteheight * this->spriteScale;
+        this->SetPointer = pointer;
     };
     void Update()
     {
@@ -293,6 +302,7 @@ private:
     float jumpCd = 0;
     ALLEGRO_BITMAP* bulletsprite = NULL;
     ALLEGRO_FONT* debugFont = al_load_ttf_font("Fonts/oldtimer.regular.ttf", 30, 0);
+    ALLEGRO_FONT* upFont = al_load_ttf_font("Fonts/Qaz-Regular.ttf", 22, 0);
     void renderMe()
     {
         if (this->marian) {
@@ -308,7 +318,7 @@ private:
     {
         if (isGrounded && jumpCd<=0)
         {
-            cout << "Jump\n";
+            //cout << "Jump\n";
             this->velocityY -= jumpForce*15;
             jumpCd += 0.2;
         }
@@ -322,7 +332,7 @@ private:
             BulletParticle* bulP = new BulletParticle(this->x + ((this->scaled_spritewidth * 0.47) * this->lastMoveForceX), this->y + 10, &BulletParticles);
             if (bul != NULL)
             {
-                this->shootCd = 0.13;
+                this->shootCd = clamp(0.13 - cdUpgrade* 0.01, 0.03, 0.13);
                 shot += 5;
             }
         }
@@ -388,10 +398,11 @@ private:
         return false;
     }
     bool* died;
+    float upcd = 0;
 public:
     float x;
     float y;
-    float Speed;
+    float Speed = 6.0;
     int spritewidth;
     int spriteheight;
     float spriteScale;
@@ -406,7 +417,9 @@ public:
     set<BulletParticle*> BulletParticles;
     set<coin*>* coinsR;
     float velocityY = 0;
-    int coinsTaken = 0;
+    int* coinsTaken;
+    int cdUpgrade;
+
     void Update()
     {
         if (Health <= 0)
@@ -417,7 +430,7 @@ public:
             return;
         }
         al_draw_textf(debugFont, al_map_rgb(80, 0, 0), 20, HEIGHT - 50, 0, "hp: %d", Health);
-        al_draw_textf(debugFont, al_map_rgb(60, 200, 60), WIDTH-20, HEIGHT - 50, ALLEGRO_ALIGN_RIGHT, "Marian-Coins: %d", coinsTaken);
+        al_draw_textf(debugFont, al_map_rgb(60, 200, 60), WIDTH-20, HEIGHT - 50, ALLEGRO_ALIGN_RIGHT, "Marian-Coins: %d", *coinsTaken);
         bool lastGrounded = isGrounded;
         bool lowground = !(this->y + this->scaled_spriteheight / 2 < 580);
         isGrounded = checkGrounded(&(this->x), &(this->y)) || lowground;
@@ -425,6 +438,34 @@ public:
         moveForceX = 0;
         float gravForce = 0;
         //isGrounded = false;
+        if (upcd > 0)
+        {
+            upcd -= deltaTime;
+        }
+        if (*coinsTaken >= 3 && upcd <=0)
+        {
+            al_draw_filled_rectangle(WIDTH / 2 - 225, HEIGHT - 130, WIDTH / 2 + 225, HEIGHT - 30, al_map_rgba_f(0, 0, 0, 0.6));
+            al_draw_text(debugFont, al_map_rgb_f(1, 1, 1), WIDTH / 2, HEIGHT - 125, ALLEGRO_ALIGN_CENTER, "Ulepsz");
+            al_draw_text(upFont, al_map_rgb_f(1, 1, 1), WIDTH / 2 - 200, HEIGHT - 70, ALLEGRO_ALIGN_LEFT, "(Z) SPEED");
+            al_draw_text(upFont, al_map_rgb_f(1, 1, 1), WIDTH / 2 + 200, HEIGHT - 70, ALLEGRO_ALIGN_RIGHT, "GUN SPEED (X)");
+            for (set<int>::iterator it = (*pressedKeys).begin(); it != (*pressedKeys).end(); it++)
+            {
+                if ((*it) == ALLEGRO_KEY_X)
+                {
+                    upcd = 1;
+                    cdUpgrade++;
+                    *coinsTaken -= 3;
+                    break;
+                }
+                else if ((*it) == ALLEGRO_KEY_Z)
+                {
+                    upcd = 1;
+                    Speed+=0.5;
+                    *coinsTaken -= 3;
+                    break;
+                }
+            }
+        }
         if (jumpCd > 0) {
             jumpCd -= deltaTime;
         }
@@ -438,13 +479,13 @@ public:
         {
             (*it) -> renderMe(cam_x_offset);
             bool collided = (*it)->Collides((float)x, (float)y);
-            cout << "Collided: " << collided << endl;
+            //cout << "Collided: " << collided << endl;
             if (collided)
             {
                 coin* c = (*it);
                 coinsR->erase(c);
                 delete(c);
-                coinsTaken++;
+                (*coinsTaken)++;
                 break;
             }
         }
@@ -543,22 +584,27 @@ public:
         }
         scaled_spritewidth = ceil(spritewidth * spriteScale);
         scaled_spriteheight = ceil(spriteheight * spriteScale);
-        this->Speed = 6;
         cout << "Stworzono mnie: rozmiary? " << scaled_spriteheight << " " << scaled_spritewidth << endl;
     }
-    Player(vector<Behaviour*>* bhvs, set<int>* keys, set<Platform*>* pts, ALLEGRO_BITMAP* bulletSpr, set<Bullet*>* blts, bool* dead, set<coin*>* coinsad) :Behaviour(bhvs)
+    Player(vector<Behaviour*>* bhvs, set<int>* keys, set<Platform*>* pts, ALLEGRO_BITMAP* bulletSpr, set<Bullet*>* blts, bool* dead, set<coin*>* coinsad, int* tCoins) :Behaviour(bhvs)
     { 
         platforms = pts;
         this->spritewidth = 356;
         this->spriteheight = 472; 
         this->x = 120; 
         this-> spriteScale = 0.28;
-        this->y = HEIGHT / 2;
+        this->y = 500;
         this->pressedKeys = keys;
         this->bulletsprite = bulletSpr;
         this->Bullets = blts;
         this->died = dead;
         this->coinsR = coinsad;
+        this->coinsTaken = tCoins;
+        if (SaveSystem::Instance && *SaveSystem::Instance)
+        {
+            cdUpgrade = (*SaveSystem::Instance)->LoadShootSpeed();
+            Speed = (*SaveSystem::Instance)->LoadSpeed();
+        }
         this->Start();
     };
     ~Player() {
@@ -566,6 +612,13 @@ public:
             al_destroy_bitmap(marian);
             cout << "Destroying MARIAN Bitmap" << endl;
             marian = NULL;
+        }
+        if (debugFont) {
+
+            al_destroy_font(debugFont);
+        }
+        if (upFont) {
+            al_destroy_font(upFont);
         }
         Behaviour::~Behaviour();
         
@@ -577,6 +630,7 @@ private:
     short int* level = 0;
     ALLEGRO_FONT* font = NULL;
     bool wasEnabled = false;
+    Player* myPlayer;
 public:
     bool enabled;
     void Update()
@@ -594,6 +648,14 @@ public:
                     int nextlevel = clamp((*level + 1), 1, 4);
                     _itoa_s(nextlevel, str, LINE_LENGTH, 10);
                     (*SaveSystem::Instance)->printAtLine(1, str);
+                    _itoa_s(*(myPlayer->coinsTaken), str, LINE_LENGTH, 10);
+                    (*SaveSystem::Instance)->printAtLine(2, str);
+
+                    _itoa_s(myPlayer->cdUpgrade, str, LINE_LENGTH, 10);
+                    (*SaveSystem::Instance)->printAtLine(3, str);
+
+                    _gcvt_s(str, LINE_LENGTH, myPlayer->Speed, 2);
+                    (*SaveSystem::Instance)->printAtLine(4, str);
                     GlobalAction = 3;
                 }
                 else
@@ -605,22 +667,24 @@ public:
             //cout << "F2\n";
             al_draw_filled_rectangle(0, 0, WIDTH, HEIGHT, al_map_rgba(0, 0, 0, 230));
             al_draw_rectangle(0, 0, WIDTH, HEIGHT, al_map_rgba(0, 255, 0, 240), 10);
-            al_draw_textf(font, al_map_rgb(255, 255, 255), WIDTH / 2, HEIGHT / 2, ALLEGRO_ALIGN_CENTRE, "Level %d ukonczony!", *level);
-        }
-        else
-        {
-            //cout << "LV: " << *level << ", FONT: " << (font != NULL) << ", ENABLED: " << enabled << endl;
+            if (*level < 4) {
+                al_draw_textf(font, al_map_rgb(255, 255, 255), WIDTH / 2, HEIGHT / 2, ALLEGRO_ALIGN_CENTRE, "Level %d ukonczony!", *level);
+            }
+            else {
+                al_draw_textf(font, al_map_rgb(255, 255, 255), WIDTH / 2, HEIGHT / 2, ALLEGRO_ALIGN_CENTRE, "Brawo! Gra ukonczona!", *level);
+            }
         }
     }
     void Start()
     {
 
     }
-    FinishScreen(vector<Behaviour*>* bhvs, short int* lv, ALLEGRO_FONT* myfont) :Behaviour(bhvs)
+    FinishScreen(vector<Behaviour*>* bhvs, short int* lv, ALLEGRO_FONT* myfont, Player* plr) :Behaviour(bhvs)
     {
         this->level = lv;
         this->font = myfont;
         this->enabled = false;
+        this->myPlayer = plr;
     }
 };
 class FinishLine : public Behaviour
@@ -892,6 +956,7 @@ public:
                     {
                         if ((*mPlayer)->velocityY > 800)
                         {
+                            (*mPlayer)->velocityY -= 2000;
                             removing = true;
                         }
                         else
@@ -969,9 +1034,31 @@ void ClearCoins()
     }
     coins.clear();
 }
+void ClearPlatforms(set<Platform*>* platforms)
+{
+    for (set<Platform*>::iterator it = platforms->begin(); it != platforms->end(); it++)
+    {
+        Platform* c = (*it);
+        delete c;
+    }
+    platforms->clear();
+}
 void ChangeScene(short int* currLevel, int scene, Menu** MenuObj, set<Platform*>* platforms, set<Enemy*>* enemies, vector<ALLEGRO_BITMAP*>* platformSprites, Player** plrAddress, vector<ALLEGRO_BITMAP*>* enemySprites, ALLEGRO_BITMAP* enemyBulletSprite, set<int>* buttons, ALLEGRO_BITMAP* floorT, float* cxo, bool* deadplayer, FinishLine** fL, ALLEGRO_BITMAP* coinBitmap)
 {
     *deadplayer = false;
+    /*if (platforms && (*platforms).size() > 0)
+    {
+        for (set<Platform*>::iterator it = (*platforms).begin(); it != (*platforms).end(); it++)
+        {
+            Platform* p = (*it);
+            if (*it != NULL) {
+                delete p;
+                p = NULL;
+                break;
+            }
+        }
+        (*platforms).clear();
+    }*/
     while (Behaviours.size() > 0)
     {
         for (vector<Behaviour*>::iterator it = Behaviours.begin(); it != Behaviours.end(); it++)
@@ -980,6 +1067,7 @@ void ChangeScene(short int* currLevel, int scene, Menu** MenuObj, set<Platform*>
             break;
         }
     }
+
     ClearCoins();
     *currLevel = scene;
     if (*currLevel > 0 && *currLevel<=4)
@@ -988,11 +1076,11 @@ void ChangeScene(short int* currLevel, int scene, Menu** MenuObj, set<Platform*>
         {
         case 1:
         {
-            platforms->insert(new Platform(&Behaviours, 100, 390, 2, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 900, 580-32.5, 3, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 900, 580-32.5-300, 3, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 1100, 580-32.5-400-30.5, 2, true, (*platformSprites)[1]));
-            platforms->insert(new Platform(&Behaviours, 1800, 300, 2, false, (*platformSprites)[0]));
+            platforms->insert(new Platform(&Behaviours, 100, 390, 2, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 900, 580-32.5, 3, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 900, 580-32.5-300, 3, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 1100, 580-32.5-400-30.5, 2, true, (*platformSprites)[1], platforms));
+            platforms->insert(new Platform(&Behaviours, 1800, 330, 2, false, (*platformSprites)[0], platforms));
 
             FloorObject* floor = new FloorObject(&Behaviours, floorT, cxo);
 
@@ -1002,24 +1090,25 @@ void ChangeScene(short int* currLevel, int scene, Menu** MenuObj, set<Platform*>
             enemies->insert(new Enemy(&Behaviours, 3000, 530, true, 25, 1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
 
             coins.insert(new coin(1000, 170, coinBitmap));
+            coins.insert(new coin(1800, 210, coinBitmap));
 
             break;
         }
         case 2:
         {
-            platforms->insert(new Platform(&Behaviours, 525, 390, 2, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 1150, 280, 4, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 2126, 520, 1, true, (*platformSprites)[1]));
-            platforms->insert(new Platform(&Behaviours, 2126, 390, 0, false, (*platformSprites)[2]));
-            platforms->insert(new Platform(&Behaviours, 1931, 390, 2, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 2740, 390, 2, false, (*platformSprites)[0]));
+            platforms->insert(new Platform(&Behaviours, 525, 390, 2, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 1150, 280, 4, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 2126, 520, 1, true, (*platformSprites)[1], platforms));
+            platforms->insert(new Platform(&Behaviours, 2126, 390, 0, false, (*platformSprites)[2], platforms));
+            platforms->insert(new Platform(&Behaviours, 1931, 390, 2, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 2740, 390, 2, false, (*platformSprites)[0], platforms));
             //platforms->insert(new Platform(&Behaviours, 3200, 390, 2, false, platformSprite));
 
-            platforms->insert(new Platform(&Behaviours, 3200, 580 - 32.5, 0, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 3265, 580 - 32.5 - 65, 0, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 3330, 580 - 32.5 - 65 - 65, 0, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 3330 + 65, 580 - 32.5 - 65 - 65 - 65, 0, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 3655, 287, 3, false, (*platformSprites)[0]));
+            platforms->insert(new Platform(&Behaviours, 3200, 580 - 32.5, 0, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 3265, 580 - 32.5 - 65, 0, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 3330, 580 - 32.5 - 65 - 65, 0, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 3330 + 65, 580 - 32.5 - 65 - 65 - 65, 0, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 3655, 287, 3, false, (*platformSprites)[0], platforms));
             //platforms->insert(new Platform(&Behaviours, 3755, 580 - 65 - 65 - 65 - 65-65, 0, false, platformSprite));
             //platforms->insert(new Platform(&Behaviours, 2093.5, 485, 2, true, platformSprite2));
             
@@ -1031,25 +1120,32 @@ void ChangeScene(short int* currLevel, int scene, Menu** MenuObj, set<Platform*>
             enemies->insert(new Enemy(&Behaviours, 3200, 580 - 32.5 - 80, false, 0, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
             enemies->insert(new Enemy(&Behaviours, 3200 + 65 + 65, 580 - 32.5 - 80 - 65 - 65, false, 0, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
             
+            coins.insert(new coin(525, 170, coinBitmap));
+            coins.insert(new coin(2126, 300, coinBitmap));
+            coins.insert(new coin(1260, 200, coinBitmap));
+            coins.insert(new coin(3000, 410, coinBitmap));
+
+
+
             break;
         }
         case 3:
         {
-            platforms->insert(new Platform(&Behaviours, -28, 550, 0, false, (*platformSprites)[2]));
-            platforms->insert(new Platform(&Behaviours, 400, 280, 2, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 530, 355, 1, true, (*platformSprites)[1]));
-            platforms->insert(new Platform(&Behaviours, 1300, 390, 1, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 1930, 390, 0, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 2000, 100, 2, true, (*platformSprites)[1]));
+            platforms->insert(new Platform(&Behaviours, -28, 550, 0, false, (*platformSprites)[2], platforms));
+            platforms->insert(new Platform(&Behaviours, 400, 280, 2, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 530, 355, 1, true, (*platformSprites)[1], platforms));
+            platforms->insert(new Platform(&Behaviours, 1300, 390, 1, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 1930, 390, 0, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 2000, 100, 2, true, (*platformSprites)[1], platforms));
             //platforms->insert(new Platform(&Behaviours, 2740, 390, 2, false, (*platformSprites)[0]));
             //platforms->insert(new Platform(&Behaviours, 3200, 390, 2, false, platformSprite));
 
-            platforms->insert(new Platform(&Behaviours, 2500, 580, 0, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 2700, 300, 0, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 2695, 80, 0, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 2200, 80, 2, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 2900, 200, 0, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 2901, 120, 2, true, (*platformSprites)[1]));
+            platforms->insert(new Platform(&Behaviours, 2500, 580, 0, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 2700, 300, 0, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 2695, 80, 0, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 2200, 80, 2, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 2900, 200, 0, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 2901, 120, 2, true, (*platformSprites)[1], platforms));
 
             FloorObject* floor = new FloorObject(&Behaviours, floorT, cxo);
 
@@ -1062,13 +1158,21 @@ void ChangeScene(short int* currLevel, int scene, Menu** MenuObj, set<Platform*>
             enemies->insert(new Enemy(&Behaviours, 1660, 530, true, 5, -1, (*enemySprites)[1], platforms, NULL, plrAddress, false, deadplayer, true, fL));
             enemies->insert(new Enemy(&Behaviours, 1460, 530, false, 0, 1, (*enemySprites)[1], platforms, NULL, plrAddress, false, deadplayer, true, fL));
             enemies->insert(new Enemy(&Behaviours, 1300, 530, false, 0, 1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
+            
+            
+            coins.insert(new coin(390, 170, coinBitmap));
+            coins.insert(new coin(1000, 450, coinBitmap));
+            coins.insert(new coin(1450, 300, coinBitmap));
+            coins.insert(new coin(1500, 480, coinBitmap));
+            coins.insert(new coin(3500, 480, coinBitmap));
+
             break;
         }
         case 4:
         {
            
-            platforms->insert(new Platform(&Behaviours, 1700, 360, 0, false, (*platformSprites)[0]));
-            platforms->insert(new Platform(&Behaviours, 3000, 360, 0, false, (*platformSprites)[0]));
+            platforms->insert(new Platform(&Behaviours, 1700, 360, 0, false, (*platformSprites)[0], platforms));
+            platforms->insert(new Platform(&Behaviours, 3000, 360, 0, false, (*platformSprites)[0], platforms));
 
             FloorObject* floor = new FloorObject(&Behaviours, floorT, cxo);
 
@@ -1079,6 +1183,11 @@ void ChangeScene(short int* currLevel, int scene, Menu** MenuObj, set<Platform*>
             enemies->insert(new Enemy(&Behaviours, 1500, 530, true, 25, -1, (*enemySprites)[0], platforms, enemyBulletSprite, plrAddress, false, deadplayer, true, fL));
             enemies->insert(new Enemy(&Behaviours, 3000, 530, true, 25, -1, (*enemySprites)[1], platforms, NULL, plrAddress, false, deadplayer, true, fL));
             enemies->insert(new Enemy(&Behaviours, 3200, 530, true, 25, -1, (*enemySprites)[1], platforms, NULL, plrAddress, false, deadplayer, false, fL));
+
+            coins.insert(new coin(200, 480, coinBitmap));
+            coins.insert(new coin(1700, 200, coinBitmap));
+            coins.insert(new coin(1900, 300, coinBitmap));
+            coins.insert(new coin(3300, 480, coinBitmap));
 
             break;
         }
@@ -1209,6 +1318,7 @@ int main(int argc, char* argv[])
     float toMenuCount = -1;
     Pause* gamePause = NULL;
     bool playerDied = false;
+    int LoadedCoins = 0;
     while (open)
     {
 
@@ -1231,7 +1341,7 @@ int main(int argc, char* argv[])
                     }
                     vector<ALLEGRO_BITMAP*> ptS = { platformSprite, platformSprite2, platformSprite3 };
                     vector<ALLEGRO_BITMAP*> eS = { enemysprite };
-                    
+                    LoadedCoins = 0;
                     ChangeScene(&Level, 1, &MenuObject, &platforms, &enemies, &ptS, &plr, &eS, enemyBulletSprite, &buttons, floorT, &cam_x_offset, &playerDied, &finish, coinBitmap);
                 }
             }
@@ -1277,6 +1387,7 @@ int main(int argc, char* argv[])
                                 break;
                             }
                         }
+                        LoadedCoins = MenuObject->LoadedCoins;
                         Level = MenuObject->LoadedLevel;
                         ChangeScene(&Level, Level, &MenuObject, &platforms, &enemies, &ptS, &plr, &eS, enemyBulletSprite, &buttons, floorT, &cam_x_offset, &playerDied, &finish, coinBitmap);
                     }
@@ -1356,7 +1467,7 @@ int main(int argc, char* argv[])
 
             if (plr == NULL && finish == NULL)
             {
-                plr = new Player(&Behaviours, &buttons, &platforms, playerBulletSprite, &playerBullets, &playerDied, &coins);
+                plr = new Player(&Behaviours, &buttons, &platforms, playerBulletSprite, &playerBullets, &playerDied, &coins, &LoadedCoins);
                 float fX = 0;
                 float fY = 0;
                 bool hide = false;
@@ -1390,7 +1501,7 @@ int main(int argc, char* argv[])
                 }
 
                 finish = new FinishLine(&Behaviours, fX, fY, Level, plr, finishSprite, &finishScreen, uiFont, hide);
-                finishScreen = new FinishScreen(&Behaviours, &Level, uiFont);
+                finishScreen = new FinishScreen(&Behaviours, &Level, uiFont, plr);
 
             }
 
@@ -1408,6 +1519,7 @@ int main(int argc, char* argv[])
 
     
         loopBehaviours(&plr, gamePause);
+        //al_draw_textf(uiFont, al_map_rgb(0, 0, 0), 0, HEIGHT / 2, 0, "PLATFORMS: %d", platforms.size());
         al_flip_display();
     }
     if (SaveSystem::Instance != NULL && (*SaveSystem::Instance)) { (*SaveSystem::Instance)->Destroy(); delete(SaveSystem::Instance); SaveSystem::Instance = NULL; }

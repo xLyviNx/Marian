@@ -169,6 +169,34 @@ int SaveSystem::LoadLevel()
 	free(loadS);
 	return tret;
 }
+int SaveSystem::LoadCoins()
+{
+	int tret = 1;
+	char* loadS = readLine(2);
+	tret = atoi(loadS);
+	printf("[SAVE SYSTEM] Loading COINS: %d\n", tret);
+	free(loadS);
+	return tret;
+}
+int SaveSystem::LoadShootSpeed()
+{
+	int tret = 1;
+	char* loadS = readLine(3);
+	tret = atoi(loadS);
+	printf("[SAVE SYSTEM] Loading COINS: %d\n", tret);
+	free(loadS);
+	return tret;
+}
+float SaveSystem::LoadSpeed()
+{
+	float tret = 6.0;
+	char* loadS = readLine(4);
+	printf("[SAVE SYSTEM] Attempting to convert '%s' to FLOAT SPEED\n", loadS);
+	tret = atof(loadS);
+	printf("[SAVE SYSTEM] Loading SPEED: %lf\n", tret);
+	free(loadS);
+	return tret;
+}
 void SaveSystem::printAtLine(int lineNumber, const char* content)
 {
 
@@ -269,4 +297,7 @@ void SaveSystem::restart()
 void SaveSystem::setStartData()
 {
 	printAtLine(1, "1");
+	printAtLine(2, "0");
+	printAtLine(3, "0");
+	printAtLine(4, "6.00");
 }
