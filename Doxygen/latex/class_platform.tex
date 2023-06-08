@@ -1,0 +1,292 @@
+\doxysection{Dokumentacja klasy Platform}
+\hypertarget{class_platform}{}\label{class_platform}\index{Platform@{Platform}}
+
+
+Klasa Platformy.  
+
+
+Diagram dziedziczenia dla Platform\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_platform}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_platform_a13b5e4ef946b8a2fe38d22014145ab68}{\texorpdfstring{$\sim$}{\string~}\+Platform}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor Platformy. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_platform_aa418a6e78779a5edae37de84e3bf4786}{Platform}} (vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}bhvs, float nX, float nY, int blocks\+Around\+Middle, bool vertical, ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}my\+Sprite, set$<$ \mbox{\hyperlink{class_platform}{Platform}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}pointer)
+\begin{DoxyCompactList}\small\item\em Konstruktor Platformy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_platform_a71fdce46045e9d3c729e0242a1da040a}{Update}} ()
+\item 
+bool \mbox{\hyperlink{class_platform_a1d887dfdc77396816c3d9a87b3aa5a77}{is\+My\+Block}} (float \texorpdfstring{$\ast$}{*}cX, float \texorpdfstring{$\ast$}{*}cY, float cW, float cH)
+\begin{DoxyCompactList}\small\item\em Funkcja sprawdzajaca czy dane koordynaty sa w platformie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Metody publiczne dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea}{Update}} ()
+\item 
+virtual void \mbox{\hyperlink{class_behaviour_a52b11b4146f8f5104a6bf2be502e6d99}{Start}} ()
+\item 
+\mbox{\hyperlink{class_behaviour_a9c68ba38fdb413f4cc67165ceb10b327}{Behaviour}} (std\+::vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Konstruktor \doxylink{class_behaviour}{Behaviour}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_behaviour_ab9099279876aa70410ab96ca589531df}{\texorpdfstring{$\sim$}{\string~}\+Behaviour}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor \doxylink{class_behaviour}{Behaviour}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_platform_a26786720b36ff22316303e5a1dbc40c5}{x}} = 0
+\item 
+float \mbox{\hyperlink{class_platform_a8b1d3d629e63423b254830716f2f99e4}{y}} = 0
+\item 
+int \mbox{\hyperlink{class_platform_a082fa4340289ada01a9f947c685d9962}{spritewidth}} = 65
+\item 
+int \mbox{\hyperlink{class_platform_ad4453b0d1003a381d3e812589756a4ab}{spriteheight}} = 65
+\item 
+float \mbox{\hyperlink{class_platform_ae2754b0b45d5dc61181bbe5343364c83}{sprite\+Scale}} = 1
+\item 
+int \mbox{\hyperlink{class_platform_a09ef65b478dcaeb69cbff9ec08888249}{scaled\+\_\+spritewidth}}
+\item 
+int \mbox{\hyperlink{class_platform_a253bbc3a16d3022e6ec037b8de39644a}{scaled\+\_\+spriteheight}}
+\item 
+bool \mbox{\hyperlink{class_platform_af41d69183e84864bd9bfcb48948410bc}{Vertical}} = false
+\end{DoxyCompactItemize}
+\doxysubsection*{Atrybuty publiczne dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_behaviour_ab5a2aad5b8a3c2cb6612520878817137}{removing}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_platform_aec686c8787dbfe228c4446993aa17863}{blocks}} = 0
+\item 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_platform_a8b847d07f84b65ae1de74721646e0099}{sprite}} = NULL
+\item 
+set$<$ \mbox{\hyperlink{class_platform}{Platform}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_platform_a87cbceaba04eee6d7125f06516f00a28}{Set\+Pointer}} = NULL
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Dodatkowe Dziedziczone Składowe}
+\doxysubsection*{Atrybuty chronione dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_behaviour_a95a3f857ba7c6e573a987e1ef1148cc2}{vec}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa Platformy. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00117}{117}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{class_platform_a13b5e4ef946b8a2fe38d22014145ab68}\label{class_platform_a13b5e4ef946b8a2fe38d22014145ab68} 
+\index{Platform@{Platform}!````~Platform@{\texorpdfstring{$\sim$}{\string~}Platform}}
+\index{````~Platform@{\texorpdfstring{$\sim$}{\string~}Platform}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Platform()}{\string~Platform()}}
+{\footnotesize\ttfamily Platform\+::\texorpdfstring{$\sim$}{\string~}\+Platform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destruktor Platformy. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00135}{135}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_platform_aa418a6e78779a5edae37de84e3bf4786}\label{class_platform_aa418a6e78779a5edae37de84e3bf4786} 
+\index{Platform@{Platform}!Platform@{Platform}}
+\index{Platform@{Platform}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{Platform()}{Platform()}}
+{\footnotesize\ttfamily Platform\+::\+Platform (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{bhvs,  }\item[{float}]{nX,  }\item[{float}]{nY,  }\item[{int}]{blocks\+Around\+Middle,  }\item[{bool}]{vertical,  }\item[{ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}}]{my\+Sprite,  }\item[{set$<$ \mbox{\hyperlink{class_platform}{Platform}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{pointer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Konstruktor Platformy. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em bhvs} & Wskaznik na wektor behaviours. \\
+\hline
+{\em nX} & Wspolrzedna X srodka platformy. \\
+\hline
+{\em nY} & Wspolrzedna Y srodka platformy. \\
+\hline
+{\em blocks\+Around\+Middle} & Ilosc blokow w kazda ze stron. \\
+\hline
+{\em vertical} & Okreslenie czy platforma jest pionowa czy pozioma. \\
+\hline
+{\em my\+Sprite} & Wskaznik na bitmape (grafike) platformy. \\
+\hline
+{\em pointer} & Wskaznik na set platform. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00152}{152}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_platform_a1d887dfdc77396816c3d9a87b3aa5a77}\label{class_platform_a1d887dfdc77396816c3d9a87b3aa5a77} 
+\index{Platform@{Platform}!isMyBlock@{isMyBlock}}
+\index{isMyBlock@{isMyBlock}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{isMyBlock()}{isMyBlock()}}
+{\footnotesize\ttfamily bool Platform\+::is\+My\+Block (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}}]{cX,  }\item[{float \texorpdfstring{$\ast$}{*}}]{cY,  }\item[{float}]{cW,  }\item[{float}]{cH }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Funkcja sprawdzajaca czy dane koordynaty sa w platformie. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em cX} & Wskaznik na wspolrzedna X. \\
+\hline
+{\em cY} & Wskaznik na wspolrzedna Y. \\
+\hline
+{\em cW} & Szerokosc kolidujacego obiektu. \\
+\hline
+{\em cH} & Wysokosc kolidujacego obiektu. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Wartosc logiczna -\/ czy cos jest w platformie. 
+\end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00207}{207}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_platform_a71fdce46045e9d3c729e0242a1da040a}\label{class_platform_a71fdce46045e9d3c729e0242a1da040a} 
+\index{Platform@{Platform}!Update@{Update}}
+\index{Update@{Update}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Platform\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Metoda wywolywana co klatke. 
+
+Reimplementowana z \mbox{\hyperlink{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea}{Behaviour}}.
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00163}{163}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_platform_aec686c8787dbfe228c4446993aa17863}\label{class_platform_aec686c8787dbfe228c4446993aa17863} 
+\index{Platform@{Platform}!blocks@{blocks}}
+\index{blocks@{blocks}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{blocks}{blocks}}
+{\footnotesize\ttfamily int Platform\+::blocks = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+Ilosc blokow platformy. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00120}{120}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_platform_a253bbc3a16d3022e6ec037b8de39644a}\label{class_platform_a253bbc3a16d3022e6ec037b8de39644a} 
+\index{Platform@{Platform}!scaled\_spriteheight@{scaled\_spriteheight}}
+\index{scaled\_spriteheight@{scaled\_spriteheight}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{scaled\_spriteheight}{scaled\_spriteheight}}
+{\footnotesize\ttfamily int Platform\+::scaled\+\_\+spriteheight}
+
+Przeskalowana wysokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00130}{130}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_platform_a09ef65b478dcaeb69cbff9ec08888249}\label{class_platform_a09ef65b478dcaeb69cbff9ec08888249} 
+\index{Platform@{Platform}!scaled\_spritewidth@{scaled\_spritewidth}}
+\index{scaled\_spritewidth@{scaled\_spritewidth}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{scaled\_spritewidth}{scaled\_spritewidth}}
+{\footnotesize\ttfamily int Platform\+::scaled\+\_\+spritewidth}
+
+Przeskalowana szerokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00129}{129}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_platform_a87cbceaba04eee6d7125f06516f00a28}\label{class_platform_a87cbceaba04eee6d7125f06516f00a28} 
+\index{Platform@{Platform}!SetPointer@{SetPointer}}
+\index{SetPointer@{SetPointer}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{SetPointer}{SetPointer}}
+{\footnotesize\ttfamily set$<$\mbox{\hyperlink{class_platform}{Platform}}\texorpdfstring{$\ast$}{*}$>$\texorpdfstring{$\ast$}{*} Platform\+::\+Set\+Pointer = NULL\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na set platform. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00122}{122}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_platform_a8b847d07f84b65ae1de74721646e0099}\label{class_platform_a8b847d07f84b65ae1de74721646e0099} 
+\index{Platform@{Platform}!sprite@{sprite}}
+\index{sprite@{sprite}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{sprite}{sprite}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP\texorpdfstring{$\ast$}{*} Platform\+::sprite = NULL\hspace{0.3cm}{\ttfamily [private]}}
+
+Sprite (wskaznik na bitmape) jednego bloku platformy. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00121}{121}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_platform_ad4453b0d1003a381d3e812589756a4ab}\label{class_platform_ad4453b0d1003a381d3e812589756a4ab} 
+\index{Platform@{Platform}!spriteheight@{spriteheight}}
+\index{spriteheight@{spriteheight}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{spriteheight}{spriteheight}}
+{\footnotesize\ttfamily int Platform\+::spriteheight = 65}
+
+Wysokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00127}{127}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_platform_ae2754b0b45d5dc61181bbe5343364c83}\label{class_platform_ae2754b0b45d5dc61181bbe5343364c83} 
+\index{Platform@{Platform}!spriteScale@{spriteScale}}
+\index{spriteScale@{spriteScale}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{spriteScale}{spriteScale}}
+{\footnotesize\ttfamily float Platform\+::sprite\+Scale = 1}
+
+Skala sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00128}{128}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_platform_a082fa4340289ada01a9f947c685d9962}\label{class_platform_a082fa4340289ada01a9f947c685d9962} 
+\index{Platform@{Platform}!spritewidth@{spritewidth}}
+\index{spritewidth@{spritewidth}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{spritewidth}{spritewidth}}
+{\footnotesize\ttfamily int Platform\+::spritewidth = 65}
+
+Szerokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00126}{126}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_platform_af41d69183e84864bd9bfcb48948410bc}\label{class_platform_af41d69183e84864bd9bfcb48948410bc} 
+\index{Platform@{Platform}!Vertical@{Vertical}}
+\index{Vertical@{Vertical}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{Vertical}{Vertical}}
+{\footnotesize\ttfamily bool Platform\+::\+Vertical = false}
+
+Wartosc logiczna ktora mowi czy platforma jest pionowa lub pozioma. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00131}{131}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_platform_a26786720b36ff22316303e5a1dbc40c5}\label{class_platform_a26786720b36ff22316303e5a1dbc40c5} 
+\index{Platform@{Platform}!x@{x}}
+\index{x@{x}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily float Platform\+::x = 0}
+
+Pozycja w osi X. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00124}{124}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_platform_a8b1d3d629e63423b254830716f2f99e4}\label{class_platform_a8b1d3d629e63423b254830716f2f99e4} 
+\index{Platform@{Platform}!y@{y}}
+\index{y@{y}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily float Platform\+::y = 0}
+
+Pozycja w osi Y. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00125}{125}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_marian_8cpp}{Marian.\+cpp}}\end{DoxyCompactItemize}

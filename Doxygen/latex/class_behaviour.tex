@@ -1,0 +1,143 @@
+\doxysection{Dokumentacja klasy Behaviour}
+\hypertarget{class_behaviour}{}\label{class_behaviour}\index{Behaviour@{Behaviour}}
+
+
+Klasa \doxylink{class_behaviour}{Behaviour}.  
+
+
+
+
+{\ttfamily \#include $<$Base.\+h$>$}
+
+Diagram dziedziczenia dla Behaviour\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=9.000000cm]{class_behaviour}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea}{Update}} ()
+\item 
+virtual void \mbox{\hyperlink{class_behaviour_a52b11b4146f8f5104a6bf2be502e6d99}{Start}} ()
+\item 
+\mbox{\hyperlink{class_behaviour_a9c68ba38fdb413f4cc67165ceb10b327}{Behaviour}} (std\+::vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Konstruktor \doxylink{class_behaviour}{Behaviour}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_behaviour_ab9099279876aa70410ab96ca589531df}{\texorpdfstring{$\sim$}{\string~}\+Behaviour}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor \doxylink{class_behaviour}{Behaviour}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_behaviour_ab5a2aad5b8a3c2cb6612520878817137}{removing}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty chronione}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_behaviour_a95a3f857ba7c6e573a987e1ef1148cc2}{vec}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa \doxylink{class_behaviour}{Behaviour}. 
+
+Klasa ta jest dziediczona przez wiekszosc klas w grze. Dzieki niej w latwy sposob mozna zaimplementowac funkcje wywolywane co klatke, oraz latwiej zarzadzac obiektami w grze. 
+
+Definicja w linii \mbox{\hyperlink{_base_8h_source_l00020}{20}} pliku \mbox{\hyperlink{_base_8h_source}{Base.\+h}}.
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{class_behaviour_a9c68ba38fdb413f4cc67165ceb10b327}\label{class_behaviour_a9c68ba38fdb413f4cc67165ceb10b327} 
+\index{Behaviour@{Behaviour}!Behaviour@{Behaviour}}
+\index{Behaviour@{Behaviour}!Behaviour@{Behaviour}}
+\doxysubsubsection{\texorpdfstring{Behaviour()}{Behaviour()}}
+{\footnotesize\ttfamily Behaviour\+::\+Behaviour (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{ }\end{DoxyParamCaption})}
+
+
+
+Konstruktor \doxylink{class_behaviour}{Behaviour}. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em bhvs} & Wskaznik na wektor behaviours. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{_base_8cpp_source_l00014}{14}} pliku \mbox{\hyperlink{_base_8cpp_source}{Base.\+cpp}}.
+
+\Hypertarget{class_behaviour_ab9099279876aa70410ab96ca589531df}\label{class_behaviour_ab9099279876aa70410ab96ca589531df} 
+\index{Behaviour@{Behaviour}!````~Behaviour@{\texorpdfstring{$\sim$}{\string~}Behaviour}}
+\index{````~Behaviour@{\texorpdfstring{$\sim$}{\string~}Behaviour}!Behaviour@{Behaviour}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Behaviour()}{\string~Behaviour()}}
+{\footnotesize\ttfamily Behaviour\+::\texorpdfstring{$\sim$}{\string~}\+Behaviour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destruktor \doxylink{class_behaviour}{Behaviour}. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_base_8cpp_source_l00027}{27}} pliku \mbox{\hyperlink{_base_8cpp_source}{Base.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_behaviour_a52b11b4146f8f5104a6bf2be502e6d99}\label{class_behaviour_a52b11b4146f8f5104a6bf2be502e6d99} 
+\index{Behaviour@{Behaviour}!Start@{Start}}
+\index{Start@{Start}!Behaviour@{Behaviour}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Behaviour\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Metoda ktora moze byc wywolana po konstruktorze. 
+
+Reimplementowana w \mbox{\hyperlink{class_player_a54de25087f17985430c4316bf5a7f368}{Player}}.
+
+
+
+Definicja w linii \mbox{\hyperlink{_base_8cpp_source_l00008}{8}} pliku \mbox{\hyperlink{_base_8cpp_source}{Base.\+cpp}}.
+
+\Hypertarget{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea}\label{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea} 
+\index{Behaviour@{Behaviour}!Update@{Update}}
+\index{Update@{Update}!Behaviour@{Behaviour}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Behaviour\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Metoda wywolywana co klatke. 
+
+Reimplementowana w \mbox{\hyperlink{class_floor_object_a5e0270581ade1581f407dba116c176de}{Floor\+Object}}, \mbox{\hyperlink{class_platform_a71fdce46045e9d3c729e0242a1da040a}{Platform}}, \mbox{\hyperlink{class_player_a05b60cac1922c5be5c1be16baffa4497}{Player}}, \mbox{\hyperlink{class_finish_screen_a5cfc47332772c7b3fd8c13a5112d6243}{Finish\+Screen}}, \mbox{\hyperlink{class_finish_line_a2f3826f13be4178c7d5ed0345610f625}{Finish\+Line}}, \mbox{\hyperlink{class_enemy_af9a83b4e458b77eef0ffce785164fbcd}{Enemy}}, \mbox{\hyperlink{class_menu_af29d71473a414e31e914bc637840cb3e}{Menu}} i \mbox{\hyperlink{class_pause_a8f44fe4c6e070235173cd4a765734155}{Pause}}.
+
+
+
+Definicja w linii \mbox{\hyperlink{_base_8cpp_source_l00007}{7}} pliku \mbox{\hyperlink{_base_8cpp_source}{Base.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_behaviour_ab5a2aad5b8a3c2cb6612520878817137}\label{class_behaviour_ab5a2aad5b8a3c2cb6612520878817137} 
+\index{Behaviour@{Behaviour}!removing@{removing}}
+\index{removing@{removing}!Behaviour@{Behaviour}}
+\doxysubsubsection{\texorpdfstring{removing}{removing}}
+{\footnotesize\ttfamily bool Behaviour\+::removing}
+
+Czy behaviour jest usuwane. 
+
+Definicja w linii \mbox{\hyperlink{_base_8h_source_l00025}{25}} pliku \mbox{\hyperlink{_base_8h_source}{Base.\+h}}.
+
+\Hypertarget{class_behaviour_a95a3f857ba7c6e573a987e1ef1148cc2}\label{class_behaviour_a95a3f857ba7c6e573a987e1ef1148cc2} 
+\index{Behaviour@{Behaviour}!vec@{vec}}
+\index{vec@{vec}!Behaviour@{Behaviour}}
+\doxysubsubsection{\texorpdfstring{vec}{vec}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_behaviour}{Behaviour}}\texorpdfstring{$\ast$}{*}$>$\texorpdfstring{$\ast$}{*} Behaviour\+::vec\hspace{0.3cm}{\ttfamily [protected]}}
+
+Wskaznik na wektor (liste) wszystkich Behaviours. 
+
+Definicja w linii \mbox{\hyperlink{_base_8h_source_l00023}{23}} pliku \mbox{\hyperlink{_base_8h_source}{Base.\+h}}.
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_base_8h}{Base.\+h}}\item 
+\mbox{\hyperlink{_base_8cpp}{Base.\+cpp}}\end{DoxyCompactItemize}

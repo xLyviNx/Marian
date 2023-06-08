@@ -1,0 +1,280 @@
+\doxysection{Dokumentacja klasy Bullet}
+\hypertarget{class_bullet}{}\label{class_bullet}\index{Bullet@{Bullet}}
+
+
+Klasa kuli.  
+
+
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_bullet_a7cac1024e37f70d8cf9c73bf542a7390}{Bullet}} (float nX, float nY, int dir, float speed, ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}sprite\+File, set$<$ \mbox{\hyperlink{class_bullet}{Bullet}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}mset, bool h\+Player, int sizeX, int sizeY, float scale)
+\begin{DoxyCompactList}\small\item\em Konstruktor kuli. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_bullet_aaeb5cb41d7db89f49007b08b41f1bfcf}{\texorpdfstring{$\sim$}{\string~}\+Bullet}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor kuli. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bullet_af7f678b75784cc553a28b6edb02146b1}{render\+Me}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja renderujaca (wyswietlajaca) kule. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bullet_a599124e36743ce42bee6009aab619843}{Update\+Bullet}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja aktualizujaca wartosci kuli. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_bullet_acffaa6c3c8136695229d341c5e6da56a}{x}}
+\item 
+float \mbox{\hyperlink{class_bullet_a32300c127a7b59a55608a2d949c156c1}{y}}
+\item 
+float \mbox{\hyperlink{class_bullet_ae6929333e6d15819be952fe2fe6d90bc}{Speed}}
+\item 
+int \mbox{\hyperlink{class_bullet_aaa7b37eb611df55da255947383799d4f}{spritewidth}}
+\item 
+int \mbox{\hyperlink{class_bullet_a17d1f794026a9be902f1d343c3a5edd3}{spriteheight}}
+\item 
+float \mbox{\hyperlink{class_bullet_a12892f3f1a3dcf4492c54499a98c9bcd}{sprite\+Scale}}
+\item 
+int \mbox{\hyperlink{class_bullet_a5cebda0e7e2e310ffb87e1ff9afe7454}{scaled\+\_\+spritewidth}}
+\item 
+int \mbox{\hyperlink{class_bullet_af76c5c74678ba838691a225e45e9b67c}{scaled\+\_\+spriteheight}}
+\item 
+int \mbox{\hyperlink{class_bullet_a368daaff6965adc373d8fec654e29ef0}{direction}}
+\item 
+float \mbox{\hyperlink{class_bullet_a3755bb32d2f3e40a8e2df4a0f760f7a4}{lifetime}} = 2
+\item 
+bool \mbox{\hyperlink{class_bullet_a34bfd06b8cc94623b80f766be44f402d}{hurt\+Player}} = false
+\item 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_bullet_a24c18846a154ff0cdd8d13608e9b31c9}{sprite}} = NULL
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+set$<$ \mbox{\hyperlink{class_bullet}{Bullet}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_bullet_a23947d7e2b24398746247e02aae946ee}{my\+Set}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa kuli. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00242}{242}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{class_bullet_a7cac1024e37f70d8cf9c73bf542a7390}\label{class_bullet_a7cac1024e37f70d8cf9c73bf542a7390} 
+\index{Bullet@{Bullet}!Bullet@{Bullet}}
+\index{Bullet@{Bullet}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{Bullet()}{Bullet()}}
+{\footnotesize\ttfamily Bullet\+::\+Bullet (\begin{DoxyParamCaption}\item[{float}]{nX,  }\item[{float}]{nY,  }\item[{int}]{dir,  }\item[{float}]{speed,  }\item[{ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}}]{sprite\+File,  }\item[{set$<$ \mbox{\hyperlink{class_bullet}{Bullet}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{mset,  }\item[{bool}]{h\+Player,  }\item[{int}]{sizeX,  }\item[{int}]{sizeY,  }\item[{float}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Konstruktor kuli. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em nX} & Wspolrzedna X kuli. \\
+\hline
+{\em nY} & Wspolrzedna Y kuli. \\
+\hline
+{\em dir} & kierunek kuli. \\
+\hline
+{\em speed} & Predkosc kuli. \\
+\hline
+{\em sprite\+File} & Wskaznik na bitmape (grafike) kuli. \\
+\hline
+{\em mset} & Wskaznik na set kul. \\
+\hline
+{\em h\+Player} & Czy kula ma ranic gracza. \\
+\hline
+{\em sizeX} & Szerokosc. \\
+\hline
+{\em sizeY} & Wysokosc. \\
+\hline
+{\em scale} & Skala. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00272}{272}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_aaeb5cb41d7db89f49007b08b41f1bfcf}\label{class_bullet_aaeb5cb41d7db89f49007b08b41f1bfcf} 
+\index{Bullet@{Bullet}!````~Bullet@{\texorpdfstring{$\sim$}{\string~}Bullet}}
+\index{````~Bullet@{\texorpdfstring{$\sim$}{\string~}Bullet}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Bullet()}{\string~Bullet()}}
+{\footnotesize\ttfamily Bullet\+::\texorpdfstring{$\sim$}{\string~}\+Bullet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destruktor kuli. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00298}{298}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_bullet_af7f678b75784cc553a28b6edb02146b1}\label{class_bullet_af7f678b75784cc553a28b6edb02146b1} 
+\index{Bullet@{Bullet}!renderMe@{renderMe}}
+\index{renderMe@{renderMe}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{renderMe()}{renderMe()}}
+{\footnotesize\ttfamily void Bullet\+::render\+Me (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Funkcja renderujaca (wyswietlajaca) kule. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00313}{313}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_a599124e36743ce42bee6009aab619843}\label{class_bullet_a599124e36743ce42bee6009aab619843} 
+\index{Bullet@{Bullet}!UpdateBullet@{UpdateBullet}}
+\index{UpdateBullet@{UpdateBullet}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{UpdateBullet()}{UpdateBullet()}}
+{\footnotesize\ttfamily void Bullet\+::\+Update\+Bullet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Funkcja aktualizujaca wartosci kuli. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00323}{323}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_bullet_a368daaff6965adc373d8fec654e29ef0}\label{class_bullet_a368daaff6965adc373d8fec654e29ef0} 
+\index{Bullet@{Bullet}!direction@{direction}}
+\index{direction@{direction}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{direction}{direction}}
+{\footnotesize\ttfamily int Bullet\+::direction}
+
+Kierunek w ktorym leci kula. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00255}{255}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_a34bfd06b8cc94623b80f766be44f402d}\label{class_bullet_a34bfd06b8cc94623b80f766be44f402d} 
+\index{Bullet@{Bullet}!hurtPlayer@{hurtPlayer}}
+\index{hurtPlayer@{hurtPlayer}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{hurtPlayer}{hurtPlayer}}
+{\footnotesize\ttfamily bool Bullet\+::hurt\+Player = false}
+
+Czy kula ma ranic gracza. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00257}{257}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_a3755bb32d2f3e40a8e2df4a0f760f7a4}\label{class_bullet_a3755bb32d2f3e40a8e2df4a0f760f7a4} 
+\index{Bullet@{Bullet}!lifetime@{lifetime}}
+\index{lifetime@{lifetime}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{lifetime}{lifetime}}
+{\footnotesize\ttfamily float Bullet\+::lifetime = 2}
+
+Czas do automatycznego zniszczenia kuli. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00256}{256}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_a23947d7e2b24398746247e02aae946ee}\label{class_bullet_a23947d7e2b24398746247e02aae946ee} 
+\index{Bullet@{Bullet}!mySet@{mySet}}
+\index{mySet@{mySet}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{mySet}{mySet}}
+{\footnotesize\ttfamily set$<$\mbox{\hyperlink{class_bullet}{Bullet}}\texorpdfstring{$\ast$}{*}$>$\texorpdfstring{$\ast$}{*} Bullet\+::my\+Set\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00245}{245}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_af76c5c74678ba838691a225e45e9b67c}\label{class_bullet_af76c5c74678ba838691a225e45e9b67c} 
+\index{Bullet@{Bullet}!scaled\_spriteheight@{scaled\_spriteheight}}
+\index{scaled\_spriteheight@{scaled\_spriteheight}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{scaled\_spriteheight}{scaled\_spriteheight}}
+{\footnotesize\ttfamily int Bullet\+::scaled\+\_\+spriteheight}
+
+Przeskalowana wysokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00254}{254}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_a5cebda0e7e2e310ffb87e1ff9afe7454}\label{class_bullet_a5cebda0e7e2e310ffb87e1ff9afe7454} 
+\index{Bullet@{Bullet}!scaled\_spritewidth@{scaled\_spritewidth}}
+\index{scaled\_spritewidth@{scaled\_spritewidth}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{scaled\_spritewidth}{scaled\_spritewidth}}
+{\footnotesize\ttfamily int Bullet\+::scaled\+\_\+spritewidth}
+
+Przeskalowana szerokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00253}{253}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_ae6929333e6d15819be952fe2fe6d90bc}\label{class_bullet_ae6929333e6d15819be952fe2fe6d90bc} 
+\index{Bullet@{Bullet}!Speed@{Speed}}
+\index{Speed@{Speed}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{Speed}{Speed}}
+{\footnotesize\ttfamily float Bullet\+::\+Speed}
+
+Predkosc kuli. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00249}{249}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_a24c18846a154ff0cdd8d13608e9b31c9}\label{class_bullet_a24c18846a154ff0cdd8d13608e9b31c9} 
+\index{Bullet@{Bullet}!sprite@{sprite}}
+\index{sprite@{sprite}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{sprite}{sprite}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP\texorpdfstring{$\ast$}{*} Bullet\+::sprite = NULL}
+
+Wskaznik na bitmape (grafike) kuli. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00258}{258}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_a17d1f794026a9be902f1d343c3a5edd3}\label{class_bullet_a17d1f794026a9be902f1d343c3a5edd3} 
+\index{Bullet@{Bullet}!spriteheight@{spriteheight}}
+\index{spriteheight@{spriteheight}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{spriteheight}{spriteheight}}
+{\footnotesize\ttfamily int Bullet\+::spriteheight}
+
+Wysokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00251}{251}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_a12892f3f1a3dcf4492c54499a98c9bcd}\label{class_bullet_a12892f3f1a3dcf4492c54499a98c9bcd} 
+\index{Bullet@{Bullet}!spriteScale@{spriteScale}}
+\index{spriteScale@{spriteScale}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{spriteScale}{spriteScale}}
+{\footnotesize\ttfamily float Bullet\+::sprite\+Scale}
+
+Skala sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00252}{252}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_aaa7b37eb611df55da255947383799d4f}\label{class_bullet_aaa7b37eb611df55da255947383799d4f} 
+\index{Bullet@{Bullet}!spritewidth@{spritewidth}}
+\index{spritewidth@{spritewidth}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{spritewidth}{spritewidth}}
+{\footnotesize\ttfamily int Bullet\+::spritewidth}
+
+Szerokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00250}{250}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_acffaa6c3c8136695229d341c5e6da56a}\label{class_bullet_acffaa6c3c8136695229d341c5e6da56a} 
+\index{Bullet@{Bullet}!x@{x}}
+\index{x@{x}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily float Bullet\+::x}
+
+Pozycja w osi X. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00247}{247}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_a32300c127a7b59a55608a2d949c156c1}\label{class_bullet_a32300c127a7b59a55608a2d949c156c1} 
+\index{Bullet@{Bullet}!y@{y}}
+\index{y@{y}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily float Bullet\+::y}
+
+Pozycja w osi Y. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00248}{248}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_marian_8cpp}{Marian.\+cpp}}\end{DoxyCompactItemize}

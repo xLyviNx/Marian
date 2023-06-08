@@ -1,0 +1,31 @@
+\doxysection{coins.\+cpp}
+\hypertarget{coins_8cpp_source}{}\label{coins_8cpp_source}\mbox{\hyperlink{coins_8cpp}{Idź do dokumentacji tego pliku.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{coins_8h}{coins.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00010}\mbox{\hyperlink{classcoin_a24f11c077f8f24b8a498e3b5c3dcb92d}{00010}}\ \mbox{\hyperlink{classcoin_a24f11c077f8f24b8a498e3b5c3dcb92d}{coin::coin}}(\textcolor{keywordtype}{float}\ X,\ \textcolor{keywordtype}{float}\ Y,\ ALLEGRO\_BITMAP*\ sprite)}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00012}00012\ \ \ \ \ this-\/>\mbox{\hyperlink{classcoin_aef28dc4fcd80fc12d55ad0a56c90c2ae}{x}}\ =\ X;}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00013}00013\ \ \ \ \ this-\/>\mbox{\hyperlink{classcoin_ac686da8e4ed91e6590e0bba8886a1a6b}{y}}\ =\ Y;}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00014}00014\ \ \ \ \ this-\/>sprite\ =\ \mbox{\hyperlink{classcoin_ac9d951b37228019ef26a0db96ec30b37}{sprite}};}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00015}00015\ \}}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00022}\mbox{\hyperlink{classcoin_a199026f6cb4c8cbd654041f8d33a2c30}{00022}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcoin_a199026f6cb4c8cbd654041f8d33a2c30}{coin::Collides}}(\textcolor{keywordtype}{float}\ X,\ \textcolor{keywordtype}{float}\ Y)}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00023}00023\ \{}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (X\ >=\ \mbox{\hyperlink{classcoin_aef28dc4fcd80fc12d55ad0a56c90c2ae}{x}}\ -\/\ 25\ \&\&\ X\ <=\ \mbox{\hyperlink{classcoin_aef28dc4fcd80fc12d55ad0a56c90c2ae}{x}}\ +\ 25)}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00025}00025\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Y\ >=\ \mbox{\hyperlink{classcoin_ac686da8e4ed91e6590e0bba8886a1a6b}{y}}\ -\/\ 25\ \&\&\ Y\ <=\ \mbox{\hyperlink{classcoin_ac686da8e4ed91e6590e0bba8886a1a6b}{y}}\ +\ 25)}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00030}00030\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00032}00032\ \}}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00037}\mbox{\hyperlink{classcoin_a8ddeed2da141709ed7294b04c96c2b8d}{00037}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcoin_a8ddeed2da141709ed7294b04c96c2b8d}{coin::renderMe}}(\textcolor{keywordtype}{float}\ \mbox{\hyperlink{_marian_8cpp_a8235c6e9e346e312c0452da60148bc21}{cam\_x\_offset}})}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00038}00038\ \{}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\mbox{\hyperlink{classcoin_ac9d951b37228019ef26a0db96ec30b37}{sprite}})\ \{}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ al\_draw\_scaled\_bitmap(this-\/>\mbox{\hyperlink{classcoin_ac9d951b37228019ef26a0db96ec30b37}{sprite}},\ 0,\ 0,\ 100,\ 100,\ this-\/>\mbox{\hyperlink{classcoin_aef28dc4fcd80fc12d55ad0a56c90c2ae}{x}}\ -\/\ cam\_x\_offset\ -\/\ 25,\ this-\/>\mbox{\hyperlink{classcoin_ac686da8e4ed91e6590e0bba8886a1a6b}{y}}\ -\/\ 25,\ 50,\ 50,\ 0);}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{coins_8cpp_source_l00042}00042\ \}}
+
+\end{DoxyCode}

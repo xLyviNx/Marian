@@ -3,9 +3,18 @@
 #include <allegro5/allegro_primitives.h>
 #include "saveSystem.h"
 #include <iostream>
+
+/**
+ * @brief Konstruktor Menu.
+ *
+ * @param bhvs Wskaznik na vector zawierajacy wskazniki Behaviours.
+ * @param buttons Wskaznik na set zawierajacy aktualnie wcisniete przyciski.
+ * @param pointer Podwojny wskaznik na obiekt Menu
+ */
 Menu::Menu(vector<Behaviour*>* bhvs, set<int>* buttons, Menu** pointer) : Behaviour(bhvs)
 {
 	al_get_mouse_state(&(this->mousestate));
+	LoadedCoins = 0;
 	this->menuPointer = pointer;
 	this->TitleFont = al_load_ttf_font("Fonts/oldtimer.regular.ttf", 74, 0);
 	this->ButtonsFont = al_load_ttf_font("Fonts/Qaz-Regular.TTF", 35, 0);
@@ -17,7 +26,9 @@ Menu::Menu(vector<Behaviour*>* bhvs, set<int>* buttons, Menu** pointer) : Behavi
 	LoadedSpeed = 6.0;
 	LoadedSSpeed = 0;
 }
-
+/**
+ * @brief Funkcja Update, wywolywana co klatke.
+ */
 void Menu::Update()
 {
 	al_get_mouse_state(&(this->mousestate));
@@ -127,6 +138,10 @@ void Menu::Update()
 		
 	}
 }
+/**
+ * @brief Sprawdza czy obiekt Menu ma zaladowane czcionki.
+ * @return Czy czcionki sa zaladowane.
+ */
 bool Menu::hasFonts()
 {
 	if (TitleFont && ButtonsFont)
@@ -135,6 +150,9 @@ bool Menu::hasFonts()
 	}
 	return false;
 }
+/**
+ * @brief Destruktor Menu, niszczacy czcionki i ustawiajaca *menuPointer na NULL
+ */
 Menu::~Menu()
 {
 	al_destroy_font(this->ButtonsFont);
@@ -144,7 +162,14 @@ Menu::~Menu()
 	Behaviour::~Behaviour();
 }
 
-
+/**
+ * @brief Konstruktor Pauzy
+ * @param bhvs Wskaznik na vector zawierajacy wskazniki Behaviours.
+ * @param buttons Wskaznik na set zawierajacy aktualnie wcisniete przyciski.
+ * @param pointer Podwojny wskaznik na obiekt Pauzy.
+ * @param dt Wskaznik na deltaTime (czas miedzy klatkami).
+ * @param dead Wskaznik na wartosc logiczna mowiaca czy gracz zyje.
+ */
 Pause::Pause(vector<Behaviour*>* bhvs, set<int>* buttons, Pause** pointer, double* dt, bool* dead) : Behaviour(bhvs)
 {
 	this->pointer = pointer;
@@ -156,7 +181,9 @@ Pause::Pause(vector<Behaviour*>* bhvs, set<int>* buttons, Pause** pointer, doubl
 	this->dT = dt;
 	this->playerDied = dead;
 }
-
+/**
+ * @brief Funkcja Update, wywolywana co klatke.
+ */
 void Pause::Update()
 {
 	if (this->hasFonts())
@@ -201,6 +228,10 @@ void Pause::Update()
 		}
 	}
 }
+/**
+ * @brief Sprawdza czy obiekt Pauzy ma zaladowane czcionki.
+ * @return Czy czcionki sa zaladowane.
+ */
 bool Pause::hasFonts()
 {
 	if (TitleFont && uiFont)
@@ -209,8 +240,13 @@ bool Pause::hasFonts()
 	}
 	return false;
 }
+/**
+ * @brief Destruktor Pauzy, niszczacy czcionki i ustawiajaca *pointer na NULL
+ */
 Pause::~Pause()
 {
+	al_destroy_font(this->uiFont);
+	al_destroy_font(this->TitleFont);
 	*pointer = NULL;
 	Behaviour::~Behaviour();
 }

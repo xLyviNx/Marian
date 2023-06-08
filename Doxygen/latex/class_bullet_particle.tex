@@ -1,0 +1,182 @@
+\doxysection{Dokumentacja klasy Bullet\+Particle}
+\hypertarget{class_bullet_particle}{}\label{class_bullet_particle}\index{BulletParticle@{BulletParticle}}
+
+
+Klasa efektu strzelania (czasteczek)  
+
+
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_bullet_particle_a46bf695a955db9f59aeca3ee4f13ca66}{Bullet\+Particle}} (float nX, float nY, set$<$ \mbox{\hyperlink{class_bullet_particle}{Bullet\+Particle}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}mset)
+\begin{DoxyCompactList}\small\item\em Konstruktor czasteczki. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_bullet_particle_a6d855c08e21293b70be6225cd99c354a}{\texorpdfstring{$\sim$}{\string~}\+Bullet\+Particle}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor czasteczki. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bullet_particle_ad91acf4c81566b06cab6aea0c3c6ed84}{render\+Me}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja wyswietlajaca czasteczke. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bullet_particle_a39ec88edd5c25e2fed4e99a26cb9eb57}{Update\+Bullet\+Particle}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja aktualizujaca obiekt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_bullet_particle_ad9c351bcce4c4da9bb007d63555eb62f}{x}}
+\item 
+float \mbox{\hyperlink{class_bullet_particle_a422c1938134d547a71174c37890cbaa6}{y}}
+\item 
+float \mbox{\hyperlink{class_bullet_particle_ace4e383430ba2188e53b71970dee2682}{time\+Left}} = 0.\+0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+set$<$ \mbox{\hyperlink{class_bullet_particle}{Bullet\+Particle}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_bullet_particle_a838cfa67ce0222ed1ddaf10f1534d136}{my\+Set}}
+\item 
+float \mbox{\hyperlink{class_bullet_particle_aadd5e3098195fe5ac6a3b6e212c85d1c}{th}} = 0.\+5
+\item 
+bool \mbox{\hyperlink{class_bullet_particle_a1aafbe941c8bc60e7caa58a19f3dc0ab}{reachedth}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa efektu strzelania (czasteczek) 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00334}{334}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{class_bullet_particle_a46bf695a955db9f59aeca3ee4f13ca66}\label{class_bullet_particle_a46bf695a955db9f59aeca3ee4f13ca66} 
+\index{BulletParticle@{BulletParticle}!BulletParticle@{BulletParticle}}
+\index{BulletParticle@{BulletParticle}!BulletParticle@{BulletParticle}}
+\doxysubsubsection{\texorpdfstring{BulletParticle()}{BulletParticle()}}
+{\footnotesize\ttfamily Bullet\+Particle\+::\+Bullet\+Particle (\begin{DoxyParamCaption}\item[{float}]{nX,  }\item[{float}]{nY,  }\item[{set$<$ \mbox{\hyperlink{class_bullet_particle}{Bullet\+Particle}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{mset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Konstruktor czasteczki. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em nX} & Pozycja w osi X. \\
+\hline
+{\em nY} & Pozycja w osi Y. \\
+\hline
+{\em mset} & Wskaznik na set czasteczek. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00350}{350}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_particle_a6d855c08e21293b70be6225cd99c354a}\label{class_bullet_particle_a6d855c08e21293b70be6225cd99c354a} 
+\index{BulletParticle@{BulletParticle}!````~BulletParticle@{\texorpdfstring{$\sim$}{\string~}BulletParticle}}
+\index{````~BulletParticle@{\texorpdfstring{$\sim$}{\string~}BulletParticle}!BulletParticle@{BulletParticle}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}BulletParticle()}{\string~BulletParticle()}}
+{\footnotesize\ttfamily Bullet\+Particle\+::\texorpdfstring{$\sim$}{\string~}\+Bullet\+Particle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destruktor czasteczki. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00367}{367}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_bullet_particle_ad91acf4c81566b06cab6aea0c3c6ed84}\label{class_bullet_particle_ad91acf4c81566b06cab6aea0c3c6ed84} 
+\index{BulletParticle@{BulletParticle}!renderMe@{renderMe}}
+\index{renderMe@{renderMe}!BulletParticle@{BulletParticle}}
+\doxysubsubsection{\texorpdfstring{renderMe()}{renderMe()}}
+{\footnotesize\ttfamily void Bullet\+Particle\+::render\+Me (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Funkcja wyswietlajaca czasteczke. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00381}{381}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_particle_a39ec88edd5c25e2fed4e99a26cb9eb57}\label{class_bullet_particle_a39ec88edd5c25e2fed4e99a26cb9eb57} 
+\index{BulletParticle@{BulletParticle}!UpdateBulletParticle@{UpdateBulletParticle}}
+\index{UpdateBulletParticle@{UpdateBulletParticle}!BulletParticle@{BulletParticle}}
+\doxysubsubsection{\texorpdfstring{UpdateBulletParticle()}{UpdateBulletParticle()}}
+{\footnotesize\ttfamily void Bullet\+Particle\+::\+Update\+Bullet\+Particle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Funkcja aktualizujaca obiekt. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00391}{391}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_bullet_particle_a838cfa67ce0222ed1ddaf10f1534d136}\label{class_bullet_particle_a838cfa67ce0222ed1ddaf10f1534d136} 
+\index{BulletParticle@{BulletParticle}!mySet@{mySet}}
+\index{mySet@{mySet}!BulletParticle@{BulletParticle}}
+\doxysubsubsection{\texorpdfstring{mySet}{mySet}}
+{\footnotesize\ttfamily set$<$\mbox{\hyperlink{class_bullet_particle}{Bullet\+Particle}}\texorpdfstring{$\ast$}{*}$>$\texorpdfstring{$\ast$}{*} Bullet\+Particle\+::my\+Set\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na set czasteczek. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00337}{337}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_particle_a1aafbe941c8bc60e7caa58a19f3dc0ab}\label{class_bullet_particle_a1aafbe941c8bc60e7caa58a19f3dc0ab} 
+\index{BulletParticle@{BulletParticle}!reachedth@{reachedth}}
+\index{reachedth@{reachedth}!BulletParticle@{BulletParticle}}
+\doxysubsubsection{\texorpdfstring{reachedth}{reachedth}}
+{\footnotesize\ttfamily bool Bullet\+Particle\+::reachedth = false\hspace{0.3cm}{\ttfamily [private]}}
+
+Czy osiagnieto th. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00339}{339}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_particle_aadd5e3098195fe5ac6a3b6e212c85d1c}\label{class_bullet_particle_aadd5e3098195fe5ac6a3b6e212c85d1c} 
+\index{BulletParticle@{BulletParticle}!th@{th}}
+\index{th@{th}!BulletParticle@{BulletParticle}}
+\doxysubsubsection{\texorpdfstring{th}{th}}
+{\footnotesize\ttfamily float Bullet\+Particle\+::th = 0.\+5\hspace{0.3cm}{\ttfamily [private]}}
+
+Czas po ktorym czasteczka zaczyna malec. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00338}{338}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_particle_ace4e383430ba2188e53b71970dee2682}\label{class_bullet_particle_ace4e383430ba2188e53b71970dee2682} 
+\index{BulletParticle@{BulletParticle}!timeLeft@{timeLeft}}
+\index{timeLeft@{timeLeft}!BulletParticle@{BulletParticle}}
+\doxysubsubsection{\texorpdfstring{timeLeft}{timeLeft}}
+{\footnotesize\ttfamily float Bullet\+Particle\+::time\+Left = 0.\+0}
+
+Czas czasteczki. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00343}{343}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_particle_ad9c351bcce4c4da9bb007d63555eb62f}\label{class_bullet_particle_ad9c351bcce4c4da9bb007d63555eb62f} 
+\index{BulletParticle@{BulletParticle}!x@{x}}
+\index{x@{x}!BulletParticle@{BulletParticle}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily float Bullet\+Particle\+::x}
+
+Pozycja w osi X. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00341}{341}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_bullet_particle_a422c1938134d547a71174c37890cbaa6}\label{class_bullet_particle_a422c1938134d547a71174c37890cbaa6} 
+\index{BulletParticle@{BulletParticle}!y@{y}}
+\index{y@{y}!BulletParticle@{BulletParticle}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily float Bullet\+Particle\+::y}
+
+Pozycja w osi Y. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00342}{342}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_marian_8cpp}{Marian.\+cpp}}\end{DoxyCompactItemize}

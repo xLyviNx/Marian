@@ -1,0 +1,297 @@
+\doxysection{save\+System.\+cpp}
+\hypertarget{save_system_8cpp_source}{}\label{save_system_8cpp_source}\mbox{\hyperlink{save_system_8cpp}{Idź do dokumentacji tego pliku.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{save_system_8h}{saveSystem.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{save_system_8h}{saveSystem.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00008}00008\ \mbox{\hyperlink{class_save_system}{SaveSystem}}**\ \mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00009}00009\ FILE*\ \mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00013}\mbox{\hyperlink{class_save_system_a71edf96fc625e089bb42b5a19eda339e}{00013}}\ \mbox{\hyperlink{class_save_system_a71edf96fc625e089bb42b5a19eda339e}{SaveSystem::\string~SaveSystem}}()}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}}\ \&\&\ *(\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}})\ ==\ \textcolor{keyword}{this})\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ (*SaveSystem::Instance)\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}})\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ fclose(\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ DESTROYED."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00027}\mbox{\hyperlink{class_save_system_a92fc1b2c7570becf319b9165f694c905}{00027}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_system_a92fc1b2c7570becf319b9165f694c905}{SaveSystem::Create}}()}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00028}00028\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}})}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00030}00030\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}}\ =\ (\mbox{\hyperlink{class_save_system}{SaveSystem}}**)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_save_system}{SaveSystem}}*));}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}})}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ (*SaveSystem::Instance)\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}}\ \&\&\ *\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}}\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00038}00038\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_save_system}{SaveSystem}}*\ sS\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_save_system_a8adaf73164a861fb67b3bb0d9eb5be4b}{SaveSystem}}();}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}============SAVE\ SYSTEM:\ \%p,\ \%p\(\backslash\)n"{}},\ \mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}},\ (*\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}}));}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00045}00045\ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00049}\mbox{\hyperlink{class_save_system_ab85778be9679dca9f5ae2409b89ea67b}{00049}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_system_ab85778be9679dca9f5ae2409b89ea67b}{SaveSystem::Destroy}}()}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00050}00050\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}}\ \&\&\ *(\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}})\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00052}00052\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_save_system}{SaveSystem}}*\ ss\ =\ *\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}};}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ *\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}DESTROYING\ \%p\(\backslash\)n"{}},\ ss);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}(ss);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00059}00059\ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00063}\mbox{\hyperlink{class_save_system_a8adaf73164a861fb67b3bb0d9eb5be4b}{00063}}\ \mbox{\hyperlink{class_save_system_a8adaf73164a861fb67b3bb0d9eb5be4b}{SaveSystem::SaveSystem}}()}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00064}00064\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00065}00065\ \ \ \ \ this-\/>\mbox{\hyperlink{class_save_system_a79b059cd89b7120a5d9bdecae99fa469}{Start}}();}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00066}00066\ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00070}\mbox{\hyperlink{class_save_system_a79b059cd89b7120a5d9bdecae99fa469}{00070}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_system_a79b059cd89b7120a5d9bdecae99fa469}{SaveSystem::Start}}()}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00071}00071\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{if}\ (!SaveSystem::Instance)}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00073}00073\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}}\ =\ (\mbox{\hyperlink{class_save_system}{SaveSystem}}**)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_save_system}{SaveSystem}}*));}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00075}00075\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}})}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00077}00077\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!*\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}}\ \&\&\ \mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}})}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ *\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}}\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((!(*\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}})\ \&\&\ !\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}})\ ||\ (*\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}}\ ==\ \textcolor{keyword}{this}\ \&\&\ !\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}}))}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ fopen\_s(\&(\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}}),\ \mbox{\hyperlink{save_system_8h_a53c83a66e461adf57ea7f7b94ac51568}{SAVEFILE\_LOCATION}},\ \textcolor{stringliteral}{"{}r+"{}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}})\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ Save\ System\ Initialized\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ Save\ File\ Not\ Found!\ Creating\ One.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fopen\_s(\&(\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}}),\ \mbox{\hyperlink{save_system_8h_a53c83a66e461adf57ea7f7b94ac51568}{SAVEFILE\_LOCATION}},\ \textcolor{stringliteral}{"{}w+"{}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}})}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*SaveSystem::Instance)\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_save_system_a6f5c9578bdc4d0c1bb6e0ae55dcd75a3}{setStartData}}();}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ Save\ System\ Initialization\ FAILED!\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}})}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ Save\ System\ Initialization\ FAILED,\ \%p!\(\backslash\)n"{}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*SaveSystem::Instance)\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ Save\ System\ ALREADY\ INITIALIZED!\ (SAVE\ FILE:\ \%p,\ OBJ:\ \%p\ (\%p)\ vs\ \%p)\(\backslash\)n"{}},\ \mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}},\ \mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}},\ *\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((*\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}})\ !=\ \textcolor{keyword}{this})}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Instance:\ \%p,\ me:\ \%p\(\backslash\)n"{}},\ *\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00125}00125\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00126}00126\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00127}00127\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ Everything\ is\ broken!"{}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00129}00129\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00130}00130\ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00136}\mbox{\hyperlink{class_save_system_aaed70ef46070c20f66630c5b4bd6a13f}{00136}}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_save_system_aaed70ef46070c20f66630c5b4bd6a13f}{SaveSystem::readLine}}(\textcolor{keywordtype}{int}\ lineNumber)}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00137}00137\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00138}00138\ \ \ \ \ \textcolor{keywordtype}{char}*\ buf\ =\ (\textcolor{keywordtype}{char}*)malloc(\mbox{\hyperlink{save_system_8h_ad5131de0b5004c64db5e79e8aac7471e}{LINE\_LENGTH}}\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00139}00139\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}}\ \&\&\ buf)\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ SAVE\ INSTANCE\ :\ "{}}\ <<\ (\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}}\ !=\ NULL)\ <<\ \textcolor{stringliteral}{"{}\ ,\ BUF\ :\ "{}}\ <<\ (buf\ !=\ NULL)\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ fseek(\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}},\ 0,\ SEEK\_SET);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ keepread\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currLine\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ fgets(buf,\ \mbox{\hyperlink{save_system_8h_ad5131de0b5004c64db5e79e8aac7471e}{LINE\_LENGTH}},\ \mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{save_system_8h_a1eb10af02ac1ffa2af39dc5e07f47773}{trimText}}(buf,\ \mbox{\hyperlink{save_system_8h_ad5131de0b5004c64db5e79e8aac7471e}{LINE\_LENGTH}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Checking\ (\%d):\ \%s\(\backslash\)n"{}},\ currLine,\ buf);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currLine\ ==\ lineNumber)}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ keepread\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ Returning\ Line\ \%d:\ '\%s'\(\backslash\)nREMEMBER\ TO\ FREE\ YOUR\ MEMORY\ AFTER\ FINISHING\ OPERATIONS\(\backslash\)n"{}},\ currLine,\ buf);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (keepread)}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (feof(\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}}))}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ keepread\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buf[0]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ Could\ not\ find\ the\ line.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ currLine++;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (keepread);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00166}00166\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00167}00167\ \ \ \ \ \textcolor{keywordflow}{return}\ buf\ !=\ NULL\ ?\ buf\ :\ NULL;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00169}00169\ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00176}\mbox{\hyperlink{save_system_8cpp_a33f5cc6288afda6c963a938c3fea53cc}{00176}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{save_system_8cpp_a33f5cc6288afda6c963a938c3fea53cc}{trimText}}(\textcolor{keywordtype}{char}*\ text,\ \textcolor{keywordtype}{int}\ n)}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00177}00177\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00178}00178\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n\ -\/\ 1;\ i++)}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00179}00179\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (text[i]\ ==\ \textcolor{charliteral}{'\(\backslash\)n'}\ \&\&\ text[i\ +\ 1]\ ==\ \textcolor{charliteral}{'\(\backslash\)0'})}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ text[i]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00185}00185\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00186}00186\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00187}00187\ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00192}\mbox{\hyperlink{class_save_system_ab9d01a0d970a19bd2999e5c2b154b455}{00192}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_save_system_ab9d01a0d970a19bd2999e5c2b154b455}{SaveSystem::LoadLevel}}()}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00193}00193\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00194}00194\ \ \ \ \ \textcolor{keywordtype}{int}\ tret\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00195}00195\ \ \ \ \ \textcolor{keywordtype}{char}*\ loadS\ =\ \mbox{\hyperlink{class_save_system_aaed70ef46070c20f66630c5b4bd6a13f}{readLine}}(1);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00196}00196\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ Attempting\ to\ convert\ '"{}}\ <<\ loadS\ <<\ \textcolor{stringliteral}{"{}'\ to\ INT.\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00197}00197\ \ \ \ \ tret\ =\ atoi(loadS);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00198}00198\ \ \ \ \ printf(\textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ Loading\ Level:\ \%d\(\backslash\)n"{}},\ tret);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00199}00199\ \ \ \ \ free(loadS);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00200}00200\ \ \ \ \ \textcolor{keywordflow}{return}\ tret;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00201}00201\ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00206}\mbox{\hyperlink{class_save_system_afb117808daf84017b15833e71d1aa3ae}{00206}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_save_system_afb117808daf84017b15833e71d1aa3ae}{SaveSystem::LoadCoins}}()}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00207}00207\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00208}00208\ \ \ \ \ \textcolor{keywordtype}{int}\ tret\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00209}00209\ \ \ \ \ \textcolor{keywordtype}{char}*\ loadS\ =\ \mbox{\hyperlink{class_save_system_aaed70ef46070c20f66630c5b4bd6a13f}{readLine}}(2);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00210}00210\ \ \ \ \ tret\ =\ atoi(loadS);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00211}00211\ \ \ \ \ printf(\textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ Loading\ COINS:\ \%d\(\backslash\)n"{}},\ tret);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00212}00212\ \ \ \ \ free(loadS);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00213}00213\ \ \ \ \ \textcolor{keywordflow}{return}\ tret;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00214}00214\ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00219}\mbox{\hyperlink{class_save_system_a5a87d2f7da0c52858844c9fb654d9840}{00219}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_save_system_a5a87d2f7da0c52858844c9fb654d9840}{SaveSystem::LoadShootSpeed}}()}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00220}00220\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00221}00221\ \ \ \ \ \textcolor{keywordtype}{int}\ tret\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00222}00222\ \ \ \ \ \textcolor{keywordtype}{char}*\ loadS\ =\ \mbox{\hyperlink{class_save_system_aaed70ef46070c20f66630c5b4bd6a13f}{readLine}}(3);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00223}00223\ \ \ \ \ tret\ =\ atoi(loadS);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00224}00224\ \ \ \ \ printf(\textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ Loading\ COINS:\ \%d\(\backslash\)n"{}},\ tret);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00225}00225\ \ \ \ \ free(loadS);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00226}00226\ \ \ \ \ \textcolor{keywordflow}{return}\ tret;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00227}00227\ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00232}\mbox{\hyperlink{class_save_system_a8d3665b6e09282eda0bb95e7a7499c13}{00232}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_save_system_a8d3665b6e09282eda0bb95e7a7499c13}{SaveSystem::LoadSpeed}}()}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00233}00233\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00234}00234\ \ \ \ \ \textcolor{keywordtype}{float}\ tret\ =\ 6.0;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00235}00235\ \ \ \ \ \textcolor{keywordtype}{char}*\ loadS\ =\ \mbox{\hyperlink{class_save_system_aaed70ef46070c20f66630c5b4bd6a13f}{readLine}}(4);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00236}00236\ \ \ \ \ printf(\textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ Attempting\ to\ convert\ '\%s'\ to\ FLOAT\ SPEED\(\backslash\)n"{}},\ loadS);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00237}00237\ \ \ \ \ tret\ =\ atof(loadS);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00238}00238\ \ \ \ \ printf(\textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ Loading\ SPEED:\ \%lf\(\backslash\)n"{}},\ tret);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00239}00239\ \ \ \ \ free(loadS);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00240}00240\ \ \ \ \ \textcolor{keywordflow}{return}\ tret;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00241}00241\ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00247}\mbox{\hyperlink{class_save_system_ac4b071ba8cdd6587218640ccc47af368}{00247}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_system_ac4b071ba8cdd6587218640ccc47af368}{SaveSystem::printAtLine}}(\textcolor{keywordtype}{int}\ lineNumber,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ content)}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00248}00248\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00250}00250\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}}\ \&\&\ *\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}}\ ==\ \textcolor{keyword}{this})\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}})}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ ERROR!\ Not\ initialized\ (saveLine)\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ fseek(\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}},\ 0,\ SEEK\_SET);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currLine\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buf[\mbox{\hyperlink{save_system_8h_ad5131de0b5004c64db5e79e8aac7471e}{LINE\_LENGTH}}]\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \textcolor{comment}{//strcpy\_s(stringToPut,\ LINE\_LENGTH,\ content);}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ FILE*\ tempfile\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ fopen\_s(\&tempfile,\ \mbox{\hyperlink{save_system_8h_ac7e10e0cf8292253429695b8b1346ee3}{TEMPFILE\_LOCATION}},\ \textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tempfile)}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!feof(\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}})\ \&\&\ fgets(buf,\ \mbox{\hyperlink{save_system_8h_ad5131de0b5004c64db5e79e8aac7471e}{LINE\_LENGTH}},\ \mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}})\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currLine\ ==\ lineNumber)}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ strcpy\_s(buf,\ \mbox{\hyperlink{save_system_8h_ad5131de0b5004c64db5e79e8aac7471e}{LINE\_LENGTH}}\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}),\ content);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//printf("{}line:\ \%d,\ '\%s'\(\backslash\)n"{},\ currLine,\ buf);}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//printf("{}Putting\ '\%s'\(\backslash\)n"{},\ buf);}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fputs(buf,\ tempfile);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ lastl\ =\ strlen(buf)\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buf[lastl]\ !=\ \textcolor{charliteral}{'\(\backslash\)n'}\ \&\&\ buf[lastl]\ !=\ \textcolor{charliteral}{'\(\backslash\)0'}\ \&\&\ !feof(\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}}))\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fputc(\textcolor{charliteral}{'\(\backslash\)n'},\ tempfile);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//printf("{}CBUF:\ '\%c'\ (+1:\ \%d)\(\backslash\)n"{},\ buf[lastl],\ buf[lastl+1]);}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currLine++;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ atEnd\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (currLine\ <=\ lineNumber\ \&\&\ currLine\ >\ 1)}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ atEnd\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fputc(\textcolor{charliteral}{'\(\backslash\)n'},\ tempfile);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currLine++;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (atEnd\ ||\ currLine\ ==\ 1)}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ strcpy\_s(buf,\ \mbox{\hyperlink{save_system_8h_ad5131de0b5004c64db5e79e8aac7471e}{LINE\_LENGTH}}\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}),\ content);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fputs(buf,\ tempfile);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ lastl\ =\ strlen(buf)\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buf[lastl]\ !=\ \textcolor{charliteral}{'\(\backslash\)n'}\ \&\&\ buf[lastl]\ !=\ \textcolor{charliteral}{'\(\backslash\)0'}\ \&\&\ !feof(\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}}))\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fputc(\textcolor{charliteral}{'\(\backslash\)n'},\ tempfile);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//printf("{}CBUF:\ '\%c'\ (+1:\ \%d)\(\backslash\)n"{},\ buf[lastl],\ buf[lastl\ +\ 1]);}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ puts(\textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ Reloading\ the\ SAVE\ SYSTEM\ (replacing\ files)"{}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ fclose(tempfile);}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ fclose(\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ (\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}})\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ remove(\mbox{\hyperlink{save_system_8h_a53c83a66e461adf57ea7f7b94ac51568}{SAVEFILE\_LOCATION}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ rename(\mbox{\hyperlink{save_system_8h_ac7e10e0cf8292253429695b8b1346ee3}{TEMPFILE\_LOCATION}},\ \mbox{\hyperlink{save_system_8h_a53c83a66e461adf57ea7f7b94ac51568}{SAVEFILE\_LOCATION}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ remove(\mbox{\hyperlink{save_system_8h_ac7e10e0cf8292253429695b8b1346ee3}{TEMPFILE\_LOCATION}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ fopen\_s(\&(\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}}),\ \mbox{\hyperlink{save_system_8h_a53c83a66e461adf57ea7f7b94ac51568}{SAVEFILE\_LOCATION}},\ \textcolor{stringliteral}{"{}r+"{}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}}))}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ Couldn't\ load\ file\ again.\ Destroying\ Instance.\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_save_system_ab85778be9679dca9f5ae2409b89ea67b}{SaveSystem::Destroy}}();}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00310}00310\ }
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ puts(\textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ ERROR\ CREATING\ TEMP\ FILE."{}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00316}00316\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00317}00317\ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00321}\mbox{\hyperlink{class_save_system_a13a33d8c03e9e7ea059e9c2cd739ec1d}{00321}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_system_a13a33d8c03e9e7ea059e9c2cd739ec1d}{SaveSystem::restart}}()}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00322}00322\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00324}00324\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}}\ \&\&\ *\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}}\ ==\ \textcolor{keyword}{this})\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ puts(\textcolor{stringliteral}{"{}[SAVE\ SYSTEM]\ RESTARTING"{}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{SaveSystem::saveFile}})}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ fclose(\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{saveFile}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00329}00329\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_save_system_ab85778be9679dca9f5ae2409b89ea67b}{SaveSystem::Destroy}}();}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ *\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{SaveSystem::Instance}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_save_system_a92fc1b2c7570becf319b9165f694c905}{SaveSystem::Create}}();}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00334}00334\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00335}00335\ \}}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00339}\mbox{\hyperlink{class_save_system_a6f5c9578bdc4d0c1bb6e0ae55dcd75a3}{00339}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_system_a6f5c9578bdc4d0c1bb6e0ae55dcd75a3}{SaveSystem::setStartData}}()}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00340}00340\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00341}00341\ \ \ \ \ \mbox{\hyperlink{class_save_system_ac4b071ba8cdd6587218640ccc47af368}{printAtLine}}(1,\ \textcolor{stringliteral}{"{}1"{}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00342}00342\ \ \ \ \ \mbox{\hyperlink{class_save_system_ac4b071ba8cdd6587218640ccc47af368}{printAtLine}}(2,\ \textcolor{stringliteral}{"{}0"{}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00343}00343\ \ \ \ \ \mbox{\hyperlink{class_save_system_ac4b071ba8cdd6587218640ccc47af368}{printAtLine}}(3,\ \textcolor{stringliteral}{"{}0"{}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00344}00344\ \ \ \ \ \mbox{\hyperlink{class_save_system_ac4b071ba8cdd6587218640ccc47af368}{printAtLine}}(4,\ \textcolor{stringliteral}{"{}6.00"{}});}
+\DoxyCodeLine{\Hypertarget{save_system_8cpp_source_l00345}00345\ \}}
+
+\end{DoxyCode}

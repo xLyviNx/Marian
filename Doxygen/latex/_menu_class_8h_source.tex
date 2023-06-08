@@ -1,0 +1,51 @@
+\doxysection{Menu\+Class.\+h}
+\hypertarget{_menu_class_8h_source}{}\label{_menu_class_8h_source}\mbox{\hyperlink{_menu_class_8h}{Idź do dokumentacji tego pliku.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_base_8h}{Base.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <allegro5/allegro.h>}}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_font.h>}}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_ttf.h>}}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00009}00009\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00015}\mbox{\hyperlink{class_menu}{00015}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_menu}{Menu}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00016}00016\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00017}\mbox{\hyperlink{class_menu_a3c105efcf39ccad389cefca132029b81}{00017}}\ \ \ \ \ set<int>*\ \mbox{\hyperlink{class_menu_a3c105efcf39ccad389cefca132029b81}{buttons}};}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00018}\mbox{\hyperlink{class_menu_ad369d288f0d41082dd20160d1ab27be3}{00018}}\ \ \ \ \ ALLEGRO\_FONT*\ \mbox{\hyperlink{class_menu_ad369d288f0d41082dd20160d1ab27be3}{TitleFont}};\ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00019}\mbox{\hyperlink{class_menu_a4d25805dc0c4702c5778d71274fc96c3}{00019}}\ \ \ \ \ ALLEGRO\_FONT*\ \mbox{\hyperlink{class_menu_a4d25805dc0c4702c5778d71274fc96c3}{otherFont}};\ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00020}\mbox{\hyperlink{class_menu_a16c592820ca4b25c13d32daa3b185eaa}{00020}}\ \ \ \ \ ALLEGRO\_FONT*\ \mbox{\hyperlink{class_menu_a16c592820ca4b25c13d32daa3b185eaa}{ButtonsFont}};\ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00021}\mbox{\hyperlink{class_menu_a819c6d5745acf1238a6ea969b5782a8e}{00021}}\ \ \ \ \ ALLEGRO\_MOUSE\_STATE\ \mbox{\hyperlink{class_menu_a819c6d5745acf1238a6ea969b5782a8e}{mousestate}};\ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00022}\mbox{\hyperlink{class_menu_a0794baa5e44e86ccd79b87e8aaf1e311}{00022}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_a0794baa5e44e86ccd79b87e8aaf1e311}{loadingdone}};\ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00023}\mbox{\hyperlink{class_menu_a4bc699f9ff509ae0f268743946d1c68a}{00023}}\ \ \ \ \ \mbox{\hyperlink{class_menu}{Menu}}**\ \mbox{\hyperlink{class_menu_a4bc699f9ff509ae0f268743946d1c68a}{menuPointer}};\ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00024}00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00025}\mbox{\hyperlink{class_menu_ad475dc548776c6ae4dad32577fc90088}{00025}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_menu_ad475dc548776c6ae4dad32577fc90088}{LoadedLevel}};\ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00026}\mbox{\hyperlink{class_menu_a6bb9181bde1afee9b9b2970a28e1e8e9}{00026}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_menu_a6bb9181bde1afee9b9b2970a28e1e8e9}{LoadedCoins}};\ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00027}\mbox{\hyperlink{class_menu_a4ed6be0eb3eb933f70ef61679cf152bb}{00027}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_menu_a4ed6be0eb3eb933f70ef61679cf152bb}{LoadedSpeed}};\ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00028}\mbox{\hyperlink{class_menu_a5eed018c76fab7cb717240f12be90239}{00028}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_menu_a5eed018c76fab7cb717240f12be90239}{LoadedSSpeed}};\ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00029}\mbox{\hyperlink{class_menu_aa8507474d5da99e6e8eec5d11bb8e2de}{00029}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_menu_aa8507474d5da99e6e8eec5d11bb8e2de}{Choice}};\ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00030}00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_af29d71473a414e31e914bc637840cb3e}{Update}}();\ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00031}00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_aea1f57d5b961f4fb7a8a1e11082ac6f0}{hasFonts}}();}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00032}00032\ \ \ \ \ \mbox{\hyperlink{class_menu}{Menu}}(vector<Behaviour*>*,\ set<int>*,\ \mbox{\hyperlink{class_menu}{Menu}}**);}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00033}00033\ \ \ \ \ \mbox{\hyperlink{class_menu_a831387f51358cfb88cd018e1777bc980}{\string~Menu}}();}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00034}00034\ \};}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00041}\mbox{\hyperlink{class_pause}{00041}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pause}{Pause}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00042}00042\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00043}\mbox{\hyperlink{class_pause_a116c4d0ae42bbbc13da07fc5d5ea8895}{00043}}\ \ \ \ \ \mbox{\hyperlink{class_pause}{Pause}}**\ \mbox{\hyperlink{class_pause_a116c4d0ae42bbbc13da07fc5d5ea8895}{pointer}};\ \ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00044}\mbox{\hyperlink{class_pause_a6fe7de5cd6cef1a3779563060cfb503e}{00044}}\ \ \ \ \ set<int>*\ \mbox{\hyperlink{class_pause_a6fe7de5cd6cef1a3779563060cfb503e}{buttons}};}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00045}\mbox{\hyperlink{class_pause_a7feaa87a67e17f5c3c31c6e44ba5cb01}{00045}}\ \ \ \ \ ALLEGRO\_FONT*\ \mbox{\hyperlink{class_pause_a7feaa87a67e17f5c3c31c6e44ba5cb01}{TitleFont}};\ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00046}\mbox{\hyperlink{class_pause_a3f4bbb0841ecaff98dfed2d577224bc8}{00046}}\ \ \ \ \ ALLEGRO\_FONT*\ \mbox{\hyperlink{class_pause_a3f4bbb0841ecaff98dfed2d577224bc8}{uiFont}};\ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00047}\mbox{\hyperlink{class_pause_aa7615f02d25676cbae72279a0fd2e131}{00047}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_pause_aa7615f02d25676cbae72279a0fd2e131}{enablecd}};}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00048}\mbox{\hyperlink{class_pause_a0bb479ee5825e52125839db7084177fb}{00048}}\ \ \ \ \ \textcolor{keywordtype}{bool}*\ \mbox{\hyperlink{class_pause_a0bb479ee5825e52125839db7084177fb}{playerDied}};}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00049}\mbox{\hyperlink{class_pause_a2e5bf66a341dab17676a446c9b1643e3}{00049}}\ \ \ \ \ \textcolor{keywordtype}{double}*\ \mbox{\hyperlink{class_pause_a2e5bf66a341dab17676a446c9b1643e3}{dT}};\ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00050}00050\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00051}\mbox{\hyperlink{class_pause_a52d7b71662fc70c60460754e36f16d28}{00051}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_pause_a52d7b71662fc70c60460754e36f16d28}{enabled}};\ }
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00052}00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pause_a8f44fe4c6e070235173cd4a765734155}{Update}}();}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00053}00053\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_pause_a319c6e0e03dbd6872a7b926627d8f671}{hasFonts}}();}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00054}00054\ \ \ \ \ \mbox{\hyperlink{class_pause}{Pause}}(vector<Behaviour*>*,\ set<int>*,\ \mbox{\hyperlink{class_pause}{Pause}}**,\ \textcolor{keywordtype}{double}*,\ \textcolor{keywordtype}{bool}*);}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00055}00055\ \ \ \ \ \mbox{\hyperlink{class_pause_a6a564235e87326133c14069be196eeac}{\string~Pause}}();}
+\DoxyCodeLine{\Hypertarget{_menu_class_8h_source_l00056}00056\ \};}
+
+\end{DoxyCode}

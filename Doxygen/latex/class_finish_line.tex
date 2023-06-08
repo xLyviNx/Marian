@@ -1,0 +1,278 @@
+\doxysection{Dokumentacja klasy Finish\+Line}
+\hypertarget{class_finish_line}{}\label{class_finish_line}\index{FinishLine@{FinishLine}}
+
+
+Klasa Mety.  
+
+
+Diagram dziedziczenia dla Finish\+Line\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_finish_line}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_finish_line_a2f3826f13be4178c7d5ed0345610f625}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Metoda Update, wywolywana co klatke gry. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_finish_line_a262ab9efa39f697226b4f3bdc4d1f7f5}{Finish\+Line}} (vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}bhvs, float nX, float nY, short int lvl, \mbox{\hyperlink{class_player}{Player}} \texorpdfstring{$\ast$}{*}plr, ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}my\+Sprite, \mbox{\hyperlink{class_finish_screen}{Finish\+Screen}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}fS, ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*}finishfont, bool hide)
+\begin{DoxyCompactList}\small\item\em Konstruktor mety. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Metody publiczne dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea}{Update}} ()
+\item 
+virtual void \mbox{\hyperlink{class_behaviour_a52b11b4146f8f5104a6bf2be502e6d99}{Start}} ()
+\item 
+\mbox{\hyperlink{class_behaviour_a9c68ba38fdb413f4cc67165ceb10b327}{Behaviour}} (std\+::vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Konstruktor \doxylink{class_behaviour}{Behaviour}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_behaviour_ab9099279876aa70410ab96ca589531df}{\texorpdfstring{$\sim$}{\string~}\+Behaviour}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor \doxylink{class_behaviour}{Behaviour}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_finish_line_a7d667bc8343863c4f2072ce514cfe288}{hidden}} = false
+\item 
+float \mbox{\hyperlink{class_finish_line_ac55d315471d220b8946e46645391b18b}{x}}
+\item 
+float \mbox{\hyperlink{class_finish_line_a540fcb3b38e11379764008604170fe53}{y}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Atrybuty publiczne dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_behaviour_ab5a2aad5b8a3c2cb6612520878817137}{removing}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_finish_line_a8127d584481cd7dcc7529bc5172686d5}{spritewidth}} = 401
+\item 
+int \mbox{\hyperlink{class_finish_line_ac5e64ae84520890657614136eb55294f}{spriteheight}} = 251
+\item 
+float \mbox{\hyperlink{class_finish_line_ad4c6c80253461484abe866ce0bba4b08}{sprite\+Scale}} = 1
+\item 
+int \mbox{\hyperlink{class_finish_line_a3af6cca933b219c380378241e0dcdcee}{scaled\+\_\+spritewidth}}
+\item 
+int \mbox{\hyperlink{class_finish_line_aa6ec299197e1e857431eb74e19cfe5ea}{scaled\+\_\+spriteheight}}
+\item 
+short int \mbox{\hyperlink{class_finish_line_aab8500b92d0f8040f8c1bd5106d6718d}{level}}
+\item 
+\mbox{\hyperlink{class_player}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_finish_line_ac260585b0ae91fcccdfe14c4eaaaf387}{m\+Player}} = NULL
+\item 
+ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_finish_line_aef5b761360cbedff12d3e1c6d9da08cf}{finish\+Font}} = NULL
+\item 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_finish_line_a793568ac70d4dd07c0c73eedd2c1a487}{sprite}} = NULL
+\item 
+\mbox{\hyperlink{class_finish_screen}{Finish\+Screen}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_finish_line_ab3aacd689d1f2fd114d8a77e9f975fb1}{f\+Screen}} = NULL
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Dodatkowe Dziedziczone Składowe}
+\doxysubsection*{Atrybuty chronione dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_behaviour_a95a3f857ba7c6e573a987e1ef1148cc2}{vec}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa Mety. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00851}{851}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{class_finish_line_a262ab9efa39f697226b4f3bdc4d1f7f5}\label{class_finish_line_a262ab9efa39f697226b4f3bdc4d1f7f5} 
+\index{FinishLine@{FinishLine}!FinishLine@{FinishLine}}
+\index{FinishLine@{FinishLine}!FinishLine@{FinishLine}}
+\doxysubsubsection{\texorpdfstring{FinishLine()}{FinishLine()}}
+{\footnotesize\ttfamily Finish\+Line\+::\+Finish\+Line (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{bhvs,  }\item[{float}]{nX,  }\item[{float}]{nY,  }\item[{short int}]{lvl,  }\item[{\mbox{\hyperlink{class_player}{Player}} \texorpdfstring{$\ast$}{*}}]{plr,  }\item[{ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}}]{my\+Sprite,  }\item[{\mbox{\hyperlink{class_finish_screen}{Finish\+Screen}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{fS,  }\item[{ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*}}]{finishfont,  }\item[{bool}]{hide }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Konstruktor mety. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em bhvs} & Wskaznik na set zawierajacy wszystkie klasy typu \doxylink{class_behaviour}{Behaviour}. \\
+\hline
+{\em nX} & Pozycja na osi X. \\
+\hline
+{\em nY} & Pozycja na osi Y. \\
+\hline
+{\em lvl} & Poziom. \\
+\hline
+{\em plr} & Wskaznik na gracza. \\
+\hline
+{\em my\+Sprite} & Wskaznik na bitmape (grafike) mety. \\
+\hline
+{\em fS} & Podwojny wskaznik na ekran koncowy. \\
+\hline
+{\em finishfont} & Wskaznik na czcionke ekranu koncowego. \\
+\hline
+{\em hide} & Czy meta jest ukryta. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00906}{906}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_finish_line_a2f3826f13be4178c7d5ed0345610f625}\label{class_finish_line_a2f3826f13be4178c7d5ed0345610f625} 
+\index{FinishLine@{FinishLine}!Update@{Update}}
+\index{Update@{Update}!FinishLine@{FinishLine}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Finish\+Line\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Metoda Update, wywolywana co klatke gry. 
+
+
+
+Reimplementowana z \mbox{\hyperlink{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea}{Behaviour}}.
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00871}{871}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_finish_line_aef5b761360cbedff12d3e1c6d9da08cf}\label{class_finish_line_aef5b761360cbedff12d3e1c6d9da08cf} 
+\index{FinishLine@{FinishLine}!finishFont@{finishFont}}
+\index{finishFont@{finishFont}!FinishLine@{FinishLine}}
+\doxysubsubsection{\texorpdfstring{finishFont}{finishFont}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+FONT\texorpdfstring{$\ast$}{*} Finish\+Line\+::finish\+Font = NULL\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na czcionke. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00861}{861}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_finish_line_ab3aacd689d1f2fd114d8a77e9f975fb1}\label{class_finish_line_ab3aacd689d1f2fd114d8a77e9f975fb1} 
+\index{FinishLine@{FinishLine}!fScreen@{fScreen}}
+\index{fScreen@{fScreen}!FinishLine@{FinishLine}}
+\doxysubsubsection{\texorpdfstring{fScreen}{fScreen}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_finish_screen}{Finish\+Screen}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Finish\+Line\+::f\+Screen = NULL\hspace{0.3cm}{\ttfamily [private]}}
+
+Podwojny wskaznik na obiekt ekranu koncowego. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00863}{863}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_finish_line_a7d667bc8343863c4f2072ce514cfe288}\label{class_finish_line_a7d667bc8343863c4f2072ce514cfe288} 
+\index{FinishLine@{FinishLine}!hidden@{hidden}}
+\index{hidden@{hidden}!FinishLine@{FinishLine}}
+\doxysubsubsection{\texorpdfstring{hidden}{hidden}}
+{\footnotesize\ttfamily bool Finish\+Line\+::hidden = false}
+
+Czy meta jest ukryta. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00865}{865}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_finish_line_aab8500b92d0f8040f8c1bd5106d6718d}\label{class_finish_line_aab8500b92d0f8040f8c1bd5106d6718d} 
+\index{FinishLine@{FinishLine}!level@{level}}
+\index{level@{level}!FinishLine@{FinishLine}}
+\doxysubsubsection{\texorpdfstring{level}{level}}
+{\footnotesize\ttfamily short int Finish\+Line\+::level\hspace{0.3cm}{\ttfamily [private]}}
+
+Poziom. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00859}{859}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_finish_line_ac260585b0ae91fcccdfe14c4eaaaf387}\label{class_finish_line_ac260585b0ae91fcccdfe14c4eaaaf387} 
+\index{FinishLine@{FinishLine}!mPlayer@{mPlayer}}
+\index{mPlayer@{mPlayer}!FinishLine@{FinishLine}}
+\doxysubsubsection{\texorpdfstring{mPlayer}{mPlayer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}}\texorpdfstring{$\ast$}{*} Finish\+Line\+::m\+Player = NULL\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na gracza. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00860}{860}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_finish_line_aa6ec299197e1e857431eb74e19cfe5ea}\label{class_finish_line_aa6ec299197e1e857431eb74e19cfe5ea} 
+\index{FinishLine@{FinishLine}!scaled\_spriteheight@{scaled\_spriteheight}}
+\index{scaled\_spriteheight@{scaled\_spriteheight}!FinishLine@{FinishLine}}
+\doxysubsubsection{\texorpdfstring{scaled\_spriteheight}{scaled\_spriteheight}}
+{\footnotesize\ttfamily int Finish\+Line\+::scaled\+\_\+spriteheight\hspace{0.3cm}{\ttfamily [private]}}
+
+Przeskalowana wysokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00858}{858}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_finish_line_a3af6cca933b219c380378241e0dcdcee}\label{class_finish_line_a3af6cca933b219c380378241e0dcdcee} 
+\index{FinishLine@{FinishLine}!scaled\_spritewidth@{scaled\_spritewidth}}
+\index{scaled\_spritewidth@{scaled\_spritewidth}!FinishLine@{FinishLine}}
+\doxysubsubsection{\texorpdfstring{scaled\_spritewidth}{scaled\_spritewidth}}
+{\footnotesize\ttfamily int Finish\+Line\+::scaled\+\_\+spritewidth\hspace{0.3cm}{\ttfamily [private]}}
+
+Przeskalowana szerokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00857}{857}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_finish_line_a793568ac70d4dd07c0c73eedd2c1a487}\label{class_finish_line_a793568ac70d4dd07c0c73eedd2c1a487} 
+\index{FinishLine@{FinishLine}!sprite@{sprite}}
+\index{sprite@{sprite}!FinishLine@{FinishLine}}
+\doxysubsubsection{\texorpdfstring{sprite}{sprite}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP\texorpdfstring{$\ast$}{*} Finish\+Line\+::sprite = NULL\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na bitmape (grafike) mety. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00862}{862}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_finish_line_ac5e64ae84520890657614136eb55294f}\label{class_finish_line_ac5e64ae84520890657614136eb55294f} 
+\index{FinishLine@{FinishLine}!spriteheight@{spriteheight}}
+\index{spriteheight@{spriteheight}!FinishLine@{FinishLine}}
+\doxysubsubsection{\texorpdfstring{spriteheight}{spriteheight}}
+{\footnotesize\ttfamily int Finish\+Line\+::spriteheight = 251\hspace{0.3cm}{\ttfamily [private]}}
+
+Wysokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00855}{855}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_finish_line_ad4c6c80253461484abe866ce0bba4b08}\label{class_finish_line_ad4c6c80253461484abe866ce0bba4b08} 
+\index{FinishLine@{FinishLine}!spriteScale@{spriteScale}}
+\index{spriteScale@{spriteScale}!FinishLine@{FinishLine}}
+\doxysubsubsection{\texorpdfstring{spriteScale}{spriteScale}}
+{\footnotesize\ttfamily float Finish\+Line\+::sprite\+Scale = 1\hspace{0.3cm}{\ttfamily [private]}}
+
+Skala sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00856}{856}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_finish_line_a8127d584481cd7dcc7529bc5172686d5}\label{class_finish_line_a8127d584481cd7dcc7529bc5172686d5} 
+\index{FinishLine@{FinishLine}!spritewidth@{spritewidth}}
+\index{spritewidth@{spritewidth}!FinishLine@{FinishLine}}
+\doxysubsubsection{\texorpdfstring{spritewidth}{spritewidth}}
+{\footnotesize\ttfamily int Finish\+Line\+::spritewidth = 401\hspace{0.3cm}{\ttfamily [private]}}
+
+Szerokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00854}{854}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_finish_line_ac55d315471d220b8946e46645391b18b}\label{class_finish_line_ac55d315471d220b8946e46645391b18b} 
+\index{FinishLine@{FinishLine}!x@{x}}
+\index{x@{x}!FinishLine@{FinishLine}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily float Finish\+Line\+::x}
+
+Pozycja na osi X. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00866}{866}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_finish_line_a540fcb3b38e11379764008604170fe53}\label{class_finish_line_a540fcb3b38e11379764008604170fe53} 
+\index{FinishLine@{FinishLine}!y@{y}}
+\index{y@{y}!FinishLine@{FinishLine}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily float Finish\+Line\+::y}
+
+Pozycja na osi Y. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00867}{867}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_marian_8cpp}{Marian.\+cpp}}\end{DoxyCompactItemize}

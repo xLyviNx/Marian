@@ -1,0 +1,149 @@
+\doxysection{Dokumentacja klasy coin}
+\hypertarget{classcoin}{}\label{classcoin}\index{coin@{coin}}
+
+
+Klasa coina.  
+
+
+
+
+{\ttfamily \#include $<$coins.\+h$>$}
+
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcoin_a24f11c077f8f24b8a498e3b5c3dcb92d}{coin}} (float, float, ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Konstruktor coina. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classcoin_a199026f6cb4c8cbd654041f8d33a2c30}{Collides}} (float, float)
+\begin{DoxyCompactList}\small\item\em Sprawdza czy coin koliduje z graczem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcoin_a8ddeed2da141709ed7294b04c96c2b8d}{render\+Me}} (float)
+\begin{DoxyCompactList}\small\item\em Wyswietla coina na ekranie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classcoin_ac9d951b37228019ef26a0db96ec30b37}{sprite}}
+\item 
+float \mbox{\hyperlink{classcoin_aef28dc4fcd80fc12d55ad0a56c90c2ae}{x}}
+\item 
+float \mbox{\hyperlink{classcoin_ac686da8e4ed91e6590e0bba8886a1a6b}{y}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa coina. 
+
+Sa to punkty ktore gracz moze zdobywac, by kupowac ulepszenia. 
+
+Definicja w linii \mbox{\hyperlink{coins_8h_source_l00011}{11}} pliku \mbox{\hyperlink{coins_8h_source}{coins.\+h}}.
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{classcoin_a24f11c077f8f24b8a498e3b5c3dcb92d}\label{classcoin_a24f11c077f8f24b8a498e3b5c3dcb92d} 
+\index{coin@{coin}!coin@{coin}}
+\index{coin@{coin}!coin@{coin}}
+\doxysubsubsection{\texorpdfstring{coin()}{coin()}}
+{\footnotesize\ttfamily coin\+::coin (\begin{DoxyParamCaption}\item[{float}]{X,  }\item[{float}]{Y,  }\item[{ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}}]{sprite }\end{DoxyParamCaption})}
+
+
+
+Konstruktor coina. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em X} & Wspolrzedna X. \\
+\hline
+{\em Y} & Wspolrzedna Y. \\
+\hline
+{\em sprite} & Sprite coina (wskaznik na bitmape). \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{coins_8cpp_source_l00010}{10}} pliku \mbox{\hyperlink{coins_8cpp_source}{coins.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classcoin_a199026f6cb4c8cbd654041f8d33a2c30}\label{classcoin_a199026f6cb4c8cbd654041f8d33a2c30} 
+\index{coin@{coin}!Collides@{Collides}}
+\index{Collides@{Collides}!coin@{coin}}
+\doxysubsubsection{\texorpdfstring{Collides()}{Collides()}}
+{\footnotesize\ttfamily bool coin\+::\+Collides (\begin{DoxyParamCaption}\item[{float}]{X,  }\item[{float}]{Y }\end{DoxyParamCaption})}
+
+
+
+Sprawdza czy coin koliduje z graczem. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em X} & Wspolrzedna X. \\
+\hline
+{\em Y} & Wspolrzedna Y. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Czy coin koliduje z danymi koordynatami. 
+\end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{coins_8cpp_source_l00022}{22}} pliku \mbox{\hyperlink{coins_8cpp_source}{coins.\+cpp}}.
+
+\Hypertarget{classcoin_a8ddeed2da141709ed7294b04c96c2b8d}\label{classcoin_a8ddeed2da141709ed7294b04c96c2b8d} 
+\index{coin@{coin}!renderMe@{renderMe}}
+\index{renderMe@{renderMe}!coin@{coin}}
+\doxysubsubsection{\texorpdfstring{renderMe()}{renderMe()}}
+{\footnotesize\ttfamily void coin\+::render\+Me (\begin{DoxyParamCaption}\item[{float}]{cam\+\_\+x\+\_\+offset }\end{DoxyParamCaption})}
+
+
+
+Wyswietla coina na ekranie. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em cam\+\_\+x\+\_\+offset} & Offset kamery na osi X. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{coins_8cpp_source_l00037}{37}} pliku \mbox{\hyperlink{coins_8cpp_source}{coins.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{classcoin_ac9d951b37228019ef26a0db96ec30b37}\label{classcoin_ac9d951b37228019ef26a0db96ec30b37} 
+\index{coin@{coin}!sprite@{sprite}}
+\index{sprite@{sprite}!coin@{coin}}
+\doxysubsubsection{\texorpdfstring{sprite}{sprite}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP\texorpdfstring{$\ast$}{*} coin\+::sprite}
+
+Sprite coina (wskaznik na bitmape). 
+
+Definicja w linii \mbox{\hyperlink{coins_8h_source_l00015}{15}} pliku \mbox{\hyperlink{coins_8h_source}{coins.\+h}}.
+
+\Hypertarget{classcoin_aef28dc4fcd80fc12d55ad0a56c90c2ae}\label{classcoin_aef28dc4fcd80fc12d55ad0a56c90c2ae} 
+\index{coin@{coin}!x@{x}}
+\index{x@{x}!coin@{coin}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily float coin\+::x}
+
+Pozycja na osi X coina na mapie. 
+
+Definicja w linii \mbox{\hyperlink{coins_8h_source_l00017}{17}} pliku \mbox{\hyperlink{coins_8h_source}{coins.\+h}}.
+
+\Hypertarget{classcoin_ac686da8e4ed91e6590e0bba8886a1a6b}\label{classcoin_ac686da8e4ed91e6590e0bba8886a1a6b} 
+\index{coin@{coin}!y@{y}}
+\index{y@{y}!coin@{coin}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily float coin\+::y}
+
+Pozycja na osi Y coina na mapie. 
+
+Definicja w linii \mbox{\hyperlink{coins_8h_source_l00018}{18}} pliku \mbox{\hyperlink{coins_8h_source}{coins.\+h}}.
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{coins_8h}{coins.\+h}}\item 
+\mbox{\hyperlink{coins_8cpp}{coins.\+cpp}}\end{DoxyCompactItemize}

@@ -8,30 +8,90 @@
 #include <vector>
 #include "Base.h"
 #include "MenuClass.h"
-#define BACKGROUND_FILE "Picture/Background.bmp"
-#define MAP1_width 3840
-#define FLOOR_FILE "Picture/floor.bmp"
-#define MARIAN_FILE "Picture/Marian.bmp"
-#define BULLET_TEXTURE "Picture/bullet.bmp"
-#define BULLET_TEXTURE2 "Picture/Buletv2.bmp"
-#define PLATFORM_FILE "Picture/platform1x1.bmp"
-#define ENEMY_TEXTURE "Picture/Enemy.bmp"
-#define ENEMY2_TEXTURE "Picture/enemy2.bmp"
-#define BOSS_TEXTURE "Picture/boss.bmp"
-#define PLATFORM2_FILE "Picture/platform1x1_2.bmp"
-#define PLATFORM3_FILE "Picture/platform1x1_3.bmp"
-#define FINISH_FILE "Picture/Finish.bmp"
-#define COIN_FILE "Picture/MarioCoin.bmp"
-#define maxY 100
 #include "saveSystem.h"
 #include "floorO.h"
 #include "coins.h"
+/**
+ * @brief Lokalizacja bitmapy Background
+ */
+#define BACKGROUND_FILE "Picture/Background.bmp"
+ /**
+  * @brief Szerokosc mapy
+  */
+#define MAP1_width 3840
+  /**
+   * @brief Lokalizacja bitmapy podlogi
+   */
+#define FLOOR_FILE "Picture/floor.bmp"
+/**
+ * @brief Lokalizacja bitmapy gracza
+ */
+#define MARIAN_FILE "Picture/Marian.bmp"
+/**
+ * @brief Lokalizacja bitmapy pocisku gracza
+ */
+#define BULLET_TEXTURE "Picture/bullet.bmp"
+/**
+ * @brief Lokalizacja bitmapy pocisku przeciwnikow
+ */
+#define BULLET_TEXTURE2 "Picture/Buletv2.bmp"
+ /**
+  * @brief Lokalizacja bitmapy platformy
+  */
+#define PLATFORM_FILE "Picture/platform1x1.bmp"
+/**
+ * @brief Lokalizacja bitmapy przeciwnika
+ */
+#define ENEMY_TEXTURE "Picture/Enemy.bmp"
+/**
+ * @brief Lokalizacja bitmapy drugiego przeciwnika
+ */
+#define ENEMY2_TEXTURE "Picture/enemy2.bmp"
+/**
+ * @brief Lokalizacja bitmapy bossa
+ */
+#define BOSS_TEXTURE "Picture/boss.bmp"
+ /**
+  * @brief Lokalizacja bitmapy platformy
+  */
+#define PLATFORM2_FILE "Picture/platform1x1_2.bmp"
+/**
+ * @brief Lokalizacja bitmapy platformy
+*/
+#define PLATFORM3_FILE "Picture/platform1x1_3.bmp"
+/**
+ * @brief Lokalizacja bitmapy mety
+*/
+#define FINISH_FILE "Picture/Finish.bmp"
+/**
+ * @brief Lokalizacja bitmapy punktow
+*/
+#define COIN_FILE "Picture/MarioCoin.bmp"
+/**
+ * @brief Maksymalna wysokosc na ktora moze skoczyc gracz (-maxY)
+*/
+#define maxY 100
+
 using namespace std;
-
+/**
+ * @brief Wektor (lista) zawierajaca wszystkie utworzone obiekty Behaviour Behaviour.
+*/
 vector<Behaviour*> Behaviours;
-
+/**
+ * @brief Czas miedzy klatkami.
+*/
 double deltaTime = 0;
+/**
+ * @brief Przesuniecie (offset) kamery w osi X.
+*/
 float cam_x_offset;
+/**
+ * @brief Funkcja przycinajaca float do podanej minimalnej i maksymalnej wartosci.
+ * @param val Wartosc wejsciowa.
+ * @param min Wartosc minimalna.
+ * @param max Wartosc maksymalna
+ * @return Wartosc pomiedzy minimalna a maksymalna dopuszczalna wartoscia.
+*/
 float clamp(float val, float min, float max)
 {
     if (val > max && max > min)
@@ -51,22 +111,27 @@ float clamp(float val, float min, float max)
         return val;
     }
 }
-
+/**
+ * @brief Klasa Platformy.
+*/
 class Platform : public Behaviour
 {
 private:
-    int blocks = 0;
-    ALLEGRO_BITMAP* sprite = NULL;
-    set<Platform*>* SetPointer = NULL;
+    int blocks = 0; /**< Ilosc blokow platformy. */
+    ALLEGRO_BITMAP* sprite = NULL; /**< Sprite (wskaznik na bitmape) jednego bloku platformy. */
+    set<Platform*>* SetPointer = NULL; /**< Wskaznik na set platform. */
 public:
-    float x = 0;
-    float y = 0;
-    int spritewidth = 65;
-    int spriteheight = 65;
-    float spriteScale = 1;
-    int scaled_spritewidth;
-    int scaled_spriteheight;
-    bool Vertical = false;
+    float x = 0; /**< Pozycja w osi X. */
+    float y = 0;/**< Pozycja w osi Y. */
+    int spritewidth = 65; /**< Szerokosc sprite'u. */
+    int spriteheight = 65; /**< Wysokosc sprite'u. */
+    float spriteScale = 1; /**< Skala sprite'u. */
+    int scaled_spritewidth; /**< Przeskalowana szerokosc sprite'u. */
+    int scaled_spriteheight; /**< Przeskalowana wysokosc sprite'u. */
+    bool Vertical = false; /**< Wartosc logiczna ktora mowi czy platforma jest pionowa lub pozioma. */
+    /**
+     * @brief Destruktor Platformy.
+    */
     ~Platform()
     {
         if (SetPointer)
@@ -74,6 +139,16 @@ public:
             SetPointer->erase(this);
         }
     }
+    /**
+     * @brief Konstruktor Platformy.
+     * @param bhvs Wskaznik na wektor behaviours.
+     * @param nX Wspolrzedna X srodka platformy.
+     * @param nY Wspolrzedna Y srodka platformy.
+     * @param blocksAroundMiddle Ilosc blokow w kazda ze stron.
+     * @param vertical Okreslenie czy platforma jest pionowa czy pozioma.
+     * @param mySprite Wskaznik na bitmape (grafike) platformy.
+     * @param pointer Wskaznik na set platform.
+    */
     Platform(vector<Behaviour*>* bhvs, float nX, float nY, int blocksAroundMiddle, bool vertical, ALLEGRO_BITMAP* mySprite, set<Platform*>* pointer) :Behaviour(bhvs)
     {
         this->x = nX;
@@ -121,6 +196,14 @@ public:
 
         }
     }
+    /**
+     * @brief Funkcja sprawdzajaca czy dane koordynaty sa w platformie.
+     * @param cX Wskaznik na wspolrzedna X.
+     * @param cY Wskaznik na wspolrzedna Y.
+     * @param cW Szerokosc kolidujacego obiektu.
+     * @param cH Wysokosc kolidujacego obiektu.
+     * @return Wartosc logiczna - czy cos jest w platformie.
+    */
     bool isMyBlock(float *cX, float *cY, float cW, float cH)
     {
         float left = this->x - (this->blocks * this->scaled_spritewidth) - (this->scaled_spritewidth / 2);
@@ -134,9 +217,6 @@ public:
             top = this->y - (this->blocks * this->scaled_spriteheight) - ((float)this->scaled_spriteheight / 2);
             bottom = this->y + (this->blocks * this->scaled_spriteheight) + ((float)this->scaled_spriteheight / 2);
         }
-        //al_draw_filled_rectangle(left-cam_x_offset, top, right-cam_x_offset, bottom, al_map_rgb(255, 0, 0));
-        //al_draw_filled_rectangle(x - scaled_spritewidth / 2, y - scaled_spriteheight / 2, x + scaled_spritewidth / 2, y + scaled_spriteheight / 2, al_map_rgb(0, 255, 0));
-
         bool isInsideHorizontal = *cX - cW / 2 <= right && *cX + cW / 2 >= left;
         bool isInsideVertical = *cY - cH / 2 <= bottom && *cY + cH / 2 >= top;
         bool col = (isInsideHorizontal ) && ( isInsideVertical);
@@ -156,25 +236,39 @@ public:
     }
 
 };
-
-
+/**
+ * @brief Klasa kuli.
+*/
 class Bullet
 {
 private:
     set<Bullet*>* mySet;
     public:
-        float x;
-        float y;
-        float Speed;
-        int spritewidth;
-        int spriteheight;
-        float spriteScale;
-        int scaled_spritewidth;
-        int scaled_spriteheight;
-        int direction;
-        float lifetime = 2;
-        bool hurtPlayer = false;
-        ALLEGRO_BITMAP* sprite = NULL;
+        float x; /**< Pozycja w osi X. */
+        float y;/**< Pozycja w osi Y. */
+        float Speed;/**< Predkosc kuli. */
+        int spritewidth; /**< Szerokosc sprite'u. */
+        int spriteheight;/**< Wysokosc sprite'u. */
+        float spriteScale;/**< Skala sprite'u. */
+        int scaled_spritewidth; /**< Przeskalowana szerokosc sprite'u. */
+        int scaled_spriteheight; /**< Przeskalowana wysokosc sprite'u. */
+        int direction;/**< Kierunek w ktorym leci kula. */
+        float lifetime = 2;/**< Czas do automatycznego zniszczenia kuli. */
+        bool hurtPlayer = false; /**< Czy kula ma ranic gracza. */
+        ALLEGRO_BITMAP* sprite = NULL; /**< Wskaznik na bitmape (grafike) kuli. */
+        /**
+         * @brief Konstruktor kuli.
+         * @param nX Wspolrzedna X kuli.
+         * @param nY Wspolrzedna Y kuli.
+         * @param dir kierunek kuli.
+         * @param speed Predkosc kuli.
+         * @param spriteFile Wskaznik na bitmape (grafike) kuli.
+         * @param mset Wskaznik na set kul.
+         * @param hPlayer Czy kula ma ranic gracza.
+         * @param sizeX Szerokosc.
+         * @param sizeY Wysokosc.
+         * @param scale Skala.
+        */
         Bullet(float nX, float nY, int dir, float speed, ALLEGRO_BITMAP* spriteFile, set<Bullet*>* mset, bool hPlayer, int sizeX, int sizeY, float scale)
         {
             mySet = mset;
@@ -198,6 +292,9 @@ private:
             }
 
         }
+        /**
+         * @brief Destruktor kuli.
+        */
         ~Bullet()
         {
 
@@ -210,17 +307,19 @@ private:
                 }
             }
         }
+        /**
+         * @brief Funkcja renderujaca (wyswietlajaca) kule.
+        */
         void renderMe()
         {
-            //cout << "My bullet sprite is " << sprite << endl;
             if (this->sprite) {
-                //cout << "Rendering" << endl;
                 if (this->direction == 0) { delete(this); return; }
                 al_draw_scaled_bitmap(this->sprite, 0, 0, this->spritewidth, this->spriteheight, this->x - cam_x_offset - (this->direction * this->scaled_spritewidth / 2), this->y - this->scaled_spriteheight / 2, this->direction * this->scaled_spritewidth, this->scaled_spriteheight, 0);
-                //al_draw_filled_circle(this->x-cam_x_offset, this->y, 2, al_map_rgb(255, 100, 100));
-                //al_draw_bitmap(this->marian, WIDTH / 2, HEIGHT / 2, 0);
             }
         }
+        /**
+         * @brief Funkcja aktualizujaca wartosci kuli.
+        */
         void UpdateBullet()
         {
             this->x = this->x + ((this->direction * Speed * 100) * deltaTime);
@@ -229,16 +328,25 @@ private:
             renderMe();
         }
 };
+/**
+ * @brief Klasa efektu strzelania (czasteczek)
+*/
 class BulletParticle
 {
 private:
-    set<BulletParticle*>* mySet;
-    float th = 0.5;
-    bool reachedth = false;
+    set<BulletParticle*>* mySet;  /**< Wskaznik na set czasteczek. */
+    float th = 0.5;  /**< Czas po ktorym czasteczka zaczyna malec. */
+    bool reachedth = false;  /**< Czy osiagnieto th. */
 public:
-    float x;
-    float y;
-    float timeLeft = 0.0;
+    float x; /**< Pozycja w osi X. */
+    float y; /**< Pozycja w osi Y. */
+    float timeLeft = 0.0; /**< Czas czasteczki. */
+    /**
+     * @brief Konstruktor czasteczki.
+     * @param nX Pozycja w osi X.
+     * @param nY Pozycja w osi Y.
+     * @param mset Wskaznik na set czasteczek.
+    */
     BulletParticle(float nX, float nY, set<BulletParticle*>* mset)
     {
         mySet = mset;
@@ -253,6 +361,9 @@ public:
             delete(this);
         }
     }
+    /**
+     * @brief Destruktor czasteczki.
+    */
     ~BulletParticle()
     {
         if (mySet != NULL)
@@ -263,16 +374,20 @@ public:
                 mySet->erase(it);
             }
         }
-        //delete(this);
     }
+    /**
+     * @brief Funkcja wyswietlajaca czasteczke.
+    */
     void renderMe()
     {
         if (this->timeLeft>0) {
             al_draw_filled_circle(this->x - cam_x_offset, this->y, timeLeft * 30, al_map_rgba(255, 230, 10, (int)(timeLeft * 300)));
             this->x -= 30 * deltaTime;
-            //al_draw_bitmap(this->marian, WIDTH / 2, HEIGHT / 2, 0);
         }
     }
+    /**
+     * @brief Funkcja aktualizujaca obiekt.
+    */
     void UpdateBulletParticle()
     {
         if (!reachedth)
@@ -292,17 +407,22 @@ public:
         
     }
 };
-
+/**
+ * @brief Klasa gracza.
+*/
 class Player : public Behaviour
 {
 private:
-    float moveForceX = 0;
-    float shootCd = 0;
-    float shot = 0;
-    float jumpCd = 0;
-    ALLEGRO_BITMAP* bulletsprite = NULL;
-    ALLEGRO_FONT* debugFont = al_load_ttf_font("Fonts/oldtimer.regular.ttf", 30, 0);
-    ALLEGRO_FONT* upFont = al_load_ttf_font("Fonts/Qaz-Regular.ttf", 22, 0);
+    float moveForceX = 0; /**< Sila poruszania sie w osi X. */
+    float shootCd = 0; /**< Cooldown strzelania. */
+    float shot = 0; /**< Wartosc zwiekszana przy strzelaniu (Odrzut). */
+    float jumpCd = 0; /**< Cooldown skoku. */
+    ALLEGRO_BITMAP* bulletsprite = NULL; /**< Wskaznik na bitmape (grafike) kul gracza. */
+    ALLEGRO_FONT* debugFont = al_load_ttf_font("Fonts/oldtimer.regular.ttf", 30, 0); /**< Czcionka. */
+    ALLEGRO_FONT* upFont = al_load_ttf_font("Fonts/Qaz-Regular.ttf", 22, 0);/**< Czcionka. */
+    /**
+     * @brief Funkcja wyswietlajaca gracza.
+    */
     void renderMe()
     {
         if (this->marian) {
@@ -312,17 +432,22 @@ private:
             //al_draw_bitmap(this->marian, WIDTH / 2, HEIGHT / 2, 0);
         }
     }
-    set<int>* pressedKeys = NULL;
-    set<Platform*>* platforms = NULL;
+    set<int>* pressedKeys = NULL; /**< Wskaznik na set wcisnietych przyciskow. */
+    set<Platform*>* platforms = NULL;  /**< Wskaznik na set platform. */
+    /**
+     * @brief Metoda skakania gracza.
+    */
     void Jump()
     {
         if (isGrounded && jumpCd<=0)
         {
-            //cout << "Jump\n";
             this->velocityY -= jumpForce*15;
             jumpCd += 0.2;
         }
     }
+    /**
+     * @brief Metoda strzelania.
+    */
     void Shoot()
     {
         if (this->shootCd <= 0)
@@ -337,6 +462,9 @@ private:
             }
         }
     }
+    /**
+     * @brief Metoda petli (co klatke) kul wystrzelonych przez gracza.
+    */
     void loopBullets()
     {
         set<Bullet*> BtoDelete;
@@ -375,6 +503,12 @@ private:
         }
         BPtoDelete.clear();
     }
+    /**
+     * @brief Metoda sprawdzajaca czy na danych koordynatach jest platforma.
+     * @param cx Pozycja w osi X.
+     * @param cy Pozycja w osi Y.
+     * @return Wartosc logiczna - true/false.
+    */
     bool platformBlock(float cx, float cy)
     {
         for (set<Platform*>::iterator it = (*platforms).begin(); it != (*platforms).end(); it++)
@@ -386,6 +520,12 @@ private:
         }
         return false;
     }
+    /**
+     * @brief Metoda sprawdzajaca czy gracz stoi na podlozu.
+     * @param cx Wskaznik na pozycje w osi X.
+     * @param cy Wskaznik na pozycje w osi Y.
+     * @return Wartosc logiczna - true/false.
+    */
     bool checkGrounded(float *cx, float *cy)
     {
         for (set<Platform*>::iterator it = (*platforms).begin(); it != (*platforms).end(); it++)
@@ -397,29 +537,33 @@ private:
         }
         return false;
     }
-    bool* died;
-    float upcd = 0;
+    bool* died; /**< Czy gracz umarl. */
+    float upcd = 0;  /**< Cooldown ulepszen. */
 public:
-    float x;
-    float y;
-    float Speed = 6.0;
-    int spritewidth;
-    int spriteheight;
-    float spriteScale;
-    int scaled_spritewidth;
-    int scaled_spriteheight;
-    bool isGrounded = false;
-    float jumpForce = 60;
-    float lastMoveForceX = 0;
-    int Health = 100;
-    ALLEGRO_BITMAP* marian = NULL;
-    set<Bullet*>* Bullets;
-    set<BulletParticle*> BulletParticles;
-    set<coin*>* coinsR;
-    float velocityY = 0;
-    int* coinsTaken;
-    int cdUpgrade;
-
+    float x; /**< Pozycja na osi X. */
+    float y;/**< Pozycja na osi Y. */
+    float Speed = 6.0;/**< Predkosc poruszania sie gracza. */
+    int spritewidth; /**< Szerokosc sprite'u. */
+    int spriteheight;/**< Wysokosc sprite'u. */
+    float spriteScale;/**< Skala sprite'u. */
+    int scaled_spritewidth; /**< Przeskalowana szerokosc sprite'u. */
+    int scaled_spriteheight; /**< Przeskalowana wysokosc sprite'u. */
+    bool isGrounded = false; /**< Czy gracz stoi na podlozu. */
+    float jumpForce = 60; /**< Sila skoku. */
+    float lastMoveForceX = 0;/**< Ostatni kierunek poruszania sie gracza. */
+    int Health = 100; /**< Zdrowie gracza. */
+    ALLEGRO_BITMAP* marian = NULL;/**< Wskaznik na bitmape (grafike) gracza. */
+    set<Bullet*>* Bullets; /**< Wskaznik na set wystrzelonych kul. */
+    set<BulletParticle*> BulletParticles; /**< Wskaznik na czasteczki (efekt strzelania). */
+    set<coin*>* coinsR; /**< Wskaznik na set coinow (punktow). */
+    float velocityY = 0; /**< Przyspieszenie gracza w osi Y. */
+    int* coinsTaken;/**< Wskaznik na zmienna zebranych coinow (punktow) gracza. */
+    int cdUpgrade;/**< Ulepszenie szybkostrzelnosci gracza. */
+    /**
+     * @brief Metoda wywolywana co klatke gry.
+     * 
+     * Przeprowadza ona wszelkiego rodzaju operacje, jest to glowna petla gry dla gracza. Obsluguje ona np. poruszanie sie oraz strzelanie.
+    */
     void Update()
     {
         if (Health <= 0)
@@ -437,7 +581,6 @@ public:
         renderMe();
         moveForceX = 0;
         float gravForce = 0;
-        //isGrounded = false;
         if (upcd > 0)
         {
             upcd -= deltaTime;
@@ -479,7 +622,6 @@ public:
         {
             (*it) -> renderMe(cam_x_offset);
             bool collided = (*it)->Collides((float)x, (float)y);
-            //cout << "Collided: " << collided << endl;
             if (collided)
             {
                 coin* c = (*it);
@@ -515,9 +657,7 @@ public:
             }
         }
         if (moveForceX != 0) { lastMoveForceX = moveForceX; }
-        //cout << "Force: " << moveForceX << endl;
-
-      
+     
         if (this->shot > 0) {
             this->shot = clamp(shot-deltaTime * 40, 0, 40);
         }
@@ -534,7 +674,6 @@ public:
                 this->x = clamp(newX, this->scaled_spritewidth / 2, MAP1_width - this->scaled_spritewidth / 2);
             }
         }
-        //al_draw_circle(newX, this->y, 2, al_map_rgb(100, 30, 30), 5);
         if (this->shot) {
             newX = this->x - (this->lastMoveForceX * 10 * this->shot) * deltaTime;
             if (!platformBlock(newX, this->y-1))
@@ -543,9 +682,6 @@ public:
             }
 
         }
-
-
-        //cout << isGrounded << endl;
         if (!isGrounded)
         {
             float change = fastJump ? 3 : extendJump ? 0.6 : 1;
@@ -556,7 +692,6 @@ public:
         {
             velocityY = 0;
         }
-        //cout << "Velocity: " << velocityY << endl;
         float newY = clamp(y + (velocityY * deltaTime), -maxY, 580 - scaled_spriteheight / 2);
         if (!isGrounded || velocityY < 0) {
             this->y = newY;
@@ -570,11 +705,12 @@ public:
         {
             cam_x_offset -= WIDTH;
         }
-        if (debugFont)
-        {
-            //al_draw_textf(debugFont, al_map_rgb(0, 50, 0), 15, 15, 0, " velocity: %lf, grounded: %d (%d), XY: %lf, %lf", velocityY, isGrounded, lowground, this->x, this->y);
-        }
     }
+    /**
+     * @brief Metoda Start.
+     *
+     * Przeprowadza (domyslnie jednorazowo) pierwsze operacje po konstruktorze.
+    */
     void Start()
     {
         this->marian = al_load_bitmap(MARIAN_FILE);
@@ -586,6 +722,18 @@ public:
         scaled_spriteheight = ceil(spriteheight * spriteScale);
         cout << "Stworzono mnie: rozmiary? " << scaled_spriteheight << " " << scaled_spritewidth << endl;
     }
+    /**
+     * @brief Konstruktor Gracza.
+     *
+     * @param bhvs Wskaznik na vector zawierajacy wszystkie Behaviour (aby dodac do niego gracza).
+     * @param keys Wskaznik na set wcisnietych klawiszy.
+     * @param pts Wskaznik na set zawierajacy wszystkie platformy.
+     * @param bulletSpr Wskaznik na bitmape (grafike) kul gracza.
+     * @param blts Wskaznik na set zawierajacy kule wystrzelone przez gracza.
+     * @param dead Wskaznik na wartosc logiczna mowiaca czy gracz zyje czy nie.
+     * @param coinsad Wskaznik na set zawierajacy wszystkie punkty (coinsy).
+     * @param tCoins Wskaznik (int*) na zebrane coiny(punkty) gracza.
+    */
     Player(vector<Behaviour*>* bhvs, set<int>* keys, set<Platform*>* pts, ALLEGRO_BITMAP* bulletSpr, set<Bullet*>* blts, bool* dead, set<coin*>* coinsad, int* tCoins) :Behaviour(bhvs)
     { 
         platforms = pts;
@@ -607,6 +755,9 @@ public:
         }
         this->Start();
     };
+    /**
+     * @brief Destruktor Gracza.
+    */
     ~Player() {
         if (marian != NULL) {
             al_destroy_bitmap(marian);
@@ -624,19 +775,24 @@ public:
         
     }
 };
+/**
+ * @brief Klasa ekranu koncowego.
+*/
 class FinishScreen : public Behaviour
 {
 private:
-    short int* level = 0;
-    ALLEGRO_FONT* font = NULL;
-    bool wasEnabled = false;
-    Player* myPlayer;
+    short int* level = 0; /**< Wskaznik na poziom. */
+    ALLEGRO_FONT* font = NULL; /**< Wskaznik na czcionke */
+    bool wasEnabled = false; /**< Czy byl juz aktywowany. */
+    Player* myPlayer; /**< Wskaznik na gracza. */
 public:
-    bool enabled;
+    bool enabled;/**< Czy aktywny. */
+    /**
+     * @brief Metoda Update, wywolywana co klatke gry.
+    */
     void Update()
     {
 
-        //cout << "F1\n";
         if ((*level) > 0 && font && enabled)
         {
             if (!wasEnabled)
@@ -664,7 +820,6 @@ public:
                     wasEnabled = false;
                 }
             }
-            //cout << "F2\n";
             al_draw_filled_rectangle(0, 0, WIDTH, HEIGHT, al_map_rgba(0, 0, 0, 230));
             al_draw_rectangle(0, 0, WIDTH, HEIGHT, al_map_rgba(0, 255, 0, 240), 10);
             if (*level < 4) {
@@ -675,10 +830,13 @@ public:
             }
         }
     }
-    void Start()
-    {
-
-    }
+    /**
+     * @brief Konstruktor.
+     * @param bhvs Wskaznik na wektor zawierajacy wszystkie Behaviour(s). 
+     * @param lv Wskaznik na poziom.
+     * @param myfont Wskaznik na czcionke.
+     * @param plr Wskaznik na gracza.
+    */
     FinishScreen(vector<Behaviour*>* bhvs, short int* lv, ALLEGRO_FONT* myfont, Player* plr) :Behaviour(bhvs)
     {
         this->level = lv;
@@ -687,23 +845,29 @@ public:
         this->myPlayer = plr;
     }
 };
+/**
+ * @brief Klasa Mety.
+*/
 class FinishLine : public Behaviour
 {
 private:
-    int spritewidth = 401;
-    int spriteheight = 251;
-    float spriteScale = 1;
-    int scaled_spritewidth;
-    int scaled_spriteheight;
-    short int level;
-    Player* mPlayer = NULL;
-    ALLEGRO_FONT* finishFont = NULL;
-    ALLEGRO_BITMAP* sprite = NULL;
-    FinishScreen** fScreen = NULL;
+    int spritewidth = 401;/**< Szerokosc sprite'u. */
+    int spriteheight = 251;/**< Wysokosc sprite'u. */
+    float spriteScale = 1;/**< Skala sprite'u. */
+    int scaled_spritewidth;/**< Przeskalowana szerokosc sprite'u. */
+    int scaled_spriteheight;/**< Przeskalowana wysokosc sprite'u. */
+    short int level;/**< Poziom. */
+    Player* mPlayer = NULL;/**< Wskaznik na gracza. */
+    ALLEGRO_FONT* finishFont = NULL; /**< Wskaznik na czcionke. */
+    ALLEGRO_BITMAP* sprite = NULL;/**< Wskaznik na bitmape (grafike) mety. */
+    FinishScreen** fScreen = NULL; /**< Podwojny wskaznik na obiekt ekranu koncowego.*/
 public:
-    bool hidden = false;
-    float x;
-    float y;
+    bool hidden = false; /**< Czy meta jest ukryta. */
+    float x;/**< Pozycja na osi X. */
+    float y;/**< Pozycja na osi Y. */
+    /**
+     * @brief Metoda Update, wywolywana co klatke gry.
+    */
     void Update()
     {
         if (!hidden) {
@@ -727,6 +891,18 @@ public:
             }
         }
     }
+    /**
+     * @brief Konstruktor mety.
+     * @param bhvs Wskaznik na set zawierajacy wszystkie klasy typu Behaviour.
+     * @param nX Pozycja na osi X.
+     * @param nY Pozycja na osi Y.
+     * @param lvl Poziom.
+     * @param plr Wskaznik na gracza.
+     * @param mySprite Wskaznik na bitmape (grafike) mety.
+     * @param fS Podwojny wskaznik na ekran koncowy.
+     * @param finishfont Wskaznik na czcionke ekranu koncowego.
+     * @param hide Czy meta jest ukryta.
+    */
     FinishLine(vector<Behaviour*>* bhvs, float nX, float nY, short int lvl, Player* plr, ALLEGRO_BITMAP* mySprite, FinishScreen** fS, ALLEGRO_FONT* finishfont, bool hide) :Behaviour(bhvs)
     {
         this->x = nX;
@@ -741,27 +917,33 @@ public:
         this->hidden = hide;
     }
 };
+/**
+ * @brief Klasa przeciwnika.
+*/
 class Enemy : public Behaviour
 {
 private:
-    ALLEGRO_BITMAP* sprite = NULL;
-    int spritewidth = 356;
-    int spriteheight = 472;
-    float spriteScale = 0.21;
-    int scaled_spritewidth;
-    int scaled_spriteheight;
-    bool walking = false;
-    float shootCd = 0;
-    ALLEGRO_BITMAP* bulletsprite = NULL;
-    set<Bullet*> Bullets;
-    set<Platform*>* platforms;
-    Player** mPlayer = NULL;
-    int Health = 50;
-    bool isBOSS = false;
-    bool* didPlayerDie;
-    float walkcd = 0;
-    bool playerWasFar = false;
-    bool stupid = false;
+    ALLEGRO_BITMAP* sprite = NULL;/**< Wskaznik na bitmape. */
+    int spritewidth = 356;/**< Szerokosc sprite'u. */
+    int spriteheight = 472;/**< Wysokosc sprite'u. */
+    float spriteScale = 0.21;/**< Skala sprite'u. */
+    int scaled_spritewidth;/**< Przeskalowana szerokosc sprite'u. */
+    int scaled_spriteheight;/**< Przeskalowana wysokosc sprite'u. */
+    bool walking = false;/**< Czy porusza przeciwnik sie porusza. */
+    float shootCd = 0;/**< Cooldown strzelania przeciwnika. */
+    ALLEGRO_BITMAP* bulletsprite = NULL; /**< Wskaznik na bitmape kuli przeciwnika. */
+    set<Bullet*> Bullets; /**< Set zawierajacy kule przeciwnika. */
+    set<Platform*>* platforms;/**< Wskaznik na set zawierajacy platformy. */
+    Player** mPlayer = NULL; /**< Podwojny wskaznik na gracza. */
+    int Health = 50;/**< Zdrowie przeciwnika. */
+    bool isBOSS = false; /**< Czy przeciwnik jest bossem. */
+    bool* didPlayerDie; /**< Wskaznik na wartosc logiczna czy gracz umarl. */
+    float walkcd = 0; /**< Cooldown na chodzenie przeciwnika. */
+    bool playerWasFar = false;/**< Czy gracz byl z dala od przeciwnika. */
+    bool stupid = false; /**< Czy przeciwnik chodzi od lewej do prawej, czy chodzi w kierunku gracza. */
+    /**
+     * @brief Metoda wywolywana co klatke gry dzialajaca na kazdej wystrzelonej kuli.
+    */
     void loopBullets()
     {
         if (mPlayer != NULL && (*mPlayer) != NULL)
@@ -819,6 +1001,9 @@ private:
             }
         }
     }
+    /**
+     * @brief Strzelanie przeciwnika.
+    */
     void shoot()
     {
         if (bulletsprite) {
@@ -838,19 +1023,21 @@ private:
                         this->shootCd = 0.75;
 
                     }
-                    //cout << "Shoot! " << bul <<endl;
                 }
             }
         }
     }
 public:
-    float Speed;
-    float range = 100;
-    float x = 0;
-    float x_offset = 0;
-    float y = 0;
-    int dir = 1;
-    FinishLine** finishl;
+    float Speed;/**< Predkosc przeciwnika. */
+    float range = 100; /**< Zasieg przeciwnika. */
+    float x = 0; /**< Pozycja na osi X. */
+    float x_offset = 0; /**< Offset przeciwnika na osi X. */
+    float y = 0;/**< Pozycja na osi Y. */
+    int dir = 1;/**< Kierunek poruszania sie przeciwnika. */
+    FinishLine** finishl; /**< Podwojny wskaznik na obiekt mety. */
+    /**
+     * @brief Metoda wywolywana co klatke gry przeprowadzajace operacje na przeciwniku.
+    */
     void Update()
     {
         if (Health <= 0)
@@ -868,14 +1055,9 @@ public:
             if (abs(x_offset) < range)
             {
                 float change = (dir * Speed * 4) * deltaTime;
-
                 x_offset = clamp(x_offset + change, -range, range);
-                //cout << "offset: " << x_offset << "change: " << change << endl;
-
             }
             else if (abs(x_offset) >= range) {
-                //cout << "-======\n";
-
                 x_offset = (x_offset / (abs(x_offset))) * (abs(x_offset - (x_offset - range)) - 1);
                 dir *= -1;
             }
@@ -918,8 +1100,6 @@ public:
             if (sprite)
             {
                 al_draw_scaled_bitmap(this->sprite, 0, 0, this->spritewidth, this->spriteheight, this->x + x_offset - cam_x_offset - (dir * (this->scaled_spritewidth / 2)), y - this->scaled_spriteheight / 2, dir * this->scaled_spritewidth, this->scaled_spriteheight, 0);
-                //al_draw_circle(x, y, 5, al_map_rgb(255, 255, 255), 2);
-
             }
             if (shootCd > 0) {
                 shootCd -= deltaTime;
@@ -936,12 +1116,6 @@ public:
             float b = (*mPlayer)->x + (*mPlayer)->scaled_spritewidth / 2;
             float c = (*mPlayer)->y - (*mPlayer)->scaled_spriteheight / 2;
             float d = (*mPlayer)->y + (*mPlayer)->scaled_spriteheight / 2;
-            //al_draw_rectangle(a, c, b, d, al_map_rgb(100, 100, 100), 3);
-           // al_draw_circle(x - cam_x_offset + x_offset, y, 10, al_map_rgb(255, 0, 0), 3);
-            //al_draw_circle(a - cam_x_offset, c, 10, al_map_rgb(255, 0, 0), 2);
-            //al_draw_circle(b - cam_x_offset, c, 10, al_map_rgb(0, 255, 0), 2);
-            //al_draw_circle(a - cam_x_offset, d, 10, al_map_rgb(0, 0, 255), 2);
-            //al_draw_circle(b - cam_x_offset, d, 10, al_map_rgb(255, 255, 0), 2);
             if (x+x_offset >= a && x+x_offset <= b)
             {
                 if (y >= c && y<=d)
@@ -950,7 +1124,6 @@ public:
                     {
                         *didPlayerDie = true;
                         (*mPlayer)->removing = true;
-                        //GlobalAction = 3;
                     }
                     else 
                     {
@@ -963,13 +1136,29 @@ public:
                         {
                             *didPlayerDie = true;
                             (*mPlayer)->removing = true;
-                            //GlobalAction = 3;
                         }
                     }
                 }
             }
         }
     }
+    /**
+     * @brief Konstruktor przeciwnika.
+     * @param bhvs Wskaznik na set zawierajacy wszystkie obiekty typu Behaviour.
+     * @param nX Pozycja na osi X.
+     * @param nY Pozycja na osi Y.
+     * @param walk Czy przeciwnik sie porusza.
+     * @param speed Jesli przeciwnik sie porusza, z jaka predkoscia.
+     * @param direction W ktora strone skierowany jest przeciwnik.
+     * @param mySprite Wskaznik na bitmape (grafike) przeciwnika.
+     * @param pts Wskaznik set zawierajacy wszystkie platformy.
+     * @param bulletsp Wskaznik na bitmape (grafike) kuli przeciwnika.
+     * @param plr Podwojny wskaznik na gracza.
+     * @param isBoss Czy przeciwnik jest bossem.
+     * @param killedPlayer Wskaznik na wartosc logiczna - czy gracz zostal zabity.
+     * @param Stupid Czy przeciwnik chodzi tylko od lewej do prawej, czy podaza za graczem.
+     * @param fL Podwojny wskaznik na mete.
+    */
     Enemy(vector<Behaviour*>* bhvs, float nX, float nY, bool walk, float speed, int direction, ALLEGRO_BITMAP* mySprite, set<Platform*>* pts, ALLEGRO_BITMAP* bulletsp, Player** plr, bool isBoss, bool* killedPlayer, bool Stupid, FinishLine** fL) :Behaviour(bhvs)
     {
         this->x = nX;
@@ -997,7 +1186,11 @@ public:
     };
 };
 
-
+/**
+ * @brief Petla (funkcja) wywolywana co klatke ktora odpowiada za iterowanie przez wszystkie obiekty typu Behaviour.
+ * @param plr Podwojny wskaznik na gracza.
+ * @param gPause Wskaznik na pauze.
+*/
 void loopBehaviours(Player** plr, Pause* gPause)
 {
     vector<Behaviour*> toDelete;
@@ -1024,7 +1217,13 @@ void loopBehaviours(Player** plr, Pause* gPause)
     }
     toDelete.clear();
 }
+/**
+ * @brief Set zawierajacy wszystie istniejace coiny (punkty) na mapie.
+*/
 set<coin*> coins;
+/**
+ * @brief Funkcja czyszczaca i usuwajaca wszystkie istniejace coiny (punkty).
+*/
 void ClearCoins()
 {
     for (set<coin*>::iterator it = coins.begin(); it != coins.end(); it++)
@@ -1034,6 +1233,9 @@ void ClearCoins()
     }
     coins.clear();
 }
+/**
+ * @brief Funkcja czyszczaca i usuwajaca wszystkie istniejace platformy.
+*/
 void ClearPlatforms(set<Platform*>* platforms)
 {
     for (set<Platform*>::iterator it = platforms->begin(); it != platforms->end(); it++)
@@ -1043,22 +1245,27 @@ void ClearPlatforms(set<Platform*>* platforms)
     }
     platforms->clear();
 }
+/**
+ * @brief Funkcja zmieniajaca aktualna scene (poziom/level).
+ * @param currLevel Wskaznik na aktualny poziom.
+ * @param scene Scena/Poziom docelowy.
+ * @param MenuObj Podwojny wskaznik na obiekt klasy Menu.
+ * @param platforms Wskaznik na set zawierajacy wszystkie platformy.
+ * @param enemies Wskaznik na set zawierajacy wszystkich przeciwnikow.
+ * @param platformSprites Wskaznik na wektor zawierajacy bitmapy (grafiki) platform.
+ * @param plrAddress Podwojny wskaznik na gracza
+ * @param enemySprites Wskaznik na wektor zawierajacy bitmapy (grafiki) przeciwnikow.
+ * @param enemyBulletSprite Wskaznik na bitmape kul przeciwnikow.
+ * @param buttons Wskaznik na set zawierajacy aktualnie wcisniete przyciski.
+ * @param floorT Wskaznik na bitmape (grafike) podlogi.
+ * @param cxo Wskaznik na wartosc offsetu (przesuniecia) kamery na osi X.
+ * @param deadplayer Wskaznik na wartosc logiczna - czy gracz umarl.
+ * @param fL Podwojny wskaznik na obiekt mety.
+ * @param coinBitmap Wskaznik na bitmape (grafike) coina (punktu)
+*/
 void ChangeScene(short int* currLevel, int scene, Menu** MenuObj, set<Platform*>* platforms, set<Enemy*>* enemies, vector<ALLEGRO_BITMAP*>* platformSprites, Player** plrAddress, vector<ALLEGRO_BITMAP*>* enemySprites, ALLEGRO_BITMAP* enemyBulletSprite, set<int>* buttons, ALLEGRO_BITMAP* floorT, float* cxo, bool* deadplayer, FinishLine** fL, ALLEGRO_BITMAP* coinBitmap)
 {
     *deadplayer = false;
-    /*if (platforms && (*platforms).size() > 0)
-    {
-        for (set<Platform*>::iterator it = (*platforms).begin(); it != (*platforms).end(); it++)
-        {
-            Platform* p = (*it);
-            if (*it != NULL) {
-                delete p;
-                p = NULL;
-                break;
-            }
-        }
-        (*platforms).clear();
-    }*/
     while (Behaviours.size() > 0)
     {
         for (vector<Behaviour*>::iterator it = Behaviours.begin(); it != Behaviours.end(); it++)
@@ -1197,6 +1404,9 @@ void ChangeScene(short int* currLevel, int scene, Menu** MenuObj, set<Platform*>
         
     }
 }
+/**
+ * @brief Funkcja glowna (MAIN).
+*/
 int main(int argc, char* argv[])
 {
     GlobalAction = 0;
@@ -1515,11 +1725,7 @@ int main(int argc, char* argv[])
                 MenuObject = new Menu(&Behaviours, &buttons, &MenuObject);
             }
         }
-        //al_draw_bitmap(marian, 0, 0, 0);
-
-    
         loopBehaviours(&plr, gamePause);
-        //al_draw_textf(uiFont, al_map_rgb(0, 0, 0), 0, HEIGHT / 2, 0, "PLATFORMS: %d", platforms.size());
         al_flip_display();
     }
     if (SaveSystem::Instance != NULL && (*SaveSystem::Instance)) { (*SaveSystem::Instance)->Destroy(); delete(SaveSystem::Instance); SaveSystem::Instance = NULL; }

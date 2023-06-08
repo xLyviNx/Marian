@@ -1,0 +1,306 @@
+\doxysection{Dokumentacja klasy Save\+System}
+\hypertarget{class_save_system}{}\label{class_save_system}\index{SaveSystem@{SaveSystem}}
+
+
+Klasa Save\+Systemu.  
+
+
+
+
+{\ttfamily \#include $<$save\+System.\+h$>$}
+
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_save_system_a8adaf73164a861fb67b3bb0d9eb5be4b}{Save\+System}} ()
+\begin{DoxyCompactList}\small\item\em Konstruktor Save\+Systemu. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_save_system_aaed70ef46070c20f66630c5b4bd6a13f}{read\+Line}} (int)
+\begin{DoxyCompactList}\small\item\em Funkcja odczytujaca linie pliku zapisu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_save_system_ab9d01a0d970a19bd2999e5c2b154b455}{Load\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Odczytywanie poziomu z pliku zapisu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_save_system_afb117808daf84017b15833e71d1aa3ae}{Load\+Coins}} ()
+\begin{DoxyCompactList}\small\item\em Odczytywanie coinow z pliku zapisu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_save_system_a5a87d2f7da0c52858844c9fb654d9840}{Load\+Shoot\+Speed}} ()
+\begin{DoxyCompactList}\small\item\em Odczytywanie szybkostrzelnosci gracza z pliku zapisu. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_save_system_a8d3665b6e09282eda0bb95e7a7499c13}{Load\+Speed}} ()
+\begin{DoxyCompactList}\small\item\em Odczytywanie predkosci gracza z pliku zapisu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_save_system_ac4b071ba8cdd6587218640ccc47af368}{print\+At\+Line}} (int, const char \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Zapis do pliku zapisu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_save_system_a13a33d8c03e9e7ea059e9c2cd739ec1d}{restart}} ()
+\begin{DoxyCompactList}\small\item\em Restart Save\+Systemu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_save_system_a6f5c9578bdc4d0c1bb6e0ae55dcd75a3}{set\+Start\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Ustawienie domyslnych wartosci dla pliku zapisu. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_save_system_a71edf96fc625e089bb42b5a19eda339e}{\texorpdfstring{$\sim$}{\string~}\+Save\+System}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor Save\+Systemu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_save_system_a92fc1b2c7570becf319b9165f694c905}{Create}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja tworzaca \doxylink{class_save_system}{Save\+System}. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_save_system_ab85778be9679dca9f5ae2409b89ea67b}{Destroy}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja niszczaca \doxylink{class_save_system}{Save\+System}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+static FILE \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{save\+File}} = NULL
+\item 
+static \mbox{\hyperlink{class_save_system}{Save\+System}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{Instance}} = NULL
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_save_system_a79b059cd89b7120a5d9bdecae99fa469}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja startowa Save\+Systemu ustawiajaca instancje oraz wykonujaca podstawowe pierwsze operacje. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa Save\+Systemu. 
+
+Klasa ta pozwala na zapis oraz odczyt danych gracza z i do pliku. 
+
+Definicja w linii \mbox{\hyperlink{save_system_8h_source_l00017}{17}} pliku \mbox{\hyperlink{save_system_8h_source}{save\+System.\+h}}.
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{class_save_system_a8adaf73164a861fb67b3bb0d9eb5be4b}\label{class_save_system_a8adaf73164a861fb67b3bb0d9eb5be4b} 
+\index{SaveSystem@{SaveSystem}!SaveSystem@{SaveSystem}}
+\index{SaveSystem@{SaveSystem}!SaveSystem@{SaveSystem}}
+\doxysubsubsection{\texorpdfstring{SaveSystem()}{SaveSystem()}}
+{\footnotesize\ttfamily Save\+System\+::\+Save\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Konstruktor Save\+Systemu. 
+
+
+
+Definicja w linii \mbox{\hyperlink{save_system_8cpp_source_l00063}{63}} pliku \mbox{\hyperlink{save_system_8cpp_source}{save\+System.\+cpp}}.
+
+\Hypertarget{class_save_system_a71edf96fc625e089bb42b5a19eda339e}\label{class_save_system_a71edf96fc625e089bb42b5a19eda339e} 
+\index{SaveSystem@{SaveSystem}!````~SaveSystem@{\texorpdfstring{$\sim$}{\string~}SaveSystem}}
+\index{````~SaveSystem@{\texorpdfstring{$\sim$}{\string~}SaveSystem}!SaveSystem@{SaveSystem}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}SaveSystem()}{\string~SaveSystem()}}
+{\footnotesize\ttfamily Save\+System\+::\texorpdfstring{$\sim$}{\string~}\+Save\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destruktor Save\+Systemu. 
+
+
+
+Definicja w linii \mbox{\hyperlink{save_system_8cpp_source_l00013}{13}} pliku \mbox{\hyperlink{save_system_8cpp_source}{save\+System.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_save_system_a92fc1b2c7570becf319b9165f694c905}\label{class_save_system_a92fc1b2c7570becf319b9165f694c905} 
+\index{SaveSystem@{SaveSystem}!Create@{Create}}
+\index{Create@{Create}!SaveSystem@{SaveSystem}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily void Save\+System\+::\+Create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Funkcja tworzaca \doxylink{class_save_system}{Save\+System}. 
+
+
+
+Definicja w linii \mbox{\hyperlink{save_system_8cpp_source_l00027}{27}} pliku \mbox{\hyperlink{save_system_8cpp_source}{save\+System.\+cpp}}.
+
+\Hypertarget{class_save_system_ab85778be9679dca9f5ae2409b89ea67b}\label{class_save_system_ab85778be9679dca9f5ae2409b89ea67b} 
+\index{SaveSystem@{SaveSystem}!Destroy@{Destroy}}
+\index{Destroy@{Destroy}!SaveSystem@{SaveSystem}}
+\doxysubsubsection{\texorpdfstring{Destroy()}{Destroy()}}
+{\footnotesize\ttfamily void Save\+System\+::\+Destroy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Funkcja niszczaca \doxylink{class_save_system}{Save\+System}. 
+
+
+
+Definicja w linii \mbox{\hyperlink{save_system_8cpp_source_l00049}{49}} pliku \mbox{\hyperlink{save_system_8cpp_source}{save\+System.\+cpp}}.
+
+\Hypertarget{class_save_system_afb117808daf84017b15833e71d1aa3ae}\label{class_save_system_afb117808daf84017b15833e71d1aa3ae} 
+\index{SaveSystem@{SaveSystem}!LoadCoins@{LoadCoins}}
+\index{LoadCoins@{LoadCoins}!SaveSystem@{SaveSystem}}
+\doxysubsubsection{\texorpdfstring{LoadCoins()}{LoadCoins()}}
+{\footnotesize\ttfamily int Save\+System\+::\+Load\+Coins (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Odczytywanie coinow z pliku zapisu. 
+
+\begin{DoxyReturn}{Zwraca}
+Liczba coinow. 
+\end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{save_system_8cpp_source_l00206}{206}} pliku \mbox{\hyperlink{save_system_8cpp_source}{save\+System.\+cpp}}.
+
+\Hypertarget{class_save_system_ab9d01a0d970a19bd2999e5c2b154b455}\label{class_save_system_ab9d01a0d970a19bd2999e5c2b154b455} 
+\index{SaveSystem@{SaveSystem}!LoadLevel@{LoadLevel}}
+\index{LoadLevel@{LoadLevel}!SaveSystem@{SaveSystem}}
+\doxysubsubsection{\texorpdfstring{LoadLevel()}{LoadLevel()}}
+{\footnotesize\ttfamily int Save\+System\+::\+Load\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Odczytywanie poziomu z pliku zapisu. 
+
+\begin{DoxyReturn}{Zwraca}
+Poziom. 
+\end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{save_system_8cpp_source_l00192}{192}} pliku \mbox{\hyperlink{save_system_8cpp_source}{save\+System.\+cpp}}.
+
+\Hypertarget{class_save_system_a5a87d2f7da0c52858844c9fb654d9840}\label{class_save_system_a5a87d2f7da0c52858844c9fb654d9840} 
+\index{SaveSystem@{SaveSystem}!LoadShootSpeed@{LoadShootSpeed}}
+\index{LoadShootSpeed@{LoadShootSpeed}!SaveSystem@{SaveSystem}}
+\doxysubsubsection{\texorpdfstring{LoadShootSpeed()}{LoadShootSpeed()}}
+{\footnotesize\ttfamily int Save\+System\+::\+Load\+Shoot\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Odczytywanie szybkostrzelnosci gracza z pliku zapisu. 
+
+\begin{DoxyReturn}{Zwraca}
+Szybkostrzelnosc gracza. 
+\end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{save_system_8cpp_source_l00219}{219}} pliku \mbox{\hyperlink{save_system_8cpp_source}{save\+System.\+cpp}}.
+
+\Hypertarget{class_save_system_a8d3665b6e09282eda0bb95e7a7499c13}\label{class_save_system_a8d3665b6e09282eda0bb95e7a7499c13} 
+\index{SaveSystem@{SaveSystem}!LoadSpeed@{LoadSpeed}}
+\index{LoadSpeed@{LoadSpeed}!SaveSystem@{SaveSystem}}
+\doxysubsubsection{\texorpdfstring{LoadSpeed()}{LoadSpeed()}}
+{\footnotesize\ttfamily float Save\+System\+::\+Load\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Odczytywanie predkosci gracza z pliku zapisu. 
+
+\begin{DoxyReturn}{Zwraca}
+Predkosc gracza. 
+\end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{save_system_8cpp_source_l00232}{232}} pliku \mbox{\hyperlink{save_system_8cpp_source}{save\+System.\+cpp}}.
+
+\Hypertarget{class_save_system_ac4b071ba8cdd6587218640ccc47af368}\label{class_save_system_ac4b071ba8cdd6587218640ccc47af368} 
+\index{SaveSystem@{SaveSystem}!printAtLine@{printAtLine}}
+\index{printAtLine@{printAtLine}!SaveSystem@{SaveSystem}}
+\doxysubsubsection{\texorpdfstring{printAtLine()}{printAtLine()}}
+{\footnotesize\ttfamily void Save\+System\+::print\+At\+Line (\begin{DoxyParamCaption}\item[{int}]{line\+Number,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{content }\end{DoxyParamCaption})}
+
+
+
+Zapis do pliku zapisu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em line\+Number} & Linia w pliku do zapisania. \\
+\hline
+{\em content} & Tekst do zapisania. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{save_system_8cpp_source_l00247}{247}} pliku \mbox{\hyperlink{save_system_8cpp_source}{save\+System.\+cpp}}.
+
+\Hypertarget{class_save_system_aaed70ef46070c20f66630c5b4bd6a13f}\label{class_save_system_aaed70ef46070c20f66630c5b4bd6a13f} 
+\index{SaveSystem@{SaveSystem}!readLine@{readLine}}
+\index{readLine@{readLine}!SaveSystem@{SaveSystem}}
+\doxysubsubsection{\texorpdfstring{readLine()}{readLine()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} Save\+System\+::read\+Line (\begin{DoxyParamCaption}\item[{int}]{line\+Number }\end{DoxyParamCaption})}
+
+
+
+Funkcja odczytujaca linie pliku zapisu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em line\+Number} & Linia do odczytania. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Odczytany tekst. 
+\end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{save_system_8cpp_source_l00136}{136}} pliku \mbox{\hyperlink{save_system_8cpp_source}{save\+System.\+cpp}}.
+
+\Hypertarget{class_save_system_a13a33d8c03e9e7ea059e9c2cd739ec1d}\label{class_save_system_a13a33d8c03e9e7ea059e9c2cd739ec1d} 
+\index{SaveSystem@{SaveSystem}!restart@{restart}}
+\index{restart@{restart}!SaveSystem@{SaveSystem}}
+\doxysubsubsection{\texorpdfstring{restart()}{restart()}}
+{\footnotesize\ttfamily void Save\+System\+::restart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Restart Save\+Systemu. 
+
+
+
+Definicja w linii \mbox{\hyperlink{save_system_8cpp_source_l00321}{321}} pliku \mbox{\hyperlink{save_system_8cpp_source}{save\+System.\+cpp}}.
+
+\Hypertarget{class_save_system_a6f5c9578bdc4d0c1bb6e0ae55dcd75a3}\label{class_save_system_a6f5c9578bdc4d0c1bb6e0ae55dcd75a3} 
+\index{SaveSystem@{SaveSystem}!setStartData@{setStartData}}
+\index{setStartData@{setStartData}!SaveSystem@{SaveSystem}}
+\doxysubsubsection{\texorpdfstring{setStartData()}{setStartData()}}
+{\footnotesize\ttfamily void Save\+System\+::set\+Start\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Ustawienie domyslnych wartosci dla pliku zapisu. 
+
+
+
+Definicja w linii \mbox{\hyperlink{save_system_8cpp_source_l00339}{339}} pliku \mbox{\hyperlink{save_system_8cpp_source}{save\+System.\+cpp}}.
+
+\Hypertarget{class_save_system_a79b059cd89b7120a5d9bdecae99fa469}\label{class_save_system_a79b059cd89b7120a5d9bdecae99fa469} 
+\index{SaveSystem@{SaveSystem}!Start@{Start}}
+\index{Start@{Start}!SaveSystem@{SaveSystem}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Save\+System\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Funkcja startowa Save\+Systemu ustawiajaca instancje oraz wykonujaca podstawowe pierwsze operacje. 
+
+
+
+Definicja w linii \mbox{\hyperlink{save_system_8cpp_source_l00070}{70}} pliku \mbox{\hyperlink{save_system_8cpp_source}{save\+System.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_save_system_aea33e98fe479c2d537641658b118e5fd}\label{class_save_system_aea33e98fe479c2d537641658b118e5fd} 
+\index{SaveSystem@{SaveSystem}!Instance@{Instance}}
+\index{Instance@{Instance}!SaveSystem@{SaveSystem}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_save_system}{Save\+System}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Save\+System\+::\+Instance = NULL\hspace{0.3cm}{\ttfamily [static]}}
+
+Instancja klasy. 
+
+Definicja w linii \mbox{\hyperlink{save_system_8h_source_l00022}{22}} pliku \mbox{\hyperlink{save_system_8h_source}{save\+System.\+h}}.
+
+\Hypertarget{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}\label{class_save_system_a1acaf2de7bf8e139edf571dc7f226604} 
+\index{SaveSystem@{SaveSystem}!saveFile@{saveFile}}
+\index{saveFile@{saveFile}!SaveSystem@{SaveSystem}}
+\doxysubsubsection{\texorpdfstring{saveFile}{saveFile}}
+{\footnotesize\ttfamily FILE \texorpdfstring{$\ast$}{*} Save\+System\+::save\+File = NULL\hspace{0.3cm}{\ttfamily [static]}}
+
+Zaladowany plik zapisu. 
+
+Definicja w linii \mbox{\hyperlink{save_system_8h_source_l00021}{21}} pliku \mbox{\hyperlink{save_system_8h_source}{save\+System.\+h}}.
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{save_system_8h}{save\+System.\+h}}\item 
+\mbox{\hyperlink{save_system_8cpp}{save\+System.\+cpp}}\end{DoxyCompactItemize}

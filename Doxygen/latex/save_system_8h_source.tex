@@ -1,0 +1,33 @@
+\doxysection{save\+System.\+h}
+\hypertarget{save_system_8h_source}{}\label{save_system_8h_source}\mbox{\hyperlink{save_system_8h}{Idź do dokumentacji tego pliku.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00003}\mbox{\hyperlink{save_system_8h_ad5131de0b5004c64db5e79e8aac7471e}{00003}}\ \textcolor{preprocessor}{\#define\ LINE\_LENGTH\ 32}}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00007}\mbox{\hyperlink{save_system_8h_a53c83a66e461adf57ea7f7b94ac51568}{00007}}\ \textcolor{preprocessor}{\#define\ SAVEFILE\_LOCATION\ "{}data/save.txt"{}}}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00011}\mbox{\hyperlink{save_system_8h_ac7e10e0cf8292253429695b8b1346ee3}{00011}}\ \textcolor{preprocessor}{\#define\ TEMPFILE\_LOCATION\ "{}data/save.tmp"{}}}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00017}\mbox{\hyperlink{class_save_system}{00017}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_save_system}{SaveSystem}}}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00018}00018\ \{}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00019}00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_system_a79b059cd89b7120a5d9bdecae99fa469}{Start}}();}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00020}00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00021}\mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{00021}}\ \ \ \ \ \textcolor{keyword}{static}\ FILE*\ \mbox{\hyperlink{class_save_system_a1acaf2de7bf8e139edf571dc7f226604}{saveFile}};\ }
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00022}\mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{00022}}\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_save_system}{SaveSystem}}**\ \mbox{\hyperlink{class_save_system_aea33e98fe479c2d537641658b118e5fd}{Instance}};\ }
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{class_save_system_a8adaf73164a861fb67b3bb0d9eb5be4b}{SaveSystem}}();}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00024}00024\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_save_system_aaed70ef46070c20f66630c5b4bd6a13f}{readLine}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_save_system_ab9d01a0d970a19bd2999e5c2b154b455}{LoadLevel}}();}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00026}00026\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_save_system_afb117808daf84017b15833e71d1aa3ae}{LoadCoins}}();}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00027}00027\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_save_system_a5a87d2f7da0c52858844c9fb654d9840}{LoadShootSpeed}}();}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00028}00028\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_save_system_a8d3665b6e09282eda0bb95e7a7499c13}{LoadSpeed}}();}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00029}00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_system_ac4b071ba8cdd6587218640ccc47af368}{printAtLine}}(\textcolor{keywordtype}{int},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//void\ resetData();}}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00031}00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_system_a13a33d8c03e9e7ea059e9c2cd739ec1d}{restart}}();}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00032}00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_system_a6f5c9578bdc4d0c1bb6e0ae55dcd75a3}{setStartData}}();}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00033}00033\ \ \ \ \ \mbox{\hyperlink{class_save_system_a71edf96fc625e089bb42b5a19eda339e}{\string~SaveSystem}}();}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00034}00034\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_system_a92fc1b2c7570becf319b9165f694c905}{Create}}();}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_system_ab85778be9679dca9f5ae2409b89ea67b}{Destroy}}();}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00037}00037\ \};}
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{save_system_8h_source_l00039}00039\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{save_system_8h_a1eb10af02ac1ffa2af39dc5e07f47773}{trimText}}(\textcolor{keywordtype}{char}*,\ \textcolor{keywordtype}{int});}
+
+\end{DoxyCode}

@@ -1,0 +1,138 @@
+\doxysection{Dokumentacja klasy Floor\+Object}
+\hypertarget{class_floor_object}{}\label{class_floor_object}\index{FloorObject@{FloorObject}}
+
+
+Klasa Podlogi.  
+
+
+
+
+{\ttfamily \#include $<$floor\+O.\+h$>$}
+
+Diagram dziedziczenia dla Floor\+Object\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_floor_object}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_floor_object_a3093a5d7b485cc5efcee1109c6dcb4a8}{Floor\+Object}} (vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}, ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}, float \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Konstruktor podlogi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_floor_object_a5e0270581ade1581f407dba116c176de}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja Update, wywolywana co klatke. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Metody publiczne dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea}{Update}} ()
+\item 
+virtual void \mbox{\hyperlink{class_behaviour_a52b11b4146f8f5104a6bf2be502e6d99}{Start}} ()
+\item 
+\mbox{\hyperlink{class_behaviour_a9c68ba38fdb413f4cc67165ceb10b327}{Behaviour}} (std\+::vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Konstruktor \doxylink{class_behaviour}{Behaviour}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_behaviour_ab9099279876aa70410ab96ca589531df}{\texorpdfstring{$\sim$}{\string~}\+Behaviour}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor \doxylink{class_behaviour}{Behaviour}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_floor_object_acba485b9a71890d6819ea1ab3950a643}{sprite}}
+\item 
+float \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_floor_object_ad5e6a2feb65cbb797d15d5013c3d8220}{xof}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Dodatkowe Dziedziczone Składowe}
+\doxysubsection*{Atrybuty publiczne dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_behaviour_ab5a2aad5b8a3c2cb6612520878817137}{removing}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Atrybuty chronione dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_behaviour_a95a3f857ba7c6e573a987e1ef1148cc2}{vec}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa Podlogi. 
+
+Klasa ta odpowiada za wyswietlanie podlogi. 
+
+Definicja w linii \mbox{\hyperlink{floor_o_8h_source_l00011}{11}} pliku \mbox{\hyperlink{floor_o_8h_source}{floor\+O.\+h}}.
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{class_floor_object_a3093a5d7b485cc5efcee1109c6dcb4a8}\label{class_floor_object_a3093a5d7b485cc5efcee1109c6dcb4a8} 
+\index{FloorObject@{FloorObject}!FloorObject@{FloorObject}}
+\index{FloorObject@{FloorObject}!FloorObject@{FloorObject}}
+\doxysubsubsection{\texorpdfstring{FloorObject()}{FloorObject()}}
+{\footnotesize\ttfamily Floor\+Object\+::\+Floor\+Object (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}}]{Sprite,  }\item[{float \texorpdfstring{$\ast$}{*}}]{Xof }\end{DoxyParamCaption})}
+
+
+
+Konstruktor podlogi. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em vec} & Wskaznik na vector zawierajacy wskazniki Behaviours. \\
+\hline
+{\em Sprite} & Wskaznik na grafike (bitmape) podlogi. \\
+\hline
+{\em Xof} & Wskaznik na offset kamery (na osi X) \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{floor_o_8cpp_source_l00009}{9}} pliku \mbox{\hyperlink{floor_o_8cpp_source}{floor\+O.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_floor_object_a5e0270581ade1581f407dba116c176de}\label{class_floor_object_a5e0270581ade1581f407dba116c176de} 
+\index{FloorObject@{FloorObject}!Update@{Update}}
+\index{Update@{Update}!FloorObject@{FloorObject}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Floor\+Object\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Funkcja Update, wywolywana co klatke. 
+
+
+
+Reimplementowana z \mbox{\hyperlink{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea}{Behaviour}}.
+
+
+
+Definicja w linii \mbox{\hyperlink{floor_o_8cpp_source_l00017}{17}} pliku \mbox{\hyperlink{floor_o_8cpp_source}{floor\+O.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_floor_object_acba485b9a71890d6819ea1ab3950a643}\label{class_floor_object_acba485b9a71890d6819ea1ab3950a643} 
+\index{FloorObject@{FloorObject}!sprite@{sprite}}
+\index{sprite@{sprite}!FloorObject@{FloorObject}}
+\doxysubsubsection{\texorpdfstring{sprite}{sprite}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP\texorpdfstring{$\ast$}{*} Floor\+Object\+::sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na grafike (bitmape) podlogi. 
+
+Definicja w linii \mbox{\hyperlink{floor_o_8h_source_l00013}{13}} pliku \mbox{\hyperlink{floor_o_8h_source}{floor\+O.\+h}}.
+
+\Hypertarget{class_floor_object_ad5e6a2feb65cbb797d15d5013c3d8220}\label{class_floor_object_ad5e6a2feb65cbb797d15d5013c3d8220} 
+\index{FloorObject@{FloorObject}!xof@{xof}}
+\index{xof@{xof}!FloorObject@{FloorObject}}
+\doxysubsubsection{\texorpdfstring{xof}{xof}}
+{\footnotesize\ttfamily float\texorpdfstring{$\ast$}{*} Floor\+Object\+::xof\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na offset kamery (w osi X). 
+
+Definicja w linii \mbox{\hyperlink{floor_o_8h_source_l00014}{14}} pliku \mbox{\hyperlink{floor_o_8h_source}{floor\+O.\+h}}.
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{floor_o_8h}{floor\+O.\+h}}\item 
+\mbox{\hyperlink{floor_o_8cpp}{floor\+O.\+cpp}}\end{DoxyCompactItemize}

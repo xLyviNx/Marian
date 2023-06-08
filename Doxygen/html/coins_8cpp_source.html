@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Marian: Plik źródłowy coins.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Marian<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">PO1 Projekt (1ID14B) 2023 - Grzegorz Sygut, Piotr Strzepek, Adrian Synowiec</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">coins.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="coins_8cpp.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="coins_8h.html">coins.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classcoin.html#a24f11c077f8f24b8a498e3b5c3dcb92d">   10</a></span><a class="code hl_function" href="classcoin.html#a24f11c077f8f24b8a498e3b5c3dcb92d">coin::coin</a>(<span class="keywordtype">float</span> X, <span class="keywordtype">float</span> Y, ALLEGRO_BITMAP* sprite)</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    this-&gt;<a class="code hl_variable" href="classcoin.html#aef28dc4fcd80fc12d55ad0a56c90c2ae">x</a> = X;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    this-&gt;<a class="code hl_variable" href="classcoin.html#ac686da8e4ed91e6590e0bba8886a1a6b">y</a> = Y;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    this-&gt;sprite = <a class="code hl_variable" href="classcoin.html#ac9d951b37228019ef26a0db96ec30b37">sprite</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>}</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classcoin.html#a199026f6cb4c8cbd654041f8d33a2c30">   22</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classcoin.html#a199026f6cb4c8cbd654041f8d33a2c30">coin::Collides</a>(<span class="keywordtype">float</span> X, <span class="keywordtype">float</span> Y)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordflow">if</span> (X &gt;= <a class="code hl_variable" href="classcoin.html#aef28dc4fcd80fc12d55ad0a56c90c2ae">x</a> - 25 &amp;&amp; X &lt;= <a class="code hl_variable" href="classcoin.html#aef28dc4fcd80fc12d55ad0a56c90c2ae">x</a> + 25)</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordflow">if</span> (Y &gt;= <a class="code hl_variable" href="classcoin.html#ac686da8e4ed91e6590e0bba8886a1a6b">y</a> - 25 &amp;&amp; Y &lt;= <a class="code hl_variable" href="classcoin.html#ac686da8e4ed91e6590e0bba8886a1a6b">y</a> + 25)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        }</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classcoin.html#a8ddeed2da141709ed7294b04c96c2b8d">   37</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classcoin.html#a8ddeed2da141709ed7294b04c96c2b8d">coin::renderMe</a>(<span class="keywordtype">float</span> <a class="code hl_variable" href="_marian_8cpp.html#a8235c6e9e346e312c0452da60148bc21">cam_x_offset</a>)</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classcoin.html#ac9d951b37228019ef26a0db96ec30b37">sprite</a>) {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        al_draw_scaled_bitmap(this-&gt;<a class="code hl_variable" href="classcoin.html#ac9d951b37228019ef26a0db96ec30b37">sprite</a>, 0, 0, 100, 100, this-&gt;<a class="code hl_variable" href="classcoin.html#aef28dc4fcd80fc12d55ad0a56c90c2ae">x</a> - cam_x_offset - 25, this-&gt;<a class="code hl_variable" href="classcoin.html#ac686da8e4ed91e6590e0bba8886a1a6b">y</a> - 25, 50, 50, 0);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>}</div>
+<div class="ttc" id="a_marian_8cpp_html_a8235c6e9e346e312c0452da60148bc21"><div class="ttname"><a href="_marian_8cpp.html#a8235c6e9e346e312c0452da60148bc21">cam_x_offset</a></div><div class="ttdeci">float cam_x_offset</div><div class="ttdoc">Przesuniecie (offset) kamery w osi X.</div><div class="ttdef"><b>Definition</b> <a href="_marian_8cpp_source.html#l00087">Marian.cpp:87</a></div></div>
+<div class="ttc" id="aclasscoin_html_a199026f6cb4c8cbd654041f8d33a2c30"><div class="ttname"><a href="classcoin.html#a199026f6cb4c8cbd654041f8d33a2c30">coin::Collides</a></div><div class="ttdeci">bool Collides(float, float)</div><div class="ttdoc">Sprawdza czy coin koliduje z graczem.</div><div class="ttdef"><b>Definition</b> <a href="coins_8cpp_source.html#l00022">coins.cpp:22</a></div></div>
+<div class="ttc" id="aclasscoin_html_a24f11c077f8f24b8a498e3b5c3dcb92d"><div class="ttname"><a href="classcoin.html#a24f11c077f8f24b8a498e3b5c3dcb92d">coin::coin</a></div><div class="ttdeci">coin(float, float, ALLEGRO_BITMAP *)</div><div class="ttdoc">Konstruktor coina.</div><div class="ttdef"><b>Definition</b> <a href="coins_8cpp_source.html#l00010">coins.cpp:10</a></div></div>
+<div class="ttc" id="aclasscoin_html_a8ddeed2da141709ed7294b04c96c2b8d"><div class="ttname"><a href="classcoin.html#a8ddeed2da141709ed7294b04c96c2b8d">coin::renderMe</a></div><div class="ttdeci">void renderMe(float)</div><div class="ttdoc">Wyswietla coina na ekranie.</div><div class="ttdef"><b>Definition</b> <a href="coins_8cpp_source.html#l00037">coins.cpp:37</a></div></div>
+<div class="ttc" id="aclasscoin_html_ac686da8e4ed91e6590e0bba8886a1a6b"><div class="ttname"><a href="classcoin.html#ac686da8e4ed91e6590e0bba8886a1a6b">coin::y</a></div><div class="ttdeci">float y</div><div class="ttdef"><b>Definition</b> <a href="coins_8h_source.html#l00018">coins.h:18</a></div></div>
+<div class="ttc" id="aclasscoin_html_ac9d951b37228019ef26a0db96ec30b37"><div class="ttname"><a href="classcoin.html#ac9d951b37228019ef26a0db96ec30b37">coin::sprite</a></div><div class="ttdeci">ALLEGRO_BITMAP * sprite</div><div class="ttdef"><b>Definition</b> <a href="coins_8h_source.html#l00015">coins.h:15</a></div></div>
+<div class="ttc" id="aclasscoin_html_aef28dc4fcd80fc12d55ad0a56c90c2ae"><div class="ttname"><a href="classcoin.html#aef28dc4fcd80fc12d55ad0a56c90c2ae">coin::x</a></div><div class="ttdeci">float x</div><div class="ttdef"><b>Definition</b> <a href="coins_8h_source.html#l00017">coins.h:17</a></div></div>
+<div class="ttc" id="acoins_8h_html"><div class="ttname"><a href="coins_8h.html">coins.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

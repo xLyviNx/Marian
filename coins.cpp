@@ -1,18 +1,24 @@
 #include "coins.h"
 #include <iostream>
 
-
+/**
+ * @brief Konstruktor coina.
+ * @param X Wspolrzedna X.
+ * @param Y Wspolrzedna Y.
+ * @param sprite Sprite coina (wskaznik na bitmape).
+ */
 coin::coin(float X, float Y, ALLEGRO_BITMAP* sprite)
 {
 	this->x = X;
 	this->y = Y;
 	this->sprite = sprite;
 }
-
-coin::~coin()
-{
-
-}
+/**
+ * @brief Sprawdza czy coin koliduje z graczem.
+ * @param X Wspolrzedna X.
+ * @param Y Wspolrzedna Y.
+ * @return Czy coin koliduje z danymi koordynatami.
+ */
 bool coin::Collides(float X, float Y)
 {
 	if (X >= x - 25 && X <= x + 25)
@@ -24,6 +30,10 @@ bool coin::Collides(float X, float Y)
 	}
 	return false;
 }
+/**
+ * @brief Wyswietla coina na ekranie.
+ * @param cam_x_offset Offset kamery na osi X.
+ */
 void coin::renderMe(float cam_x_offset)
 {
 	if (this->sprite) {

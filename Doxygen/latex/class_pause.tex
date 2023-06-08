@@ -1,0 +1,252 @@
+\doxysection{Dokumentacja klasy Pause}
+\hypertarget{class_pause}{}\label{class_pause}\index{Pause@{Pause}}
+
+
+Klasa Pauzy.  
+
+
+
+
+{\ttfamily \#include $<$Menu\+Class.\+h$>$}
+
+Diagram dziedziczenia dla Pause\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_pause}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_pause_a8f44fe4c6e070235173cd4a765734155}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja Update, wywolywana co klatke. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_pause_a319c6e0e03dbd6872a7b926627d8f671}{has\+Fonts}} ()
+\begin{DoxyCompactList}\small\item\em Sprawdza czy obiekt Pauzy ma zaladowane czcionki. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pause_ace574e2487131df1a1b47f32aa5abdfd}{Pause}} (vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}, set$<$ int $>$ \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_pause}{Pause}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}, double \texorpdfstring{$\ast$}{*}, bool \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Konstruktor Pauzy. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pause_a6a564235e87326133c14069be196eeac}{\texorpdfstring{$\sim$}{\string~}\+Pause}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor Pauzy, niszczacy czcionki i ustawiajaca \texorpdfstring{$\ast$}{*}pointer na NULL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Metody publiczne dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea}{Update}} ()
+\item 
+virtual void \mbox{\hyperlink{class_behaviour_a52b11b4146f8f5104a6bf2be502e6d99}{Start}} ()
+\item 
+\mbox{\hyperlink{class_behaviour_a9c68ba38fdb413f4cc67165ceb10b327}{Behaviour}} (std\+::vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Konstruktor \doxylink{class_behaviour}{Behaviour}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_behaviour_ab9099279876aa70410ab96ca589531df}{\texorpdfstring{$\sim$}{\string~}\+Behaviour}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor \doxylink{class_behaviour}{Behaviour}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_pause_a52d7b71662fc70c60460754e36f16d28}{enabled}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Atrybuty publiczne dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_behaviour_ab5a2aad5b8a3c2cb6612520878817137}{removing}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pause}{Pause}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pause_a116c4d0ae42bbbc13da07fc5d5ea8895}{pointer}}
+\item 
+set$<$ int $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pause_a6fe7de5cd6cef1a3779563060cfb503e}{buttons}}
+\item 
+ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pause_a7feaa87a67e17f5c3c31c6e44ba5cb01}{Title\+Font}}
+\item 
+ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pause_a3f4bbb0841ecaff98dfed2d577224bc8}{ui\+Font}}
+\item 
+float \mbox{\hyperlink{class_pause_aa7615f02d25676cbae72279a0fd2e131}{enablecd}}
+\item 
+bool \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pause_a0bb479ee5825e52125839db7084177fb}{player\+Died}}
+\item 
+double \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pause_a2e5bf66a341dab17676a446c9b1643e3}{dT}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Dodatkowe Dziedziczone Składowe}
+\doxysubsection*{Atrybuty chronione dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_behaviour_a95a3f857ba7c6e573a987e1ef1148cc2}{vec}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa Pauzy. 
+
+Klasa ta odpowiada za Pauze. 
+
+Definicja w linii \mbox{\hyperlink{_menu_class_8h_source_l00041}{41}} pliku \mbox{\hyperlink{_menu_class_8h_source}{Menu\+Class.\+h}}.
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{class_pause_ace574e2487131df1a1b47f32aa5abdfd}\label{class_pause_ace574e2487131df1a1b47f32aa5abdfd} 
+\index{Pause@{Pause}!Pause@{Pause}}
+\index{Pause@{Pause}!Pause@{Pause}}
+\doxysubsubsection{\texorpdfstring{Pause()}{Pause()}}
+{\footnotesize\ttfamily Pause\+::\+Pause (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{bhvs,  }\item[{set$<$ int $>$ \texorpdfstring{$\ast$}{*}}]{buttons,  }\item[{\mbox{\hyperlink{class_pause}{Pause}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{pointer,  }\item[{double \texorpdfstring{$\ast$}{*}}]{dt,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{dead }\end{DoxyParamCaption})}
+
+
+
+Konstruktor Pauzy. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em bhvs} & Wskaznik na vector zawierajacy wskazniki Behaviours. \\
+\hline
+{\em buttons} & Wskaznik na set zawierajacy aktualnie wcisniete przyciski. \\
+\hline
+{\em pointer} & Podwojny wskaznik na obiekt Pauzy. \\
+\hline
+{\em dt} & Wskaznik na delta\+Time (czas miedzy klatkami). \\
+\hline
+{\em dead} & Wskaznik na wartosc logiczna mowiaca czy gracz zyje. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{_menu_class_8cpp_source_l00173}{173}} pliku \mbox{\hyperlink{_menu_class_8cpp_source}{Menu\+Class.\+cpp}}.
+
+\Hypertarget{class_pause_a6a564235e87326133c14069be196eeac}\label{class_pause_a6a564235e87326133c14069be196eeac} 
+\index{Pause@{Pause}!````~Pause@{\texorpdfstring{$\sim$}{\string~}Pause}}
+\index{````~Pause@{\texorpdfstring{$\sim$}{\string~}Pause}!Pause@{Pause}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Pause()}{\string~Pause()}}
+{\footnotesize\ttfamily Pause\+::\texorpdfstring{$\sim$}{\string~}\+Pause (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destruktor Pauzy, niszczacy czcionki i ustawiajaca \texorpdfstring{$\ast$}{*}pointer na NULL. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_menu_class_8cpp_source_l00246}{246}} pliku \mbox{\hyperlink{_menu_class_8cpp_source}{Menu\+Class.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_pause_a319c6e0e03dbd6872a7b926627d8f671}\label{class_pause_a319c6e0e03dbd6872a7b926627d8f671} 
+\index{Pause@{Pause}!hasFonts@{hasFonts}}
+\index{hasFonts@{hasFonts}!Pause@{Pause}}
+\doxysubsubsection{\texorpdfstring{hasFonts()}{hasFonts()}}
+{\footnotesize\ttfamily bool Pause\+::has\+Fonts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sprawdza czy obiekt Pauzy ma zaladowane czcionki. 
+
+\begin{DoxyReturn}{Zwraca}
+Czy czcionki sa zaladowane. 
+\end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{_menu_class_8cpp_source_l00235}{235}} pliku \mbox{\hyperlink{_menu_class_8cpp_source}{Menu\+Class.\+cpp}}.
+
+\Hypertarget{class_pause_a8f44fe4c6e070235173cd4a765734155}\label{class_pause_a8f44fe4c6e070235173cd4a765734155} 
+\index{Pause@{Pause}!Update@{Update}}
+\index{Update@{Update}!Pause@{Pause}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Pause\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Funkcja Update, wywolywana co klatke. 
+
+
+
+Reimplementowana z \mbox{\hyperlink{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea}{Behaviour}}.
+
+
+
+Definicja w linii \mbox{\hyperlink{_menu_class_8cpp_source_l00187}{187}} pliku \mbox{\hyperlink{_menu_class_8cpp_source}{Menu\+Class.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_pause_a6fe7de5cd6cef1a3779563060cfb503e}\label{class_pause_a6fe7de5cd6cef1a3779563060cfb503e} 
+\index{Pause@{Pause}!buttons@{buttons}}
+\index{buttons@{buttons}!Pause@{Pause}}
+\doxysubsubsection{\texorpdfstring{buttons}{buttons}}
+{\footnotesize\ttfamily set$<$int$>$\texorpdfstring{$\ast$}{*} Pause\+::buttons\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na set wcisnietych przyciskow. 
+
+Definicja w linii \mbox{\hyperlink{_menu_class_8h_source_l00044}{44}} pliku \mbox{\hyperlink{_menu_class_8h_source}{Menu\+Class.\+h}}.
+
+\Hypertarget{class_pause_a2e5bf66a341dab17676a446c9b1643e3}\label{class_pause_a2e5bf66a341dab17676a446c9b1643e3} 
+\index{Pause@{Pause}!dT@{dT}}
+\index{dT@{dT}!Pause@{Pause}}
+\doxysubsubsection{\texorpdfstring{dT}{dT}}
+{\footnotesize\ttfamily double\texorpdfstring{$\ast$}{*} Pause\+::dT\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na delta\+Time, czyli czas miedzy klatkami. 
+
+Definicja w linii \mbox{\hyperlink{_menu_class_8h_source_l00049}{49}} pliku \mbox{\hyperlink{_menu_class_8h_source}{Menu\+Class.\+h}}.
+
+\Hypertarget{class_pause_aa7615f02d25676cbae72279a0fd2e131}\label{class_pause_aa7615f02d25676cbae72279a0fd2e131} 
+\index{Pause@{Pause}!enablecd@{enablecd}}
+\index{enablecd@{enablecd}!Pause@{Pause}}
+\doxysubsubsection{\texorpdfstring{enablecd}{enablecd}}
+{\footnotesize\ttfamily float Pause\+::enablecd\hspace{0.3cm}{\ttfamily [private]}}
+
+Pozostaly czas do ponownego przelaczenia pauzy. 
+
+Definicja w linii \mbox{\hyperlink{_menu_class_8h_source_l00047}{47}} pliku \mbox{\hyperlink{_menu_class_8h_source}{Menu\+Class.\+h}}.
+
+\Hypertarget{class_pause_a52d7b71662fc70c60460754e36f16d28}\label{class_pause_a52d7b71662fc70c60460754e36f16d28} 
+\index{Pause@{Pause}!enabled@{enabled}}
+\index{enabled@{enabled}!Pause@{Pause}}
+\doxysubsubsection{\texorpdfstring{enabled}{enabled}}
+{\footnotesize\ttfamily bool Pause\+::enabled}
+
+Czy pauza jest aktywna. 
+
+Definicja w linii \mbox{\hyperlink{_menu_class_8h_source_l00051}{51}} pliku \mbox{\hyperlink{_menu_class_8h_source}{Menu\+Class.\+h}}.
+
+\Hypertarget{class_pause_a0bb479ee5825e52125839db7084177fb}\label{class_pause_a0bb479ee5825e52125839db7084177fb} 
+\index{Pause@{Pause}!playerDied@{playerDied}}
+\index{playerDied@{playerDied}!Pause@{Pause}}
+\doxysubsubsection{\texorpdfstring{playerDied}{playerDied}}
+{\footnotesize\ttfamily bool\texorpdfstring{$\ast$}{*} Pause\+::player\+Died\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na wartosc logiczna, czy gracz umarl. 
+
+Definicja w linii \mbox{\hyperlink{_menu_class_8h_source_l00048}{48}} pliku \mbox{\hyperlink{_menu_class_8h_source}{Menu\+Class.\+h}}.
+
+\Hypertarget{class_pause_a116c4d0ae42bbbc13da07fc5d5ea8895}\label{class_pause_a116c4d0ae42bbbc13da07fc5d5ea8895} 
+\index{Pause@{Pause}!pointer@{pointer}}
+\index{pointer@{pointer}!Pause@{Pause}}
+\doxysubsubsection{\texorpdfstring{pointer}{pointer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pause}{Pause}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Pause\+::pointer\hspace{0.3cm}{\ttfamily [private]}}
+
+Podwojny wskaznik na obiekt Pauzy 
+
+Definicja w linii \mbox{\hyperlink{_menu_class_8h_source_l00043}{43}} pliku \mbox{\hyperlink{_menu_class_8h_source}{Menu\+Class.\+h}}.
+
+\Hypertarget{class_pause_a7feaa87a67e17f5c3c31c6e44ba5cb01}\label{class_pause_a7feaa87a67e17f5c3c31c6e44ba5cb01} 
+\index{Pause@{Pause}!TitleFont@{TitleFont}}
+\index{TitleFont@{TitleFont}!Pause@{Pause}}
+\doxysubsubsection{\texorpdfstring{TitleFont}{TitleFont}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+FONT\texorpdfstring{$\ast$}{*} Pause\+::\+Title\+Font\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na czcionke tytulu gry. 
+
+Definicja w linii \mbox{\hyperlink{_menu_class_8h_source_l00045}{45}} pliku \mbox{\hyperlink{_menu_class_8h_source}{Menu\+Class.\+h}}.
+
+\Hypertarget{class_pause_a3f4bbb0841ecaff98dfed2d577224bc8}\label{class_pause_a3f4bbb0841ecaff98dfed2d577224bc8} 
+\index{Pause@{Pause}!uiFont@{uiFont}}
+\index{uiFont@{uiFont}!Pause@{Pause}}
+\doxysubsubsection{\texorpdfstring{uiFont}{uiFont}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+FONT\texorpdfstring{$\ast$}{*} Pause\+::ui\+Font\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na inna czcionke. 
+
+Definicja w linii \mbox{\hyperlink{_menu_class_8h_source_l00046}{46}} pliku \mbox{\hyperlink{_menu_class_8h_source}{Menu\+Class.\+h}}.
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_menu_class_8h}{Menu\+Class.\+h}}\item 
+\mbox{\hyperlink{_menu_class_8cpp}{Menu\+Class.\+cpp}}\end{DoxyCompactItemize}

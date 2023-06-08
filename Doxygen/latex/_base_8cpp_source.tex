@@ -1,0 +1,36 @@
+\doxysection{Base.\+cpp}
+\hypertarget{_base_8cpp_source}{}\label{_base_8cpp_source}\mbox{\hyperlink{_base_8cpp}{Idź do dokumentacji tego pliku.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_base_8h}{Base.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00003}00003\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00004}\mbox{\hyperlink{_base_8cpp_a67024c6b63a775ef7a9488dfee4f7e22}{00004}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_base_8cpp_a67024c6b63a775ef7a9488dfee4f7e22}{GlobalAction}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00007}\mbox{\hyperlink{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea}{00007}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea}{Behaviour::Update}}()\ \{\};}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00008}\mbox{\hyperlink{class_behaviour_a52b11b4146f8f5104a6bf2be502e6d99}{00008}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_behaviour_a52b11b4146f8f5104a6bf2be502e6d99}{Behaviour::Start}}()\ \{\};}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00014}\mbox{\hyperlink{class_behaviour_a9c68ba38fdb413f4cc67165ceb10b327}{00014}}\ \mbox{\hyperlink{class_behaviour_a9c68ba38fdb413f4cc67165ceb10b327}{Behaviour::Behaviour}}(vector<Behaviour*>*\ bhvs)}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00015}00015\ \{}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00016}00016\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Constructed\ NEW\ Behaviour.\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00017}00017\ \ \ \ \ this-\/>\mbox{\hyperlink{class_behaviour_ab5a2aad5b8a3c2cb6612520878817137}{removing}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00018}00018\ \ \ \ \ this-\/>\mbox{\hyperlink{class_behaviour_a95a3f857ba7c6e573a987e1ef1148cc2}{vec}}\ =\ bhvs;}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\mbox{\hyperlink{class_behaviour_a95a3f857ba7c6e573a987e1ef1148cc2}{vec}}\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00020}00020\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ (*(this-\/>\mbox{\hyperlink{class_behaviour_a95a3f857ba7c6e573a987e1ef1148cc2}{vec}})).push\_back(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00027}\mbox{\hyperlink{class_behaviour_ab9099279876aa70410ab96ca589531df}{00027}}\ \mbox{\hyperlink{class_behaviour_ab9099279876aa70410ab96ca589531df}{Behaviour::\string~Behaviour}}()}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00028}00028\ \{}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00029}00029\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}DESTRUCTION\ OF\ Behaviour.\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\mbox{\hyperlink{class_behaviour_a95a3f857ba7c6e573a987e1ef1148cc2}{vec}}\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00031}00031\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ find(\mbox{\hyperlink{class_behaviour_a95a3f857ba7c6e573a987e1ef1148cc2}{vec}}-\/>begin(),\ \mbox{\hyperlink{class_behaviour_a95a3f857ba7c6e573a987e1ef1148cc2}{vec}}-\/>end(),\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ \mbox{\hyperlink{class_behaviour_a95a3f857ba7c6e573a987e1ef1148cc2}{vec}}-\/>end())}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_behaviour_a95a3f857ba7c6e573a987e1ef1148cc2}{vec}}-\/>erase(it);}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_8cpp_source_l00038}00038\ \}}
+
+\end{DoxyCode}

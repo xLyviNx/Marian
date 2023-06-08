@@ -1,0 +1,846 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Marian: Dokumentacja pliku Marian.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Marian<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">PO1 Projekt (1ID14B) 2023 - Grzegorz Sygut, Piotr Strzepek, Adrian Synowiec</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Komponenty</a> &#124;
+<a href="#define-members">Definicje</a> &#124;
+<a href="#func-members">Funkcje</a> &#124;
+<a href="#var-members">Zmienne</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja pliku Marian.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;allegro5/allegro.h&gt;</code><br />
+<code>#include &lt;allegro5/allegro_primitives.h&gt;</code><br />
+<code>#include &lt;allegro5/allegro_image.h&gt;</code><br />
+<code>#include &lt;allegro5/allegro_ttf.h&gt;</code><br />
+<code>#include &lt;set&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="_base_8h_source.html">Base.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_menu_class_8h_source.html">MenuClass.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="save_system_8h_source.html">saveSystem.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="floor_o_8h_source.html">floorO.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="coins_8h_source.html">coins.h</a>&quot;</code><br />
+</div>
+<p><a href="_marian_8cpp_source.html">Idź do kodu źródłowego tego pliku.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Komponenty</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_platform.html">Platform</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klasa Platformy.  <a href="class_platform.html#details">Więcej...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bullet.html">Bullet</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klasa kuli.  <a href="class_bullet.html#details">Więcej...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bullet_particle.html">BulletParticle</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klasa efektu strzelania (czasteczek)  <a href="class_bullet_particle.html#details">Więcej...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html">Player</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klasa gracza.  <a href="class_player.html#details">Więcej...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_finish_screen.html">FinishScreen</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klasa ekranu koncowego.  <a href="class_finish_screen.html#details">Więcej...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_finish_line.html">FinishLine</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klasa Mety.  <a href="class_finish_line.html#details">Więcej...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_enemy.html">Enemy</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Klasa przeciwnika.  <a href="class_enemy.html#details">Więcej...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Definicje</h2></td></tr>
+<tr class="memitem:a4fd0f977039b8a6d4cf2b5b0d6871536"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#a4fd0f977039b8a6d4cf2b5b0d6871536">BACKGROUND_FILE</a>&#160;&#160;&#160;&quot;Picture/Background.bmp&quot;</td></tr>
+<tr class="memdesc:a4fd0f977039b8a6d4cf2b5b0d6871536"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lokalizacja bitmapy Background.  <br /></td></tr>
+<tr class="separator:a4fd0f977039b8a6d4cf2b5b0d6871536"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf295d1dad59f8eedfbd54080c2fc08e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#acf295d1dad59f8eedfbd54080c2fc08e">MAP1_width</a>&#160;&#160;&#160;3840</td></tr>
+<tr class="memdesc:acf295d1dad59f8eedfbd54080c2fc08e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Szerokosc mapy.  <br /></td></tr>
+<tr class="separator:acf295d1dad59f8eedfbd54080c2fc08e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73371fb82170445c9cc64616a8ca01f9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#a73371fb82170445c9cc64616a8ca01f9">FLOOR_FILE</a>&#160;&#160;&#160;&quot;Picture/floor.bmp&quot;</td></tr>
+<tr class="memdesc:a73371fb82170445c9cc64616a8ca01f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lokalizacja bitmapy podlogi.  <br /></td></tr>
+<tr class="separator:a73371fb82170445c9cc64616a8ca01f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ba4d3f0c459dec437ff82ec878b0186"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#a7ba4d3f0c459dec437ff82ec878b0186">MARIAN_FILE</a>&#160;&#160;&#160;&quot;Picture/Marian.bmp&quot;</td></tr>
+<tr class="memdesc:a7ba4d3f0c459dec437ff82ec878b0186"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lokalizacja bitmapy gracza.  <br /></td></tr>
+<tr class="separator:a7ba4d3f0c459dec437ff82ec878b0186"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf71015820005827682dd8f59858d000"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#adf71015820005827682dd8f59858d000">BULLET_TEXTURE</a>&#160;&#160;&#160;&quot;Picture/bullet.bmp&quot;</td></tr>
+<tr class="memdesc:adf71015820005827682dd8f59858d000"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lokalizacja bitmapy pocisku gracza.  <br /></td></tr>
+<tr class="separator:adf71015820005827682dd8f59858d000"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac95bca834e183e310b5cc3e25f48f50c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#ac95bca834e183e310b5cc3e25f48f50c">BULLET_TEXTURE2</a>&#160;&#160;&#160;&quot;Picture/Buletv2.bmp&quot;</td></tr>
+<tr class="memdesc:ac95bca834e183e310b5cc3e25f48f50c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lokalizacja bitmapy pocisku przeciwnikow.  <br /></td></tr>
+<tr class="separator:ac95bca834e183e310b5cc3e25f48f50c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92a52d608737bd7a8dea1525db6606fd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#a92a52d608737bd7a8dea1525db6606fd">PLATFORM_FILE</a>&#160;&#160;&#160;&quot;Picture/platform1x1.bmp&quot;</td></tr>
+<tr class="memdesc:a92a52d608737bd7a8dea1525db6606fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lokalizacja bitmapy platformy.  <br /></td></tr>
+<tr class="separator:a92a52d608737bd7a8dea1525db6606fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c0d47cd4178ab8c30697df27a92f05d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#a0c0d47cd4178ab8c30697df27a92f05d">ENEMY_TEXTURE</a>&#160;&#160;&#160;&quot;Picture/Enemy.bmp&quot;</td></tr>
+<tr class="memdesc:a0c0d47cd4178ab8c30697df27a92f05d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lokalizacja bitmapy przeciwnika.  <br /></td></tr>
+<tr class="separator:a0c0d47cd4178ab8c30697df27a92f05d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad795a56c494cd8a36c3aec15923787d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#ad795a56c494cd8a36c3aec15923787d5">ENEMY2_TEXTURE</a>&#160;&#160;&#160;&quot;Picture/enemy2.bmp&quot;</td></tr>
+<tr class="memdesc:ad795a56c494cd8a36c3aec15923787d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lokalizacja bitmapy drugiego przeciwnika.  <br /></td></tr>
+<tr class="separator:ad795a56c494cd8a36c3aec15923787d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62135376efd237272e724836b38e0c8c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#a62135376efd237272e724836b38e0c8c">BOSS_TEXTURE</a>&#160;&#160;&#160;&quot;Picture/boss.bmp&quot;</td></tr>
+<tr class="memdesc:a62135376efd237272e724836b38e0c8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lokalizacja bitmapy bossa.  <br /></td></tr>
+<tr class="separator:a62135376efd237272e724836b38e0c8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2566c3323d2e955e2ef27ea4dc7867aa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#a2566c3323d2e955e2ef27ea4dc7867aa">PLATFORM2_FILE</a>&#160;&#160;&#160;&quot;Picture/platform1x1_2.bmp&quot;</td></tr>
+<tr class="memdesc:a2566c3323d2e955e2ef27ea4dc7867aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lokalizacja bitmapy platformy.  <br /></td></tr>
+<tr class="separator:a2566c3323d2e955e2ef27ea4dc7867aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aedaa9fd0e707785a274da871a121f5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#a0aedaa9fd0e707785a274da871a121f5">PLATFORM3_FILE</a>&#160;&#160;&#160;&quot;Picture/platform1x1_3.bmp&quot;</td></tr>
+<tr class="memdesc:a0aedaa9fd0e707785a274da871a121f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lokalizacja bitmapy platformy.  <br /></td></tr>
+<tr class="separator:a0aedaa9fd0e707785a274da871a121f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87deda363033579de0d8027ae3ef4810"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#a87deda363033579de0d8027ae3ef4810">FINISH_FILE</a>&#160;&#160;&#160;&quot;Picture/Finish.bmp&quot;</td></tr>
+<tr class="memdesc:a87deda363033579de0d8027ae3ef4810"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lokalizacja bitmapy mety.  <br /></td></tr>
+<tr class="separator:a87deda363033579de0d8027ae3ef4810"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9b909a80a1e04953d03eb0d8011f077"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#ab9b909a80a1e04953d03eb0d8011f077">COIN_FILE</a>&#160;&#160;&#160;&quot;Picture/MarioCoin.bmp&quot;</td></tr>
+<tr class="memdesc:ab9b909a80a1e04953d03eb0d8011f077"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lokalizacja bitmapy punktow.  <br /></td></tr>
+<tr class="separator:ab9b909a80a1e04953d03eb0d8011f077"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac07ab393e02341e088e64d310645c1ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#ac07ab393e02341e088e64d310645c1ff">maxY</a>&#160;&#160;&#160;100</td></tr>
+<tr class="memdesc:ac07ab393e02341e088e64d310645c1ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maksymalna wysokosc na ktora moze skoczyc gracz (-maxY)  <br /></td></tr>
+<tr class="separator:ac07ab393e02341e088e64d310645c1ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funkcje</h2></td></tr>
+<tr class="memitem:ad22dda98b23dde03b93aee93cb4e3261"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#ad22dda98b23dde03b93aee93cb4e3261">clamp</a> (float val, float min, float max)</td></tr>
+<tr class="memdesc:ad22dda98b23dde03b93aee93cb4e3261"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja przycinajaca float do podanej minimalnej i maksymalnej wartosci.  <br /></td></tr>
+<tr class="separator:ad22dda98b23dde03b93aee93cb4e3261"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33b58b744a2f4f910b1b962262ad497f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#a33b58b744a2f4f910b1b962262ad497f">loopBehaviours</a> (<a class="el" href="class_player.html">Player</a> **plr, <a class="el" href="class_pause.html">Pause</a> *gPause)</td></tr>
+<tr class="memdesc:a33b58b744a2f4f910b1b962262ad497f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Petla (funkcja) wywolywana co klatke ktora odpowiada za iterowanie przez wszystkie obiekty typu <a class="el" href="class_behaviour.html" title="Klasa Behaviour.">Behaviour</a>.  <br /></td></tr>
+<tr class="separator:a33b58b744a2f4f910b1b962262ad497f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad81e515127f5ec047fec7da4af844cf8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#ad81e515127f5ec047fec7da4af844cf8">ClearCoins</a> ()</td></tr>
+<tr class="memdesc:ad81e515127f5ec047fec7da4af844cf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja czyszczaca i usuwajaca wszystkie istniejace coiny (punkty).  <br /></td></tr>
+<tr class="separator:ad81e515127f5ec047fec7da4af844cf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49bfa5a2e93ffaeb4c9c30275fe0b9be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#a49bfa5a2e93ffaeb4c9c30275fe0b9be">ClearPlatforms</a> (set&lt; <a class="el" href="class_platform.html">Platform</a> * &gt; *platforms)</td></tr>
+<tr class="memdesc:a49bfa5a2e93ffaeb4c9c30275fe0b9be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja czyszczaca i usuwajaca wszystkie istniejace platformy.  <br /></td></tr>
+<tr class="separator:a49bfa5a2e93ffaeb4c9c30275fe0b9be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bb0d765af03a355d9f0ef677c6b6163"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#a0bb0d765af03a355d9f0ef677c6b6163">ChangeScene</a> (short int *currLevel, int scene, <a class="el" href="class_menu.html">Menu</a> **MenuObj, set&lt; <a class="el" href="class_platform.html">Platform</a> * &gt; *platforms, set&lt; <a class="el" href="class_enemy.html">Enemy</a> * &gt; *enemies, vector&lt; ALLEGRO_BITMAP * &gt; *platformSprites, <a class="el" href="class_player.html">Player</a> **plrAddress, vector&lt; ALLEGRO_BITMAP * &gt; *enemySprites, ALLEGRO_BITMAP *enemyBulletSprite, set&lt; int &gt; *buttons, ALLEGRO_BITMAP *floorT, float *cxo, bool *deadplayer, <a class="el" href="class_finish_line.html">FinishLine</a> **fL, ALLEGRO_BITMAP *coinBitmap)</td></tr>
+<tr class="memdesc:a0bb0d765af03a355d9f0ef677c6b6163"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja zmieniajaca aktualna scene (poziom/level).  <br /></td></tr>
+<tr class="separator:a0bb0d765af03a355d9f0ef677c6b6163"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+<tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja glowna (MAIN).  <br /></td></tr>
+<tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Zmienne</h2></td></tr>
+<tr class="memitem:a57b062361d1f2ad46e3de528127aa456"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="class_behaviour.html">Behaviour</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#a57b062361d1f2ad46e3de528127aa456">Behaviours</a></td></tr>
+<tr class="memdesc:a57b062361d1f2ad46e3de528127aa456"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wektor (lista) zawierajaca wszystkie utworzone obiekty <a class="el" href="class_behaviour.html" title="Klasa Behaviour.">Behaviour</a> <a class="el" href="class_behaviour.html" title="Klasa Behaviour.">Behaviour</a>.  <br /></td></tr>
+<tr class="separator:a57b062361d1f2ad46e3de528127aa456"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afac460bb6131314e58628ebd514f53c7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#afac460bb6131314e58628ebd514f53c7">deltaTime</a> = 0</td></tr>
+<tr class="memdesc:afac460bb6131314e58628ebd514f53c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Czas miedzy klatkami.  <br /></td></tr>
+<tr class="separator:afac460bb6131314e58628ebd514f53c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8235c6e9e346e312c0452da60148bc21"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#a8235c6e9e346e312c0452da60148bc21">cam_x_offset</a></td></tr>
+<tr class="memdesc:a8235c6e9e346e312c0452da60148bc21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Przesuniecie (offset) kamery w osi X.  <br /></td></tr>
+<tr class="separator:a8235c6e9e346e312c0452da60148bc21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23e63188d0c09cc17f89bfe81ca1ebb7"><td class="memItemLeft" align="right" valign="top">set&lt; <a class="el" href="classcoin.html">coin</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_marian_8cpp.html#a23e63188d0c09cc17f89bfe81ca1ebb7">coins</a></td></tr>
+<tr class="memdesc:a23e63188d0c09cc17f89bfe81ca1ebb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set zawierajacy wszystie istniejace coiny (punkty) na mapie.  <br /></td></tr>
+<tr class="separator:a23e63188d0c09cc17f89bfe81ca1ebb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentacja definicji</h2>
+<a id="a4fd0f977039b8a6d4cf2b5b0d6871536" name="a4fd0f977039b8a6d4cf2b5b0d6871536"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fd0f977039b8a6d4cf2b5b0d6871536">&#9670;&#160;</a></span>BACKGROUND_FILE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BACKGROUND_FILE&#160;&#160;&#160;&quot;Picture/Background.bmp&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lokalizacja bitmapy Background. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00017">17</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a62135376efd237272e724836b38e0c8c" name="a62135376efd237272e724836b38e0c8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62135376efd237272e724836b38e0c8c">&#9670;&#160;</a></span>BOSS_TEXTURE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_TEXTURE&#160;&#160;&#160;&quot;Picture/boss.bmp&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lokalizacja bitmapy bossa. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00053">53</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="adf71015820005827682dd8f59858d000" name="adf71015820005827682dd8f59858d000"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf71015820005827682dd8f59858d000">&#9670;&#160;</a></span>BULLET_TEXTURE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BULLET_TEXTURE&#160;&#160;&#160;&quot;Picture/bullet.bmp&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lokalizacja bitmapy pocisku gracza. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00033">33</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac95bca834e183e310b5cc3e25f48f50c" name="ac95bca834e183e310b5cc3e25f48f50c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac95bca834e183e310b5cc3e25f48f50c">&#9670;&#160;</a></span>BULLET_TEXTURE2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BULLET_TEXTURE2&#160;&#160;&#160;&quot;Picture/Buletv2.bmp&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lokalizacja bitmapy pocisku przeciwnikow. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00037">37</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab9b909a80a1e04953d03eb0d8011f077" name="ab9b909a80a1e04953d03eb0d8011f077"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9b909a80a1e04953d03eb0d8011f077">&#9670;&#160;</a></span>COIN_FILE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define COIN_FILE&#160;&#160;&#160;&quot;Picture/MarioCoin.bmp&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lokalizacja bitmapy punktow. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00069">69</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad795a56c494cd8a36c3aec15923787d5" name="ad795a56c494cd8a36c3aec15923787d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad795a56c494cd8a36c3aec15923787d5">&#9670;&#160;</a></span>ENEMY2_TEXTURE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENEMY2_TEXTURE&#160;&#160;&#160;&quot;Picture/enemy2.bmp&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lokalizacja bitmapy drugiego przeciwnika. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00049">49</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a0c0d47cd4178ab8c30697df27a92f05d" name="a0c0d47cd4178ab8c30697df27a92f05d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c0d47cd4178ab8c30697df27a92f05d">&#9670;&#160;</a></span>ENEMY_TEXTURE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENEMY_TEXTURE&#160;&#160;&#160;&quot;Picture/Enemy.bmp&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lokalizacja bitmapy przeciwnika. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00045">45</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a87deda363033579de0d8027ae3ef4810" name="a87deda363033579de0d8027ae3ef4810"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87deda363033579de0d8027ae3ef4810">&#9670;&#160;</a></span>FINISH_FILE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINISH_FILE&#160;&#160;&#160;&quot;Picture/Finish.bmp&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lokalizacja bitmapy mety. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00065">65</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a73371fb82170445c9cc64616a8ca01f9" name="a73371fb82170445c9cc64616a8ca01f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73371fb82170445c9cc64616a8ca01f9">&#9670;&#160;</a></span>FLOOR_FILE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLOOR_FILE&#160;&#160;&#160;&quot;Picture/floor.bmp&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lokalizacja bitmapy podlogi. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00025">25</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="acf295d1dad59f8eedfbd54080c2fc08e" name="acf295d1dad59f8eedfbd54080c2fc08e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf295d1dad59f8eedfbd54080c2fc08e">&#9670;&#160;</a></span>MAP1_width</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAP1_width&#160;&#160;&#160;3840</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Szerokosc mapy. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00021">21</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a7ba4d3f0c459dec437ff82ec878b0186" name="a7ba4d3f0c459dec437ff82ec878b0186"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ba4d3f0c459dec437ff82ec878b0186">&#9670;&#160;</a></span>MARIAN_FILE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MARIAN_FILE&#160;&#160;&#160;&quot;Picture/Marian.bmp&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lokalizacja bitmapy gracza. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00029">29</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac07ab393e02341e088e64d310645c1ff" name="ac07ab393e02341e088e64d310645c1ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac07ab393e02341e088e64d310645c1ff">&#9670;&#160;</a></span>maxY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define maxY&#160;&#160;&#160;100</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Maksymalna wysokosc na ktora moze skoczyc gracz (-maxY) </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00073">73</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2566c3323d2e955e2ef27ea4dc7867aa" name="a2566c3323d2e955e2ef27ea4dc7867aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2566c3323d2e955e2ef27ea4dc7867aa">&#9670;&#160;</a></span>PLATFORM2_FILE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLATFORM2_FILE&#160;&#160;&#160;&quot;Picture/platform1x1_2.bmp&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lokalizacja bitmapy platformy. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00057">57</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a0aedaa9fd0e707785a274da871a121f5" name="a0aedaa9fd0e707785a274da871a121f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0aedaa9fd0e707785a274da871a121f5">&#9670;&#160;</a></span>PLATFORM3_FILE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLATFORM3_FILE&#160;&#160;&#160;&quot;Picture/platform1x1_3.bmp&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lokalizacja bitmapy platformy. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00061">61</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a92a52d608737bd7a8dea1525db6606fd" name="a92a52d608737bd7a8dea1525db6606fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92a52d608737bd7a8dea1525db6606fd">&#9670;&#160;</a></span>PLATFORM_FILE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLATFORM_FILE&#160;&#160;&#160;&quot;Picture/platform1x1.bmp&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lokalizacja bitmapy platformy. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00041">41</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja funkcji</h2>
+<a id="a0bb0d765af03a355d9f0ef677c6b6163" name="a0bb0d765af03a355d9f0ef677c6b6163"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bb0d765af03a355d9f0ef677c6b6163">&#9670;&#160;</a></span>ChangeScene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ChangeScene </td>
+          <td>(</td>
+          <td class="paramtype">short int *&#160;</td>
+          <td class="paramname"><em>currLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>scene</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_menu.html">Menu</a> **&#160;</td>
+          <td class="paramname"><em>MenuObj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">set&lt; <a class="el" href="class_platform.html">Platform</a> * &gt; *&#160;</td>
+          <td class="paramname"><em>platforms</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">set&lt; <a class="el" href="class_enemy.html">Enemy</a> * &gt; *&#160;</td>
+          <td class="paramname"><em>enemies</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; ALLEGRO_BITMAP * &gt; *&#160;</td>
+          <td class="paramname"><em>platformSprites</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_player.html">Player</a> **&#160;</td>
+          <td class="paramname"><em>plrAddress</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; ALLEGRO_BITMAP * &gt; *&#160;</td>
+          <td class="paramname"><em>enemySprites</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ALLEGRO_BITMAP *&#160;</td>
+          <td class="paramname"><em>enemyBulletSprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">set&lt; int &gt; *&#160;</td>
+          <td class="paramname"><em>buttons</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ALLEGRO_BITMAP *&#160;</td>
+          <td class="paramname"><em>floorT</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>cxo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>deadplayer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_finish_line.html">FinishLine</a> **&#160;</td>
+          <td class="paramname"><em>fL</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ALLEGRO_BITMAP *&#160;</td>
+          <td class="paramname"><em>coinBitmap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja zmieniajaca aktualna scene (poziom/level). </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">currLevel</td><td>Wskaznik na aktualny poziom. </td></tr>
+    <tr><td class="paramname">scene</td><td>Scena/Poziom docelowy. </td></tr>
+    <tr><td class="paramname">MenuObj</td><td>Podwojny wskaznik na obiekt klasy <a class="el" href="class_menu.html" title="Klasa Menu Glownego.">Menu</a>. </td></tr>
+    <tr><td class="paramname">platforms</td><td>Wskaznik na set zawierajacy wszystkie platformy. </td></tr>
+    <tr><td class="paramname">enemies</td><td>Wskaznik na set zawierajacy wszystkich przeciwnikow. </td></tr>
+    <tr><td class="paramname">platformSprites</td><td>Wskaznik na wektor zawierajacy bitmapy (grafiki) platform. </td></tr>
+    <tr><td class="paramname">plrAddress</td><td>Podwojny wskaznik na gracza </td></tr>
+    <tr><td class="paramname">enemySprites</td><td>Wskaznik na wektor zawierajacy bitmapy (grafiki) przeciwnikow. </td></tr>
+    <tr><td class="paramname">enemyBulletSprite</td><td>Wskaznik na bitmape kul przeciwnikow. </td></tr>
+    <tr><td class="paramname">buttons</td><td>Wskaznik na set zawierajacy aktualnie wcisniete przyciski. </td></tr>
+    <tr><td class="paramname">floorT</td><td>Wskaznik na bitmape (grafike) podlogi. </td></tr>
+    <tr><td class="paramname">cxo</td><td>Wskaznik na wartosc offsetu (przesuniecia) kamery na osi X. </td></tr>
+    <tr><td class="paramname">deadplayer</td><td>Wskaznik na wartosc logiczna - czy gracz umarl. </td></tr>
+    <tr><td class="paramname">fL</td><td>Podwojny wskaznik na obiekt mety. </td></tr>
+    <tr><td class="paramname">coinBitmap</td><td>Wskaznik na bitmape (grafike) coina (punktu) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l01266">1266</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad22dda98b23dde03b93aee93cb4e3261" name="ad22dda98b23dde03b93aee93cb4e3261"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad22dda98b23dde03b93aee93cb4e3261">&#9670;&#160;</a></span>clamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float clamp </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja przycinajaca float do podanej minimalnej i maksymalnej wartosci. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>Wartosc wejsciowa. </td></tr>
+    <tr><td class="paramname">min</td><td>Wartosc minimalna. </td></tr>
+    <tr><td class="paramname">max</td><td>Wartosc maksymalna </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Wartosc pomiedzy minimalna a maksymalna dopuszczalna wartoscia. </dd></dl>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00095">95</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad81e515127f5ec047fec7da4af844cf8" name="ad81e515127f5ec047fec7da4af844cf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad81e515127f5ec047fec7da4af844cf8">&#9670;&#160;</a></span>ClearCoins()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClearCoins </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja czyszczaca i usuwajaca wszystkie istniejace coiny (punkty). </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l01227">1227</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a49bfa5a2e93ffaeb4c9c30275fe0b9be" name="a49bfa5a2e93ffaeb4c9c30275fe0b9be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49bfa5a2e93ffaeb4c9c30275fe0b9be">&#9670;&#160;</a></span>ClearPlatforms()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClearPlatforms </td>
+          <td>(</td>
+          <td class="paramtype">set&lt; <a class="el" href="class_platform.html">Platform</a> * &gt; *&#160;</td>
+          <td class="paramname"><em>platforms</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja czyszczaca i usuwajaca wszystkie istniejace platformy. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l01239">1239</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a33b58b744a2f4f910b1b962262ad497f" name="a33b58b744a2f4f910b1b962262ad497f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33b58b744a2f4f910b1b962262ad497f">&#9670;&#160;</a></span>loopBehaviours()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loopBehaviours </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_player.html">Player</a> **&#160;</td>
+          <td class="paramname"><em>plr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_pause.html">Pause</a> *&#160;</td>
+          <td class="paramname"><em>gPause</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Petla (funkcja) wywolywana co klatke ktora odpowiada za iterowanie przez wszystkie obiekty typu <a class="el" href="class_behaviour.html" title="Klasa Behaviour.">Behaviour</a>. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">plr</td><td>Podwojny wskaznik na gracza. </td></tr>
+    <tr><td class="paramname">gPause</td><td>Wskaznik na pauze. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l01194">1194</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&#160;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja glowna (MAIN). </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l01410">1410</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja zmiennych</h2>
+<a id="a57b062361d1f2ad46e3de528127aa456" name="a57b062361d1f2ad46e3de528127aa456"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57b062361d1f2ad46e3de528127aa456">&#9670;&#160;</a></span>Behaviours</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;<a class="el" href="class_behaviour.html">Behaviour</a>*&gt; Behaviours</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wektor (lista) zawierajaca wszystkie utworzone obiekty <a class="el" href="class_behaviour.html" title="Klasa Behaviour.">Behaviour</a> <a class="el" href="class_behaviour.html" title="Klasa Behaviour.">Behaviour</a>. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00079">79</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8235c6e9e346e312c0452da60148bc21" name="a8235c6e9e346e312c0452da60148bc21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8235c6e9e346e312c0452da60148bc21">&#9670;&#160;</a></span>cam_x_offset</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float cam_x_offset</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Przesuniecie (offset) kamery w osi X. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00087">87</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a23e63188d0c09cc17f89bfe81ca1ebb7" name="a23e63188d0c09cc17f89bfe81ca1ebb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23e63188d0c09cc17f89bfe81ca1ebb7">&#9670;&#160;</a></span>coins</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">set&lt;<a class="el" href="classcoin.html">coin</a>*&gt; coins</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set zawierajacy wszystie istniejace coiny (punkty) na mapie. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l01223">1223</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+<a id="afac460bb6131314e58628ebd514f53c7" name="afac460bb6131314e58628ebd514f53c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afac460bb6131314e58628ebd514f53c7">&#9670;&#160;</a></span>deltaTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double deltaTime = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Czas miedzy klatkami. </p>
+
+<p class="definition">Definicja w linii <a class="el" href="_marian_8cpp_source.html#l00083">83</a> pliku <a class="el" href="_marian_8cpp_source.html">Marian.cpp</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

@@ -1,0 +1,635 @@
+\doxysection{Dokumentacja klasy Player}
+\hypertarget{class_player}{}\label{class_player}\index{Player@{Player}}
+
+
+Klasa gracza.  
+
+
+Diagram dziedziczenia dla Player\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_player}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_player_a05b60cac1922c5be5c1be16baffa4497}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Metoda wywolywana co klatke gry. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a54de25087f17985430c4316bf5a7f368}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Metoda Start. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_player_a766aaa68c64c1849e5359072b81cb936}{Player}} (vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}bhvs, set$<$ int $>$ \texorpdfstring{$\ast$}{*}keys, set$<$ \mbox{\hyperlink{class_platform}{Platform}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}pts, ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}bullet\+Spr, set$<$ \mbox{\hyperlink{class_bullet}{Bullet}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}blts, bool \texorpdfstring{$\ast$}{*}dead, set$<$ \mbox{\hyperlink{classcoin}{coin}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}coinsad, int \texorpdfstring{$\ast$}{*}t\+Coins)
+\begin{DoxyCompactList}\small\item\em Konstruktor Gracza. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_player_a749d2c00e1fe0f5c2746f7505a58c062}{\texorpdfstring{$\sim$}{\string~}\+Player}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor Gracza. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Metody publiczne dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea}{Update}} ()
+\item 
+virtual void \mbox{\hyperlink{class_behaviour_a52b11b4146f8f5104a6bf2be502e6d99}{Start}} ()
+\item 
+\mbox{\hyperlink{class_behaviour_a9c68ba38fdb413f4cc67165ceb10b327}{Behaviour}} (std\+::vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Konstruktor \doxylink{class_behaviour}{Behaviour}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_behaviour_ab9099279876aa70410ab96ca589531df}{\texorpdfstring{$\sim$}{\string~}\+Behaviour}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor \doxylink{class_behaviour}{Behaviour}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_player_a59eec29c87225f768b3767451ceb84da}{x}}
+\item 
+float \mbox{\hyperlink{class_player_a28c357b9a2636f8bf9c5377de8245c80}{y}}
+\item 
+float \mbox{\hyperlink{class_player_a5a4212cf96bd7e1eb4734dc832e67b30}{Speed}} = 6.\+0
+\item 
+int \mbox{\hyperlink{class_player_a032ef243b314d23e77faa62806b22872}{spritewidth}}
+\item 
+int \mbox{\hyperlink{class_player_a50566495951a185101182ec27174f680}{spriteheight}}
+\item 
+float \mbox{\hyperlink{class_player_adb273b34576c2a1d5567262c53520584}{sprite\+Scale}}
+\item 
+int \mbox{\hyperlink{class_player_aab0cc9673703ef369603b9433d52199d}{scaled\+\_\+spritewidth}}
+\item 
+int \mbox{\hyperlink{class_player_a697a80d1b058c278c5bad4e30f9671e2}{scaled\+\_\+spriteheight}}
+\item 
+bool \mbox{\hyperlink{class_player_abfaf051423024af360196f738e2a2250}{is\+Grounded}} = false
+\item 
+float \mbox{\hyperlink{class_player_ac57d797630e4f4eb1e9e0b9f5c6d3260}{jump\+Force}} = 60
+\item 
+float \mbox{\hyperlink{class_player_a45927601a9dd96d431865cb6e6e991d7}{last\+Move\+ForceX}} = 0
+\item 
+int \mbox{\hyperlink{class_player_ad119bab67624a8a51accaf81d5920c32}{Health}} = 100
+\item 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_player_add4861ed10fc67171512fc0deb4fc2f1}{marian}} = NULL
+\item 
+set$<$ \mbox{\hyperlink{class_bullet}{Bullet}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_player_a80c0038897b4b25bde78d82ab7e1f954}{Bullets}}
+\item 
+set$<$ \mbox{\hyperlink{class_bullet_particle}{Bullet\+Particle}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_player_a23e5e678e68e8d1fe53751c0be21eb82}{Bullet\+Particles}}
+\item 
+set$<$ \mbox{\hyperlink{classcoin}{coin}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_player_ad3c1d579917e1243c90d373621e21fe1}{coinsR}}
+\item 
+float \mbox{\hyperlink{class_player_a2d575a35135f4c4c2fd89f01751c4462}{velocityY}} = 0
+\item 
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_player_ada7c98744d2b8d7d29a4a3e796d964c4}{coins\+Taken}}
+\item 
+int \mbox{\hyperlink{class_player_af431b703ecf01a965af733fc9cf20ed2}{cd\+Upgrade}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Atrybuty publiczne dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_behaviour_ab5a2aad5b8a3c2cb6612520878817137}{removing}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_player_a9d81ea24eda84798a62bf54097552a75}{render\+Me}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja wyswietlajaca gracza. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a1334990b8b7aaaad904e22f03f4d947d}{Jump}} ()
+\begin{DoxyCompactList}\small\item\em Metoda skakania gracza. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a2105394431517a41d38140cb65982331}{Shoot}} ()
+\begin{DoxyCompactList}\small\item\em Metoda strzelania. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a4728089ef13ef8ff6ab1842ea2032f27}{loop\+Bullets}} ()
+\begin{DoxyCompactList}\small\item\em Metoda petli (co klatke) kul wystrzelonych przez gracza. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_player_a0202845c5ccd2f5ebad885981e4f4ba7}{platform\+Block}} (float cx, float cy)
+\begin{DoxyCompactList}\small\item\em Metoda sprawdzajaca czy na danych koordynatach jest platforma. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_player_a7bb51b471a50f412c820d60d402fa721}{check\+Grounded}} (float \texorpdfstring{$\ast$}{*}cx, float \texorpdfstring{$\ast$}{*}cy)
+\begin{DoxyCompactList}\small\item\em Metoda sprawdzajaca czy gracz stoi na podlozu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_player_a2431c33602eb950289bcc49f4c22d338}{move\+ForceX}} = 0
+\item 
+float \mbox{\hyperlink{class_player_a2fcadfeb3a00c114013071c8e686406d}{shoot\+Cd}} = 0
+\item 
+float \mbox{\hyperlink{class_player_a3e6b88915ae33994803c30f0ea487c83}{shot}} = 0
+\item 
+float \mbox{\hyperlink{class_player_a303a33875177d74ffdd7db240e60edd9}{jump\+Cd}} = 0
+\item 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_player_a261ea15e042a0ccae5e10e995e45a6a7}{bulletsprite}} = NULL
+\item 
+ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_player_a5fed6da46d2e630f233906c4d355d253}{debug\+Font}} = al\+\_\+load\+\_\+ttf\+\_\+font(\"{}Fonts/oldtimer.\+regular.\+ttf\"{}, 30, 0)
+\item 
+ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_player_ad34ee60af5c05af16dd083277b566f0a}{up\+Font}} = al\+\_\+load\+\_\+ttf\+\_\+font(\"{}Fonts/Qaz-\/Regular.\+ttf\"{}, 22, 0)
+\item 
+set$<$ int $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_player_a30ad1c37995571409df016a77d76ed25}{pressed\+Keys}} = NULL
+\item 
+set$<$ \mbox{\hyperlink{class_platform}{Platform}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_player_ae8a29523faa76940a30e85588e374692}{platforms}} = NULL
+\item 
+bool \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_player_a96c03500713fd97e284fa268fd1e66e0}{died}}
+\item 
+float \mbox{\hyperlink{class_player_a6f042f9398d9964b5b5dd143f3a94241}{upcd}} = 0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Dodatkowe Dziedziczone Składowe}
+\doxysubsection*{Atrybuty chronione dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_behaviour_a95a3f857ba7c6e573a987e1ef1148cc2}{vec}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa gracza. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00413}{413}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{class_player_a766aaa68c64c1849e5359072b81cb936}\label{class_player_a766aaa68c64c1849e5359072b81cb936} 
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}}
+{\footnotesize\ttfamily Player\+::\+Player (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{bhvs,  }\item[{set$<$ int $>$ \texorpdfstring{$\ast$}{*}}]{keys,  }\item[{set$<$ \mbox{\hyperlink{class_platform}{Platform}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{pts,  }\item[{ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}}]{bullet\+Spr,  }\item[{set$<$ \mbox{\hyperlink{class_bullet}{Bullet}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{blts,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{dead,  }\item[{set$<$ \mbox{\hyperlink{classcoin}{coin}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{coinsad,  }\item[{int \texorpdfstring{$\ast$}{*}}]{t\+Coins }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Konstruktor Gracza. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em bhvs} & Wskaznik na vector zawierajacy wszystkie \doxylink{class_behaviour}{Behaviour} (aby dodac do niego gracza). \\
+\hline
+{\em keys} & Wskaznik na set wcisnietych klawiszy. \\
+\hline
+{\em pts} & Wskaznik na set zawierajacy wszystkie platformy. \\
+\hline
+{\em bullet\+Spr} & Wskaznik na bitmape (grafike) kul gracza. \\
+\hline
+{\em blts} & Wskaznik na set zawierajacy kule wystrzelone przez gracza. \\
+\hline
+{\em dead} & Wskaznik na wartosc logiczna mowiaca czy gracz zyje czy nie. \\
+\hline
+{\em coinsad} & Wskaznik na set zawierajacy wszystkie punkty (coinsy). \\
+\hline
+{\em t\+Coins} & Wskaznik (int\texorpdfstring{$\ast$}{*}) na zebrane coiny(punkty) gracza. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00737}{737}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a749d2c00e1fe0f5c2746f7505a58c062}\label{class_player_a749d2c00e1fe0f5c2746f7505a58c062} 
+\index{Player@{Player}!````~Player@{\texorpdfstring{$\sim$}{\string~}Player}}
+\index{````~Player@{\texorpdfstring{$\sim$}{\string~}Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Player()}{\string~Player()}}
+{\footnotesize\ttfamily Player\+::\texorpdfstring{$\sim$}{\string~}\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destruktor Gracza. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00761}{761}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_player_a7bb51b471a50f412c820d60d402fa721}\label{class_player_a7bb51b471a50f412c820d60d402fa721} 
+\index{Player@{Player}!checkGrounded@{checkGrounded}}
+\index{checkGrounded@{checkGrounded}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{checkGrounded()}{checkGrounded()}}
+{\footnotesize\ttfamily bool Player\+::check\+Grounded (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}}]{cx,  }\item[{float \texorpdfstring{$\ast$}{*}}]{cy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda sprawdzajaca czy gracz stoi na podlozu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em cx} & Wskaznik na pozycje w osi X. \\
+\hline
+{\em cy} & Wskaznik na pozycje w osi Y. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Wartosc logiczna -\/ true/false. 
+\end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00529}{529}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a1334990b8b7aaaad904e22f03f4d947d}\label{class_player_a1334990b8b7aaaad904e22f03f4d947d} 
+\index{Player@{Player}!Jump@{Jump}}
+\index{Jump@{Jump}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Jump()}{Jump()}}
+{\footnotesize\ttfamily void Player\+::\+Jump (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda skakania gracza. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00440}{440}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a4728089ef13ef8ff6ab1842ea2032f27}\label{class_player_a4728089ef13ef8ff6ab1842ea2032f27} 
+\index{Player@{Player}!loopBullets@{loopBullets}}
+\index{loopBullets@{loopBullets}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{loopBullets()}{loopBullets()}}
+{\footnotesize\ttfamily void Player\+::loop\+Bullets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda petli (co klatke) kul wystrzelonych przez gracza. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00468}{468}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a0202845c5ccd2f5ebad885981e4f4ba7}\label{class_player_a0202845c5ccd2f5ebad885981e4f4ba7} 
+\index{Player@{Player}!platformBlock@{platformBlock}}
+\index{platformBlock@{platformBlock}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{platformBlock()}{platformBlock()}}
+{\footnotesize\ttfamily bool Player\+::platform\+Block (\begin{DoxyParamCaption}\item[{float}]{cx,  }\item[{float}]{cy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda sprawdzajaca czy na danych koordynatach jest platforma. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em cx} & Pozycja w osi X. \\
+\hline
+{\em cy} & Pozycja w osi Y. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Wartosc logiczna -\/ true/false. 
+\end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00512}{512}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a9d81ea24eda84798a62bf54097552a75}\label{class_player_a9d81ea24eda84798a62bf54097552a75} 
+\index{Player@{Player}!renderMe@{renderMe}}
+\index{renderMe@{renderMe}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{renderMe()}{renderMe()}}
+{\footnotesize\ttfamily void Player\+::render\+Me (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Funkcja wyswietlajaca gracza. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00426}{426}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a2105394431517a41d38140cb65982331}\label{class_player_a2105394431517a41d38140cb65982331} 
+\index{Player@{Player}!Shoot@{Shoot}}
+\index{Shoot@{Shoot}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Shoot()}{Shoot()}}
+{\footnotesize\ttfamily void Player\+::\+Shoot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda strzelania. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00451}{451}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a54de25087f17985430c4316bf5a7f368}\label{class_player_a54de25087f17985430c4316bf5a7f368} 
+\index{Player@{Player}!Start@{Start}}
+\index{Start@{Start}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Player\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Metoda Start. 
+
+Przeprowadza (domyslnie jednorazowo) pierwsze operacje po konstruktorze. 
+
+Reimplementowana z \mbox{\hyperlink{class_behaviour_a52b11b4146f8f5104a6bf2be502e6d99}{Behaviour}}.
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00714}{714}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a05b60cac1922c5be5c1be16baffa4497}\label{class_player_a05b60cac1922c5be5c1be16baffa4497} 
+\index{Player@{Player}!Update@{Update}}
+\index{Update@{Update}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Player\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Metoda wywolywana co klatke gry. 
+
+Przeprowadza ona wszelkiego rodzaju operacje, jest to glowna petla gry dla gracza. Obsluguje ona np. poruszanie sie oraz strzelanie. 
+
+Reimplementowana z \mbox{\hyperlink{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea}{Behaviour}}.
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00567}{567}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_player_a23e5e678e68e8d1fe53751c0be21eb82}\label{class_player_a23e5e678e68e8d1fe53751c0be21eb82} 
+\index{Player@{Player}!BulletParticles@{BulletParticles}}
+\index{BulletParticles@{BulletParticles}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{BulletParticles}{BulletParticles}}
+{\footnotesize\ttfamily set$<$\mbox{\hyperlink{class_bullet_particle}{Bullet\+Particle}}\texorpdfstring{$\ast$}{*}$>$ Player\+::\+Bullet\+Particles}
+
+Wskaznik na czasteczki (efekt strzelania). 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00557}{557}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a80c0038897b4b25bde78d82ab7e1f954}\label{class_player_a80c0038897b4b25bde78d82ab7e1f954} 
+\index{Player@{Player}!Bullets@{Bullets}}
+\index{Bullets@{Bullets}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Bullets}{Bullets}}
+{\footnotesize\ttfamily set$<$\mbox{\hyperlink{class_bullet}{Bullet}}\texorpdfstring{$\ast$}{*}$>$\texorpdfstring{$\ast$}{*} Player\+::\+Bullets}
+
+Wskaznik na set wystrzelonych kul. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00556}{556}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a261ea15e042a0ccae5e10e995e45a6a7}\label{class_player_a261ea15e042a0ccae5e10e995e45a6a7} 
+\index{Player@{Player}!bulletsprite@{bulletsprite}}
+\index{bulletsprite@{bulletsprite}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{bulletsprite}{bulletsprite}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP\texorpdfstring{$\ast$}{*} Player\+::bulletsprite = NULL\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na bitmape (grafike) kul gracza. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00420}{420}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_af431b703ecf01a965af733fc9cf20ed2}\label{class_player_af431b703ecf01a965af733fc9cf20ed2} 
+\index{Player@{Player}!cdUpgrade@{cdUpgrade}}
+\index{cdUpgrade@{cdUpgrade}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{cdUpgrade}{cdUpgrade}}
+{\footnotesize\ttfamily int Player\+::cd\+Upgrade}
+
+Ulepszenie szybkostrzelnosci gracza. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00561}{561}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_ad3c1d579917e1243c90d373621e21fe1}\label{class_player_ad3c1d579917e1243c90d373621e21fe1} 
+\index{Player@{Player}!coinsR@{coinsR}}
+\index{coinsR@{coinsR}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{coinsR}{coinsR}}
+{\footnotesize\ttfamily set$<$\mbox{\hyperlink{classcoin}{coin}}\texorpdfstring{$\ast$}{*}$>$\texorpdfstring{$\ast$}{*} Player\+::coinsR}
+
+Wskaznik na set coinow (punktow). 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00558}{558}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_ada7c98744d2b8d7d29a4a3e796d964c4}\label{class_player_ada7c98744d2b8d7d29a4a3e796d964c4} 
+\index{Player@{Player}!coinsTaken@{coinsTaken}}
+\index{coinsTaken@{coinsTaken}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{coinsTaken}{coinsTaken}}
+{\footnotesize\ttfamily int\texorpdfstring{$\ast$}{*} Player\+::coins\+Taken}
+
+Wskaznik na zmienna zebranych coinow (punktow) gracza. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00560}{560}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a5fed6da46d2e630f233906c4d355d253}\label{class_player_a5fed6da46d2e630f233906c4d355d253} 
+\index{Player@{Player}!debugFont@{debugFont}}
+\index{debugFont@{debugFont}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{debugFont}{debugFont}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+FONT\texorpdfstring{$\ast$}{*} Player\+::debug\+Font = al\+\_\+load\+\_\+ttf\+\_\+font(\"{}Fonts/oldtimer.\+regular.\+ttf\"{}, 30, 0)\hspace{0.3cm}{\ttfamily [private]}}
+
+Czcionka. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00421}{421}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a96c03500713fd97e284fa268fd1e66e0}\label{class_player_a96c03500713fd97e284fa268fd1e66e0} 
+\index{Player@{Player}!died@{died}}
+\index{died@{died}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{died}{died}}
+{\footnotesize\ttfamily bool\texorpdfstring{$\ast$}{*} Player\+::died\hspace{0.3cm}{\ttfamily [private]}}
+
+Czy gracz umarl. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00540}{540}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_ad119bab67624a8a51accaf81d5920c32}\label{class_player_ad119bab67624a8a51accaf81d5920c32} 
+\index{Player@{Player}!Health@{Health}}
+\index{Health@{Health}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Health}{Health}}
+{\footnotesize\ttfamily int Player\+::\+Health = 100}
+
+Zdrowie gracza. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00554}{554}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_abfaf051423024af360196f738e2a2250}\label{class_player_abfaf051423024af360196f738e2a2250} 
+\index{Player@{Player}!isGrounded@{isGrounded}}
+\index{isGrounded@{isGrounded}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{isGrounded}{isGrounded}}
+{\footnotesize\ttfamily bool Player\+::is\+Grounded = false}
+
+Czy gracz stoi na podlozu. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00551}{551}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a303a33875177d74ffdd7db240e60edd9}\label{class_player_a303a33875177d74ffdd7db240e60edd9} 
+\index{Player@{Player}!jumpCd@{jumpCd}}
+\index{jumpCd@{jumpCd}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{jumpCd}{jumpCd}}
+{\footnotesize\ttfamily float Player\+::jump\+Cd = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+Cooldown skoku. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00419}{419}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_ac57d797630e4f4eb1e9e0b9f5c6d3260}\label{class_player_ac57d797630e4f4eb1e9e0b9f5c6d3260} 
+\index{Player@{Player}!jumpForce@{jumpForce}}
+\index{jumpForce@{jumpForce}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{jumpForce}{jumpForce}}
+{\footnotesize\ttfamily float Player\+::jump\+Force = 60}
+
+Sila skoku. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00552}{552}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a45927601a9dd96d431865cb6e6e991d7}\label{class_player_a45927601a9dd96d431865cb6e6e991d7} 
+\index{Player@{Player}!lastMoveForceX@{lastMoveForceX}}
+\index{lastMoveForceX@{lastMoveForceX}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{lastMoveForceX}{lastMoveForceX}}
+{\footnotesize\ttfamily float Player\+::last\+Move\+ForceX = 0}
+
+Ostatni kierunek poruszania sie gracza. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00553}{553}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_add4861ed10fc67171512fc0deb4fc2f1}\label{class_player_add4861ed10fc67171512fc0deb4fc2f1} 
+\index{Player@{Player}!marian@{marian}}
+\index{marian@{marian}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{marian}{marian}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP\texorpdfstring{$\ast$}{*} Player\+::marian = NULL}
+
+Wskaznik na bitmape (grafike) gracza. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00555}{555}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a2431c33602eb950289bcc49f4c22d338}\label{class_player_a2431c33602eb950289bcc49f4c22d338} 
+\index{Player@{Player}!moveForceX@{moveForceX}}
+\index{moveForceX@{moveForceX}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{moveForceX}{moveForceX}}
+{\footnotesize\ttfamily float Player\+::move\+ForceX = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+Sila poruszania sie w osi X. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00416}{416}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_ae8a29523faa76940a30e85588e374692}\label{class_player_ae8a29523faa76940a30e85588e374692} 
+\index{Player@{Player}!platforms@{platforms}}
+\index{platforms@{platforms}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{platforms}{platforms}}
+{\footnotesize\ttfamily set$<$\mbox{\hyperlink{class_platform}{Platform}}\texorpdfstring{$\ast$}{*}$>$\texorpdfstring{$\ast$}{*} Player\+::platforms = NULL\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na set platform. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00436}{436}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a30ad1c37995571409df016a77d76ed25}\label{class_player_a30ad1c37995571409df016a77d76ed25} 
+\index{Player@{Player}!pressedKeys@{pressedKeys}}
+\index{pressedKeys@{pressedKeys}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{pressedKeys}{pressedKeys}}
+{\footnotesize\ttfamily set$<$int$>$\texorpdfstring{$\ast$}{*} Player\+::pressed\+Keys = NULL\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na set wcisnietych przyciskow. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00435}{435}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a697a80d1b058c278c5bad4e30f9671e2}\label{class_player_a697a80d1b058c278c5bad4e30f9671e2} 
+\index{Player@{Player}!scaled\_spriteheight@{scaled\_spriteheight}}
+\index{scaled\_spriteheight@{scaled\_spriteheight}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{scaled\_spriteheight}{scaled\_spriteheight}}
+{\footnotesize\ttfamily int Player\+::scaled\+\_\+spriteheight}
+
+Przeskalowana wysokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00550}{550}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_aab0cc9673703ef369603b9433d52199d}\label{class_player_aab0cc9673703ef369603b9433d52199d} 
+\index{Player@{Player}!scaled\_spritewidth@{scaled\_spritewidth}}
+\index{scaled\_spritewidth@{scaled\_spritewidth}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{scaled\_spritewidth}{scaled\_spritewidth}}
+{\footnotesize\ttfamily int Player\+::scaled\+\_\+spritewidth}
+
+Przeskalowana szerokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00549}{549}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a2fcadfeb3a00c114013071c8e686406d}\label{class_player_a2fcadfeb3a00c114013071c8e686406d} 
+\index{Player@{Player}!shootCd@{shootCd}}
+\index{shootCd@{shootCd}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{shootCd}{shootCd}}
+{\footnotesize\ttfamily float Player\+::shoot\+Cd = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+Cooldown strzelania. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00417}{417}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a3e6b88915ae33994803c30f0ea487c83}\label{class_player_a3e6b88915ae33994803c30f0ea487c83} 
+\index{Player@{Player}!shot@{shot}}
+\index{shot@{shot}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{shot}{shot}}
+{\footnotesize\ttfamily float Player\+::shot = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+Wartosc zwiekszana przy strzelaniu (Odrzut). 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00418}{418}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a5a4212cf96bd7e1eb4734dc832e67b30}\label{class_player_a5a4212cf96bd7e1eb4734dc832e67b30} 
+\index{Player@{Player}!Speed@{Speed}}
+\index{Speed@{Speed}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Speed}{Speed}}
+{\footnotesize\ttfamily float Player\+::\+Speed = 6.\+0}
+
+Predkosc poruszania sie gracza. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00545}{545}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a50566495951a185101182ec27174f680}\label{class_player_a50566495951a185101182ec27174f680} 
+\index{Player@{Player}!spriteheight@{spriteheight}}
+\index{spriteheight@{spriteheight}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{spriteheight}{spriteheight}}
+{\footnotesize\ttfamily int Player\+::spriteheight}
+
+Wysokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00547}{547}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_adb273b34576c2a1d5567262c53520584}\label{class_player_adb273b34576c2a1d5567262c53520584} 
+\index{Player@{Player}!spriteScale@{spriteScale}}
+\index{spriteScale@{spriteScale}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{spriteScale}{spriteScale}}
+{\footnotesize\ttfamily float Player\+::sprite\+Scale}
+
+Skala sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00548}{548}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a032ef243b314d23e77faa62806b22872}\label{class_player_a032ef243b314d23e77faa62806b22872} 
+\index{Player@{Player}!spritewidth@{spritewidth}}
+\index{spritewidth@{spritewidth}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{spritewidth}{spritewidth}}
+{\footnotesize\ttfamily int Player\+::spritewidth}
+
+Szerokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00546}{546}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a6f042f9398d9964b5b5dd143f3a94241}\label{class_player_a6f042f9398d9964b5b5dd143f3a94241} 
+\index{Player@{Player}!upcd@{upcd}}
+\index{upcd@{upcd}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{upcd}{upcd}}
+{\footnotesize\ttfamily float Player\+::upcd = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+Cooldown ulepszen. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00541}{541}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_ad34ee60af5c05af16dd083277b566f0a}\label{class_player_ad34ee60af5c05af16dd083277b566f0a} 
+\index{Player@{Player}!upFont@{upFont}}
+\index{upFont@{upFont}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{upFont}{upFont}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+FONT\texorpdfstring{$\ast$}{*} Player\+::up\+Font = al\+\_\+load\+\_\+ttf\+\_\+font(\"{}Fonts/Qaz-\/Regular.\+ttf\"{}, 22, 0)\hspace{0.3cm}{\ttfamily [private]}}
+
+Czcionka. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00422}{422}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a2d575a35135f4c4c2fd89f01751c4462}\label{class_player_a2d575a35135f4c4c2fd89f01751c4462} 
+\index{Player@{Player}!velocityY@{velocityY}}
+\index{velocityY@{velocityY}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{velocityY}{velocityY}}
+{\footnotesize\ttfamily float Player\+::velocityY = 0}
+
+Przyspieszenie gracza w osi Y. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00559}{559}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a59eec29c87225f768b3767451ceb84da}\label{class_player_a59eec29c87225f768b3767451ceb84da} 
+\index{Player@{Player}!x@{x}}
+\index{x@{x}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily float Player\+::x}
+
+Pozycja na osi X. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00543}{543}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_player_a28c357b9a2636f8bf9c5377de8245c80}\label{class_player_a28c357b9a2636f8bf9c5377de8245c80} 
+\index{Player@{Player}!y@{y}}
+\index{y@{y}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily float Player\+::y}
+
+Pozycja na osi Y. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00544}{544}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_marian_8cpp}{Marian.\+cpp}}\end{DoxyCompactItemize}

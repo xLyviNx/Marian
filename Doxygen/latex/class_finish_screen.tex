@@ -1,0 +1,172 @@
+\doxysection{Dokumentacja klasy Finish\+Screen}
+\hypertarget{class_finish_screen}{}\label{class_finish_screen}\index{FinishScreen@{FinishScreen}}
+
+
+Klasa ekranu koncowego.  
+
+
+Diagram dziedziczenia dla Finish\+Screen\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_finish_screen}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_finish_screen_a5cfc47332772c7b3fd8c13a5112d6243}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Metoda Update, wywolywana co klatke gry. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_finish_screen_a622ec02031308e86487cd0fc1313b4b5}{Finish\+Screen}} (vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}bhvs, short int \texorpdfstring{$\ast$}{*}lv, ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*}myfont, \mbox{\hyperlink{class_player}{Player}} \texorpdfstring{$\ast$}{*}plr)
+\begin{DoxyCompactList}\small\item\em Konstruktor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Metody publiczne dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea}{Update}} ()
+\item 
+virtual void \mbox{\hyperlink{class_behaviour_a52b11b4146f8f5104a6bf2be502e6d99}{Start}} ()
+\item 
+\mbox{\hyperlink{class_behaviour_a9c68ba38fdb413f4cc67165ceb10b327}{Behaviour}} (std\+::vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Konstruktor \doxylink{class_behaviour}{Behaviour}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_behaviour_ab9099279876aa70410ab96ca589531df}{\texorpdfstring{$\sim$}{\string~}\+Behaviour}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor \doxylink{class_behaviour}{Behaviour}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_finish_screen_a3b6faf78cb000bb57604a5ac0d122c90}{enabled}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Atrybuty publiczne dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_behaviour_ab5a2aad5b8a3c2cb6612520878817137}{removing}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+short int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_finish_screen_a2d71068985139135a099f0db2847ff6b}{level}} = 0
+\item 
+ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_finish_screen_a93dbe2c0e13d75cd69f6acd662788c2b}{font}} = NULL
+\item 
+bool \mbox{\hyperlink{class_finish_screen_a820a8c6b60df03f27bc7cb9a43e67eba}{was\+Enabled}} = false
+\item 
+\mbox{\hyperlink{class_player}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_finish_screen_a46065f9aaec38ecee345c6c7133d3f12}{my\+Player}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Dodatkowe Dziedziczone Składowe}
+\doxysubsection*{Atrybuty chronione dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_behaviour_a95a3f857ba7c6e573a987e1ef1148cc2}{vec}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa ekranu koncowego. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00781}{781}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{class_finish_screen_a622ec02031308e86487cd0fc1313b4b5}\label{class_finish_screen_a622ec02031308e86487cd0fc1313b4b5} 
+\index{FinishScreen@{FinishScreen}!FinishScreen@{FinishScreen}}
+\index{FinishScreen@{FinishScreen}!FinishScreen@{FinishScreen}}
+\doxysubsubsection{\texorpdfstring{FinishScreen()}{FinishScreen()}}
+{\footnotesize\ttfamily Finish\+Screen\+::\+Finish\+Screen (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{bhvs,  }\item[{short int \texorpdfstring{$\ast$}{*}}]{lv,  }\item[{ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*}}]{myfont,  }\item[{\mbox{\hyperlink{class_player}{Player}} \texorpdfstring{$\ast$}{*}}]{plr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Konstruktor. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em bhvs} & Wskaznik na wektor zawierajacy wszystkie \doxylink{class_behaviour}{Behaviour(s)}. \\
+\hline
+{\em lv} & Wskaznik na poziom. \\
+\hline
+{\em myfont} & Wskaznik na czcionke. \\
+\hline
+{\em plr} & Wskaznik na gracza. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00840}{840}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_finish_screen_a5cfc47332772c7b3fd8c13a5112d6243}\label{class_finish_screen_a5cfc47332772c7b3fd8c13a5112d6243} 
+\index{FinishScreen@{FinishScreen}!Update@{Update}}
+\index{Update@{Update}!FinishScreen@{FinishScreen}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Finish\+Screen\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Metoda Update, wywolywana co klatke gry. 
+
+
+
+Reimplementowana z \mbox{\hyperlink{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea}{Behaviour}}.
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00793}{793}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_finish_screen_a3b6faf78cb000bb57604a5ac0d122c90}\label{class_finish_screen_a3b6faf78cb000bb57604a5ac0d122c90} 
+\index{FinishScreen@{FinishScreen}!enabled@{enabled}}
+\index{enabled@{enabled}!FinishScreen@{FinishScreen}}
+\doxysubsubsection{\texorpdfstring{enabled}{enabled}}
+{\footnotesize\ttfamily bool Finish\+Screen\+::enabled}
+
+Czy aktywny. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00789}{789}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_finish_screen_a93dbe2c0e13d75cd69f6acd662788c2b}\label{class_finish_screen_a93dbe2c0e13d75cd69f6acd662788c2b} 
+\index{FinishScreen@{FinishScreen}!font@{font}}
+\index{font@{font}!FinishScreen@{FinishScreen}}
+\doxysubsubsection{\texorpdfstring{font}{font}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+FONT\texorpdfstring{$\ast$}{*} Finish\+Screen\+::font = NULL\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na czcionke 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00785}{785}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_finish_screen_a2d71068985139135a099f0db2847ff6b}\label{class_finish_screen_a2d71068985139135a099f0db2847ff6b} 
+\index{FinishScreen@{FinishScreen}!level@{level}}
+\index{level@{level}!FinishScreen@{FinishScreen}}
+\doxysubsubsection{\texorpdfstring{level}{level}}
+{\footnotesize\ttfamily short int\texorpdfstring{$\ast$}{*} Finish\+Screen\+::level = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na poziom. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00784}{784}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_finish_screen_a46065f9aaec38ecee345c6c7133d3f12}\label{class_finish_screen_a46065f9aaec38ecee345c6c7133d3f12} 
+\index{FinishScreen@{FinishScreen}!myPlayer@{myPlayer}}
+\index{myPlayer@{myPlayer}!FinishScreen@{FinishScreen}}
+\doxysubsubsection{\texorpdfstring{myPlayer}{myPlayer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}}\texorpdfstring{$\ast$}{*} Finish\+Screen\+::my\+Player\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na gracza. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00787}{787}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_finish_screen_a820a8c6b60df03f27bc7cb9a43e67eba}\label{class_finish_screen_a820a8c6b60df03f27bc7cb9a43e67eba} 
+\index{FinishScreen@{FinishScreen}!wasEnabled@{wasEnabled}}
+\index{wasEnabled@{wasEnabled}!FinishScreen@{FinishScreen}}
+\doxysubsubsection{\texorpdfstring{wasEnabled}{wasEnabled}}
+{\footnotesize\ttfamily bool Finish\+Screen\+::was\+Enabled = false\hspace{0.3cm}{\ttfamily [private]}}
+
+Czy byl juz aktywowany. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00786}{786}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_marian_8cpp}{Marian.\+cpp}}\end{DoxyCompactItemize}

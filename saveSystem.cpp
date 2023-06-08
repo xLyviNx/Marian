@@ -4,8 +4,12 @@
 #include <iostream>
 
 #include "saveSystem.h"
+
 SaveSystem** SaveSystem::Instance = NULL;
 FILE* SaveSystem::saveFile = NULL;
+/**
+ * @brief Destruktor SaveSystemu.
+ */
 SaveSystem::~SaveSystem()
 {
 	if (SaveSystem::Instance && *(SaveSystem::Instance) == this) {
@@ -17,6 +21,9 @@ SaveSystem::~SaveSystem()
 		}
 	}
 }
+/**
+ * @brief Funkcja tworzaca SaveSystem.
+ */
 void SaveSystem::Create()
 {
 	if (!SaveSystem::Instance)
@@ -30,13 +37,15 @@ void SaveSystem::Create()
 	if (SaveSystem::Instance && *SaveSystem::Instance == NULL)
 	{
 		SaveSystem* sS = new SaveSystem();
-		//SaveSystem::Instance = &sS;
 	}
 	else {
 		printf("============SAVE SYSTEM: %p, %p\n", SaveSystem::Instance, (*SaveSystem::Instance));
 
 	}
 }
+/**
+ * @brief Funkcja niszczaca SaveSystem.
+ */
 void SaveSystem::Destroy()
 {
 	if (SaveSystem::Instance && *(SaveSystem::Instance) != NULL)
@@ -48,10 +57,16 @@ void SaveSystem::Destroy()
 
 	}
 }
+/**
+ * @brief Konstruktor SaveSystemu.
+ */
 SaveSystem::SaveSystem()
 {
 	this->Start();
 }
+/**
+ * @brief Funkcja startowa SaveSystemu ustawiajaca instancje oraz wykonujaca podstawowe pierwsze operacje.
+ */
 void SaveSystem::Start()
 {
 	if (!SaveSystem::Instance)
@@ -113,6 +128,11 @@ void SaveSystem::Start()
 		printf("[SAVE SYSTEM] Everything is broken!");
 	}
 }
+/**
+ * @brief Funkcja odczytujaca linie pliku zapisu.
+ * @param lineNumber Linia do odczytania.
+ * @return Odczytany tekst.
+ */
 char* SaveSystem::readLine(int lineNumber)
 {
 	char* buf = (char*)malloc(LINE_LENGTH * sizeof(char));
@@ -147,6 +167,12 @@ char* SaveSystem::readLine(int lineNumber)
 	return buf != NULL ? buf : NULL;
 
 }
+/**
+ * @brief Funkcja przycinajaca tekst.
+ * @param text Tekst do przyciecia.
+ * @param n Ilosc znakow.
+ * @return Czy skrocono.
+ */
 bool trimText(char* text, int n)
 {
 	for (int i = 0; i < n - 1; i++)
@@ -159,6 +185,10 @@ bool trimText(char* text, int n)
 	}
 	return false;
 }
+/**
+ * @brief Odczytywanie poziomu z pliku zapisu.
+ * @return Poziom.
+ */
 int SaveSystem::LoadLevel()
 {
 	int tret = 1;
@@ -169,6 +199,10 @@ int SaveSystem::LoadLevel()
 	free(loadS);
 	return tret;
 }
+/**
+ * @brief Odczytywanie coinow z pliku zapisu.
+ * @return Liczba coinow.
+ */
 int SaveSystem::LoadCoins()
 {
 	int tret = 1;
@@ -178,6 +212,10 @@ int SaveSystem::LoadCoins()
 	free(loadS);
 	return tret;
 }
+/**
+ * @brief Odczytywanie szybkostrzelnosci gracza z pliku zapisu.
+ * @return Szybkostrzelnosc gracza.
+ */
 int SaveSystem::LoadShootSpeed()
 {
 	int tret = 1;
@@ -187,6 +225,10 @@ int SaveSystem::LoadShootSpeed()
 	free(loadS);
 	return tret;
 }
+/**
+ * @brief Odczytywanie predkosci gracza z pliku zapisu.
+ * @return Predkosc gracza.
+ */
 float SaveSystem::LoadSpeed()
 {
 	float tret = 6.0;
@@ -197,6 +239,11 @@ float SaveSystem::LoadSpeed()
 	free(loadS);
 	return tret;
 }
+/**
+ * @brief Zapis do pliku zapisu.
+ * @param lineNumber Linia w pliku do zapisania.
+ * @param content Tekst do zapisania.
+ */
 void SaveSystem::printAtLine(int lineNumber, const char* content)
 {
 
@@ -268,17 +315,9 @@ void SaveSystem::printAtLine(int lineNumber, const char* content)
 		}
 	}
 }
-/*void SaveSystem::resetData()
-{
-	puts("[SAVE SYSTEM] RESETTING DATA");
-
-	if (SaveSystem::Instance && *SaveSystem::Instance == this) {
-		SaveSystem::Destroy();
-		remove(SAVEFILE_LOCATION);
-		SaveSystem::Create();
-	}
-
-}*/
+/**
+ * @brief Restart SaveSystemu.
+ */
 void SaveSystem::restart()
 {
 
@@ -294,6 +333,9 @@ void SaveSystem::restart()
 		SaveSystem::Create();
 	}
 }
+/**
+ * @brief Ustawienie domyslnych wartosci dla pliku zapisu.
+ */
 void SaveSystem::setStartData()
 {
 	printAtLine(1, "1");

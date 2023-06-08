@@ -1,0 +1,501 @@
+\doxysection{Dokumentacja pliku Marian.\+cpp}
+\hypertarget{_marian_8cpp}{}\label{_marian_8cpp}\index{Marian.cpp@{Marian.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$allegro5/allegro.\+h$>$}\newline
+{\ttfamily \#include $<$allegro5/allegro\+\_\+primitives.\+h$>$}\newline
+{\ttfamily \#include $<$allegro5/allegro\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$allegro5/allegro\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \"{}Base.\+h\"{}}\newline
+{\ttfamily \#include \"{}Menu\+Class.\+h\"{}}\newline
+{\ttfamily \#include \"{}save\+System.\+h\"{}}\newline
+{\ttfamily \#include \"{}floor\+O.\+h\"{}}\newline
+{\ttfamily \#include \"{}coins.\+h\"{}}\newline
+\doxysubsubsection*{Komponenty}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_platform}{Platform}}
+\begin{DoxyCompactList}\small\item\em Klasa Platformy. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_bullet}{Bullet}}
+\begin{DoxyCompactList}\small\item\em Klasa kuli. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_bullet_particle}{Bullet\+Particle}}
+\begin{DoxyCompactList}\small\item\em Klasa efektu strzelania (czasteczek) \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_player}{Player}}
+\begin{DoxyCompactList}\small\item\em Klasa gracza. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_finish_screen}{Finish\+Screen}}
+\begin{DoxyCompactList}\small\item\em Klasa ekranu koncowego. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_finish_line}{Finish\+Line}}
+\begin{DoxyCompactList}\small\item\em Klasa Mety. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_enemy}{Enemy}}
+\begin{DoxyCompactList}\small\item\em Klasa przeciwnika. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Definicje}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_marian_8cpp_a4fd0f977039b8a6d4cf2b5b0d6871536}{BACKGROUND\+\_\+\+FILE}}~\"{}Picture/Background.\+bmp\"{}
+\begin{DoxyCompactList}\small\item\em Lokalizacja bitmapy Background. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_marian_8cpp_acf295d1dad59f8eedfbd54080c2fc08e}{MAP1\+\_\+width}}~3840
+\begin{DoxyCompactList}\small\item\em Szerokosc mapy. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_marian_8cpp_a73371fb82170445c9cc64616a8ca01f9}{FLOOR\+\_\+\+FILE}}~\"{}Picture/floor.\+bmp\"{}
+\begin{DoxyCompactList}\small\item\em Lokalizacja bitmapy podlogi. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_marian_8cpp_a7ba4d3f0c459dec437ff82ec878b0186}{MARIAN\+\_\+\+FILE}}~\"{}Picture/Marian.\+bmp\"{}
+\begin{DoxyCompactList}\small\item\em Lokalizacja bitmapy gracza. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_marian_8cpp_adf71015820005827682dd8f59858d000}{BULLET\+\_\+\+TEXTURE}}~\"{}Picture/bullet.\+bmp\"{}
+\begin{DoxyCompactList}\small\item\em Lokalizacja bitmapy pocisku gracza. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_marian_8cpp_ac95bca834e183e310b5cc3e25f48f50c}{BULLET\+\_\+\+TEXTURE2}}~\"{}Picture/Buletv2.\+bmp\"{}
+\begin{DoxyCompactList}\small\item\em Lokalizacja bitmapy pocisku przeciwnikow. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_marian_8cpp_a92a52d608737bd7a8dea1525db6606fd}{PLATFORM\+\_\+\+FILE}}~\"{}Picture/platform1x1.\+bmp\"{}
+\begin{DoxyCompactList}\small\item\em Lokalizacja bitmapy platformy. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_marian_8cpp_a0c0d47cd4178ab8c30697df27a92f05d}{ENEMY\+\_\+\+TEXTURE}}~\"{}Picture/Enemy.\+bmp\"{}
+\begin{DoxyCompactList}\small\item\em Lokalizacja bitmapy przeciwnika. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_marian_8cpp_ad795a56c494cd8a36c3aec15923787d5}{ENEMY2\+\_\+\+TEXTURE}}~\"{}Picture/enemy2.\+bmp\"{}
+\begin{DoxyCompactList}\small\item\em Lokalizacja bitmapy drugiego przeciwnika. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_marian_8cpp_a62135376efd237272e724836b38e0c8c}{BOSS\+\_\+\+TEXTURE}}~\"{}Picture/boss.\+bmp\"{}
+\begin{DoxyCompactList}\small\item\em Lokalizacja bitmapy bossa. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_marian_8cpp_a2566c3323d2e955e2ef27ea4dc7867aa}{PLATFORM2\+\_\+\+FILE}}~\"{}Picture/platform1x1\+\_\+2.\+bmp\"{}
+\begin{DoxyCompactList}\small\item\em Lokalizacja bitmapy platformy. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_marian_8cpp_a0aedaa9fd0e707785a274da871a121f5}{PLATFORM3\+\_\+\+FILE}}~\"{}Picture/platform1x1\+\_\+3.\+bmp\"{}
+\begin{DoxyCompactList}\small\item\em Lokalizacja bitmapy platformy. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_marian_8cpp_a87deda363033579de0d8027ae3ef4810}{FINISH\+\_\+\+FILE}}~\"{}Picture/Finish.\+bmp\"{}
+\begin{DoxyCompactList}\small\item\em Lokalizacja bitmapy mety. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_marian_8cpp_ab9b909a80a1e04953d03eb0d8011f077}{COIN\+\_\+\+FILE}}~\"{}Picture/Mario\+Coin.\+bmp\"{}
+\begin{DoxyCompactList}\small\item\em Lokalizacja bitmapy punktow. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_marian_8cpp_ac07ab393e02341e088e64d310645c1ff}{maxY}}~100
+\begin{DoxyCompactList}\small\item\em Maksymalna wysokosc na ktora moze skoczyc gracz (-\/maxY) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{_marian_8cpp_ad22dda98b23dde03b93aee93cb4e3261}{clamp}} (float val, float min, float max)
+\begin{DoxyCompactList}\small\item\em Funkcja przycinajaca float do podanej minimalnej i maksymalnej wartosci. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_marian_8cpp_a33b58b744a2f4f910b1b962262ad497f}{loop\+Behaviours}} (\mbox{\hyperlink{class_player}{Player}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}plr, \mbox{\hyperlink{class_pause}{Pause}} \texorpdfstring{$\ast$}{*}g\+Pause)
+\begin{DoxyCompactList}\small\item\em Petla (funkcja) wywolywana co klatke ktora odpowiada za iterowanie przez wszystkie obiekty typu \doxylink{class_behaviour}{Behaviour}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_marian_8cpp_ad81e515127f5ec047fec7da4af844cf8}{Clear\+Coins}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja czyszczaca i usuwajaca wszystkie istniejace coiny (punkty). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_marian_8cpp_a49bfa5a2e93ffaeb4c9c30275fe0b9be}{Clear\+Platforms}} (set$<$ \mbox{\hyperlink{class_platform}{Platform}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}platforms)
+\begin{DoxyCompactList}\small\item\em Funkcja czyszczaca i usuwajaca wszystkie istniejace platformy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_marian_8cpp_a0bb0d765af03a355d9f0ef677c6b6163}{Change\+Scene}} (short int \texorpdfstring{$\ast$}{*}curr\+Level, int scene, \mbox{\hyperlink{class_menu}{Menu}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}Menu\+Obj, set$<$ \mbox{\hyperlink{class_platform}{Platform}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}platforms, set$<$ \mbox{\hyperlink{class_enemy}{Enemy}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}enemies, vector$<$ ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}platform\+Sprites, \mbox{\hyperlink{class_player}{Player}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}plr\+Address, vector$<$ ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}enemy\+Sprites, ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}enemy\+Bullet\+Sprite, set$<$ int $>$ \texorpdfstring{$\ast$}{*}buttons, ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}floorT, float \texorpdfstring{$\ast$}{*}cxo, bool \texorpdfstring{$\ast$}{*}deadplayer, \mbox{\hyperlink{class_finish_line}{Finish\+Line}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}fL, ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}coin\+Bitmap)
+\begin{DoxyCompactList}\small\item\em Funkcja zmieniajaca aktualna scene (poziom/level). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_marian_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Funkcja glowna (MAIN). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Zmienne}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{_marian_8cpp_a57b062361d1f2ad46e3de528127aa456}{Behaviours}}
+\begin{DoxyCompactList}\small\item\em Wektor (lista) zawierajaca wszystkie utworzone obiekty \doxylink{class_behaviour}{Behaviour} \doxylink{class_behaviour}{Behaviour}. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{_marian_8cpp_afac460bb6131314e58628ebd514f53c7}{delta\+Time}} = 0
+\begin{DoxyCompactList}\small\item\em Czas miedzy klatkami. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{_marian_8cpp_a8235c6e9e346e312c0452da60148bc21}{cam\+\_\+x\+\_\+offset}}
+\begin{DoxyCompactList}\small\item\em Przesuniecie (offset) kamery w osi X. \end{DoxyCompactList}\item 
+set$<$ \mbox{\hyperlink{classcoin}{coin}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{_marian_8cpp_a23e63188d0c09cc17f89bfe81ca1ebb7}{coins}}
+\begin{DoxyCompactList}\small\item\em Set zawierajacy wszystie istniejace coiny (punkty) na mapie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentacja definicji}
+\Hypertarget{_marian_8cpp_a4fd0f977039b8a6d4cf2b5b0d6871536}\label{_marian_8cpp_a4fd0f977039b8a6d4cf2b5b0d6871536} 
+\index{Marian.cpp@{Marian.cpp}!BACKGROUND\_FILE@{BACKGROUND\_FILE}}
+\index{BACKGROUND\_FILE@{BACKGROUND\_FILE}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{BACKGROUND\_FILE}{BACKGROUND\_FILE}}
+{\footnotesize\ttfamily \#define BACKGROUND\+\_\+\+FILE~\"{}Picture/Background.\+bmp\"{}}
+
+
+
+Lokalizacja bitmapy Background. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00017}{17}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_a62135376efd237272e724836b38e0c8c}\label{_marian_8cpp_a62135376efd237272e724836b38e0c8c} 
+\index{Marian.cpp@{Marian.cpp}!BOSS\_TEXTURE@{BOSS\_TEXTURE}}
+\index{BOSS\_TEXTURE@{BOSS\_TEXTURE}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{BOSS\_TEXTURE}{BOSS\_TEXTURE}}
+{\footnotesize\ttfamily \#define BOSS\+\_\+\+TEXTURE~\"{}Picture/boss.\+bmp\"{}}
+
+
+
+Lokalizacja bitmapy bossa. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00053}{53}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_adf71015820005827682dd8f59858d000}\label{_marian_8cpp_adf71015820005827682dd8f59858d000} 
+\index{Marian.cpp@{Marian.cpp}!BULLET\_TEXTURE@{BULLET\_TEXTURE}}
+\index{BULLET\_TEXTURE@{BULLET\_TEXTURE}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{BULLET\_TEXTURE}{BULLET\_TEXTURE}}
+{\footnotesize\ttfamily \#define BULLET\+\_\+\+TEXTURE~\"{}Picture/bullet.\+bmp\"{}}
+
+
+
+Lokalizacja bitmapy pocisku gracza. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00033}{33}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_ac95bca834e183e310b5cc3e25f48f50c}\label{_marian_8cpp_ac95bca834e183e310b5cc3e25f48f50c} 
+\index{Marian.cpp@{Marian.cpp}!BULLET\_TEXTURE2@{BULLET\_TEXTURE2}}
+\index{BULLET\_TEXTURE2@{BULLET\_TEXTURE2}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{BULLET\_TEXTURE2}{BULLET\_TEXTURE2}}
+{\footnotesize\ttfamily \#define BULLET\+\_\+\+TEXTURE2~\"{}Picture/Buletv2.\+bmp\"{}}
+
+
+
+Lokalizacja bitmapy pocisku przeciwnikow. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00037}{37}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_ab9b909a80a1e04953d03eb0d8011f077}\label{_marian_8cpp_ab9b909a80a1e04953d03eb0d8011f077} 
+\index{Marian.cpp@{Marian.cpp}!COIN\_FILE@{COIN\_FILE}}
+\index{COIN\_FILE@{COIN\_FILE}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{COIN\_FILE}{COIN\_FILE}}
+{\footnotesize\ttfamily \#define COIN\+\_\+\+FILE~\"{}Picture/Mario\+Coin.\+bmp\"{}}
+
+
+
+Lokalizacja bitmapy punktow. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00069}{69}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_ad795a56c494cd8a36c3aec15923787d5}\label{_marian_8cpp_ad795a56c494cd8a36c3aec15923787d5} 
+\index{Marian.cpp@{Marian.cpp}!ENEMY2\_TEXTURE@{ENEMY2\_TEXTURE}}
+\index{ENEMY2\_TEXTURE@{ENEMY2\_TEXTURE}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{ENEMY2\_TEXTURE}{ENEMY2\_TEXTURE}}
+{\footnotesize\ttfamily \#define ENEMY2\+\_\+\+TEXTURE~\"{}Picture/enemy2.\+bmp\"{}}
+
+
+
+Lokalizacja bitmapy drugiego przeciwnika. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00049}{49}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_a0c0d47cd4178ab8c30697df27a92f05d}\label{_marian_8cpp_a0c0d47cd4178ab8c30697df27a92f05d} 
+\index{Marian.cpp@{Marian.cpp}!ENEMY\_TEXTURE@{ENEMY\_TEXTURE}}
+\index{ENEMY\_TEXTURE@{ENEMY\_TEXTURE}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{ENEMY\_TEXTURE}{ENEMY\_TEXTURE}}
+{\footnotesize\ttfamily \#define ENEMY\+\_\+\+TEXTURE~\"{}Picture/Enemy.\+bmp\"{}}
+
+
+
+Lokalizacja bitmapy przeciwnika. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00045}{45}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_a87deda363033579de0d8027ae3ef4810}\label{_marian_8cpp_a87deda363033579de0d8027ae3ef4810} 
+\index{Marian.cpp@{Marian.cpp}!FINISH\_FILE@{FINISH\_FILE}}
+\index{FINISH\_FILE@{FINISH\_FILE}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{FINISH\_FILE}{FINISH\_FILE}}
+{\footnotesize\ttfamily \#define FINISH\+\_\+\+FILE~\"{}Picture/Finish.\+bmp\"{}}
+
+
+
+Lokalizacja bitmapy mety. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00065}{65}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_a73371fb82170445c9cc64616a8ca01f9}\label{_marian_8cpp_a73371fb82170445c9cc64616a8ca01f9} 
+\index{Marian.cpp@{Marian.cpp}!FLOOR\_FILE@{FLOOR\_FILE}}
+\index{FLOOR\_FILE@{FLOOR\_FILE}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{FLOOR\_FILE}{FLOOR\_FILE}}
+{\footnotesize\ttfamily \#define FLOOR\+\_\+\+FILE~\"{}Picture/floor.\+bmp\"{}}
+
+
+
+Lokalizacja bitmapy podlogi. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00025}{25}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_acf295d1dad59f8eedfbd54080c2fc08e}\label{_marian_8cpp_acf295d1dad59f8eedfbd54080c2fc08e} 
+\index{Marian.cpp@{Marian.cpp}!MAP1\_width@{MAP1\_width}}
+\index{MAP1\_width@{MAP1\_width}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{MAP1\_width}{MAP1\_width}}
+{\footnotesize\ttfamily \#define MAP1\+\_\+width~3840}
+
+
+
+Szerokosc mapy. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00021}{21}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_a7ba4d3f0c459dec437ff82ec878b0186}\label{_marian_8cpp_a7ba4d3f0c459dec437ff82ec878b0186} 
+\index{Marian.cpp@{Marian.cpp}!MARIAN\_FILE@{MARIAN\_FILE}}
+\index{MARIAN\_FILE@{MARIAN\_FILE}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{MARIAN\_FILE}{MARIAN\_FILE}}
+{\footnotesize\ttfamily \#define MARIAN\+\_\+\+FILE~\"{}Picture/Marian.\+bmp\"{}}
+
+
+
+Lokalizacja bitmapy gracza. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00029}{29}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_ac07ab393e02341e088e64d310645c1ff}\label{_marian_8cpp_ac07ab393e02341e088e64d310645c1ff} 
+\index{Marian.cpp@{Marian.cpp}!maxY@{maxY}}
+\index{maxY@{maxY}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{maxY}{maxY}}
+{\footnotesize\ttfamily \#define maxY~100}
+
+
+
+Maksymalna wysokosc na ktora moze skoczyc gracz (-\/maxY) 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00073}{73}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_a2566c3323d2e955e2ef27ea4dc7867aa}\label{_marian_8cpp_a2566c3323d2e955e2ef27ea4dc7867aa} 
+\index{Marian.cpp@{Marian.cpp}!PLATFORM2\_FILE@{PLATFORM2\_FILE}}
+\index{PLATFORM2\_FILE@{PLATFORM2\_FILE}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{PLATFORM2\_FILE}{PLATFORM2\_FILE}}
+{\footnotesize\ttfamily \#define PLATFORM2\+\_\+\+FILE~\"{}Picture/platform1x1\+\_\+2.\+bmp\"{}}
+
+
+
+Lokalizacja bitmapy platformy. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00057}{57}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_a0aedaa9fd0e707785a274da871a121f5}\label{_marian_8cpp_a0aedaa9fd0e707785a274da871a121f5} 
+\index{Marian.cpp@{Marian.cpp}!PLATFORM3\_FILE@{PLATFORM3\_FILE}}
+\index{PLATFORM3\_FILE@{PLATFORM3\_FILE}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{PLATFORM3\_FILE}{PLATFORM3\_FILE}}
+{\footnotesize\ttfamily \#define PLATFORM3\+\_\+\+FILE~\"{}Picture/platform1x1\+\_\+3.\+bmp\"{}}
+
+
+
+Lokalizacja bitmapy platformy. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00061}{61}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_a92a52d608737bd7a8dea1525db6606fd}\label{_marian_8cpp_a92a52d608737bd7a8dea1525db6606fd} 
+\index{Marian.cpp@{Marian.cpp}!PLATFORM\_FILE@{PLATFORM\_FILE}}
+\index{PLATFORM\_FILE@{PLATFORM\_FILE}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{PLATFORM\_FILE}{PLATFORM\_FILE}}
+{\footnotesize\ttfamily \#define PLATFORM\+\_\+\+FILE~\"{}Picture/platform1x1.\+bmp\"{}}
+
+
+
+Lokalizacja bitmapy platformy. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00041}{41}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja funkcji}
+\Hypertarget{_marian_8cpp_a0bb0d765af03a355d9f0ef677c6b6163}\label{_marian_8cpp_a0bb0d765af03a355d9f0ef677c6b6163} 
+\index{Marian.cpp@{Marian.cpp}!ChangeScene@{ChangeScene}}
+\index{ChangeScene@{ChangeScene}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{ChangeScene()}{ChangeScene()}}
+{\footnotesize\ttfamily void Change\+Scene (\begin{DoxyParamCaption}\item[{short int \texorpdfstring{$\ast$}{*}}]{curr\+Level,  }\item[{int}]{scene,  }\item[{\mbox{\hyperlink{class_menu}{Menu}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{Menu\+Obj,  }\item[{set$<$ \mbox{\hyperlink{class_platform}{Platform}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{platforms,  }\item[{set$<$ \mbox{\hyperlink{class_enemy}{Enemy}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{enemies,  }\item[{vector$<$ ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{platform\+Sprites,  }\item[{\mbox{\hyperlink{class_player}{Player}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{plr\+Address,  }\item[{vector$<$ ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{enemy\+Sprites,  }\item[{ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}}]{enemy\+Bullet\+Sprite,  }\item[{set$<$ int $>$ \texorpdfstring{$\ast$}{*}}]{buttons,  }\item[{ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}}]{floorT,  }\item[{float \texorpdfstring{$\ast$}{*}}]{cxo,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{deadplayer,  }\item[{\mbox{\hyperlink{class_finish_line}{Finish\+Line}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{fL,  }\item[{ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}}]{coin\+Bitmap }\end{DoxyParamCaption})}
+
+
+
+Funkcja zmieniajaca aktualna scene (poziom/level). 
+
+
+\begin{DoxyParams}{Parametry}
+{\em curr\+Level} & Wskaznik na aktualny poziom. \\
+\hline
+{\em scene} & Scena/\+Poziom docelowy. \\
+\hline
+{\em Menu\+Obj} & Podwojny wskaznik na obiekt klasy \doxylink{class_menu}{Menu}. \\
+\hline
+{\em platforms} & Wskaznik na set zawierajacy wszystkie platformy. \\
+\hline
+{\em enemies} & Wskaznik na set zawierajacy wszystkich przeciwnikow. \\
+\hline
+{\em platform\+Sprites} & Wskaznik na wektor zawierajacy bitmapy (grafiki) platform. \\
+\hline
+{\em plr\+Address} & Podwojny wskaznik na gracza \\
+\hline
+{\em enemy\+Sprites} & Wskaznik na wektor zawierajacy bitmapy (grafiki) przeciwnikow. \\
+\hline
+{\em enemy\+Bullet\+Sprite} & Wskaznik na bitmape kul przeciwnikow. \\
+\hline
+{\em buttons} & Wskaznik na set zawierajacy aktualnie wcisniete przyciski. \\
+\hline
+{\em floorT} & Wskaznik na bitmape (grafike) podlogi. \\
+\hline
+{\em cxo} & Wskaznik na wartosc offsetu (przesuniecia) kamery na osi X. \\
+\hline
+{\em deadplayer} & Wskaznik na wartosc logiczna -\/ czy gracz umarl. \\
+\hline
+{\em fL} & Podwojny wskaznik na obiekt mety. \\
+\hline
+{\em coin\+Bitmap} & Wskaznik na bitmape (grafike) coina (punktu) \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l01266}{1266}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_ad22dda98b23dde03b93aee93cb4e3261}\label{_marian_8cpp_ad22dda98b23dde03b93aee93cb4e3261} 
+\index{Marian.cpp@{Marian.cpp}!clamp@{clamp}}
+\index{clamp@{clamp}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{clamp()}{clamp()}}
+{\footnotesize\ttfamily float clamp (\begin{DoxyParamCaption}\item[{float}]{val,  }\item[{float}]{min,  }\item[{float}]{max }\end{DoxyParamCaption})}
+
+
+
+Funkcja przycinajaca float do podanej minimalnej i maksymalnej wartosci. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em val} & Wartosc wejsciowa. \\
+\hline
+{\em min} & Wartosc minimalna. \\
+\hline
+{\em max} & Wartosc maksymalna \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Wartosc pomiedzy minimalna a maksymalna dopuszczalna wartoscia. 
+\end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00095}{95}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_ad81e515127f5ec047fec7da4af844cf8}\label{_marian_8cpp_ad81e515127f5ec047fec7da4af844cf8} 
+\index{Marian.cpp@{Marian.cpp}!ClearCoins@{ClearCoins}}
+\index{ClearCoins@{ClearCoins}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{ClearCoins()}{ClearCoins()}}
+{\footnotesize\ttfamily void Clear\+Coins (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Funkcja czyszczaca i usuwajaca wszystkie istniejace coiny (punkty). 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l01227}{1227}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_a49bfa5a2e93ffaeb4c9c30275fe0b9be}\label{_marian_8cpp_a49bfa5a2e93ffaeb4c9c30275fe0b9be} 
+\index{Marian.cpp@{Marian.cpp}!ClearPlatforms@{ClearPlatforms}}
+\index{ClearPlatforms@{ClearPlatforms}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{ClearPlatforms()}{ClearPlatforms()}}
+{\footnotesize\ttfamily void Clear\+Platforms (\begin{DoxyParamCaption}\item[{set$<$ \mbox{\hyperlink{class_platform}{Platform}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{platforms }\end{DoxyParamCaption})}
+
+
+
+Funkcja czyszczaca i usuwajaca wszystkie istniejace platformy. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l01239}{1239}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_a33b58b744a2f4f910b1b962262ad497f}\label{_marian_8cpp_a33b58b744a2f4f910b1b962262ad497f} 
+\index{Marian.cpp@{Marian.cpp}!loopBehaviours@{loopBehaviours}}
+\index{loopBehaviours@{loopBehaviours}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{loopBehaviours()}{loopBehaviours()}}
+{\footnotesize\ttfamily void loop\+Behaviours (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{plr,  }\item[{\mbox{\hyperlink{class_pause}{Pause}} \texorpdfstring{$\ast$}{*}}]{g\+Pause }\end{DoxyParamCaption})}
+
+
+
+Petla (funkcja) wywolywana co klatke ktora odpowiada za iterowanie przez wszystkie obiekty typu \doxylink{class_behaviour}{Behaviour}. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em plr} & Podwojny wskaznik na gracza. \\
+\hline
+{\em g\+Pause} & Wskaznik na pauze. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l01194}{1194}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{_marian_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+\index{Marian.cpp@{Marian.cpp}!main@{main}}
+\index{main@{main}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Funkcja glowna (MAIN). 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l01410}{1410}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja zmiennych}
+\Hypertarget{_marian_8cpp_a57b062361d1f2ad46e3de528127aa456}\label{_marian_8cpp_a57b062361d1f2ad46e3de528127aa456} 
+\index{Marian.cpp@{Marian.cpp}!Behaviours@{Behaviours}}
+\index{Behaviours@{Behaviours}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{Behaviours}{Behaviours}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_behaviour}{Behaviour}}\texorpdfstring{$\ast$}{*}$>$ Behaviours}
+
+
+
+Wektor (lista) zawierajaca wszystkie utworzone obiekty \doxylink{class_behaviour}{Behaviour} \doxylink{class_behaviour}{Behaviour}. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00079}{79}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_a8235c6e9e346e312c0452da60148bc21}\label{_marian_8cpp_a8235c6e9e346e312c0452da60148bc21} 
+\index{Marian.cpp@{Marian.cpp}!cam\_x\_offset@{cam\_x\_offset}}
+\index{cam\_x\_offset@{cam\_x\_offset}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{cam\_x\_offset}{cam\_x\_offset}}
+{\footnotesize\ttfamily float cam\+\_\+x\+\_\+offset}
+
+
+
+Przesuniecie (offset) kamery w osi X. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00087}{87}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_a23e63188d0c09cc17f89bfe81ca1ebb7}\label{_marian_8cpp_a23e63188d0c09cc17f89bfe81ca1ebb7} 
+\index{Marian.cpp@{Marian.cpp}!coins@{coins}}
+\index{coins@{coins}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{coins}{coins}}
+{\footnotesize\ttfamily set$<$\mbox{\hyperlink{classcoin}{coin}}\texorpdfstring{$\ast$}{*}$>$ coins}
+
+
+
+Set zawierajacy wszystie istniejace coiny (punkty) na mapie. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l01223}{1223}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{_marian_8cpp_afac460bb6131314e58628ebd514f53c7}\label{_marian_8cpp_afac460bb6131314e58628ebd514f53c7} 
+\index{Marian.cpp@{Marian.cpp}!deltaTime@{deltaTime}}
+\index{deltaTime@{deltaTime}!Marian.cpp@{Marian.cpp}}
+\doxysubsubsection{\texorpdfstring{deltaTime}{deltaTime}}
+{\footnotesize\ttfamily double delta\+Time = 0}
+
+
+
+Czas miedzy klatkami. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00083}{83}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+

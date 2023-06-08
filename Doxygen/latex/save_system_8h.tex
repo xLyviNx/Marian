@@ -1,0 +1,90 @@
+\doxysection{Dokumentacja pliku save\+System.\+h}
+\hypertarget{save_system_8h}{}\label{save_system_8h}\index{saveSystem.h@{saveSystem.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsubsection*{Komponenty}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_save_system}{Save\+System}}
+\begin{DoxyCompactList}\small\item\em Klasa Save\+Systemu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Definicje}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{save_system_8h_ad5131de0b5004c64db5e79e8aac7471e}{LINE\+\_\+\+LENGTH}}~32
+\item 
+\#define \mbox{\hyperlink{save_system_8h_a53c83a66e461adf57ea7f7b94ac51568}{SAVEFILE\+\_\+\+LOCATION}}~\"{}data/save.\+txt\"{}
+\begin{DoxyCompactList}\small\item\em Lokalizacja pliku zapisu. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{save_system_8h_ac7e10e0cf8292253429695b8b1346ee3}{TEMPFILE\+\_\+\+LOCATION}}~\"{}data/save.\+tmp\"{}
+\begin{DoxyCompactList}\small\item\em Lokalizacja pliku tymczasowego. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{save_system_8h_a1eb10af02ac1ffa2af39dc5e07f47773}{trim\+Text}} (char \texorpdfstring{$\ast$}{*}, int)
+\begin{DoxyCompactList}\small\item\em Funkcja przycinajaca tekst. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentacja definicji}
+\Hypertarget{save_system_8h_ad5131de0b5004c64db5e79e8aac7471e}\label{save_system_8h_ad5131de0b5004c64db5e79e8aac7471e} 
+\index{saveSystem.h@{saveSystem.h}!LINE\_LENGTH@{LINE\_LENGTH}}
+\index{LINE\_LENGTH@{LINE\_LENGTH}!saveSystem.h@{saveSystem.h}}
+\doxysubsubsection{\texorpdfstring{LINE\_LENGTH}{LINE\_LENGTH}}
+{\footnotesize\ttfamily \#define LINE\+\_\+\+LENGTH~32}
+
+
+
+Definicja w linii \mbox{\hyperlink{save_system_8h_source_l00003}{3}} pliku \mbox{\hyperlink{save_system_8h_source}{save\+System.\+h}}.
+
+\Hypertarget{save_system_8h_a53c83a66e461adf57ea7f7b94ac51568}\label{save_system_8h_a53c83a66e461adf57ea7f7b94ac51568} 
+\index{saveSystem.h@{saveSystem.h}!SAVEFILE\_LOCATION@{SAVEFILE\_LOCATION}}
+\index{SAVEFILE\_LOCATION@{SAVEFILE\_LOCATION}!saveSystem.h@{saveSystem.h}}
+\doxysubsubsection{\texorpdfstring{SAVEFILE\_LOCATION}{SAVEFILE\_LOCATION}}
+{\footnotesize\ttfamily \#define SAVEFILE\+\_\+\+LOCATION~\"{}data/save.\+txt\"{}}
+
+
+
+Lokalizacja pliku zapisu. 
+
+
+
+Definicja w linii \mbox{\hyperlink{save_system_8h_source_l00007}{7}} pliku \mbox{\hyperlink{save_system_8h_source}{save\+System.\+h}}.
+
+\Hypertarget{save_system_8h_ac7e10e0cf8292253429695b8b1346ee3}\label{save_system_8h_ac7e10e0cf8292253429695b8b1346ee3} 
+\index{saveSystem.h@{saveSystem.h}!TEMPFILE\_LOCATION@{TEMPFILE\_LOCATION}}
+\index{TEMPFILE\_LOCATION@{TEMPFILE\_LOCATION}!saveSystem.h@{saveSystem.h}}
+\doxysubsubsection{\texorpdfstring{TEMPFILE\_LOCATION}{TEMPFILE\_LOCATION}}
+{\footnotesize\ttfamily \#define TEMPFILE\+\_\+\+LOCATION~\"{}data/save.\+tmp\"{}}
+
+
+
+Lokalizacja pliku tymczasowego. 
+
+
+
+Definicja w linii \mbox{\hyperlink{save_system_8h_source_l00011}{11}} pliku \mbox{\hyperlink{save_system_8h_source}{save\+System.\+h}}.
+
+
+
+\doxysubsection{Dokumentacja funkcji}
+\Hypertarget{save_system_8h_a1eb10af02ac1ffa2af39dc5e07f47773}\label{save_system_8h_a1eb10af02ac1ffa2af39dc5e07f47773} 
+\index{saveSystem.h@{saveSystem.h}!trimText@{trimText}}
+\index{trimText@{trimText}!saveSystem.h@{saveSystem.h}}
+\doxysubsubsection{\texorpdfstring{trimText()}{trimText()}}
+{\footnotesize\ttfamily bool trim\+Text (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{text,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Funkcja przycinajaca tekst. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em text} & Tekst do przyciecia. \\
+\hline
+{\em n} & Ilosc znakow. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Czy skrocono. 
+\end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{save_system_8cpp_source_l00176}{176}} pliku \mbox{\hyperlink{save_system_8cpp_source}{save\+System.\+cpp}}.
+

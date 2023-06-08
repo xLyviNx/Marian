@@ -1,0 +1,467 @@
+\doxysection{Dokumentacja klasy Enemy}
+\hypertarget{class_enemy}{}\label{class_enemy}\index{Enemy@{Enemy}}
+
+
+Klasa przeciwnika.  
+
+
+Diagram dziedziczenia dla Enemy\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_enemy}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_enemy_af9a83b4e458b77eef0ffce785164fbcd}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Metoda wywolywana co klatke gry przeprowadzajace operacje na przeciwniku. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_enemy_a8112d41e87fd8f39905f638b851b7180}{Enemy}} (vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}bhvs, float nX, float nY, bool walk, float speed, int direction, ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}my\+Sprite, set$<$ \mbox{\hyperlink{class_platform}{Platform}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}pts, ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}bulletsp, \mbox{\hyperlink{class_player}{Player}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}plr, bool is\+Boss, bool \texorpdfstring{$\ast$}{*}killed\+Player, bool Stupid, \mbox{\hyperlink{class_finish_line}{Finish\+Line}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}fL)
+\begin{DoxyCompactList}\small\item\em Konstruktor przeciwnika. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Metody publiczne dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea}{Update}} ()
+\item 
+virtual void \mbox{\hyperlink{class_behaviour_a52b11b4146f8f5104a6bf2be502e6d99}{Start}} ()
+\item 
+\mbox{\hyperlink{class_behaviour_a9c68ba38fdb413f4cc67165ceb10b327}{Behaviour}} (std\+::vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Konstruktor \doxylink{class_behaviour}{Behaviour}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_behaviour_ab9099279876aa70410ab96ca589531df}{\texorpdfstring{$\sim$}{\string~}\+Behaviour}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor \doxylink{class_behaviour}{Behaviour}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_enemy_a77fda4977da2209e2e49fba767f45b4c}{Speed}}
+\item 
+float \mbox{\hyperlink{class_enemy_a33cfeb8eacf6a6a950113158b850f49b}{range}} = 100
+\item 
+float \mbox{\hyperlink{class_enemy_a9b45f57b3d7474400108f09587df67b0}{x}} = 0
+\item 
+float \mbox{\hyperlink{class_enemy_add26d9a5b4e557a52d7a873d814ecd6a}{x\+\_\+offset}} = 0
+\item 
+float \mbox{\hyperlink{class_enemy_aa7d03269f81e619c117ce49f40f53eef}{y}} = 0
+\item 
+int \mbox{\hyperlink{class_enemy_aeb4b855c62339bcdb699692e43504b37}{dir}} = 1
+\item 
+\mbox{\hyperlink{class_finish_line}{Finish\+Line}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_enemy_a95c6976d9a1bdcab7d74d1a03fd97c30}{finishl}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Atrybuty publiczne dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_behaviour_ab5a2aad5b8a3c2cb6612520878817137}{removing}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_enemy_a971c8cca3117abd05c5797add5a792cd}{loop\+Bullets}} ()
+\begin{DoxyCompactList}\small\item\em Metoda wywolywana co klatke gry dzialajaca na kazdej wystrzelonej kuli. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_enemy_a08e8bd93e1381f2606ccc63cb46a1ae9}{shoot}} ()
+\begin{DoxyCompactList}\small\item\em Strzelanie przeciwnika. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_enemy_adf2105eb6ff5dc21bb4d8032c1664032}{sprite}} = NULL
+\item 
+int \mbox{\hyperlink{class_enemy_a749e80b47b6b48d71050df264e0c6184}{spritewidth}} = 356
+\item 
+int \mbox{\hyperlink{class_enemy_a7fa1f1dcc4ad9ab7b13f667e79b50bda}{spriteheight}} = 472
+\item 
+float \mbox{\hyperlink{class_enemy_a8b2508dbf6fb30c7f940e2041b2dfe83}{sprite\+Scale}} = 0.\+21
+\item 
+int \mbox{\hyperlink{class_enemy_a43918efc76d101f38f042ccf03f0b2d2}{scaled\+\_\+spritewidth}}
+\item 
+int \mbox{\hyperlink{class_enemy_a6515648db0f4c83399b67d3e028bda33}{scaled\+\_\+spriteheight}}
+\item 
+bool \mbox{\hyperlink{class_enemy_a2a470ae67b9340140bb8d70bd9df8513}{walking}} = false
+\item 
+float \mbox{\hyperlink{class_enemy_a8244cd9ab094662b1841229a6e428095}{shoot\+Cd}} = 0
+\item 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_enemy_a51e6825353c49d3220013a4301c4eb9a}{bulletsprite}} = NULL
+\item 
+set$<$ \mbox{\hyperlink{class_bullet}{Bullet}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_enemy_a493ca8908e2cc75d6c009f3f04703610}{Bullets}}
+\item 
+set$<$ \mbox{\hyperlink{class_platform}{Platform}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_enemy_a21a3f6380dc7250f1ef3f3734ad6144d}{platforms}}
+\item 
+\mbox{\hyperlink{class_player}{Player}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_enemy_aade14ddb9526394f20128bafb84c34ff}{m\+Player}} = NULL
+\item 
+int \mbox{\hyperlink{class_enemy_a6ddf8b9050b2060773bb9d6f38e3c88b}{Health}} = 50
+\item 
+bool \mbox{\hyperlink{class_enemy_aac8ef63c47a35393a24a423bac2b9d64}{is\+BOSS}} = false
+\item 
+bool \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_enemy_a94869b5222a9c5683a6569901bcb4103}{did\+Player\+Die}}
+\item 
+float \mbox{\hyperlink{class_enemy_a1df0acbf29e0529b7cbdf9055ae2abf4}{walkcd}} = 0
+\item 
+bool \mbox{\hyperlink{class_enemy_a2d4e26b33d75bb3a30365b0b623bf016}{player\+Was\+Far}} = false
+\item 
+bool \mbox{\hyperlink{class_enemy_a2bbd2cfbf03cfa23f50f0500d3844470}{stupid}} = false
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Dodatkowe Dziedziczone Składowe}
+\doxysubsection*{Atrybuty chronione dziedziczone z \mbox{\hyperlink{class_behaviour}{Behaviour}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_behaviour_a95a3f857ba7c6e573a987e1ef1148cc2}{vec}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa przeciwnika. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00923}{923}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{class_enemy_a8112d41e87fd8f39905f638b851b7180}\label{class_enemy_a8112d41e87fd8f39905f638b851b7180} 
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{Enemy()}{Enemy()}}
+{\footnotesize\ttfamily Enemy\+::\+Enemy (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_behaviour}{Behaviour}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{bhvs,  }\item[{float}]{nX,  }\item[{float}]{nY,  }\item[{bool}]{walk,  }\item[{float}]{speed,  }\item[{int}]{direction,  }\item[{ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}}]{my\+Sprite,  }\item[{set$<$ \mbox{\hyperlink{class_platform}{Platform}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{pts,  }\item[{ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}}]{bulletsp,  }\item[{\mbox{\hyperlink{class_player}{Player}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{plr,  }\item[{bool}]{is\+Boss,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{killed\+Player,  }\item[{bool}]{Stupid,  }\item[{\mbox{\hyperlink{class_finish_line}{Finish\+Line}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{fL }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Konstruktor przeciwnika. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em bhvs} & Wskaznik na set zawierajacy wszystkie obiekty typu \doxylink{class_behaviour}{Behaviour}. \\
+\hline
+{\em nX} & Pozycja na osi X. \\
+\hline
+{\em nY} & Pozycja na osi Y. \\
+\hline
+{\em walk} & Czy przeciwnik sie porusza. \\
+\hline
+{\em speed} & Jesli przeciwnik sie porusza, z jaka predkoscia. \\
+\hline
+{\em direction} & W ktora strone skierowany jest przeciwnik. \\
+\hline
+{\em my\+Sprite} & Wskaznik na bitmape (grafike) przeciwnika. \\
+\hline
+{\em pts} & Wskaznik set zawierajacy wszystkie platformy. \\
+\hline
+{\em bulletsp} & Wskaznik na bitmape (grafike) kuli przeciwnika. \\
+\hline
+{\em plr} & Podwojny wskaznik na gracza. \\
+\hline
+{\em is\+Boss} & Czy przeciwnik jest bossem. \\
+\hline
+{\em killed\+Player} & Wskaznik na wartosc logiczna -\/ czy gracz zostal zabity. \\
+\hline
+{\em Stupid} & Czy przeciwnik chodzi tylko od lewej do prawej, czy podaza za graczem. \\
+\hline
+{\em fL} & Podwojny wskaznik na mete. \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l01162}{1162}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_enemy_a971c8cca3117abd05c5797add5a792cd}\label{class_enemy_a971c8cca3117abd05c5797add5a792cd} 
+\index{Enemy@{Enemy}!loopBullets@{loopBullets}}
+\index{loopBullets@{loopBullets}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{loopBullets()}{loopBullets()}}
+{\footnotesize\ttfamily void Enemy\+::loop\+Bullets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Metoda wywolywana co klatke gry dzialajaca na kazdej wystrzelonej kuli. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00947}{947}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a08e8bd93e1381f2606ccc63cb46a1ae9}\label{class_enemy_a08e8bd93e1381f2606ccc63cb46a1ae9} 
+\index{Enemy@{Enemy}!shoot@{shoot}}
+\index{shoot@{shoot}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{shoot()}{shoot()}}
+{\footnotesize\ttfamily void Enemy\+::shoot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Strzelanie przeciwnika. 
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l01007}{1007}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_af9a83b4e458b77eef0ffce785164fbcd}\label{class_enemy_af9a83b4e458b77eef0ffce785164fbcd} 
+\index{Enemy@{Enemy}!Update@{Update}}
+\index{Update@{Update}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Enemy\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Metoda wywolywana co klatke gry przeprowadzajace operacje na przeciwniku. 
+
+
+
+Reimplementowana z \mbox{\hyperlink{class_behaviour_a3a9dfe827073e445db97be5d10c9ccea}{Behaviour}}.
+
+
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l01041}{1041}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{class_enemy_a493ca8908e2cc75d6c009f3f04703610}\label{class_enemy_a493ca8908e2cc75d6c009f3f04703610} 
+\index{Enemy@{Enemy}!Bullets@{Bullets}}
+\index{Bullets@{Bullets}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{Bullets}{Bullets}}
+{\footnotesize\ttfamily set$<$\mbox{\hyperlink{class_bullet}{Bullet}}\texorpdfstring{$\ast$}{*}$>$ Enemy\+::\+Bullets\hspace{0.3cm}{\ttfamily [private]}}
+
+Set zawierajacy kule przeciwnika. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00935}{935}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a51e6825353c49d3220013a4301c4eb9a}\label{class_enemy_a51e6825353c49d3220013a4301c4eb9a} 
+\index{Enemy@{Enemy}!bulletsprite@{bulletsprite}}
+\index{bulletsprite@{bulletsprite}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{bulletsprite}{bulletsprite}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP\texorpdfstring{$\ast$}{*} Enemy\+::bulletsprite = NULL\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na bitmape kuli przeciwnika. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00934}{934}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a94869b5222a9c5683a6569901bcb4103}\label{class_enemy_a94869b5222a9c5683a6569901bcb4103} 
+\index{Enemy@{Enemy}!didPlayerDie@{didPlayerDie}}
+\index{didPlayerDie@{didPlayerDie}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{didPlayerDie}{didPlayerDie}}
+{\footnotesize\ttfamily bool\texorpdfstring{$\ast$}{*} Enemy\+::did\+Player\+Die\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na wartosc logiczna czy gracz umarl. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00940}{940}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_aeb4b855c62339bcdb699692e43504b37}\label{class_enemy_aeb4b855c62339bcdb699692e43504b37} 
+\index{Enemy@{Enemy}!dir@{dir}}
+\index{dir@{dir}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{dir}{dir}}
+{\footnotesize\ttfamily int Enemy\+::dir = 1}
+
+Kierunek poruszania sie przeciwnika. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l01036}{1036}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a95c6976d9a1bdcab7d74d1a03fd97c30}\label{class_enemy_a95c6976d9a1bdcab7d74d1a03fd97c30} 
+\index{Enemy@{Enemy}!finishl@{finishl}}
+\index{finishl@{finishl}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{finishl}{finishl}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_finish_line}{Finish\+Line}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Enemy\+::finishl}
+
+Podwojny wskaznik na obiekt mety. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l01037}{1037}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a6ddf8b9050b2060773bb9d6f38e3c88b}\label{class_enemy_a6ddf8b9050b2060773bb9d6f38e3c88b} 
+\index{Enemy@{Enemy}!Health@{Health}}
+\index{Health@{Health}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{Health}{Health}}
+{\footnotesize\ttfamily int Enemy\+::\+Health = 50\hspace{0.3cm}{\ttfamily [private]}}
+
+Zdrowie przeciwnika. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00938}{938}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_aac8ef63c47a35393a24a423bac2b9d64}\label{class_enemy_aac8ef63c47a35393a24a423bac2b9d64} 
+\index{Enemy@{Enemy}!isBOSS@{isBOSS}}
+\index{isBOSS@{isBOSS}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{isBOSS}{isBOSS}}
+{\footnotesize\ttfamily bool Enemy\+::is\+BOSS = false\hspace{0.3cm}{\ttfamily [private]}}
+
+Czy przeciwnik jest bossem. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00939}{939}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_aade14ddb9526394f20128bafb84c34ff}\label{class_enemy_aade14ddb9526394f20128bafb84c34ff} 
+\index{Enemy@{Enemy}!mPlayer@{mPlayer}}
+\index{mPlayer@{mPlayer}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{mPlayer}{mPlayer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Enemy\+::m\+Player = NULL\hspace{0.3cm}{\ttfamily [private]}}
+
+Podwojny wskaznik na gracza. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00937}{937}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a21a3f6380dc7250f1ef3f3734ad6144d}\label{class_enemy_a21a3f6380dc7250f1ef3f3734ad6144d} 
+\index{Enemy@{Enemy}!platforms@{platforms}}
+\index{platforms@{platforms}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{platforms}{platforms}}
+{\footnotesize\ttfamily set$<$\mbox{\hyperlink{class_platform}{Platform}}\texorpdfstring{$\ast$}{*}$>$\texorpdfstring{$\ast$}{*} Enemy\+::platforms\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na set zawierajacy platformy. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00936}{936}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a2d4e26b33d75bb3a30365b0b623bf016}\label{class_enemy_a2d4e26b33d75bb3a30365b0b623bf016} 
+\index{Enemy@{Enemy}!playerWasFar@{playerWasFar}}
+\index{playerWasFar@{playerWasFar}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{playerWasFar}{playerWasFar}}
+{\footnotesize\ttfamily bool Enemy\+::player\+Was\+Far = false\hspace{0.3cm}{\ttfamily [private]}}
+
+Czy gracz byl z dala od przeciwnika. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00942}{942}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a33cfeb8eacf6a6a950113158b850f49b}\label{class_enemy_a33cfeb8eacf6a6a950113158b850f49b} 
+\index{Enemy@{Enemy}!range@{range}}
+\index{range@{range}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{range}{range}}
+{\footnotesize\ttfamily float Enemy\+::range = 100}
+
+Zasieg przeciwnika. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l01032}{1032}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a6515648db0f4c83399b67d3e028bda33}\label{class_enemy_a6515648db0f4c83399b67d3e028bda33} 
+\index{Enemy@{Enemy}!scaled\_spriteheight@{scaled\_spriteheight}}
+\index{scaled\_spriteheight@{scaled\_spriteheight}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{scaled\_spriteheight}{scaled\_spriteheight}}
+{\footnotesize\ttfamily int Enemy\+::scaled\+\_\+spriteheight\hspace{0.3cm}{\ttfamily [private]}}
+
+Przeskalowana wysokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00931}{931}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a43918efc76d101f38f042ccf03f0b2d2}\label{class_enemy_a43918efc76d101f38f042ccf03f0b2d2} 
+\index{Enemy@{Enemy}!scaled\_spritewidth@{scaled\_spritewidth}}
+\index{scaled\_spritewidth@{scaled\_spritewidth}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{scaled\_spritewidth}{scaled\_spritewidth}}
+{\footnotesize\ttfamily int Enemy\+::scaled\+\_\+spritewidth\hspace{0.3cm}{\ttfamily [private]}}
+
+Przeskalowana szerokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00930}{930}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a8244cd9ab094662b1841229a6e428095}\label{class_enemy_a8244cd9ab094662b1841229a6e428095} 
+\index{Enemy@{Enemy}!shootCd@{shootCd}}
+\index{shootCd@{shootCd}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{shootCd}{shootCd}}
+{\footnotesize\ttfamily float Enemy\+::shoot\+Cd = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+Cooldown strzelania przeciwnika. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00933}{933}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a77fda4977da2209e2e49fba767f45b4c}\label{class_enemy_a77fda4977da2209e2e49fba767f45b4c} 
+\index{Enemy@{Enemy}!Speed@{Speed}}
+\index{Speed@{Speed}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{Speed}{Speed}}
+{\footnotesize\ttfamily float Enemy\+::\+Speed}
+
+Predkosc przeciwnika. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l01031}{1031}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_adf2105eb6ff5dc21bb4d8032c1664032}\label{class_enemy_adf2105eb6ff5dc21bb4d8032c1664032} 
+\index{Enemy@{Enemy}!sprite@{sprite}}
+\index{sprite@{sprite}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{sprite}{sprite}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP\texorpdfstring{$\ast$}{*} Enemy\+::sprite = NULL\hspace{0.3cm}{\ttfamily [private]}}
+
+Wskaznik na bitmape. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00926}{926}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a7fa1f1dcc4ad9ab7b13f667e79b50bda}\label{class_enemy_a7fa1f1dcc4ad9ab7b13f667e79b50bda} 
+\index{Enemy@{Enemy}!spriteheight@{spriteheight}}
+\index{spriteheight@{spriteheight}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{spriteheight}{spriteheight}}
+{\footnotesize\ttfamily int Enemy\+::spriteheight = 472\hspace{0.3cm}{\ttfamily [private]}}
+
+Wysokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00928}{928}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a8b2508dbf6fb30c7f940e2041b2dfe83}\label{class_enemy_a8b2508dbf6fb30c7f940e2041b2dfe83} 
+\index{Enemy@{Enemy}!spriteScale@{spriteScale}}
+\index{spriteScale@{spriteScale}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{spriteScale}{spriteScale}}
+{\footnotesize\ttfamily float Enemy\+::sprite\+Scale = 0.\+21\hspace{0.3cm}{\ttfamily [private]}}
+
+Skala sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00929}{929}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a749e80b47b6b48d71050df264e0c6184}\label{class_enemy_a749e80b47b6b48d71050df264e0c6184} 
+\index{Enemy@{Enemy}!spritewidth@{spritewidth}}
+\index{spritewidth@{spritewidth}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{spritewidth}{spritewidth}}
+{\footnotesize\ttfamily int Enemy\+::spritewidth = 356\hspace{0.3cm}{\ttfamily [private]}}
+
+Szerokosc sprite\textquotesingle{}u. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00927}{927}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a2bbd2cfbf03cfa23f50f0500d3844470}\label{class_enemy_a2bbd2cfbf03cfa23f50f0500d3844470} 
+\index{Enemy@{Enemy}!stupid@{stupid}}
+\index{stupid@{stupid}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{stupid}{stupid}}
+{\footnotesize\ttfamily bool Enemy\+::stupid = false\hspace{0.3cm}{\ttfamily [private]}}
+
+Czy przeciwnik chodzi od lewej do prawej, czy chodzi w kierunku gracza. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00943}{943}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a1df0acbf29e0529b7cbdf9055ae2abf4}\label{class_enemy_a1df0acbf29e0529b7cbdf9055ae2abf4} 
+\index{Enemy@{Enemy}!walkcd@{walkcd}}
+\index{walkcd@{walkcd}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{walkcd}{walkcd}}
+{\footnotesize\ttfamily float Enemy\+::walkcd = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+Cooldown na chodzenie przeciwnika. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00941}{941}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a2a470ae67b9340140bb8d70bd9df8513}\label{class_enemy_a2a470ae67b9340140bb8d70bd9df8513} 
+\index{Enemy@{Enemy}!walking@{walking}}
+\index{walking@{walking}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{walking}{walking}}
+{\footnotesize\ttfamily bool Enemy\+::walking = false\hspace{0.3cm}{\ttfamily [private]}}
+
+Czy porusza przeciwnik sie porusza. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l00932}{932}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_a9b45f57b3d7474400108f09587df67b0}\label{class_enemy_a9b45f57b3d7474400108f09587df67b0} 
+\index{Enemy@{Enemy}!x@{x}}
+\index{x@{x}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily float Enemy\+::x = 0}
+
+Pozycja na osi X. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l01033}{1033}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_add26d9a5b4e557a52d7a873d814ecd6a}\label{class_enemy_add26d9a5b4e557a52d7a873d814ecd6a} 
+\index{Enemy@{Enemy}!x\_offset@{x\_offset}}
+\index{x\_offset@{x\_offset}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{x\_offset}{x\_offset}}
+{\footnotesize\ttfamily float Enemy\+::x\+\_\+offset = 0}
+
+Offset przeciwnika na osi X. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l01034}{1034}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+\Hypertarget{class_enemy_aa7d03269f81e619c117ce49f40f53eef}\label{class_enemy_aa7d03269f81e619c117ce49f40f53eef} 
+\index{Enemy@{Enemy}!y@{y}}
+\index{y@{y}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily float Enemy\+::y = 0}
+
+Pozycja na osi Y. 
+
+Definicja w linii \mbox{\hyperlink{_marian_8cpp_source_l01035}{1035}} pliku \mbox{\hyperlink{_marian_8cpp_source}{Marian.\+cpp}}.
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_marian_8cpp}{Marian.\+cpp}}\end{DoxyCompactItemize}
