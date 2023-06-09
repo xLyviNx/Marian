@@ -826,7 +826,7 @@ public:
                 al_draw_textf(font, al_map_rgb(255, 255, 255), WIDTH / 2, HEIGHT / 2, ALLEGRO_ALIGN_CENTRE, "Level %d ukonczony!", *level);
             }
             else {
-                al_draw_textf(font, al_map_rgb(255, 255, 255), WIDTH / 2, HEIGHT / 2, ALLEGRO_ALIGN_CENTRE, "Brawo! Gra ukonczona!", *level);
+                al_draw_textf(font, al_map_rgb(255, 255, 255), WIDTH / 2, HEIGHT / 2, ALLEGRO_ALIGN_CENTRE, "Brawo! Gra ukonczona!");
             }
         }
     }
